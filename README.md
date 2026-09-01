@@ -27,6 +27,29 @@ It is not a tutorial, not a style guide for any single language, and not a recor
 
 The consumer contract, including versioning and what a consumer must not assume, is in [meta/consuming.md](meta/consuming.md).
 
+### As a contributor
+
+Every change is validated against the rules in [meta/rule-format.md](meta/rule-format.md). Run the same check locally before opening a pull request.
+
+Prerequisites: Python 3.10 or later, and PyYAML.
+
+```bash
+pip install pyyaml==6.0.2
+python3 scripts/validate-standards.py
+```
+
+Expected output:
+
+```
+All checks passed. 0 warning(s).
+```
+
+A violation is reported with the file, the rule id and what is wrong:
+
+```
+error    standards/naming.md: [RF-19] front matter version does not match the index entry
+```
+
 ## Example
 
 Checking a file name against the standards:
@@ -45,6 +68,8 @@ Result:   violation of NAM-2, correct form is `session-notes-august.md`
 | `index.yaml` | The authoritative catalogue of standards. Every consumer starts here. |
 | `standards/` | The standards themselves. One topic per file, each self-contained. |
 | `meta/` | Rules about the rules: file format, precedence, consumer contract. |
+| `scripts/` | The validator that enforces the rules this repo can check itself. |
+| `.github/` | The workflow that runs the validator on every push and pull request. |
 
 Start here: [`index.yaml`](index.yaml), then [meta/rule-format.md](meta/rule-format.md).
 
@@ -65,6 +90,8 @@ The distribution mechanism sits outside this repo on purpose. Nothing here assum
 Changes are proposed as pull requests. A change to a standard MUST update the rule text, the file's `version` in its front matter, and the corresponding `index.yaml` entry in the same commit.
 
 Every proposed rule must pass the admission test in [meta/rule-format.md](meta/rule-format.md): it is either enforceable by a tool, checkable in review, or it does not belong here.
+
+`scripts/validate-standards.py` runs on every push and pull request and fails the build on a violation. It checks front matter completeness, index and file agreement, rule id format and uniqueness, file naming, unfinished markers, and that relative links resolve. Rules it cannot check are enforced in review.
 
 ## License
 
