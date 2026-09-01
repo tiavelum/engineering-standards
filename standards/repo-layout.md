@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 1.0.0
+version: 1.0.1
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, and what must not live in a repository.
@@ -13,7 +13,7 @@ Prefix: `RL`
 
 ## Required at the root
 
-**RL-1** Every repository MUST contain a `README.md` conforming to `standards/readme.md`.
+**RL-1** Every repository MUST contain a `README.md` conforming to `standards/readme-contract.md`.
 
 **RL-2** Every public repository MUST contain a `LICENSE` file.
 
