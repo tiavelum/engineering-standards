@@ -57,8 +57,11 @@ Checking a file name against the standards:
 ```
 Question: is `Session_Notes_August.md` acceptable?
 Load:     index.yaml -> entry `naming` -> standards/naming.md
-Rule:     NAM-2 (file names use lowercase words separated by single hyphens)
-Result:   violation of NAM-2, correct form is `session-notes-august.md`
+Rules:    NAM-2  file names use lowercase words separated by single hyphens
+          NAM-19 a name must not refer to when work was done
+Result:   two violations. Lowercasing gives `session-notes-august.md`, which
+          NAM-19 still rejects: August records when the sessions happened,
+          not what they are about. Name the file for its subject.
 ```
 
 ## Content and structure

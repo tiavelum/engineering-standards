@@ -17,8 +17,8 @@ Prefix: `NAM`
 
 **NAM-2** File and directory names MUST use lowercase words separated by single hyphens.
 
-Correct: `session-notes-august.md`, `api-reference.md`, `repo-layout.md`
-Incorrect: `Session Notes August.md`, `session_notes.md`, `sessionNotes.md`
+Correct: `crew-handbook.md`, `api-reference.md`, `repo-layout.md`
+Incorrect: `Crew Handbook.md`, `crew_handbook.md`, `crewHandbook.md`
 
 **NAM-3** Names MUST NOT contain spaces, underscores, camelCase, or characters outside `a-z`, `0-9` and `-`.
 
@@ -30,19 +30,17 @@ Incorrect: `Session Notes August.md`, `session_notes.md`, `sessionNotes.md`
 
 ## Dates and periods
 
-**NAM-18** A date or period that identifies the subject of a record is part of the name, not a version suffix, and is permitted.
+**NAM-18** A date or period MAY appear in a name only where it is subject matter of what the repository is about.
 
-The distinction NAM-4 draws is between a date that says *which revision this is*, which version control already holds, and a date that says *what this is about*, which nothing else holds.
+A time word earns its place when the thing being named genuinely is that period. `august.md` in a calendar application names a month the application is about. The test: the name would mean the same to someone who knows the domain and nothing whatsoever about how or when the work was done.
 
-Correct: `session-notes-august.md`, where there is one file per month and the month is what the notes cover
-Incorrect: `report-2026-09.md`, where the date marks the draft rather than the subject
+Correct: `august.md` in a calendar application, `q3-tax-rates.md` in a tax engine where those rates are the data
 
-**NAM-19** A date or period in a name MUST belong to the subject matter of the repository. It MUST NOT name a unit of the development process or a term from a development methodology.
+**NAM-19** A name MUST NOT refer to when work was done, nor to a unit of the development process or a term from a development methodology.
 
-A period is admissible only when it would still mean the same thing to someone who knows the domain and nothing about how the work is organised. `august` in a calendar application is subject matter. `sprint-4` is not: it describes how the team divides its time, which is a property of the process, not of the thing being built.
+This is the stricter half and it is absolute. A name is not a place to record that something happened last August, belonged to a particular sprint, or came out of a given phase. That information is in the history, and putting it in a name fixes a moment of the process onto an artifact that outlives it.
 
-Correct: `august.md` in a calendar application, `session-notes-august.md`
-Incorrect: `sprint-4-notes.md`, `iteration-2-plan.md`, `phase-3-layout.md`, `milestone-2-scope.md`
+Incorrect: `session-notes-august.md`, `notes-august.md`, `refactor-2026-09.md`, `sprint-4-notes.md`, `iteration-2-plan.md`, `phase-3-layout.md`, `milestone-2-scope.md`
 
 ## Directories
 
