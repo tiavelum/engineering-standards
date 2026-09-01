@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 1.0.0
+version: 2.0.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -27,7 +27,7 @@ Prefix: `GW`
 
 **GW-6** A commit message MUST take the form `<type>: <summary>`, where `<type>` is one of `feat`, `fix`, `docs`, `chore`, `refactor`, `test`.
 
-**GW-7** The summary MUST be imperative, lowercase after the type, at most 72 characters, and MUST NOT end with a period.
+**GW-7** The summary MUST be imperative, lowercase after the type, at most 65 characters including the type, and MUST NOT end with a period. Anything that does not fit goes in the body.
 
 Correct: `docs: add consumer contract to meta layer`
 Incorrect: `Added consumer contract.`, `updates`, `wip`
