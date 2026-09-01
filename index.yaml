@@ -1,0 +1,86 @@
+# Authoritative catalogue of standards in this repository.
+# Every consumer starts here. Do not discover standards by listing directories.
+#
+# Contract:
+#   - Each entry points to exactly one self-contained file.
+#   - `applies_to` lets a consumer load only what a task needs.
+#   - `version` follows the rules in meta/rule-format.md.
+#   - An entry and its file MUST be updated in the same commit.
+
+schema_version: 1
+repository: tiavelum/engineering-standards
+updated: 2026-09-01
+
+meta:
+  - id: rule-format
+    path: meta/rule-format.md
+    title: Rule file format
+    summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
+    applies_to: [authoring]
+
+  - id: precedence
+    path: meta/precedence.md
+    title: Precedence and deviation
+    summary: How conflicts between these standards, a consuming repo and a task instruction are resolved, and how a deviation is recorded.
+    applies_to: [all]
+
+  - id: consuming
+    path: meta/consuming.md
+    title: Consumer contract
+    summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
+    applies_to: [tooling, agents]
+
+standards:
+  - id: naming
+    path: standards/naming.md
+    title: Naming
+    version: 1.0.0
+    status: active
+    summary: Names for files, directories, branches, tags and repositories.
+    applies_to: [all]
+    tags: [files, directories, branches, repositories]
+
+  - id: repo-layout
+    path: standards/repo-layout.md
+    title: Repository layout
+    version: 1.0.0
+    status: active
+    summary: Required top-level files, directory roles, and what must not live in a repository.
+    applies_to: [all]
+    tags: [structure, files]
+
+  - id: git-workflow
+    path: standards/git-workflow.md
+    title: Git workflow
+    version: 1.0.0
+    status: active
+    summary: Branching, commit messages, pull requests and history hygiene.
+    applies_to: [all]
+    tags: [git, commits, branches, review]
+
+  - id: readme
+    path: standards/readme.md
+    title: README contract
+    version: 1.0.0
+    status: active
+    summary: Required sections, ordering and acceptance criteria for the README of any repository.
+    applies_to: [all]
+    tags: [documentation, readme]
+
+  - id: documentation
+    path: standards/documentation.md
+    title: Documentation
+    version: 1.0.0
+    status: active
+    summary: "Documentation beyond the README: where it lives, decision records, comments, changelogs."
+    applies_to: [all]
+    tags: [documentation, adr]
+
+  - id: tooling
+    path: standards/tooling.md
+    title: Tooling and enforcement
+    version: 1.0.0
+    status: active
+    summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
+    applies_to: [all]
+    tags: [tooling, ci, linting]
