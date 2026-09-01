@@ -1,5 +1,5 @@
 ---
-id: readme
+id: readme-contract
 title: README contract
 version: 1.0.0
 status: active

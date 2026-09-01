@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 1.0.0
+version: 1.1.0
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -36,6 +36,13 @@ Correct: `standards/`, `templates/`, `docs/`, `build/`
 Incorrect: `standard/` holding six standards
 
 **NAM-8** A directory MUST NOT be named `misc`, `other`, `stuff`, `temp` or `new`.
+
+**NAM-17** A file MUST NOT be named `readme.md`, in any casing, unless it is the README of the directory that holds it.
+
+Forges render any file named `readme` below a directory listing. A file that borrows that slot gains attention it has not earned and occupies the place a real directory README would take.
+
+Correct: `standards/readme-contract.md` for a standard about READMEs
+Incorrect: `standards/readme.md` for the same file
 
 ## Repositories
 
