@@ -71,9 +71,9 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 1.0.0
+    version: 1.1.0
     status: active
-    summary: "Documentation beyond the README: where it lives, decision records, comments, changelogs."
+    summary: "Documentation beyond the README: where it lives, open items, decision records, comments, changelogs."
     applies_to: [all]
     tags: [documentation, adr]
 
