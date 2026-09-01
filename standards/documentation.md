@@ -43,6 +43,8 @@ An open item is any identified piece of future work: a defect to fix, a change t
 
 Such a file has to be pruned by hand. In practice it is not, and it becomes the stale document that DOC-20 calls a defect. A GitHub issue closes itself when the pull request that resolves it is merged, so the list stays accurate without anyone maintaining it.
 
+The prohibition covers the file's purpose, not its name. A file listing outstanding work is forbidden whatever it is called; a file whose name happens to resemble one of the examples but which records the current state is not.
+
 **DOC-23** The following are records of the current state, not open items, and are governed by their own rules rather than by DOC-21 and DOC-22: the deviations file required by PR-5, the known limitations required by RM-18, decision records under DOC-10, and the changelog under DOC-16.
 
 **DOC-24** An issue MUST state what is to be done and why, in terms a reader who was not present when it was raised can act on.

@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 1.1.0
+version: 1.1.1
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -17,7 +17,7 @@ Prefix: `NAM`
 
 **NAM-2** File and directory names MUST use lowercase words separated by single hyphens.
 
-Correct: `session-notes-august.md`, `open-actions.md`, `repo-layout.md`
+Correct: `session-notes-august.md`, `api-reference.md`, `repo-layout.md`
 Incorrect: `Session Notes August.md`, `session_notes.md`, `sessionNotes.md`
 
 **NAM-3** Names MUST NOT contain spaces, underscores, camelCase, or characters outside `a-z`, `0-9` and `-`.
