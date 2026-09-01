@@ -35,7 +35,7 @@ standards:
   - id: naming
     path: standards/naming.md
     title: Naming
-    version: 1.1.1
+    version: 1.2.0
     status: active
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]

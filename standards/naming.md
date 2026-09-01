@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 1.1.1
+version: 1.2.0
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -22,11 +22,27 @@ Incorrect: `Session Notes August.md`, `session_notes.md`, `sessionNotes.md`
 
 **NAM-3** Names MUST NOT contain spaces, underscores, camelCase, or characters outside `a-z`, `0-9` and `-`.
 
-**NAM-4** A name MUST NOT carry a version, date or status suffix such as `-v2`, `-final`, `-new`, `-old`, `-2026-09`. Version control holds that information.
+**NAM-4** A name MUST NOT carry a version, date or status suffix such as `-v2`, `-final`, `-new`, `-old`, `-2026-09`. Version control holds that information. A date that identifies the subject rather than the revision is permitted under NAM-18.
 
 **NAM-5** Abbreviations MUST NOT be used unless they are unambiguous in the repository's domain and used consistently.
 
 **NAM-6** Files whose name is fixed by an external tool or convention are exempt from NAM-2 and NAM-3. Examples: `README.md`, `LICENSE`, `Dockerfile`, `Makefile`, `CODEOWNERS`, `.editorconfig`.
+
+## Dates and periods
+
+**NAM-18** A date or period that identifies the subject of a record is part of the name, not a version suffix, and is permitted.
+
+The distinction NAM-4 draws is between a date that says *which revision this is*, which version control already holds, and a date that says *what this is about*, which nothing else holds.
+
+Correct: `session-notes-august.md`, where there is one file per month and the month is what the notes cover
+Incorrect: `report-2026-09.md`, where the date marks the draft rather than the subject
+
+**NAM-19** A date or period in a name MUST belong to the subject matter of the repository. It MUST NOT name a unit of the development process or a term from a development methodology.
+
+A period is admissible only when it would still mean the same thing to someone who knows the domain and nothing about how the work is organised. `august` in a calendar application is subject matter. `sprint-4` is not: it describes how the team divides its time, which is a property of the process, not of the thing being built.
+
+Correct: `august.md` in a calendar application, `session-notes-august.md`
+Incorrect: `sprint-4-notes.md`, `iteration-2-plan.md`, `phase-3-layout.md`, `milestone-2-scope.md`
 
 ## Directories
 
