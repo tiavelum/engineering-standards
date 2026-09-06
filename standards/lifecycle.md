@@ -1,7 +1,7 @@
 ---
 id: lifecycle
 title: Product lifecycle
-version: 1.0.0
+version: 1.0.1
 status: draft
 applies_to: [all]
 summary: The phases a product passes through from idea to operation, the artifact each produces, and the gate that must be passed to leave it.
@@ -17,13 +17,13 @@ This standard governs a repository that produces a product. It does not govern a
 
 **LC-1** A repository that produces a product MUST declare a lifecycle level of `0`, `1` or `2` in `docs/lifecycle.md`.
 
-**LC-2** A repository at level 0 is exploratory and is exempt from this standard apart from LC-1 and LC-3.
+**LC-2** A repository at level 0 MUST satisfy only LC-1 and LC-3 of this standard.
 
 **LC-3** A repository at level 1 or 2 MUST NOT depend on a repository at level 0.
 
 **LC-4** A repository at level 2 MUST satisfy LC-38 through LC-41 in addition to every other rule here.
 
-Level 1 is the default. Level 2 applies where a failure costs more than the record keeping, or where someone outside the project must be able to check that something was done rather than take it on trust.
+Level 0 is exploratory, which is why it is exempt from everything but the two rules that keep it from being depended on. Level 1 is the default. Level 2 applies where a failure costs more than the record keeping, or where someone outside the project must be able to check that something was done rather than take it on trust.
 
 ## Phases
 

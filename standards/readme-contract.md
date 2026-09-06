@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 1.0.0
+version: 1.0.1
 status: active
 applies_to: [all]
 summary: Required sections, ordering and acceptance criteria for the README of any repository.
@@ -76,7 +76,7 @@ The README is written for the user of the repository, not for its author. Assume
 
 ## Definition of done
 
-**RM-22** A README is done when a reader who has never seen the repository can do all of the following:
+**RM-22** A README MUST let a reader who has never seen the repository do all of the following:
 
 - say what it is and who it is for, after the first paragraph;
 - decide whether it fits their problem, after section 2;

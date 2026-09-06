@@ -43,6 +43,9 @@ RE_FILENAME = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*\.[a-z0-9]+$")
 RE_MD_LINK = re.compile(r"\[[^\]]*\]\(([^)#]+?)(?:#[^)]*)?\)")
 RE_MARKER = re.compile(r"\b(TODO|FIXME|TBD|XXX)\b\s*[:(]|^\s*(TODO|FIXME|TBD)\b")
 
+# The RFC 2119 keywords RF-13 requires, uppercase only.
+RE_RFC2119 = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
+
 # A reference to another standard, in the two forms RF-26 permits.
 RE_XREF_RULE = re.compile(r"\b([A-Z]{2,3})-\d+\b")
 RE_XREF_PATH = re.compile(r"\b((?:standards|meta)/[a-z0-9-]+\.md)\b")
@@ -239,7 +242,10 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
 
     prefixes = set()
     numbers: dict[str, int] = {}
-    for match in RE_RULE.finditer(text):
+    for line in text.splitlines():
+        match = RE_RULE.match(line)
+        if not match:
+            continue
         prefix, number = match.group(1), int(match.group(2))
         prefixes.add(prefix)
         rule_id = f"{prefix}-{number}"
@@ -247,6 +253,13 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
             error(relative, "RF-11", f"rule {rule_id} appears more than once")
         numbers[rule_id] = number
         found_rules.append((rule_id, relative))
+
+        # RF-13 wants the keyword on the identifier's own line. A rule whose
+        # keyword sits further down is a rule that does not say what it binds.
+        # This is a floor: a keyword named rather than used still passes, which
+        # TL-2 leaves to review.
+        if not RE_RFC2119.search(line.removeprefix(match.group(0))):
+            error(relative, "RF-13", f"rule {rule_id} states no RFC 2119 keyword")
 
     if len(prefixes) > 1:
         error(relative, "RF-10", f"file mixes rule prefixes: {sorted(prefixes)}")

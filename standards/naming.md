@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 1.3.1
+version: 1.3.2
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -26,7 +26,7 @@ Incorrect: `Crew Handbook.md`, `crew_handbook.md`, `crewHandbook.md`
 
 **NAM-5** Abbreviations MUST NOT be used unless they are unambiguous in the repository's domain and used consistently.
 
-**NAM-6** Files whose name is fixed by an external tool or convention are exempt from NAM-2 and NAM-3. Examples: `README.md`, `LICENSE`, `Dockerfile`, `Makefile`, `CODEOWNERS`, `.editorconfig`.
+**NAM-6** A file whose name is fixed by an external tool or convention MUST be exempt from NAM-2 and NAM-3. Examples: `README.md`, `LICENSE`, `Dockerfile`, `Makefile`, `CODEOWNERS`, `.editorconfig`.
 
 ## Dates and periods
 
