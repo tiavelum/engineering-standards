@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 1.1.0
+version: 1.2.0
 status: active
 applies_to: [all]
 summary: "Documentation beyond the README: where it lives, open items, decision records, comments, changelogs."
@@ -78,6 +78,14 @@ These rules name GitHub because that is where these repositories live. A reposit
 **DOC-17** A changelog entry MUST be written for the user of the release: what changed for them, what breaks, what they must do.
 
 **DOC-18** A changelog MUST NOT be a dump of commit messages.
+
+**DOC-27** A changelog entry MUST be added as its own file under `changelog.d/` in the pull request that makes the change, and assembled into `CHANGELOG.md` at release.
+
+Every pull request editing the top of one shared file conflicts with every other. One file per change removes the conflict, and the entry is written by the person who has the context, while they have it.
+
+**DOC-28** A changelog entry MUST state which increment the change requires under VER-6 to VER-9.
+
+This makes the entry the record of the versioning decision. Without it the increment is chosen at release time, by whoever cuts the release, from a history they did not write.
 
 ## Maintenance
 

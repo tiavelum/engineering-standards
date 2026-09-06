@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 1.0.0
+version: 1.1.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -42,6 +42,12 @@ Prefix: `TL`
 **TL-12** Local hooks MAY be provided for speed, but MUST NOT be the only place a check runs.
 
 **TL-13** A check that is routinely bypassed MUST be either fixed or removed.
+
+**TL-20** A repository that publishes releases MUST commit a check that fails when the version of record, the git tag and the changelog disagree, and that check MUST gate the merge.
+
+Version grammar, agreement between tag and manifest, monotonic increase and prior publication are all machine checkable, so under TL-1 they belong in this check's configuration rather than in the prose of `standards/versioning.md`.
+
+**TL-21** Publication to a registry MUST happen only from a build of a tag on a protected branch.
 
 ## Dependencies
 
