@@ -41,7 +41,7 @@ standards:
   - id: naming
     path: standards/naming.md
     title: Naming
-    version: 1.3.0
+    version: 1.3.1
     status: active
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]
@@ -50,7 +50,7 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 1.0.1
+    version: 2.0.0
     status: active
     summary: Required top-level files, directory roles, and what must not live in a repository.
     applies_to: [all]
@@ -95,7 +95,7 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 1.2.0
+    version: 2.0.0
     status: active
     summary: "Documentation beyond the README: where it lives, open items, decision records, comments, changelogs."
     applies_to: [all]

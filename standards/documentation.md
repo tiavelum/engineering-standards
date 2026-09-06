@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 1.2.0
+version: 2.0.0
 status: active
 applies_to: [all]
 summary: "Documentation beyond the README: where it lives, open items, decision records, comments, changelogs."
@@ -73,7 +73,9 @@ These rules name GitHub because that is where these repositories live. A reposit
 
 ## Changelog
 
-**DOC-16** A repository with releases MUST keep a `CHANGELOG.md`, grouped by version, newest first.
+**DOC-16** A repository with releases MUST keep a `CHANGELOG.md` at the repository root.
+
+**DOC-29** A changelog MUST be grouped by version, newest first.
 
 **DOC-17** A changelog entry MUST be written for the user of the release: what changed for them, what breaks, what they must do.
 

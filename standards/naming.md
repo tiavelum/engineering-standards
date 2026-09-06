@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 1.3.0
+version: 1.3.1
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -82,7 +82,7 @@ Incorrect: `andi-branch`, `feature/AddNewIndexSchema`, `patch-1`
 
 ## Tags and releases
 
-**NAM-15** Release tags MUST take the form `v<major>.<minor>.<patch>`.
+**NAM-15** Release tags MUST take the form `v<major>.<minor>.<patch>`, except as provided by NAM-20 and NAM-21.
 
 **NAM-16** A tag MUST NOT be moved once pushed.
 
