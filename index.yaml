@@ -18,7 +18,7 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 3.1.0
+    version: 3.1.1
     status: active
     summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
@@ -27,7 +27,7 @@ meta:
   - id: precedence
     path: meta/precedence.md
     title: Precedence and deviation
-    version: 1.0.0
+    version: 1.0.1
     status: active
     summary: How conflicts between these standards, a consuming repo and a task instruction are resolved, and how a deviation is recorded.
     applies_to: [all]
@@ -35,7 +35,7 @@ meta:
   - id: consuming
     path: meta/consuming.md
     title: Consumer contract
-    version: 2.0.0
+    version: 2.0.1
     status: active
     summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
     applies_to: [tooling, agents]
@@ -95,7 +95,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 1.0.0
+    version: 1.0.1
     status: active
     summary: Required sections, ordering and acceptance criteria for the README of any repository.
     applies_to: [all]
@@ -104,7 +104,7 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 2.0.0
+    version: 2.0.1
     status: active
     summary: "Documentation beyond the README: where it lives, open items, decision records, comments, changelogs."
     applies_to: [all]
@@ -124,7 +124,7 @@ standards:
   - id: lifecycle
     path: standards/lifecycle.md
     title: Product lifecycle
-    version: 1.0.0
+    version: 1.0.1
     status: draft
     summary: The phases a product passes through from idea to operation, the artifact each produces, and the gate that must be passed to leave it.
     applies_to: [all]
