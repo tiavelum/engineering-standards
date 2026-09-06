@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 2.0.0
+version: 2.1.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -20,6 +20,10 @@ Prefix: `TL`
 **TL-3** Tool configuration MUST be committed to the repository it governs, so that the configuration is the rule.
 
 **TL-4** When a tool and a written standard disagree, the standard MUST be treated as the defect and corrected.
+
+**TL-22** Where a committed formatter governs a file, its configuration MUST be the authority for any formatting property another committed configuration also sets.
+
+A second configuration may repeat the first for tools that do not read the formatter, but it never decides. Two configurations that have to be kept in step by hand will drift, and the one that drifts is not the one doing the formatting.
 
 ## Baseline configuration
 
