@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning
-version: 1.0.1
+version: 1.0.2
 status: active
 applies_to: [all]
 summary: How a release version is formed, where it is recorded, and when each component is incremented.
@@ -110,9 +110,7 @@ Build metadata is ignored when versions are compared, so two artifacts that diff
 
 Where a repository says nothing, only the current MAJOR line is supported.
 
-**VER-25** A fix MUST be committed to `main` before it is backported to a supported line.
-
-Fixing a release branch first is how a fix gets lost in the next MAJOR.
+**VER-25** A fix backported to a supported line MUST reach `main` first, as required by `GW-21`.
 
 **VER-26** Versions MUST be ordered by the comparison rules of the specification, never by sorting the version string.
 
