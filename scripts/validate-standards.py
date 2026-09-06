@@ -30,6 +30,10 @@ RE_FILENAME = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*\.[a-z0-9]+$")
 RE_MD_LINK = re.compile(r"\[[^\]]*\]\(([^)#]+?)(?:#[^)]*)?\)")
 RE_MARKER = re.compile(r"\b(TODO|FIXME|TBD|XXX)\b\s*[:(]|^\s*(TODO|FIXME|TBD)\b")
 
+# A reference to another standard, in the two forms RF-26 permits.
+RE_XREF_RULE = re.compile(r"\b([A-Z]{2,3})-\d+\b")
+RE_XREF_PATH = re.compile(r"\b((?:standards|meta)/[a-z0-9-]+\.md)\b")
+
 # Names fixed by an external tool or convention, exempt per NAM-6.
 EXEMPT_NAMES = {
     "README.md",
@@ -268,6 +272,57 @@ def check_rule_prefix_uniqueness(all_rules: list[tuple[str, str]]) -> None:
         seen.setdefault(rule_id, relative)
 
 
+def check_requires(entries: list[dict], all_rules: list[tuple[str, str]]) -> None:
+    """Every standard a file references must appear in its entry's requires, per RF-25.
+
+    References take the two forms RF-26 permits: a rule identifier, resolved
+    through the prefix that owns it, or a repository relative path. A prefix
+    that owns no rule here is ignored, so placeholders such as REQ-<n> in
+    standards/lifecycle.md do not register as references.
+    """
+    id_by_path = {e["path"]: e.get("id") for e in entries if e.get("path")}
+    known_ids = {i for i in id_by_path.values() if i}
+
+    owner_by_prefix: dict[str, str] = {}
+    for rule_id, relative in all_rules:
+        owner_by_prefix.setdefault(rule_id.split("-")[0], relative)
+
+    for entry in entries:
+        path = entry.get("path")
+        entry_id = entry.get("id")
+        if not path or not (ROOT / path).exists():
+            continue
+        where = f"index.yaml:{entry_id}"
+
+        declared = entry.get("requires") or []
+        if not isinstance(declared, list):
+            error(where, "RF-25", "requires is not a list")
+            continue
+        for name in declared:
+            if name == entry_id:
+                error(where, "RF-25", "requires names the entry itself")
+            elif name not in known_ids:
+                error(where, "RF-25", f"requires names an unknown entry: {name}")
+
+        text = strip_code_blocks((ROOT / path).read_text(encoding="utf-8"))
+        referenced: set[str] = set()
+        for match in RE_XREF_RULE.finditer(text):
+            owner = owner_by_prefix.get(match.group(1))
+            if owner and owner != path:
+                referenced.add(id_by_path[owner])
+        for match in RE_XREF_PATH.finditer(text):
+            target = match.group(1)
+            if target != path and target in id_by_path:
+                referenced.add(id_by_path[target])
+        referenced.discard(entry_id)
+
+        for name in sorted(referenced - set(declared)):
+            error(path, "RF-25", f"references {name} but the index entry does not require it")
+        for name in sorted(set(declared) - referenced):
+            if name in known_ids:
+                warn(where, "RF-25", f"requires {name} but the file does not reference it")
+
+
 def report() -> int:
     for line in warnings:
         print(f"warning  {line}")
@@ -291,6 +346,7 @@ def main() -> int:
         all_rules.extend(check_rule_file(path, entries_by_path))
 
     check_rule_prefix_uniqueness(all_rules)
+    check_requires(entries, all_rules)
     check_names()
     check_links()
     return report()
