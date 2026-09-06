@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 1.3.2
+version: 2.0.0
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -36,10 +36,11 @@ A time word earns its place when the thing being named genuinely is that period.
 
 Correct: `august.md` in a calendar application, `q3-tax-rates.md` in a tax engine where those rates are the data
 
-**NAM-19** A name MUST NOT refer to when work was done, nor to a unit of the development process or a term from a development methodology.
+**NAM-19** A name MUST NOT refer to when work was done, nor to a particular unit of the development process.
 
-This is the stricter half and it is absolute. A name is not a place to record that something happened last August, belonged to a particular sprint, or came out of a given phase. That information is in the history, and putting it in a name fixes a moment of the process onto an artifact that outlives it.
+A name may say what a document is about, including where that is a kind of work: a design, a verification record, a retrospective. It may not say which instance of the process produced it. Sprint four, iteration two and phase three are moments the artifact outlives, and the history already records them.
 
+Correct: `design.md`, `verification.md`, `retrospective.md`
 Incorrect: `session-notes-august.md`, `notes-august.md`, `refactor-2026-09.md`, `sprint-4-notes.md`, `iteration-2-plan.md`, `phase-3-layout.md`, `milestone-2-scope.md`
 
 ## Directories
