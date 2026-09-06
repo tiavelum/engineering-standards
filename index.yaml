@@ -119,7 +119,7 @@ standards:
     summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]
     tags: [tooling, ci, linting]
-    requires: [versioning]
+    requires: [precedence, versioning]
 
   - id: lifecycle
     path: standards/lifecycle.md
