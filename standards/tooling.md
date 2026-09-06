@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 1.1.0
+version: 1.1.1
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -15,11 +15,11 @@ Prefix: `TL`
 
 **TL-1** Anything a tool can check automatically MUST be enforced by that tool and MUST NOT be written as prose in this repository.
 
-**TL-2** Written standards cover only what tooling cannot check: structure, naming intent, scope boundaries, documentation content, decision hygiene.
+**TL-2** A written standard MUST cover only what tooling cannot check: structure, naming intent, scope boundaries, documentation content, decision hygiene.
 
 **TL-3** Tool configuration MUST be committed to the repository it governs, so that the configuration is the rule.
 
-**TL-4** When a tool and a written standard disagree, the tool wins and the standard is a defect to be fixed.
+**TL-4** When a tool and a written standard disagree, the standard MUST be treated as the defect and corrected.
 
 ## Baseline configuration
 
