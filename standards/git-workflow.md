@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 2.1.1
+version: 2.1.2
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -39,7 +39,9 @@ A MAJOR increment on a maintenance branch contradicts the reason the branch exis
 
 **GW-6** A commit message MUST take the form `<type>: <summary>`, where `<type>` is one of `feat`, `fix`, `docs`, `chore`, `refactor`, `test`.
 
-**GW-7** The summary MUST be imperative, lowercase after the type, at most 65 characters including the type, and MUST NOT end with a period. Anything that does not fit goes in the body.
+**GW-7** The summary MUST be imperative, lowercase after the type, at most 65 characters including the type and excluding any reference a forge appends on merge, and MUST NOT end with a period. Anything that does not fit goes in the body.
+
+The limit governs what a person or an agent writes. A forge that appends its own reference on merge adds to that, and the sum still fits a line that reads without wrapping.
 
 Correct: `docs: add consumer contract to meta layer`
 Incorrect: `Added consumer contract.`, `updates`, `wip`
