@@ -20,12 +20,12 @@ It is not a tutorial, not a style guide for any single language, and not a recor
 
 ### As a consumer (tool, agent, or script)
 
-1. Fetch [`index.yaml`](index.yaml). It is the authoritative catalogue of every standard, with its id, path, scope and summary.
+1. Fetch [`index.yaml`](index.yaml). It is the authoritative catalogue of every standard, with its id, path, scope, summary and dependencies.
 2. Select the entries whose `applies_to` matches the task at hand.
-3. Fetch only those files. Each is self-contained and safe to load alone.
+3. Fetch those files and everything their `requires` lists name, resolved transitively. Nothing else.
 4. Apply the rules by id. Cite the id when reporting a violation, for example `NAM-3`.
 
-The consumer contract, including versioning and what a consumer must not assume, is in [meta/consuming.md](meta/consuming.md).
+A standard that defers to another says so in its `requires`, so the closure is what makes the rules applicable. The consumer contract, including versioning and what a consumer must not assume, is in [meta/consuming.md](meta/consuming.md).
 
 ### As a contributor
 
@@ -69,7 +69,7 @@ Result:   two violations. Lowercasing gives `session-notes-august.md`, which
 | Path | Contains |
 |------|----------|
 | `index.yaml` | The authoritative catalogue of standards. Every consumer starts here. |
-| `standards/` | The standards themselves. One topic per file, each self-contained. |
+| `standards/` | The standards themselves. One topic per file. |
 | `meta/` | Rules about the rules: file format, precedence, consumer contract. |
 | `scripts/` | The validator that enforces the rules this repo can check itself. |
 | `.github/` | The workflow that runs the validator on every push and pull request. |
@@ -80,7 +80,7 @@ Start here: [`index.yaml`](index.yaml), then [meta/rule-format.md](meta/rule-for
 
 Three layers, each with one job.
 
-**Index.** A catalogue that lets any consumer discover what exists and load only what it needs, without parsing prose.
+**Index.** A catalogue that lets any consumer discover what exists and load only what it needs, without parsing prose. Each entry declares what must be loaded with it, so "what it needs" is a fact in the index rather than something read out of the prose.
 
 **Standards.** The rules. Each file covers one topic, carries front matter describing its scope, and gives every rule a stable id so it can be cited, tested and reported against.
 
@@ -94,7 +94,7 @@ Changes are proposed as pull requests. A change to a standard MUST update the ru
 
 Every proposed rule must pass the admission test in [meta/rule-format.md](meta/rule-format.md): it is either enforceable by a tool, checkable in review, or it does not belong here.
 
-`scripts/validate-standards.py` runs on every push and pull request and fails the build on a violation. It checks front matter completeness, index and file agreement, rule id format and uniqueness, file naming, unfinished markers, and that relative links resolve. Rules it cannot check are enforced in review.
+`scripts/validate-standards.py` runs on every push and pull request and fails the build on a violation. It checks front matter completeness, index and file agreement, rule id format and uniqueness, declared dependencies, file naming, unfinished markers, and that relative links resolve. Rules it cannot check are enforced in review.
 
 ## License
 

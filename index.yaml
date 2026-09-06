@@ -2,8 +2,9 @@
 # Every consumer starts here. Do not discover standards by listing directories.
 #
 # Contract:
-#   - Each entry points to exactly one self-contained file.
+#   - Each entry points to exactly one file covering one topic.
 #   - `applies_to` lets a consumer load only what a task needs.
+#   - `requires` names the other entries that must be loaded with this one.
 #   - `version` follows the rules in meta/rule-format.md.
 #   - An entry and its file MUST be updated in the same commit.
 
@@ -16,10 +17,11 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 2.0.0
+    version: 3.0.0
     status: active
     summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
+    requires: [consuming, tooling]
 
   - id: precedence
     path: meta/precedence.md
@@ -32,10 +34,11 @@ meta:
   - id: consuming
     path: meta/consuming.md
     title: Consumer contract
-    version: 1.0.0
+    version: 2.0.0
     status: active
     summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
     applies_to: [tooling, agents]
+    requires: [naming, precedence, rule-format]
 
 standards:
   - id: naming
@@ -46,6 +49,7 @@ standards:
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]
     tags: [files, directories, branches, repositories]
+    requires: [readme-contract, versioning]
 
   - id: repo-layout
     path: standards/repo-layout.md
@@ -55,6 +59,7 @@ standards:
     summary: Required top-level files, directory roles, and what must not live in a repository.
     applies_to: [all]
     tags: [structure, files]
+    requires: [documentation, naming, precedence, readme-contract]
 
   - id: git-workflow
     path: standards/git-workflow.md
@@ -64,24 +69,27 @@ standards:
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
     tags: [git, commits, branches, review]
+    requires: [naming]
 
   - id: versioning
     path: standards/versioning.md
     title: Versioning
-    version: 1.0.0
+    version: 1.0.1
     status: active
     summary: How a release version is formed, where it is recorded, and when each component is incremented.
     applies_to: [all]
     tags: [versions, releases, semver, dependencies]
+    requires: [public-api]
 
   - id: public-api
     path: standards/public-api.md
     title: Public API
-    version: 1.0.0
+    version: 1.0.1
     status: active
     summary: What a repository publishes as its public API, and which changes to it are breaking.
     applies_to: [all]
     tags: [api, compatibility, releases]
+    requires: [versioning]
 
   - id: readme-contract
     path: standards/readme-contract.md
@@ -100,6 +108,7 @@ standards:
     summary: "Documentation beyond the README: where it lives, open items, decision records, comments, changelogs."
     applies_to: [all]
     tags: [documentation, adr]
+    requires: [naming, precedence, readme-contract, versioning]
 
   - id: tooling
     path: standards/tooling.md
@@ -109,6 +118,7 @@ standards:
     summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]
     tags: [tooling, ci, linting]
+    requires: [versioning]
 
   - id: lifecycle
     path: standards/lifecycle.md
@@ -118,3 +128,4 @@ standards:
     summary: The phases a product passes through from idea to operation, the artifact each produces, and the gate that must be passed to leave it.
     applies_to: [all]
     tags: [lifecycle, requirements, verification, gates]
+    requires: [documentation, git-workflow, readme-contract]

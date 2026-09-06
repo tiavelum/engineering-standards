@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 2.0.0
+version: 3.0.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -25,7 +25,7 @@ This file governs how every file in `standards/` is written. It exists so that s
 
 ## File structure
 
-**RF-4** Each file in `standards/` MUST cover exactly one topic and MUST be understandable without loading any other standard.
+**RF-4** Each file in `standards/` MUST cover exactly one topic.
 
 **RF-5** Each file MUST begin with YAML front matter carrying: `id`, `title`, `version`, `status`, `applies_to`, `summary`.
 
@@ -36,6 +36,16 @@ This file governs how every file in `standards/` is written. It exists so that s
 **RF-8** `summary` MUST be a single sentence stating what the file governs.
 
 **RF-9** A standard file SHOULD stay under 200 lines. Beyond that, split it by topic rather than adding sections.
+
+## Dependencies between standards
+
+**RF-24** A file MUST be applicable given only itself and the standards its `index.yaml` entry names in `requires`.
+
+**RF-25** A file's `index.yaml` entry MUST name in `requires` every other standard the file references.
+
+**RF-26** A reference to another standard MUST name it by a rule identifier or by its repository relative path.
+
+A standard that defers to another is not a defect; hiding that it does is. RF-26 fixes the reference form so that RF-25 can be checked mechanically rather than by reading. Over-declaring costs a consumer one fetch, and under-declaring makes it apply a rule whose terms it has not loaded, so a reference in an example counts the same as one in a rule.
 
 ## Rule identifiers
 

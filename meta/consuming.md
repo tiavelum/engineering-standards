@@ -1,7 +1,7 @@
 ---
 id: consuming
 title: Consumer contract
-version: 1.0.0
+version: 2.0.0
 status: active
 applies_to: [tooling, agents]
 summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
@@ -15,9 +15,11 @@ A consumer is anything that loads these standards to apply them: a skill, a plug
 
 **CO-1** A consumer MUST start from `index.yaml` and MUST NOT discover standards by listing directories or guessing paths.
 
-**CO-2** A consumer MUST load only the entries whose `applies_to` matches the task, and MUST NOT assume that loading every standard is necessary or affordable.
+**CO-2** A consumer MUST load only the entries whose `applies_to` matches the task, together with the closure CO-3 requires.
 
-**CO-3** A consumer MUST treat each standard file as self-contained. It MUST NOT require another file to be loaded in order to apply the rules in one.
+**CO-3** A consumer MUST load, with any entry it selects, every entry that entry names in `requires`, resolved transitively.
+
+The closure can contain cycles, because two standards may each define a term the other uses. A consumer resolves it by tracking what it has already loaded, not by recursing until it stops.
 
 **CO-4** A consumer MUST ignore entries with `status: draft` unless explicitly asked to include them, and MUST warn when applying an entry with `status: deprecated`.
 
