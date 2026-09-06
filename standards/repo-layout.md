@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 1.0.1
+version: 2.0.0
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, and what must not live in a repository.
@@ -19,13 +19,15 @@ Prefix: `RL`
 
 **RL-3** Every repository MUST contain a `.gitignore` appropriate to its stack.
 
-**RL-4** A repository with documentation beyond the README MUST place it in `docs/`, not at the root.
+**RL-4** A repository with documentation beyond the README MUST place it in `docs/`, except where RL-6 permits the file at the root.
 
 **RL-5** A repository MUST contain an `.editorconfig` when it holds files edited by more than one tool or person.
 
 ## Root discipline
 
-**RL-6** The root MUST contain only: the required files above, configuration files that their tool requires to sit at the root, and the top-level directories.
+**RL-6** The root MUST contain only: the required files above, files whose location at the root is fixed by another rule in these standards or by the tool that reads them, and the top-level directories.
+
+The clause is general on purpose. PR-5 fixes `deviations.md` at the root and DOC-16 fixes `CHANGELOG.md`. Enumerating the files here would go stale each time a rule is added.
 
 **RL-7** Source files MUST NOT sit at the root when the repository has more than one of them.
 
