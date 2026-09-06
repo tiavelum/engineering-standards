@@ -1,7 +1,7 @@
 ---
 id: public-api
 title: Public API
-version: 1.0.0
+version: 1.0.1
 status: active
 applies_to: [all]
 summary: What a repository publishes as its public API, and which changes to it are breaking.
@@ -11,7 +11,7 @@ summary: What a repository publishes as its public API, and which changes to it 
 
 Prefix: `PA`
 
-Semantic versioning is meaningless without a declared public API, because every increment under `versioning.md` is a statement about that API. This file defines what the API is and which changes to it break it.
+Semantic versioning is meaningless without a declared public API, because every increment under `standards/versioning.md` is a statement about that API. This file defines what the API is and which changes to it break it.
 
 ## Declaration
 

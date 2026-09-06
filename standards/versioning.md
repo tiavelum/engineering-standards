@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning
-version: 1.0.0
+version: 1.0.1
 status: active
 applies_to: [all]
 summary: How a release version is formed, where it is recorded, and when each component is incremented.
@@ -40,7 +40,7 @@ A version written by hand in a second place is a version that will disagree with
 
 ## Incrementing
 
-**VER-6** MAJOR MUST be incremented when a change is breaking under `public-api.md`.
+**VER-6** MAJOR MUST be incremented when a change is breaking under `standards/public-api.md`.
 
 **VER-7** MINOR MUST be incremented when the public API gains functionality and nothing breaks.
 
