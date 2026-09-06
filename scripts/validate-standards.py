@@ -272,7 +272,7 @@ def check_names() -> None:
 
 def check_links() -> None:
     """RF-33 covers a file listed in the index; RM-23 covers the README."""
-    for path in list(rule_files()) + [ROOT / "README.md"]:
+    for path in [*rule_files(), ROOT / "README.md"]:
         relative = path.relative_to(ROOT).as_posix()
         rule = "RM-23" if relative == "README.md" else "RF-33"
         text = strip_code_blocks(path.read_text(encoding="utf-8"))
