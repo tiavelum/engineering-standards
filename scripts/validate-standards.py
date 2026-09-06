@@ -23,6 +23,19 @@ RULE_DIRS = ("standards", "meta")
 FRONT_MATTER_FIELDS = ("id", "title", "version", "status", "applies_to", "summary")
 VALID_STATUS = {"active", "draft", "deprecated"}
 
+# The index entry contract, RF-28 and RF-29. The entry is closed: a field
+# named by neither tuple is an error rather than something to ignore.
+ENTRY_REQUIRED_FIELDS = (
+    "id",
+    "path",
+    "title",
+    "version",
+    "status",
+    "summary",
+    "applies_to",
+)
+ENTRY_OPTIONAL_FIELDS = ("tags", "requires")
+
 RE_ID = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 RE_SEMVER = re.compile(r"^\d+\.\d+\.\d+$")
 RE_RULE = re.compile(r"^\*\*([A-Z]{2,3})-(\d+)\*\*", re.MULTILINE)
@@ -105,15 +118,15 @@ def rule_files() -> list[Path]:
 
 def check_index_loads() -> dict:
     if not INDEX.exists():
-        error("index.yaml", "CO-1", "index is missing")
+        error("index.yaml", "RF-27", "index is missing")
         sys.exit(report())
     try:
         data = yaml.safe_load(INDEX.read_text(encoding="utf-8"))
     except yaml.YAMLError as exc:
-        error("index.yaml", "CO-9", f"index is not valid YAML: {exc}")
+        error("index.yaml", "RF-27", f"index is not valid YAML: {exc}")
         sys.exit(report())
     if not isinstance(data, dict) or "schema_version" not in data:
-        error("index.yaml", "CO-9", "index must be a mapping carrying schema_version")
+        error("index.yaml", "RF-27", "index must be a mapping carrying schema_version")
         sys.exit(report())
     return data
 
@@ -129,40 +142,51 @@ def index_entries(index: dict) -> list[dict]:
 
 
 def check_catalogue(index: dict, entries: list[dict]) -> None:
-    catalogued = set()
+    for section in ("meta", "standards"):
+        if not index.get(section):
+            error("index.yaml", "RF-27", f"index has no {section} section")
+
+    catalogued: dict[str, str] = {}
     seen_ids: dict[str, str] = {}
 
     for entry in entries:
         where = f"index.yaml:{entry.get('id', '?')}"
-        path = entry.get("path")
-        if not path:
-            error(where, "CO-1", "entry has no path")
-            continue
-        catalogued.add(path)
 
-        if not (ROOT / path).exists():
-            error(where, "CO-1", f"path does not exist: {path}")
+        for field in ENTRY_REQUIRED_FIELDS:
+            if field not in entry or entry[field] in (None, "", []):
+                error(where, "RF-28", f"entry is missing {field}")
+
+        extra = set(entry) - set(ENTRY_REQUIRED_FIELDS) - set(ENTRY_OPTIONAL_FIELDS)
+        for field in sorted(extra - {"_section"}):
+            error(where, "RF-29", f"entry carries an unrecognised field: {field}")
 
         entry_id = entry.get("id", "")
-        if not RE_ID.match(entry_id):
+        if not RE_ID.match(str(entry_id)):
             error(where, "RF-6", f"id is not lowercase hyphen separated: {entry_id!r}")
         if entry_id in seen_ids:
             error(where, "RF-6", f"id duplicates {seen_ids[entry_id]}")
         seen_ids[entry_id] = where
 
-        if not entry.get("summary"):
-            error(where, "RF-8", "entry has no summary")
-        if not entry.get("applies_to"):
-            error(where, "CO-2", "entry has no applies_to")
-        if entry["_section"] == "standards":
-            version = str(entry.get("version", ""))
-            if not RE_SEMVER.match(version):
-                error(where, "RF-17", f"version is not semantic: {version!r}")
+        version = str(entry.get("version", ""))
+        if not RE_SEMVER.match(version):
+            error(where, "RF-28", f"version is not semantic: {version!r}")
+
+        path = entry.get("path")
+        if not path:
+            continue
+        if path in catalogued:
+            error(where, "RF-32", f"path is already listed by {catalogued[path]}")
+        catalogued[path] = where
+
+        if not str(path).startswith(("standards/", "meta/")):
+            error(where, "RF-31", f"path is not in standards/ or meta/: {path}")
+        elif not (ROOT / path).exists():
+            error(where, "RF-31", f"path does not exist: {path}")
 
     for path in rule_files():
         relative = path.relative_to(ROOT).as_posix()
         if relative not in catalogued:
-            error(relative, "CO-1", "file is not listed in index.yaml")
+            error(relative, "RF-32", "file is not listed in index.yaml")
 
 
 def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[str, str]]:
@@ -185,10 +209,10 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
     if entry:
         if entry.get("id") != front.get("id"):
             error(relative, "RF-6", "front matter id does not match the index entry id")
-        if "version" in entry and str(entry["version"]) != str(front.get("version")):
-            error(relative, "RF-19", "front matter version does not match the index entry")
+        if str(entry.get("version")) != str(front.get("version")):
+            error(relative, "RF-30", "front matter version does not match the index entry")
         if entry.get("title") != front.get("title"):
-            error(relative, "RF-19", "front matter title does not match the index entry")
+            error(relative, "RF-30", "front matter title does not match the index entry")
 
     summary = str(front.get("summary", ""))
     if summary.count(".") > 1:
@@ -247,8 +271,10 @@ def check_names() -> None:
 
 
 def check_links() -> None:
+    """RF-33 covers a file listed in the index; RM-23 covers the README."""
     for path in list(rule_files()) + [ROOT / "README.md"]:
         relative = path.relative_to(ROOT).as_posix()
+        rule = "RM-23" if relative == "README.md" else "RF-33"
         text = strip_code_blocks(path.read_text(encoding="utf-8"))
         for match in RE_MD_LINK.finditer(text):
             target = match.group(1).strip()
@@ -256,7 +282,7 @@ def check_links() -> None:
                 continue
             resolved = (path.parent / target).resolve()
             if not resolved.exists():
-                error(relative, "RM-23", f"relative link does not resolve: {target}")
+                error(relative, rule, f"relative link does not resolve: {target}")
 
 
 def check_rule_prefix_uniqueness(all_rules: list[tuple[str, str]]) -> None:

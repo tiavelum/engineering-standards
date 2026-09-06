@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 3.0.0
+version: 3.1.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -36,6 +36,24 @@ This file governs how every file in `standards/` is written. It exists so that s
 **RF-8** `summary` MUST be a single sentence stating what the file governs.
 
 **RF-9** A standard file SHOULD stay under 200 lines. Beyond that, split it by topic rather than adding sections.
+
+## Index entries
+
+**RF-27** `index.yaml` MUST carry `schema_version` and the sections `meta` and `standards`.
+
+**RF-28** An entry MUST carry `id`, `path`, `title`, `version`, `status`, `summary` and `applies_to`.
+
+**RF-29** An entry MUST NOT carry a field other than those named in RF-28, `tags` and `requires`.
+
+**RF-30** An entry's `title` and `version` MUST equal those in the front matter of the file at its `path`.
+
+**RF-31** An entry's `path` MUST resolve to an existing file in `standards/` or `meta/`.
+
+**RF-32** Every file in `standards/` and `meta/` MUST be listed in exactly one entry.
+
+**RF-33** A relative link in a file listed in `index.yaml` MUST resolve to an existing path.
+
+The entry is closed rather than open. CO-9 promises a consumer that `schema_version` tracks a breaking change to the index structure, and that promise is empty while a field can appear without anyone announcing it. The cost is that a new field needs a rule before it needs code, which is the order this repository wants anyway.
 
 ## Dependencies between standards
 

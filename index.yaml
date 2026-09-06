@@ -2,6 +2,7 @@
 # Every consumer starts here. Do not discover standards by listing directories.
 #
 # Contract:
+#   - The entry schema is defined by RF-27 to RF-32 and is closed.
 #   - Each entry points to exactly one file covering one topic.
 #   - `applies_to` lets a consumer load only what a task needs.
 #   - `requires` names the other entries that must be loaded with this one.
@@ -17,7 +18,7 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 3.0.0
+    version: 3.1.0
     status: active
     summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
