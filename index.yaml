@@ -65,7 +65,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 2.1.0
+    version: 2.1.1
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
@@ -75,12 +75,12 @@ standards:
   - id: versioning
     path: standards/versioning.md
     title: Versioning
-    version: 1.0.1
+    version: 1.0.2
     status: active
     summary: How a release version is formed, where it is recorded, and when each component is incremented.
     applies_to: [all]
     tags: [versions, releases, semver, dependencies]
-    requires: [public-api]
+    requires: [git-workflow, public-api]
 
   - id: public-api
     path: standards/public-api.md

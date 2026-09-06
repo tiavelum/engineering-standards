@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 2.1.0
+version: 2.1.1
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -25,7 +25,9 @@ Prefix: `GW`
 
 **GW-20** A release branch MUST exist only while more than one MAJOR line is supported, and MUST be named `release/<major>.<minor>` or `release/<major>.x`.
 
-**GW-21** A fix MUST be committed to `main` before it is cherry picked to a release branch.
+**GW-21** A fix MUST be committed to `main` before it is cherry picked or backported to a release branch.
+
+Fixing a release branch first is how a fix gets lost in the next major line. The commit exists where it was needed and nowhere else, and nothing notices until the line it was missing from ships.
 
 **GW-22** A release branch MUST NOT receive a MAJOR increment.
 
