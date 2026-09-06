@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 1.2.0
+version: 1.3.0
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -85,3 +85,13 @@ Incorrect: `andi-branch`, `feature/AddNewIndexSchema`, `patch-1`
 **NAM-15** Release tags MUST take the form `v<major>.<minor>.<patch>`.
 
 **NAM-16** A tag MUST NOT be moved once pushed.
+
+**NAM-20** A pre-release tag MUST take the form `v<major>.<minor>.<patch>-<identifiers>`, with the identifiers as required by VER-17.
+
+Correct: `v2.0.0-rc.1`
+Incorrect: `v2.0.0rc1`, `v2.0.0-RC1`
+
+**NAM-21** In a repository that publishes more than one unit, a tag MUST be scoped to the unit as `<unit>/v<version>`.
+
+Correct: `billing-api/v2.1.0`
+Incorrect: `v2.1.0` in a repository publishing three services

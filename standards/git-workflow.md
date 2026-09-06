@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 2.0.0
+version: 2.1.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -20,6 +20,16 @@ Prefix: `GW`
 **GW-3** A branch MUST address one concern. A branch that grows a second concern MUST be split.
 
 **GW-4** A merged branch MUST be deleted.
+
+## Release lines
+
+**GW-20** A release branch MUST exist only while more than one MAJOR line is supported, and MUST be named `release/<major>.<minor>` or `release/<major>.x`.
+
+**GW-21** A fix MUST be committed to `main` before it is cherry picked to a release branch.
+
+**GW-22** A release branch MUST NOT receive a MAJOR increment.
+
+A MAJOR increment on a maintenance branch contradicts the reason the branch exists. The branch carries a line that consumers chose because it does not break.
 
 ## Commits
 
