@@ -16,18 +16,24 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
+    version: 2.0.0
+    status: active
     summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
 
   - id: precedence
     path: meta/precedence.md
     title: Precedence and deviation
+    version: 1.0.0
+    status: active
     summary: How conflicts between these standards, a consuming repo and a task instruction are resolved, and how a deviation is recorded.
     applies_to: [all]
 
   - id: consuming
     path: meta/consuming.md
     title: Consumer contract
+    version: 1.0.0
+    status: active
     summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
     applies_to: [tooling, agents]
 

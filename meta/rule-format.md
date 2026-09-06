@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 1.0.0
+version: 2.0.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -41,7 +41,11 @@ This file governs how every file in `standards/` is written. It exists so that s
 
 **RF-10** Every rule MUST carry an identifier of the form `<PREFIX>-<n>`, where `<PREFIX>` is a two or three letter uppercase abbreviation of the file `id`, unique across the repository.
 
-**RF-11** Identifiers MUST be stable. A removed rule's number MUST NOT be reused. A rule whose meaning changes materially MUST get a new number and the old one MUST be marked withdrawn.
+**RF-11** An identifier MUST NOT be reused for any rule other than the one it was first assigned to, including after that rule is removed.
+
+**RF-23** A rule whose meaning changes MUST keep its identifier.
+
+A rule is amended in place and the version carries the change. RF-18 makes a material change to a MUST rule a major increment, so a consumer that pinned a version meets the break where it already looks for one, and the identifier CO-11 lets it store stays valid.
 
 **RF-12** The identifier MUST be the first thing in the rule, in bold, followed by the rule text in a single sentence where possible.
 
