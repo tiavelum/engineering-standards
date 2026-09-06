@@ -49,7 +49,7 @@ standards:
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]
     tags: [files, directories, branches, repositories]
-    requires: [versioning]
+    requires: [readme-contract, versioning]
 
   - id: repo-layout
     path: standards/repo-layout.md
