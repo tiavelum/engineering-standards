@@ -65,7 +65,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 2.1.1
+    version: 2.1.2
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
