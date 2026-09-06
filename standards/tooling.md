@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 1.1.1
+version: 2.0.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -63,4 +63,6 @@ Version grammar, agreement between tag and manifest, monotonic increase and prio
 
 **TL-18** Secrets MUST be supplied by the environment or a secret store, never by a committed file.
 
-**TL-19** A repository MUST commit an example environment file listing required variable names with placeholder values, and MUST ignore the real one.
+**TL-19** A repository that reads configuration from the environment MUST commit an example environment file listing the required variable names with placeholder values, and MUST ignore the real one.
+
+A repository that reads nothing from the environment has no variable names to list. Requiring the file of it produces a placeholder that documents nothing, or a deviation under PR-5 explaining an absence, which PR-6 refuses as a reason.
