@@ -1,7 +1,7 @@
 ---
 id: consuming
 title: Consumer contract
-version: 2.0.0
+version: 2.0.1
 status: active
 applies_to: [tooling, agents]
 summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
@@ -35,9 +35,9 @@ The closure can contain cycles, because two standards may each define a term the
 
 ## Stability guarantees
 
-**CO-9** `index.yaml` keeps its `schema_version`. A breaking change to the index structure increments it.
+**CO-9** `index.yaml` MUST keep its `schema_version`, and a breaking change to the index structure MUST increment it.
 
-**CO-10** File paths listed in `index.yaml` are stable within a major version of the standard they point at.
+**CO-10** File paths listed in `index.yaml` MUST be stable within a major version of the standard they point at.
 
 **CO-11** Rule identifiers are stable and are never reused. A consumer MAY store a rule id as a durable reference.
 

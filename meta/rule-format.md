@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 3.1.0
+version: 3.1.1
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -81,6 +81,8 @@ A rule is amended in place and the version carries the change. RF-18 makes a mat
 
 **RF-13** Rules MUST use the keywords MUST, MUST NOT, SHOULD, SHOULD NOT, MAY, in uppercase, with the meanings from RFC 2119.
 
+The keyword MUST appear on the identifier's own line, since that is where a reader looks to find out whether a rule binds them and where a check can find it without guessing how far a rule extends.
+
 **RF-14** A rule MUST state the required outcome, not the reasoning. Reasoning, where needed, goes in a separate paragraph that carries no identifier.
 
 **RF-15** A rule MUST NOT contain two independent requirements. Split them.
@@ -89,7 +91,7 @@ A rule is amended in place and the version carries the change. RF-18 makes a mat
 
 ## Versioning
 
-**RF-17** Each standard file carries its own semantic version in front matter.
+**RF-17** Each standard file MUST carry its own semantic version in front matter.
 
 **RF-18** The version MUST be incremented as follows: major when an existing MUST rule changes or is removed, minor when a rule is added, patch for wording that does not change meaning.
 

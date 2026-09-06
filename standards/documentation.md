@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 2.0.0
+version: 2.0.1
 status: active
 applies_to: [all]
 summary: "Documentation beyond the README: where it lives, open items, decision records, comments, changelogs."
@@ -45,7 +45,7 @@ Such a file has to be pruned by hand. In practice it is not, and it becomes the 
 
 The prohibition covers the file's purpose, not its name. A file listing outstanding work is forbidden whatever it is called; a file whose name happens to resemble one of the examples but which records the current state is not.
 
-**DOC-23** The following are records of the current state, not open items, and are governed by their own rules rather than by DOC-21 and DOC-22: the deviations file required by PR-5, the known limitations required by RM-18, decision records under DOC-10, and the changelog under DOC-16.
+**DOC-23** The following MUST be treated as records of the current state rather than open items, governed by their own rules rather than by DOC-21 and DOC-22: the deviations file required by PR-5, the known limitations required by RM-18, decision records under DOC-10, and the changelog under DOC-16.
 
 **DOC-24** An issue MUST state what is to be done and why, in terms a reader who was not present when it was raised can act on.
 

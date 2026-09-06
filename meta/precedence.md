@@ -1,7 +1,7 @@
 ---
 id: precedence
 title: Precedence and deviation
-version: 1.0.0
+version: 1.0.1
 status: active
 applies_to: [all]
 summary: How conflicts between these standards, a consuming repository and a task instruction are resolved, and how a deviation is recorded.
@@ -11,7 +11,7 @@ summary: How conflicts between these standards, a consuming repository and a tas
 
 ## Order of precedence
 
-**PR-1** When sources conflict, the following order applies, highest first:
+**PR-1** When sources conflict, the following order MUST apply, highest first:
 
 1. An explicit instruction from the repository owner for the task at hand.
 2. A constraint imposed by an external system that cannot be changed: a platform requirement, a package manager convention, a language's mandatory layout.
