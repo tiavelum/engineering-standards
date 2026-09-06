@@ -9,7 +9,7 @@
 
 schema_version: 1
 repository: tiavelum/engineering-standards
-updated: 2026-09-01
+updated: 2026-09-06
 validated_by: scripts/validate-standards.py
 
 meta:
@@ -85,3 +85,12 @@ standards:
     summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]
     tags: [tooling, ci, linting]
+
+  - id: lifecycle
+    path: standards/lifecycle.md
+    title: Product lifecycle
+    version: 1.0.0
+    status: draft
+    summary: The phases a product passes through from idea to operation, the artifact each produces, and the gate that must be passed to leave it.
+    applies_to: [all]
+    tags: [lifecycle, requirements, verification, gates]
