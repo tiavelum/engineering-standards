@@ -69,6 +69,25 @@ def warn(where: str, rule: str, message: str) -> None:
     warnings.append(f"{where}: [{rule}] {message}")
 
 
+def ignored_dirs() -> set[str]:
+    """Directory names .gitignore excludes, which the validator does not walk.
+
+    RL-13 puts build output and local environment files in .gitignore, so that
+    file is where this fact lives and DOC-3 forbids restating it here. Only
+    entries of the form `name/` are honoured; anything more needs a real
+    gitignore implementation, which nothing in this repository requires.
+    """
+    names = {".git"}
+    gitignore = ROOT / ".gitignore"
+    if gitignore.exists():
+        for line in gitignore.read_text(encoding="utf-8").splitlines():
+            entry = line.strip()
+            if entry.startswith("#") or not entry.endswith("/"):
+                continue
+            names.add(entry.strip("/"))
+    return names
+
+
 def strip_code_blocks(text: str) -> str:
     """Blank out fenced code blocks so prose checks ignore templates and examples."""
     out: list[str] = []
@@ -251,28 +270,37 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
 
 
 def check_names() -> None:
+    skip = ignored_dirs()
+
     for path in ROOT.rglob("*"):
-        if not path.is_file():
+        relative = path.relative_to(ROOT)
+        if any(part in skip for part in relative.parts):
             continue
-        relative = path.relative_to(ROOT).as_posix()
-        if relative.startswith(".git/"):
+        if not path.is_file():
             continue
         name = path.name
         if name in EXEMPT_NAMES or name.startswith("."):
             continue
         if not RE_FILENAME.match(name):
-            error(relative, "NAM-2", "file name is not lowercase hyphen separated")
+            error(relative.as_posix(), "NAM-2", "file name is not lowercase hyphen separated")
         if name.lower() == "readme.md" and path.parent != ROOT:
-            error(relative, "NAM-17", "only a directory's own README may be named readme.md")
+            error(
+                relative.as_posix(),
+                "NAM-17",
+                "only a directory's own README may be named readme.md",
+            )
 
     for path in ROOT.rglob("*"):
+        relative = path.relative_to(ROOT)
+        if any(part in skip for part in relative.parts):
+            continue
         if path.is_dir() and path.name in {"misc", "other", "stuff", "temp", "new"}:
-            error(path.relative_to(ROOT).as_posix(), "NAM-8", "directory name is not descriptive")
+            error(relative.as_posix(), "NAM-8", "directory name is not descriptive")
 
 
 def check_links() -> None:
     """RF-33 covers a file listed in the index; RM-23 covers the README."""
-    for path in list(rule_files()) + [ROOT / "README.md"]:
+    for path in [*rule_files(), ROOT / "README.md"]:
         relative = path.relative_to(ROOT).as_posix()
         rule = "RM-23" if relative == "README.md" else "RF-33"
         text = strip_code_blocks(path.read_text(encoding="utf-8"))
