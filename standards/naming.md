@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 3.0.0
+version: 3.0.1
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -77,7 +77,7 @@ Incorrect: `my-stuff`, `do-the-thing`
 **NAM-13** The description part MUST be lowercase, hyphen separated, and at most five words.
 
 Correct: `feat/index-schema`, `fix/broken-readme-links`
-Incorrect: `andi-branch`, `feature/AddNewIndexSchema`, `patch-1`
+Incorrect: `my-branch`, `feature/AddNewIndexSchema`, `patch-1`
 
 **NAM-14** A branch that resolves a tracked issue SHOULD include the issue number: `fix/142-broken-links`.
 

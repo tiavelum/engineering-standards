@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning
-version: 1.1.0
+version: 1.1.1
 status: active
 applies_to: [software]
 summary: How a release version is formed, where it is recorded, and when each component is incremented.
@@ -106,7 +106,7 @@ This makes the pull request the record of the versioning decision. Without it th
 **VER-17** A pre-release identifier MUST be `alpha`, `beta` or `rc`, followed by a dot and an integer counting from 1.
 
 Correct: `2.0.0-rc.1`, `2.0.0-beta.3`
-Incorrect: `2.0.0-rc1`, `2.0.0-andi-test`, `2.0.0-final`
+Incorrect: `2.0.0-rc1`, `2.0.0-test`, `2.0.0-final`
 
 **VER-18** A released repository MUST NOT depend on a pre-release version of anything.
 
