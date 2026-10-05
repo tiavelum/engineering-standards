@@ -45,7 +45,7 @@ standards:
   - id: naming
     path: standards/naming.md
     title: Naming
-    version: 3.0.0
+    version: 3.0.1
     status: active
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]
@@ -75,7 +75,7 @@ standards:
   - id: versioning
     path: standards/versioning.md
     title: Versioning
-    version: 1.1.0
+    version: 1.1.1
     status: active
     summary: How a release version is formed, where it is recorded, and when each component is incremented.
     applies_to: [software]
