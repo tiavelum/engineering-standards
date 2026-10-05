@@ -1,6 +1,6 @@
 # engineering-standards
 
-The normative engineering standards used across Andi's repositories. Naming, repository layout, git workflow, README and documentation rules, written so that a person can read them and a tool or agent can load them.
+The normative engineering standards used across tiavelum's repositories. Naming, repository layout, git workflow, README and documentation rules, written so that a person can read them and a tool or agent can load them.
 
 ## What it is for
 

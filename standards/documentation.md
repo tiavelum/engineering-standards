@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 2.0.1
+version: 2.1.0
 status: active
 applies_to: [all]
 summary: "Documentation beyond the README: where it lives, open items, decision records, comments, changelogs."
@@ -32,6 +32,21 @@ Prefix: `DOC`
 **DOC-8** Instructions MUST be verifiable: a reader can follow them and observe the stated result.
 
 **DOC-9** A document MUST NOT be published with TODOs, placeholders or empty sections.
+
+**DOC-33** A file in a repository MUST refer to the repository's owner by the owner's account handle or not at all, and MUST NOT use the owner's personal name.
+
+Correct: `octocat's repositories`
+Incorrect: `Mona's repositories`
+
+## Language
+
+**DOC-30** A repository's README and its other documentation MUST be written in English.
+
+**DOC-31** Content whose language is part of what it is MUST be exempt from DOC-30.
+
+DOC-30 governs documentation about the repository. A German CV or a German handbook is the repository's content, and its language is the point of it.
+
+**DOC-32** Documentation that already exists in another language MUST keep that language until the repository's owner asks for a translation.
 
 ## Open items
 
