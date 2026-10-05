@@ -95,7 +95,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 1.1.0
+    version: 2.0.0
     status: active
     summary: Required sections, ordering and acceptance criteria for the README of any repository.
     applies_to: [all]

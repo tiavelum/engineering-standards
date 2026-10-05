@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 1.1.0
+version: 2.0.0
 status: active
 applies_to: [all]
 summary: Required sections, ordering and acceptance criteria for the README of any repository.
@@ -20,9 +20,9 @@ The README is written for the user of the repository, not for its author. Assume
 | # | Section | Required | Answers |
 |---|---------|----------|---------|
 | 1 | Title and one-line summary | MUST | What is this? |
-| 2 | What it is for | MUST | Why would I use it, and when not? |
+| 2 | What it is for | SHOULD | Why would I use it, and when not? |
 | 3 | Getting started | MUST | How do I run it in the next five minutes? |
-| 4 | Example | MUST | What does using it look like? |
+| 4 | Example | SHOULD | What does using it look like? |
 | 5 | Content and structure | MUST | How is this repo laid out? |
 | 6 | Mental model | SHOULD | How should I think about it? |
 | 7 | Configuration | SHOULD | What can I change? |
@@ -83,7 +83,7 @@ A screen cannot be measured; a word count can. The count covers everything above
 **RM-22** A README MUST let a reader who has never seen the repository do all of the following:
 
 - say what it is and who it is for, after the first paragraph;
-- decide whether it fits their problem, after section 2;
+- decide whether it fits their problem, before reaching section 3;
 - get a working result by copy-pasting from section 3 alone;
 - find the file to open next, from section 5;
 - know where to go for anything deeper.
