@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 2.1.0
+version: 3.0.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -47,7 +47,7 @@ A second configuration may repeat the first for tools that do not read the forma
 
 **TL-13** A check that is routinely bypassed MUST be either fixed or removed.
 
-**TL-20** A repository that publishes releases MUST commit a check that fails when the version of record, the git tag and the changelog disagree, and that check MUST gate the merge.
+**TL-20** A repository that publishes releases MUST commit a check that fails when the version of record and the git tag disagree, and that check MUST gate the merge.
 
 Version grammar, agreement between tag and manifest, monotonic increase and prior publication are all machine checkable, so under TL-1 they belong in this check's configuration rather than in the prose of `standards/versioning.md`.
 
