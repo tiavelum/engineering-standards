@@ -1,7 +1,7 @@
 ---
 id: precedence
 title: Precedence and deviation
-version: 1.0.1
+version: 1.0.2
 status: active
 applies_to: [all]
 summary: How conflicts between these standards, a consuming repository and a task instruction are resolved, and how a deviation is recorded.
@@ -42,8 +42,9 @@ summary: How conflicts between these standards, a consuming repository and a tas
 ```markdown
 # Deviations
 
-## RL-4: no `docs/` directory
+## RL-3: no `.gitignore`
 
-This repository is a single script with no documentation beyond the README.
+This repository holds two text files, and nothing that works on them writes
+build output, caches or local settings into it.
 Recorded 2026-09-01.
 ```
