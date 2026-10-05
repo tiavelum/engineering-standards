@@ -55,7 +55,7 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 3.0.0
+    version: 4.0.0
     status: active
     summary: Required top-level files, directory roles, and what must not live in a repository.
     applies_to: [all]
@@ -95,7 +95,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 2.0.0
+    version: 3.0.0
     status: active
     summary: Required sections, ordering and acceptance criteria for the README of any repository.
     applies_to: [all]

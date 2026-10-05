@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 2.0.0
+version: 3.0.0
 status: active
 applies_to: [all]
 summary: Required sections, ordering and acceptance criteria for the README of any repository.
@@ -40,9 +40,13 @@ The README is written for the user of the repository, not for its author. Assume
 
 **RM-5** "What it is for" MUST NOT consist of adjectives such as fast, flexible or modern.
 
-**RM-6** "Getting started" MUST list prerequisites with versions, and MUST give install and run steps as copy-pasteable commands in fenced code blocks.
+**RM-6** Where a repository has something to install or run, "Getting started" MUST list prerequisites with versions, and MUST give install and run steps as copy-pasteable commands in fenced code blocks.
 
-**RM-7** "Getting started" MUST end with a command that produces visible output, together with the expected output.
+**RM-7** Where a repository has something to install or run, "Getting started" MUST end with a command that produces visible output, together with the expected output.
+
+**RM-26** Where a repository has nothing to install or run, "Getting started" MUST name what the reader opens or reads first.
+
+A repository that is read, such as a knowledge base, has no command to give. Its README keeps every other rule of this standard and is shorter for it.
 
 **RM-8** "Getting started" MUST be usable without reading any other section.
 
