@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 5.0.0
+version: 6.0.0
 status: active
 applies_to: [all]
 summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
@@ -37,8 +37,6 @@ Prefix: `DOC`
 
 Correct: `octocat's repositories`
 Incorrect: `Mona's repositories`
-
-**DOC-34** The copyright line of a licence file MUST be exempt from DOC-33.
 
 ## Language
 
