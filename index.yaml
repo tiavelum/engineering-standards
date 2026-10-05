@@ -11,7 +11,7 @@
 
 schema_version: 1
 repository: tiavelum/engineering-standards
-updated: 2026-09-06
+updated: 2026-10-05
 validated_by: scripts/validate-standards.py
 
 meta:
@@ -65,7 +65,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 2.1.2
+    version: 2.2.0
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
@@ -95,7 +95,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 1.0.1
+    version: 1.1.0
     status: active
     summary: Required sections, ordering and acceptance criteria for the README of any repository.
     applies_to: [all]
@@ -104,7 +104,7 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 2.0.1
+    version: 2.1.0
     status: active
     summary: "Documentation beyond the README: where it lives, open items, decision records, comments, changelogs."
     applies_to: [all]

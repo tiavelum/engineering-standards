@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 2.1.2
+version: 2.2.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -54,6 +54,8 @@ Incorrect: `Added consumer contract.`, `updates`, `wip`
 
 **GW-11** Commit messages MUST NOT contain `wip`, `misc`, `stuff`, `fixes`, or a bare file name.
 
+**GW-23** A commit message MUST be written in English.
+
 ## Pull requests
 
 **GW-12** A pull request description MUST state what changes and why, in terms a reviewer who did not write it can follow.
@@ -63,6 +65,10 @@ Incorrect: `Added consumer contract.`, `updates`, `wip`
 **GW-14** A pull request MUST NOT be merged with failing checks.
 
 **GW-15** A pull request SHOULD stay small enough to review in one sitting. Large mechanical changes SHOULD be separated from behavioural ones.
+
+**GW-24** A review MUST take place on a pull request, with its findings recorded as comments there and not in a committed file.
+
+A file of review findings has to be pruned by hand once they are resolved. A pull request closes with the change it reviews.
 
 ## History
 

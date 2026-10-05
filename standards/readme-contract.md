@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 1.0.1
+version: 1.1.0
 status: active
 applies_to: [all]
 summary: Required sections, ordering and acceptance criteria for the README of any repository.
@@ -45,6 +45,10 @@ The README is written for the user of the repository, not for its author. Assume
 **RM-7** "Getting started" MUST end with a command that produces visible output, together with the expected output.
 
 **RM-8** "Getting started" MUST be usable without reading any other section.
+
+**RM-25** At most 150 words MUST precede the "Getting started" heading in the README source.
+
+A screen cannot be measured; a word count can. The count covers everything above the heading: the title, the summary and "What it is for".
 
 **RM-9** Every command in a README MUST have been executed successfully against the current default branch before merge.
 
