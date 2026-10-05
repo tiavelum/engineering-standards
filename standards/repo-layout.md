@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 4.0.0
+version: 4.1.0
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, and what must not live in a repository.
@@ -18,8 +18,6 @@ Prefix: `RL`
 **RL-2** Every public repository MUST contain a `LICENSE` file.
 
 **RL-3** Every repository MUST contain a `.gitignore` appropriate to its stack.
-
-**RL-4** A repository with documentation beyond the README SHOULD place it in `docs/`, except where RL-6 permits the file at the root.
 
 **RL-5** A repository MUST contain an `.editorconfig` when it holds files edited by more than one tool or person.
 
