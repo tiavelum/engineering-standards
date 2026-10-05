@@ -1,9 +1,9 @@
 ---
 id: versioning
 title: Versioning
-version: 1.0.2
+version: 1.1.0
 status: active
-applies_to: [all]
+applies_to: [software]
 summary: How a release version is formed, where it is recorded, and when each component is incremented.
 ---
 
@@ -38,6 +38,24 @@ The specification is incorporated by reference. The rules below narrow it for th
 
 A version written by hand in a second place is a version that will disagree with the first. Documentation, build arguments, generated headers and image tags all read from the one location.
 
+**VER-32** A repository that publishes releases MUST commit a check that fails when the version of record and the git tag disagree, and that check MUST gate the merge.
+
+Version grammar, agreement between tag and manifest, monotonic increase and prior publication are all machine checkable, so under TL-1 they belong in this check's configuration rather than in the prose of this file.
+
+## Tags
+
+**VER-28** A release tag MUST take the form `v<major>.<minor>.<patch>`, except as provided by VER-29 and VER-30.
+
+**VER-29** A pre-release tag MUST take the form `v<major>.<minor>.<patch>-<identifiers>`, with the identifiers as required by VER-17.
+
+Correct: `v2.0.0-rc.1`
+Incorrect: `v2.0.0rc1`, `v2.0.0-RC1`
+
+**VER-30** In a repository that publishes more than one unit, a tag MUST be scoped to the unit as `<unit>/v<version>`.
+
+Correct: `billing-api/v2.1.0`
+Incorrect: `v2.1.0` in a repository publishing three services
+
 ## Incrementing
 
 **VER-6** MAJOR MUST be incremented when a change is breaking under `standards/public-api.md`.
@@ -59,6 +77,10 @@ A dependency going from 3.x to 4.x is not by itself a MAJOR here. It is MAJOR he
 **VER-13** Urgency MUST NOT lower the increment a change requires.
 
 A security fix that breaks the public API is a MAJOR release. Reaching affected consumers sooner is handled by backporting under VER-25, not by mislabelling the change.
+
+**VER-31** A pull request MUST state which increment the change requires under VER-6 to VER-9.
+
+This makes the pull request the record of the versioning decision. Without it the increment is chosen at release time, by whoever cuts the release, from a history they did not write.
 
 | Change | Increment | From 2.4.7 |
 |---|---|---|

@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 3.0.0
+version: 4.0.0
 status: active
 applies_to: [all]
 summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
@@ -97,10 +97,6 @@ A changelog file repeats what the release holds and has to be kept in step with 
 **DOC-17** Release notes MUST be written for the user of the release: what changed for them, what breaks, what they must do.
 
 **DOC-18** Release notes MUST NOT be a dump of commit messages.
-
-**DOC-28** In a repository with releases, a pull request MUST state which increment the change requires under VER-6 to VER-9.
-
-This makes the pull request the record of the versioning decision. Without it the increment is chosen at release time, by whoever cuts the release, from a history they did not write.
 
 ## Maintenance
 

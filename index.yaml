@@ -35,7 +35,7 @@ meta:
   - id: consuming
     path: meta/consuming.md
     title: Consumer contract
-    version: 2.0.1
+    version: 2.1.0
     status: active
     summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
     applies_to: [tooling, agents]
@@ -45,12 +45,12 @@ standards:
   - id: naming
     path: standards/naming.md
     title: Naming
-    version: 2.0.0
+    version: 3.0.0
     status: active
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]
     tags: [files, directories, branches, repositories]
-    requires: [readme-contract, versioning]
+    requires: [readme-contract]
 
   - id: repo-layout
     path: standards/repo-layout.md
@@ -75,20 +75,20 @@ standards:
   - id: versioning
     path: standards/versioning.md
     title: Versioning
-    version: 1.0.2
+    version: 1.1.0
     status: active
     summary: How a release version is formed, where it is recorded, and when each component is incremented.
-    applies_to: [all]
+    applies_to: [software]
     tags: [versions, releases, semver, dependencies]
-    requires: [git-workflow, public-api]
+    requires: [git-workflow, public-api, tooling]
 
   - id: public-api
     path: standards/public-api.md
     title: Public API
-    version: 1.0.1
+    version: 1.0.2
     status: active
     summary: What a repository publishes as its public API, and which changes to it are breaking.
-    applies_to: [all]
+    applies_to: [software]
     tags: [api, compatibility, releases]
     requires: [versioning]
 
@@ -104,22 +104,22 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 3.0.0
+    version: 4.0.0
     status: active
     summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
     applies_to: [all]
     tags: [documentation, adr]
-    requires: [naming, precedence, readme-contract, versioning]
+    requires: [naming, precedence, readme-contract]
 
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 3.0.0
+    version: 4.0.0
     status: active
     summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]
     tags: [tooling, ci, linting]
-    requires: [precedence, versioning]
+    requires: [precedence]
 
   - id: lifecycle
     path: standards/lifecycle.md
