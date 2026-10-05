@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 4.0.0
+version: 5.0.0
 status: active
 applies_to: [all]
 summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
@@ -15,7 +15,7 @@ Prefix: `DOC`
 
 **DOC-1** Documentation MUST live in the repository it describes.
 
-**DOC-2** Documentation beyond the README MUST live in `docs/`, one topic per file, named per `NAM-2`.
+**DOC-2** Documentation beyond the README SHOULD live in `docs/`, one topic per file, named per `NAM-2`.
 
 **DOC-3** A fact MUST have exactly one home. Where it is needed elsewhere, it MUST be linked, not copied.
 

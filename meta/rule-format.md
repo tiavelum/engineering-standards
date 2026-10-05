@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 3.1.1
+version: 3.2.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -76,6 +76,10 @@ A standard that defers to another is not a defect; hiding that it does is. RF-26
 A rule is amended in place and the version carries the change. RF-18 makes a material change to a MUST rule a major increment, so a consumer that pinned a version meets the break where it already looks for one, and the identifier CO-11 lets it store stays valid.
 
 **RF-12** The identifier MUST be the first thing in the rule, in bold, followed by the rule text in a single sentence where possible.
+
+**RF-34** A rule under review MUST carry the marker `(draft: #<issue>)` directly after its identifier, naming the issue that decides it.
+
+A draft rule stays in its place and keeps its identifier, so it can be cited while it is discussed, and removing the marker puts it back in force. CO-17 tells a consumer to skip it.
 
 ## Rule language
 

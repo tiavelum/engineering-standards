@@ -1,7 +1,7 @@
 ---
 id: consuming
 title: Consumer contract
-version: 2.1.0
+version: 2.2.0
 status: active
 applies_to: [tooling, agents]
 summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
@@ -24,13 +24,15 @@ A consumer is anything that loads these standards to apply them: a skill, a plug
 | `all` | Work in any repository |
 | `software` | Work in a repository whose product is software: a program, library, package or image that is run or depended on |
 | `authoring` | Writing or changing a standard in this repository |
-| `tooling`, `agents` | Building a tool or agent that loads these standards |
+| `tooling`, `agents` | A tool or agent that loads these standards to apply them |
 
 **CO-3** A consumer MUST load, with any entry it selects, every entry that entry names in `requires`, resolved transitively.
 
 The closure can contain cycles, because two standards may each define a term the other uses. A consumer resolves it by tracking what it has already loaded, not by recursing until it stops.
 
 **CO-4** A consumer MUST ignore entries with `status: draft` unless explicitly asked to include them, and MUST warn when applying an entry with `status: deprecated`.
+
+**CO-17** A consumer MUST ignore a rule that carries the draft marker of RF-34 unless explicitly asked to include it.
 
 ## Applying
 

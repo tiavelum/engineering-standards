@@ -39,6 +39,8 @@ ENTRY_OPTIONAL_FIELDS = ("tags", "requires")
 RE_ID = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 RE_SEMVER = re.compile(r"^\d+\.\d+\.\d+$")
 RE_RULE = re.compile(r"^\*\*([A-Z]{2,3})-(\d+)\*\*", re.MULTILINE)
+# The marker RF-34 puts directly after the identifier of a rule under review.
+RE_DRAFT = re.compile(r"^ \(draft: #\d+\) ")
 RE_FILENAME = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*\.[a-z0-9]+$")
 RE_MD_LINK = re.compile(r"\[[^\]]*\]\(([^)#]+?)(?:#[^)]*)?\)")
 RE_MARKER = re.compile(r"\b(TODO|FIXME|TBD|XXX)\b\s*[:(]|^\s*(TODO|FIXME|TBD)\b")
@@ -253,6 +255,10 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
             error(relative, "RF-11", f"rule {rule_id} appears more than once")
         numbers[rule_id] = number
         found_rules.append((rule_id, relative))
+
+        rest = line.removeprefix(match.group(0))
+        if rest.lstrip().startswith("(draft") and not RE_DRAFT.match(rest):
+            error(relative, "RF-34", f"rule {rule_id} carries a malformed draft marker")
 
         # RF-13 wants the keyword on the identifier's own line. A rule whose
         # keyword sits further down is a rule that does not say what it binds.
