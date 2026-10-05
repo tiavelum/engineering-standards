@@ -1,9 +1,9 @@
 ---
 id: public-api
 title: Public API
-version: 1.0.1
+version: 1.0.2
 status: active
-applies_to: [all]
+applies_to: [software]
 summary: What a repository publishes as its public API, and which changes to it are breaking.
 ---
 

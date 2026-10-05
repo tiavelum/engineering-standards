@@ -1,7 +1,7 @@
 ---
 id: consuming
 title: Consumer contract
-version: 2.0.1
+version: 2.1.0
 status: active
 applies_to: [tooling, agents]
 summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
@@ -16,6 +16,15 @@ A consumer is anything that loads these standards to apply them: a skill, a plug
 **CO-1** A consumer MUST start from `index.yaml` and MUST NOT discover standards by listing directories or guessing paths.
 
 **CO-2** A consumer MUST load only the entries whose `applies_to` matches the task, together with the closure CO-3 requires.
+
+**CO-16** A consumer MUST match `applies_to` values against the task as follows.
+
+| Value | Matches |
+|---|---|
+| `all` | Work in any repository |
+| `software` | Work in a repository whose product is software: a program, library, package or image that is run or depended on |
+| `authoring` | Writing or changing a standard in this repository |
+| `tooling`, `agents` | Building a tool or agent that loads these standards |
 
 **CO-3** A consumer MUST load, with any entry it selects, every entry that entry names in `requires`, resolved transitively.
 
