@@ -1,7 +1,7 @@
 ---
 id: lifecycle
 title: Product lifecycle
-version: 1.0.1
+version: 1.0.2
 status: draft
 applies_to: [all]
 summary: The phases a product passes through from idea to operation, the artifact each produces, and the gate that must be passed to leave it.
@@ -36,7 +36,7 @@ Level 0 is exploratory, which is why it is exempt from everything but the two ru
 | Requirements | `docs/requirements.md` | LC-13 to LC-18 |
 | Architecture | `docs/architecture.md` | LC-19 to LC-22 |
 | Design | `docs/design.md` | LC-23, LC-24, LC-25 |
-| Build | source, tests, changelog | governed by `standards/git-workflow.md` |
+| Build | source, tests | governed by `standards/git-workflow.md` |
 | Verification | `docs/verification.md` | LC-26, LC-27 |
 | Validation | `docs/verification.md` | LC-28, LC-29, LC-30 |
 | Release | `docs/operations.md` | LC-31, LC-32 |

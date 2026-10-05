@@ -1,10 +1,10 @@
 ---
 id: documentation
 title: Documentation
-version: 2.1.0
+version: 3.0.0
 status: active
 applies_to: [all]
-summary: "Documentation beyond the README: where it lives, open items, decision records, comments, changelogs."
+summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
 ---
 
 # Documentation
@@ -62,7 +62,7 @@ Such a file has to be pruned by hand. In practice it is not, and it becomes the 
 
 The prohibition covers the file's purpose, not its name. A file listing outstanding work is forbidden whatever it is called; a file whose name happens to resemble one of the examples but which records the current state is not.
 
-**DOC-23** The following MUST be treated as records of the current state rather than open items, governed by their own rules rather than by DOC-21 and DOC-22: the deviations file required by PR-5, the known limitations required by RM-18, decision records under DOC-10, and the changelog under DOC-16.
+**DOC-23** The following MUST be treated as records of the current state rather than open items, governed by their own rules rather than by DOC-21 and DOC-22: the deviations file required by PR-5, the known limitations required by RM-18, and decision records under DOC-10.
 
 **DOC-24** An issue MUST state what is to be done and why, in terms a reader who was not present when it was raised can act on.
 
@@ -88,23 +88,19 @@ These rules name GitHub because that is where these repositories live. A reposit
 
 **DOC-15** Commented out code MUST NOT be committed.
 
-## Changelog
+## Change notes
 
-**DOC-16** A repository with releases MUST keep a `CHANGELOG.md` at the repository root.
+**DOC-16** Change notes MUST be published as the notes of the GitHub release they describe, and MUST NOT be kept in a committed file.
 
-**DOC-29** A changelog MUST be grouped by version, newest first.
+A changelog file repeats what the release holds and has to be kept in step with it by hand. The release is created once, with the tag it describes.
 
-**DOC-17** A changelog entry MUST be written for the user of the release: what changed for them, what breaks, what they must do.
+**DOC-17** Release notes MUST be written for the user of the release: what changed for them, what breaks, what they must do.
 
-**DOC-18** A changelog MUST NOT be a dump of commit messages.
+**DOC-18** Release notes MUST NOT be a dump of commit messages.
 
-**DOC-27** A changelog entry MUST be added as its own file under `changelog.d/` in the pull request that makes the change, and assembled into `CHANGELOG.md` at release.
+**DOC-28** In a repository with releases, a pull request MUST state which increment the change requires under VER-6 to VER-9.
 
-Every pull request editing the top of one shared file conflicts with every other. One file per change removes the conflict, and the entry is written by the person who has the context, while they have it.
-
-**DOC-28** A changelog entry MUST state which increment the change requires under VER-6 to VER-9.
-
-This makes the entry the record of the versioning decision. Without it the increment is chosen at release time, by whoever cuts the release, from a history they did not write.
+This makes the pull request the record of the versioning decision. Without it the increment is chosen at release time, by whoever cuts the release, from a history they did not write.
 
 ## Maintenance
 
