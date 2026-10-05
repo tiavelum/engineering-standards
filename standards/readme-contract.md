@@ -46,7 +46,9 @@ The README is written for the user of the repository, not for its author. Assume
 
 **RM-8** "Getting started" MUST be usable without reading any other section.
 
-**RM-25** The title, the summary and "What it is for" SHOULD be short enough that "Getting started" begins within the first screen of the rendered README.
+**RM-25** At most 150 words MUST precede the "Getting started" heading in the README source.
+
+A screen cannot be measured; a word count can. The count covers everything above the heading: the title, the summary and "What it is for".
 
 **RM-9** Every command in a README MUST have been executed successfully against the current default branch before merge.
 

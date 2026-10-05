@@ -38,6 +38,8 @@ Prefix: `DOC`
 Correct: `octocat's repositories`
 Incorrect: `Mona's repositories`
 
+**DOC-34** The copyright line of a licence file MUST be exempt from DOC-33.
+
 ## Language
 
 **DOC-30** A repository's README and its other documentation MUST be written in English.
