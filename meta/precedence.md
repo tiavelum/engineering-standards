@@ -1,7 +1,7 @@
 ---
 id: precedence
 title: Precedence and deviation
-version: 1.0.2
+version: 1.0.3
 status: active
 applies_to: [all]
 summary: How conflicts between these standards, a consuming repository and a task instruction are resolved, and how a deviation is recorded.
@@ -31,7 +31,9 @@ summary: How conflicts between these standards, a consuming repository and a tas
 
 **PR-5** A repository that deviates from a MUST rule MUST record it in a file named `deviations.md` at its root, with one entry per deviation containing: the rule id, the reason, and the date.
 
-**PR-6** A deviation entry MUST give a reason specific to that repository. "Not applicable" without explanation is not a reason.
+**PR-6** A deviation entry MUST give a reason specific to that repository.
+
+"Not applicable" without explanation is not a reason.
 
 **PR-7** A deviation from a SHOULD rule does not need to be recorded.
 

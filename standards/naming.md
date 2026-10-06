@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 3.0.1
+version: 3.0.2
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -22,7 +22,9 @@ Incorrect: `Crew Handbook.md`, `crew_handbook.md`, `crewHandbook.md`
 
 **NAM-3** Names MUST NOT contain spaces, underscores, camelCase, or characters outside `a-z`, `0-9` and `-`.
 
-**NAM-4** A name MUST NOT carry a version, date or status suffix such as `-v2`, `-final`, `-new`, `-old`, `-2026-09`. Version control holds that information. A date that identifies the subject rather than the revision is permitted under NAM-18.
+**NAM-4** A name MUST NOT carry a version, date or status suffix such as `-v2`, `-final`, `-new`, `-old`, `-2026-09`.
+
+Version control holds that information. A date that identifies the subject rather than the revision is permitted under NAM-18.
 
 **NAM-5** Abbreviations MUST NOT be used unless they are unambiguous in the repository's domain and used consistently.
 

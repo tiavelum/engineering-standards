@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 3.2.0
+version: 3.2.1
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -19,9 +19,13 @@ This file governs how every file in `standards/` is written. It exists so that s
 - a reviewer can check it objectively in a pull request,
 - an agent can apply it deterministically when producing a file.
 
-**RF-2** A rule that fails RF-1 MUST NOT be added. Preferences that cannot be checked belong in conversation, not in this repository.
+**RF-2** A rule that fails RF-1 MUST NOT be added.
 
-**RF-3** A rule that a tool already enforces MUST NOT be restated here. Point at the tool configuration instead. See `standards/tooling.md`.
+Preferences that cannot be checked belong in conversation, not in this repository.
+
+**RF-3** A rule that a tool already enforces MUST NOT be restated here.
+
+Point at the tool configuration instead. See `standards/tooling.md`.
 
 ## File structure
 
@@ -35,7 +39,9 @@ This file governs how every file in `standards/` is written. It exists so that s
 
 **RF-8** `summary` MUST be a single sentence stating what the file governs.
 
-**RF-9** A standard file SHOULD stay under 200 lines. Beyond that, split it by topic rather than adding sections.
+**RF-9** A standard file SHOULD stay under 200 lines.
+
+Beyond that, split it by topic rather than adding sections.
 
 ## Index entries
 
@@ -89,7 +95,9 @@ The keyword MUST appear on the identifier's own line, since that is where a read
 
 **RF-14** A rule MUST state the required outcome, not the reasoning. Reasoning, where needed, goes in a separate paragraph that carries no identifier.
 
-**RF-15** A rule MUST NOT contain two independent requirements. Split them.
+**RF-15** A rule MUST NOT contain two independent requirements.
+
+Such a rule is split into two.
 
 **RF-16** Examples MUST be concrete and MUST show both the correct and the incorrect form where the distinction is the point.
 

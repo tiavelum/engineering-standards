@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 6.0.0
+version: 6.0.1
 status: active
 applies_to: [all]
 summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
@@ -25,7 +25,9 @@ Prefix: `DOC`
 
 **DOC-5** Documentation MUST be written for the reader who will act on it, and MUST state what the reader does, not what the author did.
 
-**DOC-6** Documentation MUST describe the current state. Historical narrative belongs in git history and, where it matters, in a decision record.
+**DOC-6** Documentation MUST describe the current state.
+
+Historical narrative belongs in git history and, where it matters, in a decision record.
 
 **DOC-7** Every document MUST open with one sentence stating what it covers and for whom.
 
@@ -100,4 +102,6 @@ A changelog file repeats what the release holds and has to be kept in step with 
 
 **DOC-19** A change that invalidates a document MUST update that document in the same pull request.
 
-**DOC-20** A document that no longer describes reality MUST be corrected or deleted. Leaving it in place is a defect.
+**DOC-20** A document that no longer describes reality MUST be corrected or deleted.
+
+Leaving it in place is a defect.
