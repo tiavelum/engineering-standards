@@ -11,7 +11,7 @@
 
 schema_version: 1
 repository: tiavelum/engineering-standards
-updated: 2026-10-05
+updated: 2026-10-07
 validated_by: scripts/validate-standards.py
 
 meta:
@@ -95,9 +95,9 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 3.0.0
+    version: 4.0.0
     status: active
-    summary: Required sections, ordering and acceptance criteria for the README of any repository.
+    summary: What the README of any repository must answer, in which order the reader meets it, and when it is done.
     applies_to: [all]
     tags: [documentation, readme]
 

@@ -1,10 +1,10 @@
 ---
 id: readme-contract
 title: README contract
-version: 3.0.0
+version: 4.0.0
 status: active
 applies_to: [all]
-summary: Required sections, ordering and acceptance criteria for the README of any repository.
+summary: What the README of any repository must answer, in which order the reader meets it, and when it is done.
 ---
 
 # README contract
@@ -13,24 +13,48 @@ Prefix: `RM`
 
 The README is written for the user of the repository, not for its author. Assume a reader who has never seen the repo, has about thirty seconds to decide whether it is relevant, and wants a working result before understanding the internals.
 
-## Required sections
+This standard fixes what a README answers and in which order the reader meets it. It does not fix headings or a list of sections: a README is as long as its repository gives the reader questions, and no longer.
 
-**RM-1** A README MUST contain the following sections, in this order. Sections marked SHOULD MAY be omitted when not applicable; sections marked MUST may not.
+## What a README answers
 
-| # | Section | Required | Answers |
-|---|---------|----------|---------|
-| 1 | Title and one-line summary | MUST | What is this? |
-| 2 | What it is for | SHOULD | Why would I use it, and when not? |
-| 3 | Getting started | MUST | How do I run it in the next five minutes? |
-| 4 | Example | SHOULD | What does using it look like? |
-| 5 | Content and structure | MUST | How is this repo laid out? |
-| 6 | Mental model | SHOULD | How should I think about it? |
-| 7 | Configuration | SHOULD | What can I change? |
-| 8 | Troubleshooting | SHOULD | What goes wrong, and what do I do? |
-| 9 | Contributing and support | SHOULD | How do I report or change something? |
-| 10 | License | MUST (public) | What may I do with it? |
+**RM-1** A README MUST answer every question the following table marks as required.
 
-**RM-2** Section order MUST NOT be changed. Sections MAY be renamed to fit the repository as long as the role is preserved.
+| Role | Required | Answers | For example headed |
+|---|---|---|---|
+| Summary | MUST | What is this, and who is it for? | The title and the first paragraph |
+| What it is for | MAY | When do I use it, and when not? | What it is for, Scope |
+| Getting started | MUST | How do I get a first result? | Getting started, Setup, Usage |
+| Example | MAY | What does using it look like? | Example |
+| Tasks | MAY | How do I do a particular thing with it? | Named for the task, such as After changing a file |
+| Content and structure | MUST | What is in it, and where? | Files, Contents, Content and structure |
+| How it works | MAY | How do the parts work together? | How it works, Design |
+| Configuration | MAY | What can I change? | Configuration |
+| Troubleshooting | MAY | What goes wrong, and what do I do? | Troubleshooting |
+| Known limits | MAY | What does it not do, or not do well? | Known limits |
+| Contributing and support | MAY | How do I report or change something? | Contributing |
+| License | MUST (public) | What may I do with it? | License |
+
+**RM-2** A section's heading MAY be chosen to fit the repository, and a role named in quotes in this standard refers to the section that answers its question, whatever its heading.
+
+One section may answer several questions, and one question may take several sections where its answer is long.
+
+## Order
+
+**RM-27** The summary and, where present, "What it is for" MUST precede every other section.
+
+**RM-28** "Getting started" SHOULD be the first section after them.
+
+The reader came for a first result. The list of files is what they consult once they have one, so it rarely belongs first.
+
+**RM-29** "How it works" SHOULD follow "Getting started", "Example" and every task section.
+
+Beyond these, the order follows what the reader needs next and is not fixed.
+
+## Optional sections
+
+**RM-30** A section that answers a question marked MAY MUST carry content that no other section of the README states.
+
+This is what keeps a small README small. A "What it is for" that repeats the summary, a "Configuration" that says there is nothing to configure, or a "How it works" that restates the file table fails it and is left out.
 
 ## Section rules
 
@@ -64,6 +88,10 @@ A screen cannot be measured; a word count can. The count covers everything above
 
 **RM-13** "Troubleshooting" MUST list only failure modes actually observed, symptom first, fix second.
 
+**RM-31** A task section MUST open with the command or the first step of the task.
+
+**RM-32** "How it works" MUST describe how parts named in "Content and structure" depend on each other.
+
 ## Global rules
 
 **RM-14** A README MUST describe the current state of the repository, not its history.
@@ -87,9 +115,9 @@ A screen cannot be measured; a word count can. The count covers everything above
 **RM-22** A README MUST let a reader who has never seen the repository do all of the following:
 
 - say what it is and who it is for, after the first paragraph;
-- decide whether it fits their problem, before reaching section 3;
-- get a working result by copy-pasting from section 3 alone;
-- find the file to open next, from section 5;
+- decide whether it fits their problem, before reaching "Getting started";
+- get a working result by following "Getting started" alone;
+- find the file to open next, from "Content and structure";
 - know where to go for anything deeper.
 
 **RM-23** Before merge, the following MUST hold: all commands verified against the default branch, all links resolve, no required section missing or empty, no MUST NOT rule violated.
@@ -98,72 +126,61 @@ A screen cannot be measured; a word count can. The count covers everything above
 
 **RM-24** The README MUST be re-checked against this standard whenever any of the following change: install or run commands, prerequisites or their versions, top-level layout, the primary use case, the license.
 
-## Skeleton
+## Examples
+
+Both READMEs below are complete. Each answers the four required questions under headings of its own, puts the first result before the list of files, and has no other section, because its repository gives the reader no other question.
+
+A tool. Its summary already says what it does not do, so it needs no "What it is for".
 
 ````markdown
-# <Repo name>
+# csv-tidy
 
-<One or two sentences: what this is and who it is for.>
+A command-line tool for anyone who imports CSV exports into a spreadsheet. It trims whitespace, unifies dates and drops empty rows; it does not merge files.
 
-## What it is for
+## Usage
 
-<The problem it solves. The case it fits. Where it does not apply.>
-
-## Getting started
-
-### Prerequisites
-
-- <tool> >= <version>
-
-### Install
+Requires Python 3.10 or later.
 
 ```bash
-<commands>
+pip install csv-tidy==1.4.0
+csv-tidy orders.csv
 ```
 
-### First run
-
-```bash
-<command>
+```
+orders.csv: 1204 rows read, 17 empty rows dropped, written to orders.tidy.csv
 ```
 
-Expected output:
-
-```
-<output>
-```
-
-## Example
-
-<One real use case, with command and output.>
-
-## Content and structure
+## Files
 
 | Path | Contains |
-|------|----------|
-| `src/` | <what> |
-
-Start here: `<entry point>`
-
-## Mental model
-
-<Core concepts and how they relate. Input, processing, output.>
-
-## Configuration
-
-| Option | Default | Effect |
-|--------|---------|--------|
-| `<name>` | `<value>` | <effect> |
-
-## Troubleshooting
-
-**<Symptom>** <Cause and fix.>
-
-## Contributing
-
-<How to raise an issue, how to propose a change.>
+|---|---|
+| `src/csv_tidy/` | The tool |
+| `tests/` | Its tests, run with `pytest` |
 
 ## License
 
-<Name>. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
+````
+
+A repository that is read. It has no command to give, so "Getting started" names the file to open (RM-26).
+
+````markdown
+# hiking-checklists
+
+Printable checklists for hikers preparing a day walk or a hut tour in the Alps.
+
+## Getting started
+
+Open `day-walk.md` and print it.
+
+## Contents
+
+| File | For |
+|---|---|
+| `day-walk.md` | A single day, back by evening |
+| `hut-tour.md` | Two to five nights in mountain huts |
+
+## License
+
+CC BY 4.0. See [LICENSE](LICENSE).
 ````
