@@ -29,16 +29,18 @@ A standard that defers to another says so in its `requires`, so the closure is w
 
 ### As a contributor
 
-Every change is validated against the rules in [meta/rule-format.md](meta/rule-format.md). Run the same check locally before opening a pull request.
+Every change is validated against the rules in [meta/rule-format.md](meta/rule-format.md). Run the checks CI runs locally before opening a pull request.
 
-Prerequisites: Python 3.10 or later, and PyYAML.
+Prerequisites: Python 3.10 or later. The tool versions are pinned in [requirements.txt](requirements.txt).
 
 ```bash
-pip install pyyaml==6.0.2
+pip install -r requirements.txt
+ruff format --check .
+ruff check .
 python3 scripts/validate-standards.py
 ```
 
-Expected output:
+Each command exits with status 0 when the change passes. The last one prints:
 
 ```
 All checks passed. 0 warning(s).
@@ -47,7 +49,7 @@ All checks passed. 0 warning(s).
 A violation is reported with the file, the rule id and what is wrong:
 
 ```
-error    standards/naming.md: [RF-19] front matter version does not match the index entry
+error    standards/naming.md: [RF-30] front matter version does not match the index entry
 ```
 
 ## Example
@@ -72,7 +74,7 @@ Result:   two violations. Lowercasing gives `session-notes-august.md`, which
 | `standards/` | The standards themselves. One topic per file. |
 | `meta/` | Rules about the rules: file format, precedence, consumer contract. |
 | `scripts/` | The validator that enforces the rules this repo can check itself. |
-| `.github/` | The workflow that runs the validator on every push and pull request. |
+| `.github/` | The workflow that runs the formatter check, the linter and the validator on every push and pull request. |
 
 Start here: [`index.yaml`](index.yaml), then [meta/rule-format.md](meta/rule-format.md).
 
@@ -90,11 +92,9 @@ The distribution mechanism sits outside this repo on purpose. Nothing here assum
 
 ## Contributing
 
-Changes are proposed as pull requests. A change to a standard MUST update the rule text, the file's `version` in its front matter, and the corresponding `index.yaml` entry in the same commit.
+Changes are proposed as pull requests. Whether a new rule belongs here is decided by the admission test RF-1, and what a changed standard must carry with it by RF-17 to RF-19, both in [meta/rule-format.md](meta/rule-format.md).
 
-Every proposed rule must pass the admission test in [meta/rule-format.md](meta/rule-format.md): it is either enforceable by a tool, checkable in review, or it does not belong here.
-
-`scripts/validate-standards.py` runs on every push and pull request and fails the build on a violation. It checks front matter completeness, index and file agreement, rule id format and uniqueness, declared dependencies, file naming, unfinished markers, and that relative links resolve. Rules it cannot check are enforced in review.
+CI runs the checks under "As a contributor" on every push and pull request and fails the build on a violation. Each check in [scripts/validate-standards.py](scripts/validate-standards.py) names the rule it enforces; the rules it cannot check are enforced in review.
 
 ## License
 
