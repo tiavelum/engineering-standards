@@ -182,5 +182,3 @@ Open `day-walk.md` and print it.
 
 CC BY 4.0. See [LICENSE](LICENSE).
 ````
-
-Incorrect: the csv-tidy README above with a "What it is for" that repeats the summary, a "Mental model" that restates the file table, a "Configuration" saying there is nothing to configure, and a "Contributing" saying pull requests are welcome. Each of the four fails RM-30.
