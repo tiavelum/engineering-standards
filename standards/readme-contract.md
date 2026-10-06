@@ -128,7 +128,9 @@ A screen cannot be measured; a word count can. The count covers everything above
 
 ## Examples
 
-A small tool. It answers the four required questions and nothing more, so a summary and three sections carry it; "Usage" and "Files" are its names for "Getting started" and "Content and structure", and its summary states the scope boundary, so it needs no "What it is for".
+Both READMEs below are complete. Each answers the four required questions under headings of its own, puts the first result before the list of files, and has no other section, because its repository gives the reader no other question.
+
+A tool. Its summary already says what it does not do, so it needs no "What it is for".
 
 ````markdown
 # csv-tidy
@@ -160,7 +162,7 @@ orders.csv: 1204 rows read, 17 empty rows dropped, written to orders.tidy.csv
 MIT. See [LICENSE](LICENSE).
 ````
 
-A repository that is read. "Getting started" names the file to open, as RM-26 requires, and the list of contents follows it.
+A repository that is read. It has no command to give, so "Getting started" names the file to open (RM-26).
 
 ````markdown
 # hiking-checklists
