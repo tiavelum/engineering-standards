@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 3.0.2
+version: 3.1.0
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -63,7 +63,9 @@ Incorrect: `standards/readme.md` for the same file
 
 ## Repositories
 
-**NAM-9** A repository name MUST be lowercase, hyphen separated, and readable without the owner prefix.
+**NAM-9** A repository name MUST be lowercase and hyphen separated.
+
+**NAM-22** A repository name MUST be readable without the owner prefix.
 
 **NAM-10** A repository name SHOULD be a noun phrase naming the artifact, not a sentence or an action.
 

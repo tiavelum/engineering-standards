@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 4.0.0
+version: 5.0.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -29,9 +29,15 @@ Preferences that cannot be checked belong in conversation, not in this repositor
 
 **RF-5** Each file MUST begin with YAML front matter carrying: `id`, `title`, `version`, `status`, `applies_to`, `summary`.
 
-**RF-6** `id` MUST be unique across the repository, lowercase, hyphen separated, and identical to the file's `id` in `index.yaml`.
+**RF-6** `id` MUST be unique across the repository.
 
-**RF-7** `status` MUST be one of `active`, `draft`, `deprecated`. A `deprecated` file MUST name its replacement in the first paragraph.
+**RF-35** `id` MUST be lowercase and hyphen separated.
+
+**RF-36** `id` MUST be identical to the file's `id` in `index.yaml`.
+
+**RF-7** `status` MUST be one of `active`, `draft`, `deprecated`.
+
+**RF-37** A `deprecated` file MUST name its replacement in the first paragraph.
 
 **RF-8** `summary` MUST be a single sentence stating what the file governs.
 
@@ -55,7 +61,7 @@ Beyond that, split it by topic rather than adding sections.
 
 **RF-33** A relative link in a file listed in `index.yaml` MUST resolve to an existing path.
 
-The entry is closed rather than open. CO-9 promises a consumer that `schema_version` tracks a breaking change to the index structure, and that promise is empty while a field can appear without anyone announcing it. The cost is that a new field needs a rule before it needs code, which is the order this repository wants anyway.
+The entry is closed rather than open. CO-20 promises a consumer that `schema_version` tracks a breaking change to the index structure, and that promise is empty while a field can appear without anyone announcing it. The cost is that a new field needs a rule before it needs code, which is the order this repository wants anyway.
 
 ## Dependencies between standards
 
@@ -89,19 +95,27 @@ A draft rule stays in its place and keeps its identifier, so it can be cited whi
 
 The keyword MUST appear on the identifier's own line, since that is where a reader looks to find out whether a rule binds them and where a check can find it without guessing how far a rule extends.
 
-**RF-14** A rule MUST state the required outcome, not the reasoning. Reasoning, where needed, goes in a separate paragraph that carries no identifier.
+**RF-14** A rule MUST state the required outcome, not the reasoning.
+
+**RF-38** Reasoning, where needed, MUST go in a separate paragraph that carries no identifier.
 
 **RF-15** A rule MUST NOT contain two independent requirements.
 
-Such a rule is split into two.
+Two requirements are independent when one can be met while the other is broken. Two parts are still one requirement when the second forbids only the alternative the first replaces, or when together they define one form, such as the form of a name or of a line. A rule that holds two independent requirements is split, and its identifier stays with the first (RF-23).
 
-**RF-16** Examples MUST be concrete and MUST show both the correct and the incorrect form where the distinction is the point.
+One requirement: `MUST start from index.yaml and MUST NOT discover standards by listing directories`. Two: `MUST name the problem solved and MUST state the scope boundary`.
+
+**RF-16** Examples MUST be concrete.
+
+**RF-39** Examples MUST show both the correct and the incorrect form where the distinction is the point.
 
 ## Versioning
 
 **RF-17** Each standard file MUST carry its own semantic version in front matter.
 
-**RF-18** The version MUST be incremented as follows: major when an existing MUST rule changes or is removed, minor when a rule is added, patch for wording that does not change meaning.
+**RF-18** The version MUST be incremented as follows: major when an existing MUST rule changes or is removed; minor when a rule is added, or when rules are split or reduced without changing what is required in total; patch for wording that does not change meaning.
+
+A split, or dropping the part of a rule that another rule already states, changes the text but not what anyone has to do, so it is not the break a major increment announces. Giving a requirement that had no keyword a rule of its own is such a split.
 
 **RF-19** A change to a standard MUST update the file, its front matter `version`, and its `index.yaml` entry in the same commit.
 

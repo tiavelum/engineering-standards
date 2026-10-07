@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 4.0.0
+version: 4.1.0
 status: active
 applies_to: [all]
 summary: What the README of any repository must answer, in which order the reader meets it, and when it is done.
@@ -60,11 +60,15 @@ This is what keeps a small README small. A "What it is for" that repeats the sum
 
 **RM-3** The summary MUST state in one or two sentences what the repository is and who it is for, in plain language, before any badge, logo or table of contents.
 
-**RM-4** "What it is for" MUST name the concrete problem solved and MUST state the scope boundary: what the repository does not do.
+**RM-4** "What it is for" MUST name the concrete problem solved.
+
+**RM-33** "What it is for" MUST state the scope boundary: what the repository does not do.
 
 **RM-5** "What it is for" MUST NOT consist of adjectives such as fast, flexible or modern.
 
-**RM-6** Where a repository has something to install or run, "Getting started" MUST list prerequisites with versions, and MUST give install and run steps as copy-pasteable commands in fenced code blocks.
+**RM-6** Where a repository has something to install or run, "Getting started" MUST list prerequisites with versions.
+
+**RM-34** Where a repository has something to install or run, "Getting started" MUST give install and run steps as copy-pasteable commands in fenced code blocks.
 
 **RM-7** Where a repository has something to install or run, "Getting started" MUST end with a command that produces visible output, together with the expected output.
 
@@ -82,9 +86,13 @@ A screen cannot be measured; a word count can. The count covers everything above
 
 **RM-10** "Example" MUST show at least one real usage with concrete values and its actual output, not a bare signature or an all-placeholder command.
 
-**RM-11** "Content and structure" MUST describe the top-level directories and MUST name the entry point files a reader opens first.
+**RM-11** "Content and structure" MUST describe the top-level directories.
 
-**RM-12** "Configuration" MUST list only options a normal user changes, each with its default and effect. Exhaustive references MUST be linked, not inlined.
+**RM-35** "Content and structure" MUST name the entry point files a reader opens first.
+
+**RM-12** "Configuration" MUST list only options a normal user changes, and an exhaustive reference MUST be linked, not inlined.
+
+**RM-36** Each option in "Configuration" MUST carry its default and its effect.
 
 **RM-13** "Troubleshooting" MUST list only failure modes actually observed, symptom first, fix second.
 
@@ -120,7 +128,9 @@ A screen cannot be measured; a word count can. The count covers everything above
 - find the file to open next, from "Content and structure";
 - know where to go for anything deeper.
 
-**RM-23** Before merge, the following MUST hold: all commands verified against the default branch, all links resolve, no required section missing or empty, no MUST NOT rule violated.
+**RM-23** Before merge, every link in the README MUST resolve.
+
+The other conditions for merging are RM-1, RM-9 and RM-17, and every MUST NOT rule of this standard.
 
 ## Maintenance trigger
 

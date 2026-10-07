@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 5.0.0
+version: 5.1.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -33,7 +33,9 @@ A second configuration may repeat the first for tools that do not read the forma
 
 **TL-5** Every repository MUST commit an `.editorconfig` covering at minimum: charset, indentation style and width, end of line, final newline, trailing whitespace.
 
-**TL-6** Every repository containing code MUST commit a formatter configuration and MUST apply the formatter to the whole repository, not selectively.
+**TL-6** Every repository containing code MUST commit a formatter configuration.
+
+**TL-23** A committed formatter MUST be applied to the whole repository, not selectively.
 
 **TL-7** Formatting MUST NOT be a matter of discussion in review.
 
@@ -41,13 +43,19 @@ If it is being discussed, the formatter is missing or misconfigured.
 
 **TL-8** Every repository containing code MUST commit a linter configuration.
 
-**TL-9** Linter rules MUST be enabled deliberately. A suppression MUST carry a reason on the line that suppresses it.
+**TL-9** Linter rules MUST be enabled deliberately.
+
+**TL-24** A linter suppression MUST carry a reason on the line that suppresses it.
 
 ## Automation
 
 **TL-10** Checks that gate a merge MUST run in CI, not only locally.
 
-**TL-11** CI MUST fail the build on a violation. A check that only warns does not gate and MUST NOT be described as enforced.
+**TL-11** CI MUST fail the build on a violation.
+
+**TL-25** A check that only warns MUST NOT be described as enforced.
+
+A check that only warns does not gate.
 
 **TL-12** Local hooks MAY be provided for speed, but MUST NOT be the only place a check runs.
 
@@ -57,11 +65,15 @@ If it is being discussed, the formatter is missing or misconfigured.
 
 ## Dependencies
 
-**TL-14** Dependency versions MUST be pinned or locked, and the lock file MUST be committed.
+**TL-14** Dependency versions MUST be pinned or locked.
+
+**TL-26** A lock file MUST be committed.
 
 **TL-15** Tool versions used in CI MUST be pinned, so that a build is reproducible.
 
-**TL-16** A dependency MUST be added only when it is used. Unused dependencies MUST be removed.
+**TL-16** A dependency MUST be added only when it is used.
+
+**TL-27** An unused dependency MUST be removed.
 
 ## Secrets
 
@@ -69,6 +81,8 @@ If it is being discussed, the formatter is missing or misconfigured.
 
 **TL-18** Secrets MUST be supplied by the environment or a secret store, never by a committed file.
 
-**TL-19** A repository that reads configuration from the environment MUST commit an example environment file listing the required variable names with placeholder values, and MUST ignore the real one.
+**TL-19** A repository that reads configuration from the environment MUST commit an example environment file listing the required variable names with placeholder values.
+
+**TL-28** A repository that reads configuration from the environment MUST ignore its real environment file.
 
 A repository that reads nothing from the environment has no variable names to list. Requiring the file of it produces a placeholder that documents nothing, or a deviation under PR-5 explaining an absence, which PR-6 refuses as a reason.

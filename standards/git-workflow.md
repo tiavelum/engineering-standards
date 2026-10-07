@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 2.2.1
+version: 2.3.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -25,7 +25,9 @@ Anything merged to `main` runs.
 
 ## Release lines
 
-**GW-20** A release branch MUST exist only while more than one MAJOR line is supported, and MUST be named `release/<major>.<minor>` or `release/<major>.x`.
+**GW-20** A release branch MUST exist only while more than one MAJOR line is supported.
+
+**GW-28** A release branch MUST be named `release/<major>.<minor>` or `release/<major>.x`.
 
 **GW-21** A fix MUST be committed to `main` before it is cherry picked or backported to a release branch.
 
@@ -48,9 +50,13 @@ Anything that does not fit goes in the body. The limit governs what a person or 
 Correct: `docs: add consumer contract to meta layer`
 Incorrect: `Added consumer contract.`, `updates`, `wip`
 
-**GW-8** A commit message MUST describe what changed and, where not obvious, why. It MUST NOT describe the process of arriving at the change.
+**GW-8** A commit message MUST describe what changed and, where not obvious, why.
 
-**GW-9** A commit body MUST be used when the summary cannot carry the reason. It is separated from the summary by a blank line and wrapped at 72 characters.
+**GW-25** A commit message MUST NOT describe the process of arriving at the change.
+
+**GW-9** A commit body MUST be used when the summary cannot carry the reason.
+
+**GW-26** A commit body MUST be separated from the summary by a blank line and wrapped at 72 characters.
 
 **GW-10** A commit MUST NOT mix unrelated changes.
 
@@ -66,7 +72,9 @@ Incorrect: `Added consumer contract.`, `updates`, `wip`
 
 **GW-14** A pull request MUST NOT be merged with failing checks.
 
-**GW-15** A pull request SHOULD stay small enough to review in one sitting. Large mechanical changes SHOULD be separated from behavioural ones.
+**GW-15** A pull request SHOULD stay small enough to review in one sitting.
+
+**GW-27** Large mechanical changes SHOULD be separated from behavioural ones.
 
 **GW-24** A review MUST take place on a pull request, with its findings recorded as comments there and not in a committed file.
 
