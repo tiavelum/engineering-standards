@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 4.2.0
+version: 4.3.0
 status: active
 applies_to: [all]
 summary: What the README of any repository must answer, in which order the reader meets it, and when it is done.
@@ -34,7 +34,9 @@ This standard fixes what a README answers and in which order the reader meets it
 | Contributing and support | MAY | How do I report or change something? | Contributing |
 | License | MUST (public) | What may I do with it? | License |
 
-**RM-2** A section's heading MAY be chosen to fit the repository, and a role named in quotes in this standard refers to the section that answers its question, whatever its heading.
+**RM-2** A section's heading MAY be chosen to fit the repository.
+
+**RM-38** A role named in quotes in this standard MUST be read as the section that answers that role's question, whatever its heading.
 
 One section may answer several questions, and one question may take several sections where its answer is long.
 
@@ -86,7 +88,7 @@ A screen cannot be measured; a word count can. The count covers everything above
 
 **RM-10** "Example" MUST show at least one real usage with concrete values and its actual output, not a bare signature or an all-placeholder command.
 
-**RM-11** "Content and structure" MUST describe the top-level directories.
+**RM-11** "Content and structure" MUST describe each top-level directory, so that a reader can tell which directory holds what without opening files.
 
 **RM-35** "Content and structure" MUST name the entry point files a reader opens first.
 
@@ -104,17 +106,11 @@ A screen cannot be measured; a word count can. The count covers everything above
 
 ## Global rules
 
-**RM-14** A README MUST describe the current state of the repository, not its history.
-
-**RM-15** A README MUST NOT narrate work that was done, for example "we refactored" or "this was migrated from".
+The rules of `standards/documentation.md` apply to a README as to every other document.
 
 **RM-16** A README MUST NOT duplicate a changelog, roadmap or release notes.
 
-**RM-17** A README MUST NOT contain TODOs, placeholders or empty sections.
-
 **RM-18** A README MUST state known limitations honestly where they affect whether the reader should use it.
-
-**RM-19** Content that drifts quickly, such as a full API surface or exhaustive flags, MUST be linked or generated, not hand copied into the README.
 
 **RM-20** README length SHOULD be proportional: a small tool takes half a page, a framework takes structure plus links out.
 
@@ -132,7 +128,7 @@ A screen cannot be measured; a word count can. The count covers everything above
 
 **RM-23** Before merge, every link in the README MUST resolve.
 
-The other conditions for merging are RM-1, RM-9 and RM-17, and every MUST NOT rule of this standard.
+The other conditions for merging are RM-1, RM-9, DOC-9 and DOC-35, and every MUST NOT rule of this standard.
 
 ## Maintenance trigger
 
