@@ -56,7 +56,6 @@ RE_XREF_PATH = re.compile(r"\b((?:standards|meta)/[a-z0-9-]+\.md)\b")
 EXEMPT_NAMES = {
     "README.md",
     "LICENSE",
-    "CHANGELOG.md",
     "CODEOWNERS",
     "Dockerfile",
     "Makefile",
