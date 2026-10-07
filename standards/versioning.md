@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning
-version: 1.1.1
+version: 1.1.2
 status: active
 applies_to: [software]
 summary: How a release version is formed, where it is recorded, and when each component is incremented.
@@ -40,7 +40,7 @@ A version written by hand in a second place is a version that will disagree with
 
 **VER-32** A repository that publishes releases MUST commit a check that fails when the version of record and the git tag disagree, and that check MUST gate the merge.
 
-Version grammar, agreement between tag and manifest, monotonic increase and prior publication are all machine checkable, so under TL-1 they belong in this check's configuration rather than in the prose of this file.
+Version grammar, agreement between tag and manifest, monotonic increase and prior publication are all machine checkable, so this check enforces them in CI (TL-10) and this file does not repeat them.
 
 ## Tags
 
