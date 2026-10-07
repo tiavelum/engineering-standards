@@ -55,7 +55,7 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 4.2.0
+    version: 5.0.0
     status: active
     summary: Required top-level files, directory roles, and what must not live in a repository.
     applies_to: [all]
