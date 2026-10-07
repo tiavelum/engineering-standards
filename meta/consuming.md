@@ -1,7 +1,7 @@
 ---
 id: consuming
 title: Consumer contract
-version: 2.2.0
+version: 2.2.1
 status: active
 applies_to: [tooling, agents]
 summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
@@ -50,15 +50,21 @@ The closure can contain cycles, because two standards may each define a term the
 
 **CO-10** File paths listed in `index.yaml` MUST be stable within a major version of the standard they point at.
 
-**CO-11** Rule identifiers are stable and are never reused. A consumer MAY store a rule id as a durable reference.
+**CO-11** A consumer MAY store a rule id as a durable reference.
+
+Rule identifiers are stable and are never reused, under RF-11 and RF-23.
 
 **CO-12** Consumers MUST NOT rely on line numbers, heading order, or any structure not described in `meta/rule-format.md`.
 
 ## What a consumer must not assume
 
-**CO-13** The repository is not guaranteed to be reachable at any given moment. A consumer that cannot fetch MUST say so rather than proceeding from memory of an earlier version.
+**CO-13** A consumer that cannot fetch MUST say so rather than proceeding from memory of an earlier version.
 
-**CO-14** These standards do not cover language specific style. A consumer MUST NOT infer formatting rules from silence here.
+The repository is not guaranteed to be reachable at any given moment.
+
+**CO-14** A consumer MUST NOT infer formatting rules from silence here.
+
+These standards do not cover language specific style.
 
 ## Distribution mechanisms
 

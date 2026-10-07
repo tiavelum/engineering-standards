@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 4.1.0
+version: 4.1.1
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, and what must not live in a repository.
@@ -53,9 +53,13 @@ The clause is general on purpose. PR-5 fixes `deviations.md` at the root. Enumer
 
 **RL-12** Secrets, credentials, tokens and private keys MUST NOT be committed, in any form, including in history, examples and test fixtures.
 
-**RL-13** Build output, dependency directories and local environment files MUST NOT be committed. They belong in `.gitignore`.
+**RL-13** Build output, dependency directories and local environment files MUST NOT be committed.
 
-**RL-14** Large binaries MUST NOT be committed. Reference them or use a purpose built store.
+They belong in `.gitignore`.
+
+**RL-14** Large binaries MUST NOT be committed.
+
+Reference them or use a purpose built store.
 
 **RL-15** Personal notes, session logs and working files MUST NOT be committed unless the repository exists for them.
 

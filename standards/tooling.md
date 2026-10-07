@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 4.0.0
+version: 4.0.1
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -31,7 +31,9 @@ A second configuration may repeat the first for tools that do not read the forma
 
 **TL-6** Every repository containing code MUST commit a formatter configuration and MUST apply the formatter to the whole repository, not selectively.
 
-**TL-7** Formatting MUST NOT be a matter of discussion in review. If it is being discussed, the formatter is missing or misconfigured.
+**TL-7** Formatting MUST NOT be a matter of discussion in review.
+
+If it is being discussed, the formatter is missing or misconfigured.
 
 **TL-8** Every repository containing code MUST commit a linter configuration.
 

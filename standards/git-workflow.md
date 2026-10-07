@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 2.2.0
+version: 2.2.1
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -13,7 +13,9 @@ Prefix: `GW`
 
 ## Branches
 
-**GW-1** `main` MUST always be in a working state. Anything merged to `main` runs.
+**GW-1** `main` MUST always be in a working state.
+
+Anything merged to `main` runs.
 
 **GW-2** Work MUST happen on a branch named per `NAM-12`, not directly on `main`, unless the repository is single author and the change is trivial.
 
@@ -39,9 +41,9 @@ A MAJOR increment on a maintenance branch contradicts the reason the branch exis
 
 **GW-6** A commit message MUST take the form `<type>: <summary>`, where `<type>` is one of `feat`, `fix`, `docs`, `chore`, `refactor`, `test`.
 
-**GW-7** The summary MUST be imperative, lowercase after the type, at most 65 characters including the type and excluding any reference a forge appends on merge, and MUST NOT end with a period. Anything that does not fit goes in the body.
+**GW-7** The summary MUST be imperative, lowercase after the type, at most 65 characters including the type and excluding any reference a forge appends on merge, and MUST NOT end with a period.
 
-The limit governs what a person or an agent writes. A forge that appends its own reference on merge adds to that, and the sum still fits a line that reads without wrapping.
+Anything that does not fit goes in the body. The limit governs what a person or an agent writes. A forge that appends its own reference on merge adds to that, and the sum still fits a line that reads without wrapping.
 
 Correct: `docs: add consumer contract to meta layer`
 Incorrect: `Added consumer contract.`, `updates`, `wip`
@@ -72,10 +74,14 @@ A file of review findings has to be pruned by hand once they are resolved. A pul
 
 ## History
 
-**GW-16** History on a shared branch MUST NOT be rewritten. Force pushing to `main` is prohibited.
+**GW-16** History on a shared branch MUST NOT be rewritten.
+
+Force pushing to `main` is prohibited.
 
 **GW-17** A local branch MAY be rebased or squashed before it is shared.
 
 **GW-18** A mistake in a shared branch MUST be corrected with a new commit, not by rewriting.
 
-**GW-19** A committed secret MUST be treated as compromised and rotated. Removing it from history does not undo the exposure.
+**GW-19** A committed secret MUST be treated as compromised and rotated.
+
+Removing it from history does not undo the exposure.
