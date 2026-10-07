@@ -34,7 +34,7 @@ Level 0 is exploratory, which is why it is exempt from everything but the two ru
 | Idea | `docs/idea.md` | LC-7, LC-8, LC-9 |
 | Needs | `docs/needs.md` | LC-10 to LC-12, LC-42 |
 | Requirements | `docs/requirements.md` | LC-13 to LC-18, LC-43 |
-| Architecture | `docs/architecture.md` | LC-19 to LC-22 |
+| Architecture | `docs/architecture.md` | LC-19 to LC-22, LC-46 |
 | Design | `docs/design.md` | LC-23, LC-24, LC-25 |
 | Build | source, tests | governed by `standards/git-workflow.md` |
 | Verification | `docs/verification.md` | LC-26, LC-27 |
@@ -85,7 +85,9 @@ The characteristics are functional suitability, performance efficiency, compatib
 
 ## Architecture
 
-**LC-19** `docs/architecture.md` MUST name the chosen approach and at least one rejected alternative with the reason for rejecting it.
+**LC-19** `docs/architecture.md` MUST name the chosen approach.
+
+**LC-46** `docs/architecture.md` MUST name at least one rejected alternative with the reason for rejecting it.
 
 **LC-20** `docs/architecture.md` MUST state what lies inside the product's boundary and what it depends on outside it.
 

@@ -17,9 +17,9 @@ Prefix: `DOC`
 
 **DOC-2** Documentation beyond the README SHOULD live in `docs/`.
 
-**DOC-37** A document in `docs/` SHOULD cover one topic.
+**DOC-37** A file in `docs/` SHOULD cover one topic.
 
-Its file name follows NAM-2 like any other.
+NAM-2 governs the name of a file in `docs/`, as it does every file name.
 
 **DOC-3** A fact MUST have exactly one home. Where it is needed elsewhere, it MUST be linked, not copied.
 

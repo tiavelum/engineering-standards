@@ -27,7 +27,7 @@ meta:
   - id: precedence
     path: meta/precedence.md
     title: Precedence and deviation
-    version: 1.1.0
+    version: 1.2.0
     status: active
     summary: How conflicts between these standards, a consuming repo and a task instruction are resolved, and how a deviation is recorded.
     applies_to: [all]
@@ -95,7 +95,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 4.1.0
+    version: 4.2.0
     status: active
     summary: What the README of any repository must answer, in which order the reader meets it, and when it is done.
     applies_to: [all]

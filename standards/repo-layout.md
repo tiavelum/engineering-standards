@@ -35,7 +35,7 @@ The clause is general on purpose. PR-5 fixes `deviations.md` at the root. Enumer
 
 **RL-9** Each top-level directory MUST have exactly one role.
 
-The README states each role, as RM-11 requires.
+RL-16 requires the README's structure section to say which directory holds what.
 
 **RL-10** A repository SHOULD use these names where the role applies, rather than inventing synonyms:
 
