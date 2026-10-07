@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 4.1.1
+version: 4.2.0
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, and what must not live in a repository.
@@ -33,7 +33,9 @@ The clause is general on purpose. PR-5 fixes `deviations.md` at the root. Enumer
 
 ## Directory roles
 
-**RL-9** Each top-level directory MUST have exactly one role, stated in the README's structure section.
+**RL-9** Each top-level directory MUST have exactly one role.
+
+RL-16 requires the README's structure section to say which directory holds what.
 
 **RL-10** A repository SHOULD use these names where the role applies, rather than inventing synonyms:
 

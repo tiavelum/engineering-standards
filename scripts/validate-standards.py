@@ -337,7 +337,7 @@ def check_rule_prefix_uniqueness(all_rules: list[tuple[str, str]]) -> None:
     for rule_id, relative in all_rules:
         prefix = rule_id.split("-")[0]
         if prefix in prefix_owner and prefix_owner[prefix] != relative:
-            error(relative, "RF-10", f"prefix {prefix} is already used by {prefix_owner[prefix]}")
+            error(relative, "RF-40", f"prefix {prefix} is already used by {prefix_owner[prefix]}")
         prefix_owner.setdefault(prefix, relative)
         if rule_id in seen and seen[rule_id] != relative:
             error(relative, "RF-11", f"rule {rule_id} also defined in {seen[rule_id]}")

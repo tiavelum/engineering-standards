@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 4.1.0
+version: 4.2.0
 status: active
 applies_to: [all]
 summary: What the README of any repository must answer, in which order the reader meets it, and when it is done.
@@ -90,7 +90,9 @@ A screen cannot be measured; a word count can. The count covers everything above
 
 **RM-35** "Content and structure" MUST name the entry point files a reader opens first.
 
-**RM-12** "Configuration" MUST list only options a normal user changes, and an exhaustive reference MUST be linked, not inlined.
+**RM-12** "Configuration" MUST list only options a normal user changes.
+
+**RM-37** An exhaustive reference of options MUST be linked from "Configuration", not inlined.
 
 **RM-36** Each option in "Configuration" MUST carry its default and its effect.
 

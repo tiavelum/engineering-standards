@@ -18,7 +18,7 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 5.0.0
+    version: 5.1.0
     status: active
     summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
@@ -27,7 +27,7 @@ meta:
   - id: precedence
     path: meta/precedence.md
     title: Precedence and deviation
-    version: 1.1.0
+    version: 1.2.0
     status: active
     summary: How conflicts between these standards, a consuming repo and a task instruction are resolved, and how a deviation is recorded.
     applies_to: [all]
@@ -45,7 +45,7 @@ standards:
   - id: naming
     path: standards/naming.md
     title: Naming
-    version: 3.1.0
+    version: 3.1.1
     status: active
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]
@@ -55,7 +55,7 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 4.1.1
+    version: 4.2.0
     status: active
     summary: Required top-level files, directory roles, and what must not live in a repository.
     applies_to: [all]
@@ -95,7 +95,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 4.1.0
+    version: 4.2.0
     status: active
     summary: What the README of any repository must answer, in which order the reader meets it, and when it is done.
     applies_to: [all]
@@ -104,7 +104,7 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 6.1.0
+    version: 6.2.0
     status: active
     summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
     applies_to: [all]
@@ -114,7 +114,7 @@ standards:
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 5.1.0
+    version: 5.1.1
     status: active
     summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]
@@ -124,7 +124,7 @@ standards:
   - id: lifecycle
     path: standards/lifecycle.md
     title: Product lifecycle
-    version: 1.1.0
+    version: 1.2.0
     status: draft
     summary: The phases a product passes through from idea to operation, the artifact each produces, and the gate that must be passed to leave it.
     applies_to: [all]

@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 5.1.0
+version: 5.1.1
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -21,7 +21,9 @@ The configuration is the rule (TL-3), and a second statement of it drifts. A rul
 
 Such a property belongs in the formatter or linter configuration of the repository it governs (TL-6, TL-8). A standard may require that the configuration exists and what it covers, as TL-5 does.
 
-**TL-3** Tool configuration MUST be committed to the repository it governs, so that the configuration is the rule.
+**TL-3** Tool configuration MUST be committed to the repository it governs.
+
+The committed configuration is then the rule.
 
 **TL-4** When a tool and a written standard disagree, the standard MUST be treated as the defect and corrected.
 
@@ -69,7 +71,9 @@ A check that only warns does not gate.
 
 **TL-26** A lock file MUST be committed.
 
-**TL-15** Tool versions used in CI MUST be pinned, so that a build is reproducible.
+**TL-15** Tool versions used in CI MUST be pinned.
+
+A build is reproducible only with pinned tools.
 
 **TL-16** A dependency MUST be added only when it is used.
 

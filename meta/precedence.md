@@ -1,7 +1,7 @@
 ---
 id: precedence
 title: Precedence and deviation
-version: 1.1.0
+version: 1.2.0
 status: active
 applies_to: [all]
 summary: How conflicts between these standards, a consuming repository and a task instruction are resolved, and how a deviation is recorded.
@@ -19,7 +19,9 @@ summary: How conflicts between these standards, a consuming repository and a tas
 4. These standards.
 5. Community defaults for the language or framework in use.
 
-**PR-2** A lower source MUST NOT be used to override a higher one silently. If a standard is set aside, it MUST be recorded per PR-5.
+**PR-2** A lower source MUST NOT be used to override a higher one silently.
+
+**PR-10** A standard that is set aside MUST be recorded per PR-5.
 
 **PR-3** Where these standards are silent, the community default MUST be applied, and the silence MUST NOT be read as a prohibition.
 
