@@ -1,7 +1,7 @@
 ---
 id: lifecycle
 title: Product lifecycle
-version: 1.0.2
+version: 1.1.0
 status: draft
 applies_to: [all]
 summary: The phases a product passes through from idea to operation, the artifact each produces, and the gate that must be passed to leave it.
@@ -21,7 +21,7 @@ This standard governs a repository that produces a product. It does not govern a
 
 **LC-3** A repository at level 1 or 2 MUST NOT depend on a repository at level 0.
 
-**LC-4** A repository at level 2 MUST satisfy LC-38 through LC-41 in addition to every other rule here.
+**LC-4** A repository at level 2 MUST satisfy LC-38 through LC-41 and LC-44 in addition to every other rule here.
 
 Level 0 is exploratory, which is why it is exempt from everything but the two rules that keep it from being depended on. Level 1 is the default. Level 2 applies where a failure costs more than the record keeping, or where someone outside the project must be able to check that something was done rather than take it on trust.
 
@@ -32,8 +32,8 @@ Level 0 is exploratory, which is why it is exempt from everything but the two ru
 | Phase | Artifact | Gate rules |
 |-------|----------|------------|
 | Idea | `docs/idea.md` | LC-7, LC-8, LC-9 |
-| Needs | `docs/needs.md` | LC-10, LC-11, LC-12 |
-| Requirements | `docs/requirements.md` | LC-13 to LC-18 |
+| Needs | `docs/needs.md` | LC-10 to LC-12, LC-42 |
+| Requirements | `docs/requirements.md` | LC-13 to LC-18, LC-43 |
 | Architecture | `docs/architecture.md` | LC-19 to LC-22 |
 | Design | `docs/design.md` | LC-23, LC-24, LC-25 |
 | Build | source, tests | governed by `standards/git-workflow.md` |
@@ -57,7 +57,9 @@ The build phase has no gate record of its own. Its evidence is a merged pull req
 
 A need is what a person must be able to do. It is not what the system does; that is a requirement.
 
-**LC-10** Each need MUST carry a unique identifier of the form `NEED-<n>`, and MUST NOT reuse a withdrawn identifier.
+**LC-10** Each need MUST carry a unique identifier of the form `NEED-<n>`.
+
+**LC-42** A need MUST NOT reuse the identifier of a withdrawn need.
 
 **LC-11** Each need MUST state who has it, what they must be able to do, and a priority of `must`, `should` or `could`.
 
@@ -65,7 +67,9 @@ A need is what a person must be able to do. It is not what the system does; that
 
 ## Requirements
 
-**LC-13** Each requirement MUST carry a unique identifier of the form `REQ-<n>`, and MUST NOT reuse a withdrawn identifier.
+**LC-13** Each requirement MUST carry a unique identifier of the form `REQ-<n>`.
+
+**LC-43** A requirement MUST NOT reuse the identifier of a withdrawn requirement.
 
 **LC-14** Each requirement MUST state an acceptance criterion that a reader who did not write it can evaluate.
 
@@ -145,4 +149,6 @@ LC-36 specialises `DOC-19` for the artifacts of this standard. It is what decide
 
 **LC-40** Each decision that fixes a component boundary or a technology MUST be recorded per `DOC-10`.
 
-**LC-41** A gate record MUST name the person who reviewed it, and that person MUST NOT be the author of the artifact.
+**LC-41** A gate record MUST name the person who reviewed it.
+
+**LC-44** The reviewer a gate record names MUST NOT be the author of the artifact.

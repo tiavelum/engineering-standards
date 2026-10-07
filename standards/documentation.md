@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 6.0.1
+version: 6.1.0
 status: active
 applies_to: [all]
 summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
@@ -23,7 +23,9 @@ Prefix: `DOC`
 
 ## Writing
 
-**DOC-5** Documentation MUST be written for the reader who will act on it, and MUST state what the reader does, not what the author did.
+**DOC-5** Documentation MUST be written for the reader who will act on it.
+
+**DOC-35** Documentation MUST state what the reader does, not what the author did.
 
 **DOC-6** Documentation MUST describe the current state.
 
@@ -76,7 +78,9 @@ These rules name GitHub because that is where these repositories live. A reposit
 
 **DOC-10** A decision that constrains future work and is not obvious from the code MUST be recorded as a decision record in `docs/decisions/`.
 
-**DOC-11** A decision record MUST be named `<nnnn>-<short-title>.md` with a zero padded sequence number, and MUST contain: context, the decision, the alternatives considered, and the consequences.
+**DOC-11** A decision record MUST be named `<nnnn>-<short-title>.md` with a zero padded sequence number.
+
+**DOC-36** A decision record MUST contain: context, the decision, the alternatives considered, and the consequences.
 
 **DOC-12** A decision record MUST NOT be edited after acceptance except to mark it superseded and name its successor.
 

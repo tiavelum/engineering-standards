@@ -29,9 +29,15 @@ Preferences that cannot be checked belong in conversation, not in this repositor
 
 **RF-5** Each file MUST begin with YAML front matter carrying: `id`, `title`, `version`, `status`, `applies_to`, `summary`.
 
-**RF-6** `id` MUST be unique across the repository, lowercase, hyphen separated, and identical to the file's `id` in `index.yaml`.
+**RF-6** `id` MUST be unique across the repository.
 
-**RF-7** `status` MUST be one of `active`, `draft`, `deprecated`. A `deprecated` file MUST name its replacement in the first paragraph.
+**RF-35** `id` MUST be lowercase and hyphen separated.
+
+**RF-36** `id` MUST be identical to the file's `id` in `index.yaml`.
+
+**RF-7** `status` MUST be one of `active`, `draft`, `deprecated`.
+
+**RF-37** A `deprecated` file MUST name its replacement in the first paragraph.
 
 **RF-8** `summary` MUST be a single sentence stating what the file governs.
 
@@ -55,7 +61,7 @@ Beyond that, split it by topic rather than adding sections.
 
 **RF-33** A relative link in a file listed in `index.yaml` MUST resolve to an existing path.
 
-The entry is closed rather than open. CO-9 promises a consumer that `schema_version` tracks a breaking change to the index structure, and that promise is empty while a field can appear without anyone announcing it. The cost is that a new field needs a rule before it needs code, which is the order this repository wants anyway.
+The entry is closed rather than open. CO-20 promises a consumer that `schema_version` tracks a breaking change to the index structure, and that promise is empty while a field can appear without anyone announcing it. The cost is that a new field needs a rule before it needs code, which is the order this repository wants anyway.
 
 ## Dependencies between standards
 
@@ -89,7 +95,9 @@ A draft rule stays in its place and keeps its identifier, so it can be cited whi
 
 The keyword MUST appear on the identifier's own line, since that is where a reader looks to find out whether a rule binds them and where a check can find it without guessing how far a rule extends.
 
-**RF-14** A rule MUST state the required outcome, not the reasoning. Reasoning, where needed, goes in a separate paragraph that carries no identifier.
+**RF-14** A rule MUST state the required outcome, not the reasoning.
+
+**RF-38** Reasoning, where needed, MUST go in a separate paragraph that carries no identifier.
 
 **RF-15** A rule MUST NOT contain two independent requirements.
 
@@ -97,7 +105,9 @@ Two requirements are independent when one can be met while the other is broken. 
 
 One requirement: `MUST start from index.yaml and MUST NOT discover standards by listing directories`. Two: `MUST name the problem solved and MUST state the scope boundary`.
 
-**RF-16** Examples MUST be concrete and MUST show both the correct and the incorrect form where the distinction is the point.
+**RF-16** Examples MUST be concrete.
+
+**RF-39** Examples MUST show both the correct and the incorrect form where the distinction is the point.
 
 ## Versioning
 

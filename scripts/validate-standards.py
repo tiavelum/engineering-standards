@@ -186,7 +186,7 @@ def check_catalogue(index: dict, entries: list[dict]) -> None:
 
         entry_id = entry.get("id", "")
         if not RE_ID.match(str(entry_id)):
-            error(where, "RF-6", f"id is not lowercase hyphen separated: {entry_id!r}")
+            error(where, "RF-35", f"id is not lowercase hyphen separated: {entry_id!r}")
         if entry_id in seen_ids:
             error(where, "RF-6", f"id duplicates {seen_ids[entry_id]}")
         seen_ids[entry_id] = where
@@ -232,7 +232,7 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
     entry = entries_by_path.get(relative)
     if entry:
         if entry.get("id") != front.get("id"):
-            error(relative, "RF-6", "front matter id does not match the index entry id")
+            error(relative, "RF-36", "front matter id does not match the index entry id")
         if str(entry.get("version")) != str(front.get("version")):
             error(relative, "RF-30", "front matter version does not match the index entry")
         if entry.get("title") != front.get("title"):

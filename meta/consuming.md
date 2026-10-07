@@ -1,7 +1,7 @@
 ---
 id: consuming
 title: Consumer contract
-version: 2.2.1
+version: 2.3.0
 status: active
 applies_to: [tooling, agents]
 summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
@@ -30,7 +30,9 @@ A consumer is anything that loads these standards to apply them: a skill, a plug
 
 The closure can contain cycles, because two standards may each define a term the other uses. A consumer resolves it by tracking what it has already loaded, not by recursing until it stops.
 
-**CO-4** A consumer MUST ignore entries with `status: draft` unless explicitly asked to include them, and MUST warn when applying an entry with `status: deprecated`.
+**CO-4** A consumer MUST ignore entries with `status: draft` unless explicitly asked to include them.
+
+**CO-18** A consumer MUST warn when applying an entry with `status: deprecated`.
 
 **CO-17** A consumer MUST ignore a rule that carries the draft marker of RF-34 unless explicitly asked to include it.
 
@@ -40,13 +42,17 @@ The closure can contain cycles, because two standards may each define a term the
 
 **CO-6** A consumer MUST apply the precedence order in `meta/precedence.md` rather than assuming these standards outrank a direct instruction.
 
-**CO-7** A consumer MUST NOT invent rules. If the standards are silent on a point, the consumer applies the community default and says so.
+**CO-7** A consumer MUST NOT invent rules.
+
+**CO-19** A consumer that applies a community default under PR-3 MUST say so.
 
 **CO-8** A consumer that produces a file governed by a standard SHOULD state which standards it applied.
 
 ## Stability guarantees
 
-**CO-9** `index.yaml` MUST keep its `schema_version`, and a breaking change to the index structure MUST increment it.
+**CO-9** `index.yaml` MUST keep its `schema_version`.
+
+**CO-20** A breaking change to the index structure MUST increment `schema_version`.
 
 **CO-10** File paths listed in `index.yaml` MUST be stable within a major version of the standard they point at.
 

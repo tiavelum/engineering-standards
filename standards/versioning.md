@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning
-version: 1.1.2
+version: 1.2.0
 status: active
 applies_to: [software]
 summary: How a release version is formed, where it is recorded, and when each component is incremented.
@@ -38,7 +38,9 @@ The specification is incorporated by reference. The rules below narrow it for th
 
 A version written by hand in a second place is a version that will disagree with the first. Documentation, build arguments, generated headers and image tags all read from the one location.
 
-**VER-32** A repository that publishes releases MUST commit a check that fails when the version of record and the git tag disagree, and that check MUST gate the merge.
+**VER-32** A repository that publishes releases MUST commit a check that fails when the version of record and the git tag disagree.
+
+**VER-33** The check VER-32 requires MUST gate the merge.
 
 Version grammar, agreement between tag and manifest, monotonic increase and prior publication are all machine checkable, so this check enforces them in CI (TL-10) and this file does not repeat them.
 
