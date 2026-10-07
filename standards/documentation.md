@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 6.1.0
+version: 6.2.0
 status: active
 applies_to: [all]
 summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
@@ -15,7 +15,11 @@ Prefix: `DOC`
 
 **DOC-1** Documentation MUST live in the repository it describes.
 
-**DOC-2** Documentation beyond the README SHOULD live in `docs/`, one topic per file, named per `NAM-2`.
+**DOC-2** Documentation beyond the README SHOULD live in `docs/`.
+
+**DOC-37** A document in `docs/` SHOULD cover one topic.
+
+Its file name follows NAM-2 like any other.
 
 **DOC-3** A fact MUST have exactly one home. Where it is needed elsewhere, it MUST be linked, not copied.
 
@@ -68,7 +72,9 @@ The prohibition covers the file's purpose, not its name. A file listing outstand
 
 **DOC-24** An issue MUST state what is to be done and why, in terms a reader who was not present when it was raised can act on.
 
-**DOC-25** A pull request that resolves an issue MUST reference that issue with a closing keyword, so that merging the pull request closes the issue.
+**DOC-25** A pull request that resolves an issue MUST reference that issue with a closing keyword.
+
+Merging the pull request then closes the issue.
 
 **DOC-26** Work that spans several issues SHOULD be held by one tracking issue stating the intent and the method, linking each child issue as it is opened.
 

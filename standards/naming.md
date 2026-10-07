@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 3.1.0
+version: 3.1.1
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -28,7 +28,9 @@ Version control holds that information. A date that identifies the subject rathe
 
 **NAM-5** Abbreviations MUST NOT be used unless they are unambiguous in the repository's domain and used consistently.
 
-**NAM-6** A file whose name is fixed by an external tool or convention MUST be exempt from NAM-2 and NAM-3. Examples: `README.md`, `LICENSE`, `Dockerfile`, `Makefile`, `CODEOWNERS`, `.editorconfig`.
+**NAM-6** A file whose name is fixed by an external tool or convention MUST be exempt from NAM-2 and NAM-3.
+
+Examples: `README.md`, `LICENSE`, `Dockerfile`, `Makefile`, `CODEOWNERS`, `.editorconfig`.
 
 ## Dates and periods
 

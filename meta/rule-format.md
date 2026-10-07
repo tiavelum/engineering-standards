@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 5.0.0
+version: 5.1.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -75,7 +75,9 @@ A standard that defers to another is not a defect; hiding that it does is. RF-26
 
 ## Rule identifiers
 
-**RF-10** Every rule MUST carry an identifier of the form `<PREFIX>-<n>`, where `<PREFIX>` is a two or three letter uppercase abbreviation of the file `id`, unique across the repository.
+**RF-10** Every rule MUST carry an identifier of the form `<PREFIX>-<n>`, where `<PREFIX>` is a two or three letter uppercase abbreviation of the file `id`.
+
+**RF-40** A prefix MUST be unique across the repository.
 
 **RF-11** An identifier MUST NOT be reused for any rule other than the one it was first assigned to, including after that rule is removed.
 
