@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 6.2.0
+version: 6.3.0
 status: active
 applies_to: [all]
 summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
@@ -70,7 +70,30 @@ The prohibition covers the file's purpose, not its name. A file listing outstand
 
 **DOC-23** The following MUST be treated as records of the current state rather than open items, governed by their own rules rather than by DOC-21 and DOC-22: the deviations file required by PR-5, the known limitations required by RM-18, and decision records under DOC-10.
 
+**DOC-38** An issue's title MUST state the work as an imperative phrase.
+
+Correct: `Split the rules that hold two independent requirements`, `Decide whether source files may sit at the root`
+Incorrect: `Rule splitting`, `Source files at the root?`, `Two rules disagree on .editorconfig`
+
 **DOC-24** An issue MUST state what is to be done and why, in terms a reader who was not present when it was raised can act on.
+
+**DOC-39** An issue MUST state the condition under which it is done.
+
+The condition lets anyone close the issue, or see that it is not done yet, without asking its author.
+
+**DOC-40** An issue that asks for a decision MUST list the options it knows, each with its consequence.
+
+**DOC-41** An issue that asks for a decision SHOULD name the option its author recommends, with the reason.
+
+**DOC-42** An issue MUST be written in English.
+
+An issue has the readers of the repository's documentation, which DOC-30 requires in English.
+
+**DOC-43** An issue MUST NOT duplicate an open issue of the same repository.
+
+**DOC-44** An issue closed without a pull request MUST carry a comment stating how it was resolved.
+
+DOC-25 lets the pull request that resolves an issue record the resolution. An issue resolved any other way, by a decision, a setting or work already done, has no such record unless the comment gives it.
 
 **DOC-25** A pull request that resolves an issue MUST reference that issue with a closing keyword.
 
