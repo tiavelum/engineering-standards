@@ -1,10 +1,10 @@
 ---
 id: documentation
 title: Documentation
-version: 6.3.0
+version: 6.4.0
 status: active
 applies_to: [all]
-summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
+summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, decision records, comments in source, change notes and maintenance."
 ---
 
 # Documentation

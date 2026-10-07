@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 2.3.0
+version: 2.4.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -67,8 +67,6 @@ Incorrect: `Added consumer contract.`, `updates`, `wip`
 ## Pull requests
 
 **GW-12** A pull request description MUST state what changes and why, in terms a reviewer who did not write it can follow.
-
-**GW-13** A pull request that changes a documented convention MUST update the documentation in the same pull request.
 
 **GW-14** A pull request MUST NOT be merged with failing checks.
 

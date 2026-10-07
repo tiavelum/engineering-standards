@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 5.0.0
+version: 5.1.0
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, and what must not live in a repository.
@@ -33,7 +33,7 @@ The clause is general on purpose. PR-5 fixes `deviations.md` at the root. Enumer
 
 **RL-9** Each top-level directory MUST have exactly one role.
 
-RL-16 requires the README's structure section to say which directory holds what.
+RM-11 requires the README's structure section to say which directory holds what.
 
 **RL-10** A repository SHOULD use these names where the role applies, rather than inventing synonyms:
 
@@ -64,7 +64,5 @@ Reference them or use a purpose built store.
 **RL-15** Personal notes, session logs and working files MUST NOT be committed unless the repository exists for them.
 
 ## Discoverability
-
-**RL-16** A reader MUST be able to determine from the README's structure section which directory holds what, without opening files.
 
 **RL-17** A directory whose purpose is not obvious from its name SHOULD carry a short `README.md` of its own.

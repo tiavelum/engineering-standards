@@ -55,7 +55,7 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 5.0.0
+    version: 5.1.0
     status: active
     summary: Required top-level files, directory roles, and what must not live in a repository.
     applies_to: [all]
@@ -65,7 +65,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 2.3.0
+    version: 2.4.0
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
@@ -95,18 +95,19 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 4.2.0
+    version: 4.3.0
     status: active
     summary: What the README of any repository must answer, in which order the reader meets it, and when it is done.
     applies_to: [all]
     tags: [documentation, readme]
+    requires: [documentation]
 
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 6.3.0
+    version: 6.4.0
     status: active
-    summary: "Documentation beyond the README: where it lives, open items, decision records, comments, change notes."
+    summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, decision records, comments in source, change notes and maintenance."
     applies_to: [all]
     tags: [documentation, adr]
     requires: [naming, precedence, readme-contract]
