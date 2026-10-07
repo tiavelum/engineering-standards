@@ -18,7 +18,7 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 3.2.1
+    version: 4.0.0
     status: active
     summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
@@ -75,7 +75,7 @@ standards:
   - id: versioning
     path: standards/versioning.md
     title: Versioning
-    version: 1.1.1
+    version: 1.1.2
     status: active
     summary: How a release version is formed, where it is recorded, and when each component is incremented.
     applies_to: [software]
@@ -114,7 +114,7 @@ standards:
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 4.0.1
+    version: 5.0.0
     status: active
     summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]

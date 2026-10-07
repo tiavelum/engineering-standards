@@ -263,7 +263,7 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
         # RF-13 wants the keyword on the identifier's own line. A rule whose
         # keyword sits further down is a rule that does not say what it binds.
         # This is a floor: a keyword named rather than used still passes, which
-        # TL-2 leaves to review.
+        # RF-1 leaves to review.
         if not RE_RFC2119.search(line.removeprefix(match.group(0))):
             error(relative, "RF-13", f"rule {rule_id} states no RFC 2119 keyword")
 

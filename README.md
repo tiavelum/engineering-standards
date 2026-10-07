@@ -6,7 +6,7 @@ The normative engineering standards used across tiavelum's repositories. Naming,
 
 This repo is the single source of truth for how work is structured across repositories: what files are called, how a repo is laid out, what a commit message says, what a README must contain. It exists so those decisions are made once, in one place, and applied everywhere, including when the files are not written by hand.
 
-It covers conventions that a linter cannot check. Formatting, import order and line length belong in tool configuration, not here. See [standards/tooling.md](standards/tooling.md) for that boundary.
+It covers conventions that have to be read to be followed. Formatting, import order and line length belong in tool configuration, not here. See [standards/tooling.md](standards/tooling.md) for that boundary.
 
 It is not a tutorial, not a style guide for any single language, and not a record of past decisions.
 

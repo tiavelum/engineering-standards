@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 3.2.1
+version: 4.0.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -21,11 +21,7 @@ This file governs how every file in `standards/` is written. It exists so that s
 
 **RF-2** A rule that fails RF-1 MUST NOT be added.
 
-Preferences that cannot be checked belong in conversation, not in this repository.
-
-**RF-3** A rule that a tool already enforces MUST NOT be restated here.
-
-Point at the tool configuration instead. See `standards/tooling.md`.
+Preferences that cannot be checked belong in conversation, not in this repository. What a formatter or linter sets is kept out of a standard by TL-2.
 
 ## File structure
 
