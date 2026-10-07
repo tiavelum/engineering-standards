@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 4.0.0
+version: 5.0.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -93,7 +93,9 @@ The keyword MUST appear on the identifier's own line, since that is where a read
 
 **RF-15** A rule MUST NOT contain two independent requirements.
 
-Such a rule is split into two.
+Two requirements are independent when one can be met while the other is broken. Two parts are still one requirement when the second forbids only the alternative the first replaces, or when together they define one form, such as the form of a name or of a line. A rule that holds two independent requirements is split, and its identifier stays with the first (RF-23).
+
+One requirement: `MUST start from index.yaml and MUST NOT discover standards by listing directories`. Two: `MUST name the problem solved and MUST state the scope boundary`.
 
 **RF-16** Examples MUST be concrete and MUST show both the correct and the incorrect form where the distinction is the point.
 
@@ -101,7 +103,9 @@ Such a rule is split into two.
 
 **RF-17** Each standard file MUST carry its own semantic version in front matter.
 
-**RF-18** The version MUST be incremented as follows: major when an existing MUST rule changes or is removed, minor when a rule is added, patch for wording that does not change meaning.
+**RF-18** The version MUST be incremented as follows: major when an existing MUST rule changes or is removed; minor when a rule is added, or when rules are split or reduced without changing what is required in total; patch for wording that does not change meaning.
+
+A split, or dropping the part of a rule that another rule already states, changes the text but not what anyone has to do, so it is not the break a major increment announces. Giving a requirement that had no keyword a rule of its own is such a split.
 
 **RF-19** A change to a standard MUST update the file, its front matter `version`, and its `index.yaml` entry in the same commit.
 

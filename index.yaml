@@ -18,7 +18,7 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 4.0.0
+    version: 5.0.0
     status: active
     summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
