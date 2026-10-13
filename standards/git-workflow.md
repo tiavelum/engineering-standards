@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 2.4.0
+version: 2.5.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -18,6 +18,10 @@ Prefix: `GW`
 Anything merged to `main` runs.
 
 **GW-2** Work MUST happen on a branch named per `NAM-12`, not directly on `main`, unless the repository is single author and the change is trivial.
+
+**GW-29** Work on a branch SHOULD start from an issue that states it, opened before the first commit where none exists yet.
+
+The issue records what the work is before it begins, and `NAM-14` carries its number into the branch name.
 
 **GW-3** A branch MUST address one concern. A branch that grows a second concern MUST be split.
 
