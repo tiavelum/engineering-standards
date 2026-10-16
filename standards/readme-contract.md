@@ -1,10 +1,10 @@
 ---
 id: readme-contract
 title: README contract
-version: 4.3.0
+version: 5.0.0
 status: active
 applies_to: [all]
-summary: What the README of any repository must answer, in which order the reader meets it, and when it is done.
+summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
 ---
 
 # README contract
@@ -14,6 +14,10 @@ Prefix: `RM`
 The README is written for the user of the repository, not for its author. Assume a reader who has never seen the repo, has about thirty seconds to decide whether it is relevant, and wants a working result before understanding the internals.
 
 This standard fixes what a README answers and in which order the reader meets it. It does not fix headings or a list of sections: a README is as long as its repository gives the reader questions, and no longer.
+
+**RM-39** This standard MUST be applied to the README at the root of a repository and MUST NOT be applied to the README of a directory below it.
+
+A directory README is written for whoever changes that directory's content, and `standards/documentation.md` governs it, DOC-45 among its rules.
 
 ## What a README answers
 

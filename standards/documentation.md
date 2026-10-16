@@ -1,10 +1,10 @@
 ---
 id: documentation
 title: Documentation
-version: 6.4.0
+version: 7.0.0
 status: active
 applies_to: [all]
-summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, decision records, comments in source, change notes and maintenance."
+summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
 ---
 
 # Documentation
@@ -103,9 +103,15 @@ Merging the pull request then closes the issue.
 
 These rules name GitHub because that is where these repositories live. A repository hosted elsewhere uses the equivalent issue tracker of its host; what the rules require is the mechanism, not the vendor.
 
+## Directory READMEs
+
+**DOC-45** A rule that constrains how the content of one directory is built, and is not obvious from that content, MUST be described in the README of that directory.
+
+Whoever changes the content of a directory meets its README first, since a forge shows it below the listing. That README is written for them rather than for the user of the repository, and it describes the current rules of the content, not how they came about.
+
 ## Decision records
 
-**DOC-10** A decision that constrains future work and is not obvious from the code MUST be recorded as a decision record in `docs/decisions/`.
+**DOC-10** A decision that constrains future work across more than one directory and is not obvious from the code MUST be recorded as a decision record in `docs/decisions/`.
 
 **DOC-11** A decision record MUST be named `<nnnn>-<short-title>.md` with a zero padded sequence number.
 
