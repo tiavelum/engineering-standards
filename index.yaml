@@ -105,7 +105,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 5.0.0
+    version: 6.0.0
     status: active
     summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
     applies_to: [all]
@@ -115,7 +115,7 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 7.1.0
+    version: 7.2.0
     status: active
     summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
     applies_to: [all]

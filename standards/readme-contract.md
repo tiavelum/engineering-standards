@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 5.0.0
+version: 6.0.0
 status: active
 applies_to: [all]
 summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
@@ -25,7 +25,7 @@ A directory README is written for whoever changes that directory's content, and 
 
 | Role | Required | Answers | For example headed |
 |---|---|---|---|
-| Summary | MUST | What is this, and who is it for? | The title and the first paragraph |
+| Summary | MUST | What is this? | The title and the first paragraph |
 | What it is for | MAY | When do I use it, and when not? | What it is for, Scope |
 | Getting started | MUST | How do I get a first result? | Getting started, Setup, Usage |
 | Example | MAY | What does using it look like? | Example |
@@ -64,7 +64,7 @@ This is what keeps a small README small. A "What it is for" that repeats the sum
 
 ## Section rules
 
-**RM-3** The summary MUST state in one or two sentences what the repository is and who it is for, in plain language, before any badge, logo or table of contents.
+**RM-3** The summary MUST state in one or two sentences what the repository is, in plain language, before any badge, logo or table of contents.
 
 **RM-4** "What it is for" MUST name the concrete problem solved.
 
@@ -124,7 +124,7 @@ The rules of `standards/documentation.md` apply to a README as to every other do
 
 **RM-22** A README MUST let a reader who has never seen the repository do all of the following:
 
-- say what it is and who it is for, after the first paragraph;
+- say what it is, after the first paragraph;
 - decide whether it fits their problem, before reaching "Getting started";
 - get a working result by following "Getting started" alone;
 - find the file to open next, from "Content and structure";
