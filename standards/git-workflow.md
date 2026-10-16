@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 2.5.0
+version: 2.6.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -77,6 +77,10 @@ Incorrect: `Added consumer contract.`, `updates`, `wip`
 **GW-15** A pull request SHOULD stay small enough to review in one sitting.
 
 **GW-27** Large mechanical changes SHOULD be separated from behavioural ones.
+
+**GW-30** A pull request that states that behaviour is unchanged MUST name the check that shows it.
+
+A diff shows what changed in the code, not what stayed the same in its results, so the claim is the one part of such a pull request a reviewer cannot verify by reading it.
 
 **GW-24** A review MUST take place on a pull request, with its findings recorded as comments there and not in a committed file.
 
