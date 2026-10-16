@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 7.1.0
+version: 7.2.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -50,6 +50,13 @@ Incorrect: "Install the checks with `pip install -r requirements.txt` before you
 
 Correct: `octocat's repositories`
 Incorrect: `Mona's repositories`
+
+**DOC-47** A document MUST NOT name the repository's owner.
+
+A document says what the repository does, not whose it is. Where a sentence needs a person, a role such as the user or the developer names them; DOC-33 governs a file that has to name the owner, such as a license.
+
+Correct: `A sailing logbook built from the photos of each charter trip.`
+Incorrect: `A logbook of the charter trips octocat skippers.`
 
 ## Language
 
