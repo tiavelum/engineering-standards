@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 7.0.0
+version: 7.1.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -38,6 +38,11 @@ Historical narrative belongs in git history and, where it matters, in a decision
 **DOC-7** Every document MUST open with one sentence stating what it covers and for whom.
 
 **DOC-8** Instructions MUST be verifiable: a reader can follow them and observe the stated result.
+
+**DOC-46** A command the reader runs MUST be given in a fenced code block, not inline in running text.
+
+Correct: "Install the checks:" followed by a fenced block holding `pip install -r requirements.txt`
+Incorrect: "Install the checks with `pip install -r requirements.txt` before you start."
 
 **DOC-9** A document MUST NOT be published with TODOs, placeholders or empty sections.
 
