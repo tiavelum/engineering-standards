@@ -11,7 +11,7 @@
 
 schema_version: 1
 repository: tiavelum/engineering-standards
-updated: 2026-10-16
+updated: 2026-10-20
 validated_by: scripts/validate-standards.py
 
 meta:
@@ -45,12 +45,12 @@ standards:
   - id: naming
     path: standards/naming.md
     title: Naming
-    version: 3.1.1
+    version: 4.0.0
     status: active
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]
     tags: [files, directories, branches, repositories]
-    requires: [readme-contract]
+    requires: [git-workflow, readme-contract]
 
   - id: repo-layout
     path: standards/repo-layout.md
@@ -65,7 +65,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 2.6.0
+    version: 3.0.0
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]

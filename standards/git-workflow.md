@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 2.6.0
+version: 3.0.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -45,7 +45,9 @@ A MAJOR increment on a maintenance branch contradicts the reason the branch exis
 
 **GW-5** A commit MUST leave the repository in a working state.
 
-**GW-6** A commit message MUST take the form `<type>: <summary>`, where `<type>` is one of `feat`, `fix`, `docs`, `chore`, `refactor`, `test`.
+**GW-6** A commit message MUST take the form `<type>: <summary>`, where `<type>` is one of `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `build`, `ci`, `revert`.
+
+The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), without a scope and with the types limited to this list.
 
 **GW-7** The summary MUST be imperative, lowercase after the type, at most 65 characters including the type and excluding any reference a forge appends on merge, and MUST NOT end with a period.
 
