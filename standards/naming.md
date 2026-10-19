@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 3.1.1
+version: 4.0.0
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -78,7 +78,7 @@ Incorrect: `my-stuff`, `do-the-thing`
 
 ## Branches
 
-**NAM-12** A branch name MUST take the form `<type>/<short-description>`, where `<type>` is one of `feat`, `fix`, `docs`, `chore`, `refactor`, `test`.
+**NAM-12** A branch name MUST take the form `<type>/<short-description>`, where `<type>` is one of the types `GW-6` allows.
 
 **NAM-13** The description part MUST be lowercase, hyphen separated, and at most five words.
 
