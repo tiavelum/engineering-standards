@@ -44,14 +44,14 @@ Incorrect: "Install the checks with `pip install -r requirements.txt` before you
 
 **DOC-9** A document MUST NOT be published with TODOs, placeholders or empty sections.
 
-**DOC-33** A file that is not documentation MUST refer to the repository's owner by the owner's account handle, if at all.
+**DOC-33** A file that is not a document about the repository MUST refer to the repository's owner by the owner's account handle, if at all.
 
 Correct: `octocat's repositories`
 Incorrect: `Mona's repositories`
 
-**DOC-47** A document MUST NOT name the repository's owner.
+**DOC-47** A document about the repository MUST NOT name the repository's owner.
 
-A document says what the repository does, not whose it is. Where a sentence needs a person, a role such as the user or the developer names them. A file that has to name the owner, such as a license, is not documentation.
+A document says what the repository does, not whose it is. Where a sentence needs a person, a role such as the user or the developer names them. A file that has to name the owner, such as a license, is not a document about the repository.
 
 Correct: `A sailing logbook built from the photos of each charter trip.`
 Incorrect: `A logbook of the charter trips octocat skippers.`
