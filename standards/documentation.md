@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 8.0.0
+version: 9.0.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -60,27 +60,23 @@ Incorrect: `A logbook of the charter trips octocat skippers.`
 
 ## Language
 
-**DOC-30** A repository's README and its other documentation MUST be written in English.
+**DOC-30** A repository's README and every other document about the repository MUST be written in English.
 
-**DOC-31** Content whose language is part of what it is MUST be exempt from DOC-30.
-
-DOC-30 governs documentation about the repository. A German CV or a German handbook is the repository's content, and its language is the point of it.
+A document that is the repository's content rather than about it, such as a German CV or a German handbook, keeps the language that is the point of it.
 
 **DOC-32** Documentation that already exists in another language MUST keep that language until the repository's owner asks for a translation.
 
 ## Open items
 
-An open item is any identified piece of future work: a defect to fix, a change to make, a question to answer, or an intent to act on later. It is distinct from a record of the current state, which describes how things are rather than what remains to be done.
+An open item is any identified piece of future work: a defect to fix, a change to make, a question to answer, or an intent to act on later. It is distinct from a record of the current state, which describes how things are rather than what remains to be done, such as a deviation (PR-5), a known limitation (RM-18) or a decision record (DOC-10).
 
 **DOC-21** An open item MUST be recorded as a GitHub issue on the repository it concerns.
 
 **DOC-22** An open item MUST NOT be recorded in a file committed to the repository. A file whose purpose is to list outstanding work, such as `open-items.md`, `todo.md` or `backlog.md`, MUST NOT exist.
 
-Such a file has to be pruned by hand. In practice it is not, and it becomes the stale document that DOC-20 calls a defect. A GitHub issue closes itself when the pull request that resolves it is merged, so the list stays accurate without anyone maintaining it.
+Such a file has to be pruned by hand. In practice it is not, and it becomes the stale document that DOC-20 calls a defect. A GitHub issue closes itself when the change that resolves it reaches the default branch, so the list stays accurate without anyone maintaining it.
 
 The prohibition covers the file's purpose, not its name. A file listing outstanding work is forbidden whatever it is called; a file whose name happens to resemble one of the examples but which records the current state is not.
-
-**DOC-23** The following MUST be treated as records of the current state rather than open items, governed by their own rules rather than by DOC-21 and DOC-22: the deviations file required by PR-5, the known limitations required by RM-18, and decision records under DOC-10.
 
 **DOC-38** An issue's title MUST state the work as an imperative phrase.
 

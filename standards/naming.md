@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 4.0.0
+version: 5.0.0
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -15,22 +15,20 @@ Prefix: `NAM`
 
 **NAM-1** A name MUST describe what the thing is, not when it was made, who made it, or what was done to it.
 
-**NAM-2** File and directory names MUST use lowercase words separated by single hyphens.
+**NAM-2** A file or directory name that no tool or convention fixes MUST use lowercase words separated by single hyphens.
 
 Correct: `crew-handbook.md`, `api-reference.md`, `repo-layout.md`
 Incorrect: `Crew Handbook.md`, `crew_handbook.md`, `crewHandbook.md`
 
-**NAM-3** Names MUST NOT contain spaces, underscores, camelCase, or characters outside `a-z`, `0-9` and `-`.
+**NAM-3** A name that no tool or convention fixes MUST NOT contain spaces, underscores, camelCase, or characters outside `a-z`, `0-9` and `-`.
+
+A name a tool or convention fixes keeps the form it fixes, for example `README.md`, `LICENSE`, `Dockerfile`, `Makefile`, `CODEOWNERS`, `.editorconfig`.
 
 **NAM-4** A name MUST NOT carry a version, date or status suffix such as `-v2`, `-final`, `-new`, `-old`, `-2026-09`.
 
 Version control holds that information. A date that identifies the subject rather than the revision is permitted under NAM-18.
 
 **NAM-5** Abbreviations MUST NOT be used unless they are unambiguous in the repository's domain and used consistently.
-
-**NAM-6** A file whose name is fixed by an external tool or convention MUST be exempt from NAM-2 and NAM-3.
-
-Examples: `README.md`, `LICENSE`, `Dockerfile`, `Makefile`, `CODEOWNERS`, `.editorconfig`.
 
 ## Dates and periods
 
