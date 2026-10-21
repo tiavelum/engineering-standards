@@ -23,11 +23,11 @@ Preferences that cannot be checked belong in conversation, not in this repositor
 
 **RF-41** A rule MUST NOT exempt anything from another rule.
 
-A rule that needs an exemption from another shows that the other is scoped wrongly; that rule is rescoped instead.
+A rule that needs an exemption from another shows that the other is scoped wrongly, and rescoping it removes the need.
 
 **RF-42** A rule MUST NOT state a requirement another rule already states.
 
-Two statements of one requirement drift apart. Where a requirement is needed again, it is cited by its identifier.
+Two statements of one requirement drift apart; a citation by identifier keeps one.
 
 ## File structure
 
@@ -115,11 +115,11 @@ One requirement: `MUST start from index.yaml and MUST NOT discover standards by 
 
 ## Versioning
 
-**RF-17** Each standard file MUST carry its own semantic version in front matter.
+**RF-17** A file's `version` MUST be a semantic version.
 
 **RF-18** The version MUST be incremented as follows: major when the file's set of requirements loses or changes a requirement; minor when it gains a requirement and loses or changes none; patch when it stays the same.
 
-A split, a merge, or removing a rule whose requirement another rule already states leaves the set the same. A SHOULD that becomes a MUST, or a rule whose scope changes, changes a requirement.
+A split, a merge, or removing a rule whose requirement another rule of the same file already states leaves the set the same. A SHOULD that becomes a MUST, or a rule whose scope changes, changes a requirement.
 
 **RF-19** A change to a standard MUST update the file, its front matter `version`, and its `index.yaml` entry in the same commit.
 
