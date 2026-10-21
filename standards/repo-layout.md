@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 5.1.0
+version: 6.0.0
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, and what must not live in a repository.
@@ -13,11 +13,13 @@ Prefix: `RL`
 
 ## Required at the root
 
-**RL-1** Every repository MUST contain a `README.md` conforming to `standards/readme-contract.md`.
+**RL-1** The default branch of every repository MUST contain a `README.md` conforming to `standards/readme-contract.md`.
 
-**RL-2** Every public repository MUST contain a `LICENSE` file.
+**RL-2** The default branch of every public repository MUST contain a `LICENSE` file.
 
-**RL-3** Every repository MUST contain a `.gitignore` appropriate to its stack.
+**RL-3** The default branch of every repository MUST contain a `.gitignore` appropriate to its stack.
+
+A repository without commits has no default branch yet, so its first commit brings these files.
 
 ## Root discipline
 
