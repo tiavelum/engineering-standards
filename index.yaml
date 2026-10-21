@@ -115,7 +115,7 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 10.0.0
+    version: 11.0.0
     status: active
     summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
     applies_to: [all]
