@@ -54,8 +54,6 @@ The closure can contain cycles, because two standards may each define a term the
 
 **CO-12** Consumers MUST NOT rely on line numbers, heading order, or any structure not described in `meta/rule-format.md`.
 
-Rule identifiers are stable and never reused (RF-11, RF-23), so a consumer refers to a rule by its identifier.
-
 ## What a consumer must not assume
 
 **CO-13** A consumer that cannot fetch MUST say so rather than proceeding from memory of an earlier version.

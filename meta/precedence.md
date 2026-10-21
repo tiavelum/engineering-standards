@@ -25,7 +25,7 @@ summary: How conflicts between these standards, a consuming repository and a tas
 
 **PR-9** A conflict between two rules of these standards MUST be raised as an issue on this repository.
 
-Such a conflict is a defect in the standards. Until it is fixed, an instruction from the owner for the task at hand decides it (PR-1).
+Such a conflict is a defect in the standards. Until it is fixed, an explicit instruction from the repository owner for the task at hand outranks both rules (PR-1).
 
 ## Deviation
 
