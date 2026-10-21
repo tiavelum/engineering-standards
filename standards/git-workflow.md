@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 4.0.0
+version: 5.0.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -21,7 +21,7 @@ Anything merged to the default branch runs.
 
 A repository without commits has no default branch; its first commit creates it.
 
-**GW-29** Work on a branch SHOULD start from an issue that states it, opened before the first commit where none exists yet.
+**GW-29** A change MUST start from an issue of the repository it changes.
 
 The issue records what the work is before it begins, and `NAM-14` carries its number into the branch name.
 

@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 7.2.0
+version: 8.0.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -103,15 +103,15 @@ An issue has the readers of the repository's documentation, which DOC-30 require
 
 **DOC-43** An issue MUST NOT duplicate an open issue of the same repository.
 
-**DOC-44** An issue closed without a pull request MUST carry a comment stating how it was resolved.
+**DOC-44** An issue closed without a change MUST carry a comment stating how it was resolved.
 
-DOC-25 lets the pull request that resolves an issue record the resolution. An issue resolved any other way, by a decision, a setting or work already done, has no such record unless the comment gives it.
+DOC-25 lets the change that resolves an issue record the resolution. An issue resolved any other way, by a decision, a setting or work already done, has no such record unless the comment gives it.
 
-**DOC-25** A pull request that resolves an issue MUST reference that issue with a closing keyword.
+**DOC-25** An issue MUST be closed by the change that resolves it, through a closing keyword.
 
-Merging the pull request then closes the issue.
+A pull request carries the keyword in its description, a commit in its message; the issue closes when the change reaches the default branch.
 
-**DOC-26** Work that spans several issues SHOULD be held by one tracking issue stating the intent and the method, linking each child issue as it is opened.
+**DOC-26** Work that spans several issues SHOULD be held by one tracking issue that links each of them.
 
 These rules name GitHub because that is where these repositories live. A repository hosted elsewhere uses the equivalent issue tracker of its host; what the rules require is the mechanism, not the vendor.
 
