@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 3.0.0
+version: 4.0.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -13,17 +13,17 @@ Prefix: `GW`
 
 ## Branches
 
-**GW-1** `main` MUST always be in a working state.
+**GW-1** The default branch MUST always be in a working state.
 
-Anything merged to `main` runs.
+Anything merged to the default branch runs.
 
-**GW-2** Work MUST happen on a branch named per `NAM-12`, not directly on `main`, unless the repository is single author and the change is trivial.
+**GW-2** A change MUST reach the default branch through a pull request from a branch of its own, once the default branch exists.
+
+A repository without commits has no default branch; its first commit creates it.
 
 **GW-29** Work on a branch SHOULD start from an issue that states it, opened before the first commit where none exists yet.
 
 The issue records what the work is before it begins, and `NAM-14` carries its number into the branch name.
-
-**GW-3** A branch MUST address one concern. A branch that grows a second concern MUST be split.
 
 **GW-4** A merged branch MUST be deleted.
 
@@ -33,7 +33,7 @@ The issue records what the work is before it begins, and `NAM-14` carries its nu
 
 **GW-28** A release branch MUST be named `release/<major>.<minor>` or `release/<major>.x`.
 
-**GW-21** A fix MUST be committed to `main` before it is cherry picked or backported to a release branch.
+**GW-21** A fix MUST be committed to the default branch before it is cherry picked or backported to a release branch.
 
 Fixing a release branch first is how a fix gets lost in the next major line. The commit exists where it was needed and nowhere else, and nothing notices until the line it was missing from ships.
 
@@ -92,7 +92,7 @@ A file of review findings has to be pruned by hand once they are resolved. A pul
 
 **GW-16** History on a shared branch MUST NOT be rewritten.
 
-Force pushing to `main` is prohibited.
+Force pushing to the default branch is prohibited.
 
 **GW-17** A local branch MAY be rebased or squashed before it is shared.
 
