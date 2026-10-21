@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 5.0.0
+version: 6.0.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -12,10 +12,6 @@ summary: Branching, commit messages, pull requests and history hygiene.
 Prefix: `GW`
 
 ## Branches
-
-**GW-1** The default branch MUST always be in a working state.
-
-Anything merged to the default branch runs.
 
 **GW-2** A commit MUST reach the default branch through a pull request, once the default branch exists.
 
@@ -49,6 +45,8 @@ A MAJOR increment on a maintenance branch contradicts the reason the branch exis
 
 **GW-5** A commit MUST leave the repository in a working state.
 
+The tip of the default branch is a commit, so the default branch always works.
+
 **GW-6** A commit message MUST take the form `<type>: <summary>`, where `<type>` is one of `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `build`, `ci`, `revert`.
 
 The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), without a scope and with the types limited to this list.
@@ -64,13 +62,9 @@ Incorrect: `Added consumer contract.`, `updates`, `wip`
 
 **GW-25** A commit message MUST NOT describe the process of arriving at the change.
 
-**GW-9** A commit body MUST be used when the summary cannot carry the reason.
-
 **GW-26** A commit body MUST be separated from the summary by a blank line and wrapped at 72 characters.
 
-**GW-10** A commit MUST NOT mix unrelated changes.
-
-**GW-11** Commit messages MUST NOT contain `wip`, `misc`, `stuff`, `fixes`, or a bare file name.
+**GW-10** A commit MUST carry only work for the issue it is made for.
 
 **GW-23** A commit message MUST be written in English.
 
@@ -97,10 +91,6 @@ A file of review findings has to be pruned by hand once they are resolved. A pul
 **GW-16** History on a shared branch MUST NOT be rewritten.
 
 Force pushing to the default branch is prohibited.
-
-**GW-17** A local branch MAY be rebased or squashed before it is shared.
-
-**GW-18** A mistake in a shared branch MUST be corrected with a new commit, not by rewriting.
 
 **GW-19** A committed secret MUST be treated as compromised and rotated.
 

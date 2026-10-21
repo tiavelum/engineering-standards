@@ -1,7 +1,7 @@
 ---
 id: lifecycle
 title: Product lifecycle
-version: 1.2.0
+version: 1.2.1
 status: draft
 applies_to: [all]
 summary: The phases a product passes through from idea to operation, the artifact each produces, and the gate that must be passed to leave it.
@@ -43,7 +43,7 @@ Level 0 is exploratory, which is why it is exempt from everything but the two ru
 
 **LC-6** A gate MUST be recorded as passed, with its date, at the foot of the artifact that the table names for it.
 
-The build phase has no gate record of its own. Its evidence is a merged pull request, which `GW-1` and `GW-14` already govern.
+The build phase has no gate record of its own. Its evidence is a merged pull request, which `GW-5` and `GW-14` already govern.
 
 ## Idea
 
