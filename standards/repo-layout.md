@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 6.0.1
+version: 7.0.0
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, and what must not live in a repository.
@@ -27,10 +27,6 @@ A repository without commits has no default branch yet, so its first commit brin
 
 The clause is general on purpose. PR-5 fixes `deviations.md` at the root. Enumerating the files here would go stale each time a rule is added.
 
-**RL-7** Source files SHOULD NOT sit at the root when the repository has more than one of them.
-
-**RL-8** The root MUST NOT contain scratch files, exports, notes, or anything whose name breaks `NAM-1`.
-
 ## Directory roles
 
 **RL-9** Each top-level directory MUST have exactly one role.
@@ -42,14 +38,13 @@ RM-11 requires the README's structure section to say which directory holds what.
 | Directory | Role |
 |-----------|------|
 | `src/` | Source that is built or executed |
-| `docs/` | Documentation for readers |
 | `tests/` | Automated tests, when not colocated with source |
 | `scripts/` | Operational and development scripts |
 | `templates/` | Files intended to be copied and filled in |
 | `examples/` | Runnable examples, not fragments |
 | `.github/` | Repository automation and templates |
 
-**RL-11** A directory MUST NOT be created for a single file unless more files of that kind are expected.
+Documentation's directory is set by DOC-2.
 
 ## What must not be committed
 
@@ -64,7 +59,3 @@ They belong in `.gitignore`.
 Reference them or use a purpose built store.
 
 **RL-15** Personal notes, session logs and working files MUST NOT be committed unless the repository exists for them.
-
-## Discoverability
-
-**RL-17** A directory whose purpose is not obvious from its name SHOULD carry a short `README.md` of its own.
