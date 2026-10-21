@@ -65,7 +65,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 4.0.0
+    version: 5.0.0
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
@@ -115,7 +115,7 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 7.2.0
+    version: 8.0.0
     status: active
     summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
     applies_to: [all]
