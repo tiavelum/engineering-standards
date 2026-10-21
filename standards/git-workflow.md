@@ -17,7 +17,7 @@ Prefix: `GW`
 
 Anything merged to the default branch runs.
 
-**GW-2** A change MUST reach the default branch through a pull request from a branch of its own, once the default branch exists.
+**GW-2** A commit MUST reach the default branch through a pull request, once the default branch exists.
 
 A repository without commits has no default branch; its first commit creates it.
 
