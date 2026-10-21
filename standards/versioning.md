@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning
-version: 1.2.0
+version: 2.0.0
 status: active
 applies_to: [software]
 summary: How a release version is formed, where it is recorded, and when each component is incremented.
@@ -38,25 +38,16 @@ The specification is incorporated by reference. The rules below narrow it for th
 
 A version written by hand in a second place is a version that will disagree with the first. Documentation, build arguments, generated headers and image tags all read from the one location.
 
-**VER-32** A repository that publishes releases MUST commit a check that fails when the version of record and the git tag disagree.
-
-**VER-33** The check VER-32 requires MUST gate the merge.
+**VER-32** A repository that publishes releases MUST gate merges on a check that fails when the version of record and the git tag disagree.
 
 Version grammar, agreement between tag and manifest, monotonic increase and prior publication are all machine checkable, so this check enforces them in CI (TL-10) and this file does not repeat them.
 
 ## Tags
 
-**VER-28** A release tag MUST take the form `v<major>.<minor>.<patch>`, except as provided by VER-29 and VER-30.
+**VER-28** A release tag MUST take the form `[<unit>/]v<major>.<minor>.<patch>[-<pre-release>]`: `<unit>/` only in a repository that publishes more than one unit, and `<pre-release>` as VER-17 requires.
 
-**VER-29** A pre-release tag MUST take the form `v<major>.<minor>.<patch>-<identifiers>`, with the identifiers as required by VER-17.
-
-Correct: `v2.0.0-rc.1`
-Incorrect: `v2.0.0rc1`, `v2.0.0-RC1`
-
-**VER-30** In a repository that publishes more than one unit, a tag MUST be scoped to the unit as `<unit>/v<version>`.
-
-Correct: `billing-api/v2.1.0`
-Incorrect: `v2.1.0` in a repository publishing three services
+Correct: `v2.1.0`, `v2.0.0-rc.1`, `billing-api/v2.1.0` in a repository publishing three services
+Incorrect: `v2.0.0rc1`, `v2.0.0-RC1`, `v2.1.0` in a repository publishing three services
 
 ## Incrementing
 
@@ -75,10 +66,6 @@ Incorrect: `v2.1.0` in a repository publishing three services
 **VER-12** A dependency update MUST be classified by its effect on this repository's public API, not by the increment the dependency itself took.
 
 A dependency going from 3.x to 4.x is not by itself a MAJOR here. It is MAJOR here only if this repository's own contract changes as a result.
-
-**VER-13** Urgency MUST NOT lower the increment a change requires.
-
-A security fix that breaks the public API is a MAJOR release. Reaching affected consumers sooner is handled by backporting under VER-25, not by mislabelling the change.
 
 **VER-31** A pull request MUST state which increment the change requires under VER-6 to VER-9.
 
@@ -99,7 +86,7 @@ This makes the pull request the record of the versioning decision. Without it th
 
 **VER-15** A repository that runs in production, or that has any consumer outside its own repository, MUST be at `1.0.0` or higher.
 
-`0.y.z` states that the public API is not stable. It MUST NOT be used to avoid the discipline of MAJOR increments on software that others already depend on.
+`0.y.z` states that the public API is not stable, which software others already depend on cannot claim.
 
 **VER-16** Below `1.0.0`, a breaking change MUST increment MINOR and every other change MUST increment PATCH.
 
@@ -116,12 +103,6 @@ Incorrect: `2.0.0-rc1`, `2.0.0-test`, `2.0.0-final`
 
 Build metadata is ignored when versions are compared, so two artifacts that differ only there are indistinguishable to a consumer. If the content differs, the version differs.
 
-## Immutability
-
-**VER-20** A published version MUST NOT be altered after publication.
-
-**VER-21** A version that turns out to be wrong MUST be superseded by a higher version, never reissued under the same number.
-
 ## Deprecation and removal
 
 **VER-22** Public API MUST NOT be removed until it has been published as deprecated in at least one MINOR release of the current MAJOR line.
@@ -133,12 +114,6 @@ Build metadata is ignored when versions are compared, so two artifacts that diff
 **VER-24** A repository MUST state which MAJOR lines it supports and until when.
 
 Where a repository says nothing, only the current MAJOR line is supported.
-
-**VER-25** A fix backported to a supported line MUST reach `main` first, as required by `GW-21`.
-
-**VER-26** Versions MUST be ordered by the comparison rules of the specification, never by sorting the version string.
-
-`1.10.0` sorts below `1.9.0` as text and above it as a version.
 
 **VER-27** A consumer MUST express a dependency as a range bounded above by the next MAJOR.
 
