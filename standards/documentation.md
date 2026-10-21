@@ -99,13 +99,13 @@ An issue has the readers of the repository's documentation, which DOC-30 require
 
 **DOC-43** An issue MUST NOT duplicate an open issue of the same repository.
 
-**DOC-44** An issue closed without a change MUST carry a comment stating how it was resolved.
+**DOC-44** An issue closed without commits made for it MUST carry a comment stating how it was resolved.
 
-DOC-25 lets the change that resolves an issue record the resolution. An issue resolved any other way, by a decision, a setting or work already done, has no such record unless the comment gives it.
+DOC-25 lets the commits made for an issue record its resolution. An issue resolved any other way, by a decision, a setting or work already done, has no such record unless the comment gives it.
 
-**DOC-25** An issue MUST be closed by the change that resolves it, through a closing keyword.
+**DOC-25** An issue MUST be closed by a closing keyword that reaches the default branch with the commits made for it.
 
-A pull request carries the keyword in its description, a commit in its message; the issue closes when the change reaches the default branch.
+A pull request carries the keyword in its description; the first commit of a repository, which has no pull request, carries it in its message.
 
 **DOC-26** Work that spans several issues SHOULD be held by one tracking issue that links each of them.
 

@@ -17,13 +17,17 @@ Prefix: `GW`
 
 Anything merged to the default branch runs.
 
-**GW-2** A change MUST reach the default branch through a pull request from a branch of its own, once the default branch exists.
+**GW-2** A commit MUST reach the default branch through a pull request, once the default branch exists.
 
 A repository without commits has no default branch; its first commit creates it.
 
-**GW-29** A change MUST start from an issue of the repository it changes.
+**GW-29** A commit MUST be made for an issue of the repository it is committed to.
 
 The issue records what the work is before it begins, and `NAM-14` carries its number into the branch name.
+
+**GW-31** A pull request MUST carry only commits made for one issue.
+
+An issue may take several pull requests, for example when its work lands in steps or recurs; a pull request never mixes issues.
 
 **GW-4** A merged branch MUST be deleted.
 
