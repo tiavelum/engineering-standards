@@ -1,7 +1,7 @@
 ---
 id: precedence
 title: Precedence and deviation
-version: 1.2.0
+version: 2.0.0
 status: active
 applies_to: [all]
 summary: How conflicts between these standards, a consuming repository and a task instruction are resolved, and how a deviation is recorded.
@@ -19,19 +19,13 @@ summary: How conflicts between these standards, a consuming repository and a tas
 4. These standards.
 5. Community defaults for the language or framework in use.
 
-**PR-2** A lower source MUST NOT be used to override a higher one silently.
-
-**PR-10** A standard that is set aside MUST be recorded per PR-5.
-
 **PR-3** Where these standards are silent, the community default MUST be applied, and the silence MUST NOT be read as a prohibition.
 
 ## Conflicts between standards
 
-**PR-4** If two standards in this repository conflict, the more specific one MUST be applied.
+**PR-9** A conflict between two rules of these standards MUST be raised as an issue on this repository.
 
-**PR-9** A conflict between two equally specific standards MUST be raised as an issue and MUST NOT be resolved case by case.
-
-Such a conflict is a defect in the standards, not a choice left to the reader.
+Such a conflict is a defect in the standards. Until it is fixed, an explicit instruction from the repository owner for the task at hand outranks both rules (PR-1).
 
 ## Deviation
 
@@ -40,8 +34,6 @@ Such a conflict is a defect in the standards, not a choice left to the reader.
 **PR-6** A deviation entry MUST give a reason specific to that repository.
 
 "Not applicable" without explanation is not a reason.
-
-**PR-7** A deviation from a SHOULD rule does not need to be recorded.
 
 **PR-8** A deviation that turns out to apply to several repositories SHOULD be raised as a change to the standard rather than repeated.
 

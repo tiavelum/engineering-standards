@@ -1,7 +1,7 @@
 ---
 id: consuming
 title: Consumer contract
-version: 2.3.0
+version: 3.0.0
 status: active
 applies_to: [tooling, agents]
 summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
@@ -40,8 +40,6 @@ The closure can contain cycles, because two standards may each define a term the
 
 **CO-5** A consumer MUST cite the rule identifier when reporting a violation or justifying a decision, for example `NAM-2`.
 
-**CO-6** A consumer MUST apply the precedence order in `meta/precedence.md` rather than assuming these standards outrank a direct instruction.
-
 **CO-7** A consumer MUST NOT invent rules.
 
 **CO-19** A consumer that applies a community default under PR-3 MUST say so.
@@ -50,15 +48,9 @@ The closure can contain cycles, because two standards may each define a term the
 
 ## Stability guarantees
 
-**CO-9** `index.yaml` MUST keep its `schema_version`.
-
 **CO-20** A breaking change to the index structure MUST increment `schema_version`.
 
 **CO-10** File paths listed in `index.yaml` MUST be stable within a major version of the standard they point at.
-
-**CO-11** A consumer MAY store a rule id as a durable reference.
-
-Rule identifiers are stable and are never reused, under RF-11 and RF-23.
 
 **CO-12** Consumers MUST NOT rely on line numbers, heading order, or any structure not described in `meta/rule-format.md`.
 
@@ -67,10 +59,6 @@ Rule identifiers are stable and are never reused, under RF-11 and RF-23.
 **CO-13** A consumer that cannot fetch MUST say so rather than proceeding from memory of an earlier version.
 
 The repository is not guaranteed to be reachable at any given moment.
-
-**CO-14** A consumer MUST NOT infer formatting rules from silence here.
-
-These standards do not cover language specific style.
 
 ## Distribution mechanisms
 
@@ -82,5 +70,3 @@ This repository is deliberately mechanism neutral. The same content can be deliv
 | Bundled into a plugin or package | Pinned to the release | Yes | Requires a release and an update flow |
 | Vendored or submoduled into a repo | Pinned to the commit | Yes | One copy per consuming repo to maintain |
 | Pointer file in the consuming repo | Depends on what the pointer resolves to | No | Cheapest to add, weakest guarantee |
-
-**CO-15** A mechanism MUST satisfy CO-1 through CO-14 regardless of how the files reach the consumer.
