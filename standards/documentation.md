@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 9.0.0
+version: 10.0.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -63,8 +63,6 @@ Incorrect: `A logbook of the charter trips octocat skippers.`
 **DOC-30** A repository's README and every other document about the repository MUST be written in English.
 
 A document that is the repository's content rather than about it, such as a German CV or a German handbook, keeps the language that is the point of it.
-
-**DOC-32** Documentation that already exists in another language MUST keep that language until the repository's owner asks for a translation.
 
 ## Open items
 
