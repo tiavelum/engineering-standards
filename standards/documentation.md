@@ -74,7 +74,7 @@ An open item is any identified piece of future work: a defect to fix, a change t
 
 **DOC-22** An open item MUST NOT be recorded in a file committed to the repository. A file whose purpose is to list outstanding work, such as `open-items.md`, `todo.md` or `backlog.md`, MUST NOT exist.
 
-Such a file has to be pruned by hand. In practice it is not, and it becomes the stale document that DOC-20 calls a defect. A GitHub issue closes itself when the change that resolves it reaches the default branch, so the list stays accurate without anyone maintaining it.
+Such a file has to be pruned by hand. In practice it is not, and it becomes the stale document that DOC-20 calls a defect. A GitHub issue closes itself when the commits made for it reach the default branch, so the list stays accurate without anyone maintaining it.
 
 The prohibition covers the file's purpose, not its name. A file listing outstanding work is forbidden whatever it is called; a file whose name happens to resemble one of the examples but which records the current state is not.
 
