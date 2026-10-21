@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 5.1.1
+version: 6.0.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -33,7 +33,7 @@ A second configuration may repeat the first for tools that do not read the forma
 
 ## Baseline configuration
 
-**TL-5** Every repository MUST commit an `.editorconfig` covering at minimum: charset, indentation style and width, end of line, final newline, trailing whitespace.
+**TL-5** The default branch of every repository MUST contain an `.editorconfig` covering at minimum: charset, indentation style and width, end of line, final newline, trailing whitespace.
 
 **TL-6** Every repository containing code MUST commit a formatter configuration.
 
