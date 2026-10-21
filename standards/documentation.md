@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 10.0.0
+version: 11.0.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -27,13 +27,11 @@ NAM-2 governs the name of a file in `docs/`, as it does every file name.
 
 ## Writing
 
-**DOC-5** Documentation MUST be written for the reader who will act on it.
-
 **DOC-35** Documentation MUST state what the reader does, not what the author did.
 
 **DOC-6** Documentation MUST describe the current state.
 
-Historical narrative belongs in git history and, where it matters, in a decision record.
+Historical narrative belongs in git history. A decision record describes a decision that is in force, which is current state.
 
 **DOC-7** Every document MUST open with one sentence stating what it covers and for whom.
 
@@ -46,14 +44,14 @@ Incorrect: "Install the checks with `pip install -r requirements.txt` before you
 
 **DOC-9** A document MUST NOT be published with TODOs, placeholders or empty sections.
 
-**DOC-33** A file in a repository MUST refer to the repository's owner by the owner's account handle or not at all, and MUST NOT use the owner's personal name.
+**DOC-33** A file that is not documentation MUST refer to the repository's owner by the owner's account handle, if at all.
 
 Correct: `octocat's repositories`
 Incorrect: `Mona's repositories`
 
 **DOC-47** A document MUST NOT name the repository's owner.
 
-A document says what the repository does, not whose it is. Where a sentence needs a person, a role such as the user or the developer names them; DOC-33 governs a file that has to name the owner, such as a license.
+A document says what the repository does, not whose it is. Where a sentence needs a person, a role such as the user or the developer names them. A file that has to name the owner, such as a license, is not documentation.
 
 Correct: `A sailing logbook built from the photos of each charter trip.`
 Incorrect: `A logbook of the charter trips octocat skippers.`
@@ -72,7 +70,7 @@ An open item is any identified piece of future work: a defect to fix, a change t
 
 **DOC-22** An open item MUST NOT be recorded in a file committed to the repository. A file whose purpose is to list outstanding work, such as `open-items.md`, `todo.md` or `backlog.md`, MUST NOT exist.
 
-Such a file has to be pruned by hand. In practice it is not, and it becomes the stale document that DOC-20 calls a defect. A GitHub issue closes itself when the commits made for it reach the default branch, so the list stays accurate without anyone maintaining it.
+Such a file has to be pruned by hand. In practice it is not, and it becomes the stale document that DOC-6 rules out. A GitHub issue closes itself when the commits made for it reach the default branch, so the list stays accurate without anyone maintaining it.
 
 The prohibition covers the file's purpose, not its name. A file listing outstanding work is forbidden whatever it is called; a file whose name happens to resemble one of the examples but which records the current state is not.
 
@@ -127,7 +125,7 @@ Whoever changes the content of a directory meets its README first, since a forge
 
 ## Comments in source
 
-**DOC-13** A comment MUST explain why, not what. A comment restating the code MUST be removed.
+**DOC-13** A comment MUST explain why, not what.
 
 **DOC-14** A comment marking a known compromise MUST state the condition under which it can be removed.
 
@@ -141,12 +139,6 @@ A changelog file repeats what the release holds and has to be kept in step with 
 
 **DOC-17** Release notes MUST be written for the user of the release: what changed for them, what breaks, what they must do.
 
-**DOC-18** Release notes MUST NOT be a dump of commit messages.
-
 ## Maintenance
 
-**DOC-19** A change that invalidates a document MUST update that document in the same pull request.
-
-**DOC-20** A document that no longer describes reality MUST be corrected or deleted.
-
-Leaving it in place is a defect.
+**DOC-19** A pull request whose commits invalidate a document MUST update that document.
