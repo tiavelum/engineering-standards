@@ -52,7 +52,7 @@ RE_RFC2119 = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
 RE_XREF_RULE = re.compile(r"\b([A-Z]{2,3})-\d+\b")
 RE_XREF_PATH = re.compile(r"\b((?:standards|meta)/[a-z0-9-]+\.md)\b")
 
-# Names a tool or convention fixes, which NAM-2 and NAM-3 do not govern.
+# Names a tool or convention fixes, which NAM-2 does not govern.
 FIXED_NAMES = {
     "README.md",
     "LICENSE",
@@ -313,7 +313,7 @@ def check_names() -> None:
         if any(part in skip for part in relative.parts):
             continue
         if path.is_dir() and path.name in {"misc", "other", "stuff", "temp", "new"}:
-            error(relative.as_posix(), "NAM-8", "directory name is not descriptive")
+            error(relative.as_posix(), "NAM-1", "directory name is not descriptive")
 
 
 def check_links() -> None:

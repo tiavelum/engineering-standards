@@ -23,7 +23,7 @@ It is not a tutorial, not a style guide for any single language, and not a recor
 1. Fetch [`index.yaml`](index.yaml). It is the authoritative catalogue of every standard, with its id, path, scope, summary and dependencies.
 2. Select the entries whose `applies_to` matches the task at hand.
 3. Fetch those files and everything their `requires` lists name, resolved transitively. Nothing else.
-4. Apply the rules by id. Cite the id when reporting a violation, for example `NAM-3`.
+4. Apply the rules by id. Cite the id when reporting a violation, for example `NAM-2`.
 
 A standard that defers to another says so in its `requires`, so the closure is what makes the rules applicable. The consumer contract, including versioning and what a consumer must not assume, is in [meta/consuming.md](meta/consuming.md).
 
@@ -60,9 +60,9 @@ Checking a file name against the standards:
 Question: is `Session_Notes_August.md` acceptable?
 Load:     index.yaml -> entry `naming` -> standards/naming.md
 Rules:    NAM-2  file names use lowercase words separated by single hyphens
-          NAM-19 a name must not refer to when work was done
+          NAM-1  a name describes what the thing is, not when it was made
 Result:   two violations. Lowercasing gives `session-notes-august.md`, which
-          NAM-19 still rejects: August records when the sessions happened,
+          NAM-1 still rejects: August records when the sessions happened,
           not what they are about. Name the file for its subject.
 ```
 

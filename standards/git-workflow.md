@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 6.0.0
+version: 6.0.1
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -19,7 +19,7 @@ A repository without commits has no default branch; its first commit creates it.
 
 **GW-29** A commit MUST be made for an issue of the repository it is committed to.
 
-The issue records what the work is before it begins, and `NAM-14` carries its number into the branch name.
+The issue records what the work is before it begins, and `NAM-12` carries its number into the branch name.
 
 **GW-31** A pull request MUST carry only commits made for one issue.
 
