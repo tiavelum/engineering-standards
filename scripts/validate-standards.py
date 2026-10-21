@@ -52,8 +52,8 @@ RE_RFC2119 = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
 RE_XREF_RULE = re.compile(r"\b([A-Z]{2,3})-\d+\b")
 RE_XREF_PATH = re.compile(r"\b((?:standards|meta)/[a-z0-9-]+\.md)\b")
 
-# Names fixed by an external tool or convention, exempt per NAM-6.
-EXEMPT_NAMES = {
+# Names a tool or convention fixes, which NAM-2 and NAM-3 do not govern.
+FIXED_NAMES = {
     "README.md",
     "LICENSE",
     "CODEOWNERS",
@@ -297,7 +297,7 @@ def check_names() -> None:
         if not path.is_file():
             continue
         name = path.name
-        if name in EXEMPT_NAMES or name.startswith("."):
+        if name in FIXED_NAMES or name.startswith("."):
             continue
         if not RE_FILENAME.match(name):
             error(relative.as_posix(), "NAM-2", "file name is not lowercase hyphen separated")
