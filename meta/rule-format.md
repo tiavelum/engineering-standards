@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 5.1.0
+version: 6.0.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -19,9 +19,15 @@ This file governs how every file in `standards/` is written. It exists so that s
 - a reviewer can check it objectively in a pull request,
 - an agent can apply it deterministically when producing a file.
 
-**RF-2** A rule that fails RF-1 MUST NOT be added.
+Preferences that cannot be checked belong in conversation, not in this repository. What a formatter or linter sets is kept out of a standard by TL-2. A rule in inexact terms cannot be checked objectively either.
 
-Preferences that cannot be checked belong in conversation, not in this repository. What a formatter or linter sets is kept out of a standard by TL-2.
+**RF-41** A rule MUST NOT exempt anything from another rule.
+
+A rule that needs an exemption from another shows that the other is scoped wrongly, and rescoping it removes the need.
+
+**RF-42** A rule MUST NOT state a requirement another rule already states.
+
+Two statements of one requirement drift apart; a citation by identifier keeps one.
 
 ## File structure
 
@@ -32,8 +38,6 @@ Preferences that cannot be checked belong in conversation, not in this repositor
 **RF-6** `id` MUST be unique across the repository.
 
 **RF-35** `id` MUST be lowercase and hyphen separated.
-
-**RF-36** `id` MUST be identical to the file's `id` in `index.yaml`.
 
 **RF-7** `status` MUST be one of `active`, `draft`, `deprecated`.
 
@@ -53,7 +57,7 @@ Beyond that, split it by topic rather than adding sections.
 
 **RF-29** An entry MUST NOT carry a field other than those named in RF-28, `tags` and `requires`.
 
-**RF-30** An entry's `title` and `version` MUST equal those in the front matter of the file at its `path`.
+**RF-30** An entry's `id`, `title` and `version` MUST equal those in the front matter of the file at its `path`.
 
 **RF-31** An entry's `path` MUST resolve to an existing file in `standards/` or `meta/`.
 
@@ -83,9 +87,9 @@ A standard that defers to another is not a defect; hiding that it does is. RF-26
 
 **RF-23** A rule whose meaning changes MUST keep its identifier.
 
-A rule is amended in place and the version carries the change. RF-18 makes a material change to a MUST rule a major increment, so a consumer that pinned a version meets the break where it already looks for one, and the identifier CO-11 lets it store stays valid.
+A rule is amended in place and the version carries the change. RF-18 makes every change to a requirement a major increment, so a consumer that pinned a version meets the break where it already looks for one, and the identifier CO-11 lets it store stays valid.
 
-**RF-12** The identifier MUST be the first thing in the rule, in bold, followed by the rule text in a single sentence where possible.
+**RF-12** The identifier MUST be the first thing in the rule, in bold.
 
 **RF-34** A rule under review MUST carry the marker `(draft: #<issue>)` directly after its identifier, naming the issue that decides it.
 
@@ -93,13 +97,11 @@ A draft rule stays in its place and keeps its identifier, so it can be cited whi
 
 ## Rule language
 
-**RF-13** Rules MUST use the keywords MUST, MUST NOT, SHOULD, SHOULD NOT, MAY, in uppercase, with the meanings from RFC 2119.
+**RF-13** A rule MUST state its keyword, one of MUST, MUST NOT, SHOULD, SHOULD NOT and MAY, in uppercase with its meaning from RFC 2119, on the line that carries its identifier.
 
-The keyword MUST appear on the identifier's own line, since that is where a reader looks to find out whether a rule binds them and where a check can find it without guessing how far a rule extends.
+That line is where a reader looks to find out whether a rule binds them, and where a check finds the keyword without guessing how far a rule extends.
 
-**RF-14** A rule MUST state the required outcome, not the reasoning.
-
-**RF-38** Reasoning, where needed, MUST go in a separate paragraph that carries no identifier.
+**RF-14** A rule MUST state the required outcome; reasoning, where needed, stands in a separate paragraph without an identifier.
 
 **RF-15** A rule MUST NOT contain two independent requirements.
 
@@ -113,18 +115,14 @@ One requirement: `MUST start from index.yaml and MUST NOT discover standards by 
 
 ## Versioning
 
-**RF-17** Each standard file MUST carry its own semantic version in front matter.
+**RF-17** A file's `version` MUST be a semantic version.
 
-**RF-18** The version MUST be incremented as follows: major when an existing MUST rule changes or is removed; minor when a rule is added, or when rules are split or reduced without changing what is required in total; patch for wording that does not change meaning.
+**RF-18** The version MUST be incremented as follows: major when the file's set of requirements loses or changes a requirement; minor when it gains a requirement and loses or changes none; patch when it stays the same.
 
-A split, or dropping the part of a rule that another rule already states, changes the text but not what anyone has to do, so it is not the break a major increment announces. Giving a requirement that had no keyword a rule of its own is such a split.
+A split, a merge, or removing a rule whose requirement another rule of the same file already states leaves the set the same. A SHOULD that becomes a MUST, or a rule whose scope changes, changes a requirement.
 
 **RF-19** A change to a standard MUST update the file, its front matter `version`, and its `index.yaml` entry in the same commit.
 
 ## Prohibited content
-
-**RF-20** A standard file MUST NOT contain a changelog, migration notes, or any narration of how the rule came about.
-
-**RF-21** A standard file MUST NOT contain TODOs, placeholders, or empty sections.
 
 **RF-22** A standard file MUST NOT reference private repositories, internal systems or credentials.
