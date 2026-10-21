@@ -231,7 +231,7 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
     entry = entries_by_path.get(relative)
     if entry:
         if entry.get("id") != front.get("id"):
-            error(relative, "RF-36", "front matter id does not match the index entry id")
+            error(relative, "RF-30", "front matter id does not match the index entry id")
         if str(entry.get("version")) != str(front.get("version")):
             error(relative, "RF-30", "front matter version does not match the index entry")
         if entry.get("title") != front.get("title"):
@@ -282,7 +282,7 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
         if RE_RULE.match(line):
             continue
         if RE_MARKER.search(line):
-            error(relative, "RF-21", f"file contains an unfinished marker: {line.strip()[:60]}")
+            error(relative, "DOC-9", f"file contains an unfinished marker: {line.strip()[:60]}")
 
     return found_rules
 
