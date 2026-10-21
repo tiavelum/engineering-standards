@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 6.0.0
+version: 6.0.1
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, and what must not live in a repository.
@@ -29,7 +29,7 @@ The clause is general on purpose. PR-5 fixes `deviations.md` at the root. Enumer
 
 **RL-7** Source files SHOULD NOT sit at the root when the repository has more than one of them.
 
-**RL-8** The root MUST NOT contain scratch files, exports, notes, or anything named per the prohibitions in `NAM-4` and `NAM-8`.
+**RL-8** The root MUST NOT contain scratch files, exports, notes, or anything whose name breaks `NAM-1`.
 
 ## Directory roles
 
