@@ -1,7 +1,7 @@
 ---
 id: public-api
 title: Public API
-version: 1.0.2
+version: 1.0.3
 status: active
 applies_to: [software]
 summary: What a repository publishes as its public API, and which changes to it are breaking.
@@ -63,7 +63,6 @@ Log text is not a public surface unless the repository documents a machine reada
 - adding an optional input, an endpoint, a command, a symbol or an optional field
 - widening what an input accepts
 - changing performance without changing the contract
-- changing a surface marked excluded under PA-4
 
 **PA-8** Where it is unclear whether a change is breaking, it MUST be treated as breaking.
 
