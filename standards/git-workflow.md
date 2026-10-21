@@ -90,7 +90,7 @@ A file of review findings has to be pruned by hand once they are resolved. A pul
 
 **GW-16** History on a shared branch MUST NOT be rewritten.
 
-Force pushing to the default branch is prohibited.
+The default branch is a shared branch, so a force push to it rewrites shared history.
 
 **GW-19** A committed secret MUST be treated as compromised and rotated.
 
