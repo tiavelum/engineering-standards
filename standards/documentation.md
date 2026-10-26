@@ -68,10 +68,7 @@ A document that is the repository's content rather than about it, such as a Germ
 
 **DOC-49** The description DOC-48 requires MUST be added by the pull request whose commits make the step necessary.
 
-Testing a change often turns up such a step: granting a permission, restarting an app so that it picks the permission up, removing a stale entry after a rebuild. Written down with the change, it reaches whoever installs next; left in the conversation or the reviewer's memory, it does not. A step taken only to develop or debug the change is not a step of what the repository delivers.
-
-Correct: a pull request that adds an app needing screen recording permission adds to the README how to grant it and that the app must be restarted afterwards.
-Incorrect: the same pull request, with the restart mentioned only in a review comment.
+Such a step usually comes to light while the change is tested. Written down with the change, it reaches whoever sets the repository up next; left in a conversation or a review comment, it does not. A step taken only to develop or debug the change is not a step of what the repository delivers.
 
 ## Open items
 
