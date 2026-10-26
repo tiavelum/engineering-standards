@@ -11,7 +11,7 @@
 
 schema_version: 1
 repository: tiavelum/engineering-standards
-updated: 2026-10-21
+updated: 2026-10-26
 validated_by: scripts/validate-standards.py
 
 meta:
@@ -115,9 +115,9 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 11.0.0
+    version: 11.1.0
     status: active
-    summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
+    summary: "Rules for every document of a repository, the README included: placement, writing, language, manual steps, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
     applies_to: [all]
     tags: [documentation, adr]
     requires: [naming, precedence, readme-contract]

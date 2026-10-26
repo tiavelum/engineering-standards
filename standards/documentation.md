@@ -1,10 +1,10 @@
 ---
 id: documentation
 title: Documentation
-version: 11.0.0
+version: 11.1.0
 status: active
 applies_to: [all]
-summary: "Rules for every document of a repository, the README included: placement, writing, language, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
+summary: "Rules for every document of a repository, the README included: placement, writing, language, manual steps, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
 ---
 
 # Documentation
@@ -61,6 +61,17 @@ Incorrect: `A logbook of the charter trips octocat skippers.`
 **DOC-30** A repository's README and every other document about the repository MUST be written in English.
 
 A document that is the repository's content rather than about it, such as a German CV or a German handbook, keeps the language that is the point of it.
+
+## Manual steps
+
+**DOC-48** A step that the user of the repository has to take by hand for what it delivers to work, because no committed tool performs it, MUST be described in a document of the repository.
+
+**DOC-49** The description DOC-48 requires MUST be added by the pull request whose commits make the step necessary.
+
+Testing a change often turns up such a step: granting a permission, restarting an app so that it picks the permission up, removing a stale entry after a rebuild. Written down with the change, it reaches whoever installs next; left in the conversation or the reviewer's memory, it does not. A step taken only to develop or debug the change is not a step of what the repository delivers.
+
+Correct: a pull request that adds an app needing screen recording permission adds to the README how to grant it and that the app must be restarted afterwards.
+Incorrect: the same pull request, with the restart mentioned only in a review comment.
 
 ## Open items
 
