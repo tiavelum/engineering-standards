@@ -1,7 +1,7 @@
 ---
 id: lifecycle
 title: Product lifecycle
-version: 1.2.1
+version: 1.2.2
 status: draft
 applies_to: [all]
 summary: The phases a product passes through from idea to operation, the artifact each produces, and the gate that must be passed to leave it.
@@ -127,7 +127,7 @@ Known limitations at release are covered by `RM-18` and are not restated here.
 
 ## Deferred work
 
-**LC-33** Work consciously left undone at a gate MUST be recorded as an issue per `DOC-21` before that gate is recorded as passed.
+**LC-33** Work consciously left undone at a gate MUST be recorded as an issue per `ISS-1` before that gate is recorded as passed.
 
 **LC-34** An issue recording deferred work MUST state the condition under which the work becomes due, and MUST NOT use a date as that condition.
 

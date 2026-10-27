@@ -115,12 +115,22 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 11.1.0
+    version: 12.0.0
     status: active
-    summary: "Rules for every document of a repository, the README included: placement, writing, language, manual steps, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
+    summary: "Rules for every document of a repository, the README included: placement, writing, language, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
     applies_to: [all]
     tags: [documentation, adr]
-    requires: [naming, precedence, readme-contract]
+    requires: [naming]
+
+  - id: issues
+    path: standards/issues.md
+    title: Issues
+    version: 1.0.0
+    status: active
+    summary: When future work is recorded as an issue, what an issue states, and how it is closed.
+    applies_to: [all]
+    tags: [issues, open-items]
+    requires: [documentation, precedence, readme-contract]
 
   - id: tooling
     path: standards/tooling.md
@@ -135,9 +145,9 @@ standards:
   - id: lifecycle
     path: standards/lifecycle.md
     title: Product lifecycle
-    version: 1.2.1
+    version: 1.2.2
     status: draft
     summary: The phases a product passes through from idea to operation, the artifact each produces, and the gate that must be passed to leave it.
     applies_to: [all]
     tags: [lifecycle, requirements, verification, gates]
-    requires: [documentation, git-workflow, readme-contract]
+    requires: [documentation, git-workflow, readme-contract, issues]

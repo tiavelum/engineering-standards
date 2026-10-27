@@ -1,10 +1,10 @@
 ---
 id: documentation
 title: Documentation
-version: 11.1.0
+version: 12.0.0
 status: active
 applies_to: [all]
-summary: "Rules for every document of a repository, the README included: placement, writing, language, manual steps, open items, directory READMEs, decision records, comments in source, change notes and maintenance."
+summary: "Rules for every document of a repository, the README included: placement, writing, language, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
 ---
 
 # Documentation
@@ -69,51 +69,6 @@ A document that is the repository's content rather than about it, such as a Germ
 **DOC-49** The description DOC-48 requires MUST be added by the pull request whose commits make the step necessary.
 
 Such a step usually comes to light while the change is tested. Written down with the change, it reaches whoever sets the repository up next; left in a conversation or a review comment, it does not. A step taken only to develop or debug the change is not a step of what the repository delivers.
-
-## Open items
-
-An open item is any identified piece of future work: a defect to fix, a change to make, a question to answer, or an intent to act on later. It is distinct from a record of the current state, which describes how things are rather than what remains to be done, such as a deviation (PR-5), a known limitation (RM-18) or a decision record (DOC-10).
-
-**DOC-21** An open item MUST be recorded as a GitHub issue on the repository it concerns.
-
-**DOC-22** An open item MUST NOT be recorded in a file committed to the repository. A file whose purpose is to list outstanding work, such as `open-items.md`, `todo.md` or `backlog.md`, MUST NOT exist.
-
-Such a file has to be pruned by hand. In practice it is not, and it becomes the stale document that DOC-6 rules out. A GitHub issue closes itself when the commits made for it reach the default branch, so the list stays accurate without anyone maintaining it.
-
-The prohibition covers the file's purpose, not its name. A file listing outstanding work is forbidden whatever it is called; a file whose name happens to resemble one of the examples but which records the current state is not.
-
-**DOC-38** An issue's title MUST state the work as an imperative phrase.
-
-Correct: `Split the rules that hold two independent requirements`, `Decide whether source files may sit at the root`
-Incorrect: `Rule splitting`, `Source files at the root?`, `Two rules disagree on .editorconfig`
-
-**DOC-24** An issue MUST state what is to be done and why, in terms a reader who was not present when it was raised can act on.
-
-**DOC-39** An issue MUST state the condition under which it is done.
-
-The condition lets anyone close the issue, or see that it is not done yet, without asking its author.
-
-**DOC-40** An issue that asks for a decision MUST list the options it knows, each with its consequence.
-
-**DOC-41** An issue that asks for a decision SHOULD name the option its author recommends, with the reason.
-
-**DOC-42** An issue MUST be written in English.
-
-An issue has the readers of the repository's documentation, which DOC-30 requires in English.
-
-**DOC-43** An issue MUST NOT duplicate an open issue of the same repository.
-
-**DOC-44** An issue closed without commits made for it MUST carry a comment stating how it was resolved.
-
-DOC-25 lets the commits made for an issue record its resolution. An issue resolved any other way, by a decision, a setting or work already done, has no such record unless the comment gives it.
-
-**DOC-25** An issue MUST be closed by a closing keyword that reaches the default branch with the commits made for it.
-
-A pull request carries the keyword in its description; the first commit of a repository, which has no pull request, carries it in its message.
-
-**DOC-26** Work that spans several issues SHOULD be held by one tracking issue that links each of them.
-
-These rules name GitHub because that is where these repositories live. A repository hosted elsewhere uses the equivalent issue tracker of its host; what the rules require is the mechanism, not the vendor.
 
 ## Directory READMEs
 
