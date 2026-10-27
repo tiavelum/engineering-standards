@@ -349,8 +349,8 @@ def check_requires(entries: list[dict], all_rules: list[tuple[str, str]]) -> Non
 
     References take the two forms RF-26 permits: a rule identifier, resolved
     through the prefix that owns it, or a repository relative path. A prefix
-    that owns no rule here is ignored, so placeholders such as REQ-<n> in
-    standards/lifecycle.md do not register as references.
+    that owns no rule here is ignored, so a token of the same shape that is
+    not a rule identifier, such as UTF-8, does not register as a reference.
     """
     id_by_path = {e["path"]: e.get("id") for e in entries if e.get("path")}
     known_ids = {i for i in id_by_path.values() if i}
