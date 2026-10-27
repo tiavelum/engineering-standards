@@ -42,11 +42,11 @@ Incorrect: `Rule splitting`, `Source files at the root?`, `Two rules disagree on
 
 The condition lets anyone close the issue, or see that it is not done yet, without asking its author.
 
-**ISS-13** An issue that defers its work MUST state the condition under which the work becomes due, and MUST NOT give a date as that condition.
+**ISS-13** An issue that says its work waits MUST state the condition under which the work becomes due, and MUST NOT give a date as that condition.
 
-The condition lets anyone see that the wait is over without asking the author; a date passes whether or not the work has become necessary.
+The condition lets anyone see that the wait is over without asking the author; a date passes whether or not the work has become necessary. An event is a condition even when its date is known in advance, such as a certificate expiring.
 
-Correct: `Due when a second repository needs the same check`
+Correct: `Due when a second repository needs the same check`, `Due when the signing certificate expires`
 Incorrect: `Due in January 2027`, `Revisit in three months`
 
 **ISS-7** An issue that asks for a decision MUST list the options it knows, each with its consequence.
