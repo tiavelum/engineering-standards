@@ -1,7 +1,7 @@
 ---
 id: issues
 title: Issues
-version: 1.1.0
+version: 1.0.0
 status: active
 applies_to: [all]
 summary: When future work is recorded as an issue, what an issue states, and how it is closed.
@@ -41,13 +41,6 @@ Incorrect: `Rule splitting`, `Source files at the root?`, `Two rules disagree on
 **ISS-6** An issue MUST state the condition under which it is done.
 
 The condition lets anyone close the issue, or see that it is not done yet, without asking its author.
-
-**ISS-13** An issue that says its work waits MUST state the condition under which the work becomes due, and MUST NOT give a date as that condition.
-
-The condition lets anyone see that the wait is over without asking the author; a date passes whether or not the work has become necessary. An event is a condition even when its date is known in advance, such as a certificate expiring.
-
-Correct: `Due when a second repository needs the same check`, `Due when the signing certificate expires`
-Incorrect: `Due in January 2027`, `Revisit in three months`
 
 **ISS-7** An issue that asks for a decision MUST list the options it knows, each with its consequence.
 

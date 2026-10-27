@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 7.1.0
+version: 7.0.0
 status: active
 applies_to: [all]
 summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
@@ -109,15 +109,6 @@ A screen cannot be measured; a word count can. The count covers everything above
 The rules of `standards/documentation.md` apply to a README as to every other document.
 
 **RM-18** A README MUST state the known limitations that affect whether a reader should use the repository.
-
-**RM-40** Where a command the repository provides changes configuration outside the repository, such as the settings of a machine or an account, the README MUST state how that change is undone, or that it cannot be.
-
-A reader decides whether to run such a command on their own machine or account by whether they can get back to where they were. A rollback the command writes, or a report of the values it replaced, answers this.
-
-Configuration outside the repository is anything outside it that the command leaves changed and that governs how a machine, an account or a program behaves, such as a macOS preference, a repository setting, a key registered on an account or an installed launch agent. What the command writes as its result, such as an export file or the commits it makes in a repository it is given, is not configuration. The README states the way back itself or links the document of the repository that does (DOC-3).
-
-Correct: `Every import writes a rollback to ~/.mac-prefs-rollback/<timestamp>/ first; undo with ./mac-prefs.sh import <that folder> --yes.`
-Incorrect: `Every import keeps a backup.`, which says neither where the backup is nor how to restore it
 
 ## Before merge
 
