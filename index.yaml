@@ -75,17 +75,17 @@ standards:
   - id: versioning
     path: standards/versioning.md
     title: Versioning
-    version: 1.2.0
+    version: 2.0.0
     status: active
     summary: How a release version is formed, where it is recorded, and when each component is incremented.
     applies_to: [software]
     tags: [versions, releases, semver, dependencies]
-    requires: [git-workflow, public-api, tooling]
+    requires: [public-api, tooling]
 
   - id: public-api
     path: standards/public-api.md
     title: Public API
-    version: 1.0.2
+    version: 1.0.3
     status: active
     summary: What a repository publishes as its public API, and which changes to it are breaking.
     applies_to: [software]
