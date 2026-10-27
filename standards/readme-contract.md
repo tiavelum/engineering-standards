@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 6.0.0
+version: 7.0.0
 status: active
 applies_to: [all]
 summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
@@ -38,8 +38,6 @@ A directory README is written for whoever changes that directory's content, and 
 | Contributing and support | MAY | How do I report or change something? | Contributing |
 | License | MUST (public) | What may I do with it? | License |
 
-**RM-2** A section's heading MAY be chosen to fit the repository.
-
 **RM-38** A role named in quotes in this standard MUST be read as the section that answers that role's question, whatever its heading.
 
 One section may answer several questions, and one question may take several sections where its answer is long.
@@ -64,17 +62,15 @@ This is what keeps a small README small. A "What it is for" that repeats the sum
 
 ## Section rules
 
-**RM-3** The summary MUST state in one or two sentences what the repository is, in plain language, before any badge, logo or table of contents.
+**RM-3** The summary MUST state in one or two sentences what the repository is, before any badge, logo or table of contents.
 
 **RM-4** "What it is for" MUST name the concrete problem solved.
 
 **RM-33** "What it is for" MUST state the scope boundary: what the repository does not do.
 
-**RM-5** "What it is for" MUST NOT consist of adjectives such as fast, flexible or modern.
-
 **RM-6** Where a repository has something to install or run, "Getting started" MUST list prerequisites with versions.
 
-**RM-34** Where a repository has something to install or run, "Getting started" MUST give install and run steps as copy-pasteable commands in fenced code blocks.
+**RM-34** Where a repository has something to install or run, "Getting started" MUST give the install and run steps as commands.
 
 **RM-7** Where a repository has something to install or run, "Getting started" MUST end with a command that produces visible output, together with the expected output.
 
@@ -112,31 +108,11 @@ A screen cannot be measured; a word count can. The count covers everything above
 
 The rules of `standards/documentation.md` apply to a README as to every other document.
 
-**RM-16** A README MUST NOT duplicate a changelog, roadmap or release notes.
+**RM-18** A README MUST state the known limitations that affect whether a reader should use the repository.
 
-**RM-18** A README MUST state known limitations honestly where they affect whether the reader should use it.
-
-**RM-20** README length SHOULD be proportional: a small tool takes half a page, a framework takes structure plus links out.
-
-**RM-21** A README MUST be scannable: headings, short paragraphs, fenced code blocks.
-
-## Definition of done
-
-**RM-22** A README MUST let a reader who has never seen the repository do all of the following:
-
-- say what it is, after the first paragraph;
-- decide whether it fits their problem, before reaching "Getting started";
-- get a working result by following "Getting started" alone;
-- find the file to open next, from "Content and structure";
-- know where to go for anything deeper.
+## Before merge
 
 **RM-23** Before merge, every link in the README MUST resolve.
-
-The other conditions for merging are RM-1, RM-9, DOC-9 and DOC-35, and every MUST NOT rule of this standard.
-
-## Maintenance trigger
-
-**RM-24** The README MUST be re-checked against this standard whenever any of the following change: install or run commands, prerequisites or their versions, top-level layout, the primary use case, the license.
 
 ## Examples
 
