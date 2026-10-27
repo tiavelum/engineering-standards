@@ -125,7 +125,7 @@ standards:
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 6.0.0
+    version: 7.0.0
     status: active
     summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]
