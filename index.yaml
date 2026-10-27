@@ -55,12 +55,12 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 6.0.1
+    version: 7.0.0
     status: active
     summary: Required top-level files, directory roles, and what must not live in a repository.
     applies_to: [all]
     tags: [structure, files]
-    requires: [naming, precedence, readme-contract]
+    requires: [precedence, readme-contract, documentation]
 
   - id: git-workflow
     path: standards/git-workflow.md
