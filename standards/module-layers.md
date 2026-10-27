@@ -1,7 +1,7 @@
 ---
 id: module-layers
 title: Module layers
-version: 1.0.0
+version: 2.0.0
 status: active
 applies_to: [software]
 summary: How the modules of a source directory are arranged in layers, which way they import, where files are read and written, and how the layers are described and checked.
@@ -25,15 +25,15 @@ Splitting code into files pays off only when the files do not all depend on each
 
 A module that imports only downwards cannot be part of a cycle, and a layer can be changed without touching the layers below it.
 
-**ML-4** A module that computes or renders MUST take its input as data and return its result as data, not as a file it reads or writes.
+**ML-4** A module that computes or renders MUST NOT read or write any file except one that ships with it, such as a template or a data set.
 
-**ML-5** A module MAY read a file that ships with it, such as a template or a data set.
+It takes its input as data and returns its result as data, so it can be called and tested without files.
 
 ## Description
 
 **ML-6** The README of the directory MUST name each layer, the modules it holds and what it does.
 
-**ML-7** The README of the directory MUST name the modules that read or write files other than those of ML-5.
+**ML-7** The README of the directory MUST name the modules that read or write files other than files that ship with them.
 
 **ML-8** The README of the directory MUST show the imports between its modules as a diagram generated from the code.
 
