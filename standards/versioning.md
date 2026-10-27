@@ -1,13 +1,13 @@
 ---
 id: versioning
-title: Versioning
-version: 2.0.0
+title: Versioning and public API
+version: 2.1.0
 status: active
 applies_to: [software]
-summary: How a release version is formed, where it is recorded, and when each component is incremented.
+summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
 ---
 
-# Versioning
+# Versioning and public API
 
 Prefix: `VER`
 
@@ -19,39 +19,66 @@ The specification is incorporated by reference. The rules below narrow it for th
 
 **VER-2** A repository that publishes no release MUST NOT carry a version.
 
-## The version of record
+## The public API
 
-**VER-3** A repository MUST hold its version in exactly one place.
+Semantic versioning is meaningless without a declared public API, because every increment is a statement about that API.
 
-**VER-4** The version of record MUST be the location its ecosystem defines:
+**VER-34** A repository that publishes releases MUST declare its public API.
 
-| Ecosystem | Version of record |
+**VER-35** The declaration MUST name each surface that is public and each surface that is deliberately excluded.
+
+**VER-36** A surface that the declaration does not mention MUST be treated as public.
+
+The default is deliberately expensive. A repository that declares nothing has promised everything, including behaviour it never intended to guarantee. The way out is to declare.
+
+**VER-37** An excluded surface MUST be marked where a consumer would encounter it, in the path, the symbol name, or the generated documentation.
+
+Correct: an `internal/` package, a symbol prefixed `_`, an endpoint documented as experimental
+Incorrect: an exclusion that exists only in the declaration, invisible to someone reading the code
+
+## Public surfaces
+
+**VER-38** The declaration MUST cover every surface listed for the repository's type:
+
+| Type | Public surface |
 |---|---|
-| Node | `package.json`, `version` |
-| Python | `pyproject.toml`, `[project] version` |
-| Rust | `Cargo.toml`, `[package] version` |
-| Go | the git tag, since Go has no manifest version |
-| Container image | the git tag, mirrored into the image tag |
-| Anything else | a `VERSION` file at the repository root |
+| Library | Exported symbols and their signatures, documented behaviour, error types returned or raised, supported runtime range |
+| HTTP service | Paths, methods, request and response schemas, status and error codes, authentication scheme |
+| CLI | Command names, flags, arguments, exit codes, and any output documented as machine readable |
+| Container image | Entrypoint contract, required environment variables, mounted paths, exposed ports, configuration schema |
+| Event producer or consumer | Topic names, message schemas, key semantics, delivery guarantees |
+| Infrastructure module | Input variables and types, outputs, and resources whose replacement destroys state |
+| Schema or configuration repository | The schema, and defaults consumers rely on |
 
-**VER-5** Every other occurrence of the version MUST be derived from the version of record when the artifact is built.
+Log text is not a public surface unless the repository documents a machine readable log format.
 
-A version written by hand in a second place is a version that will disagree with the first. Documentation, build arguments, generated headers and image tags all read from the one location.
+## Breaking changes
 
-**VER-32** A repository that publishes releases MUST gate merges on a check that fails when the version of record and the git tag disagree.
+**VER-39** Each of the following MUST be treated as breaking:
 
-Version grammar, agreement between tag and manifest, monotonic increase and prior publication are all machine checkable, so this check enforces them in CI (TL-10) and this file does not repeat them.
+- removing or renaming a public surface
+- narrowing what an input accepts
+- widening what an output may return
+- making an optional input required
+- changing a default in a way that alters existing behaviour
+- changing the type, unit or meaning of a field
+- adding a failure mode to an operation that previously could not fail
+- dropping support for a runtime, platform or protocol version documented as supported
+- a schema change that a reader at the previous version cannot read
 
-## Tags
+**VER-40** The following MUST NOT be treated as breaking:
 
-**VER-28** A release tag MUST take the form `[<unit>/]v<major>.<minor>.<patch>[-<pre-release>]`: `<unit>/` only in a repository that publishes more than one unit, and `<pre-release>` as VER-17 requires.
+- adding an optional input, an endpoint, a command, a symbol or an optional field
+- widening what an input accepts
+- changing performance without changing the contract
 
-Correct: `v2.1.0`, `v2.0.0-rc.1`, `billing-api/v2.1.0` in a repository publishing three services
-Incorrect: `v2.0.0rc1`, `v2.0.0-RC1`, `v2.1.0` in a repository publishing three services
+**VER-41** Where it is unclear whether a change is breaking, it MUST be treated as breaking.
+
+The cost of an unnecessary MAJOR release is an inconvenience to the publisher. The cost of a missed one is an outage in someone else's system.
 
 ## Incrementing
 
-**VER-6** MAJOR MUST be incremented when a change is breaking under `standards/public-api.md`.
+**VER-6** MAJOR MUST be incremented when a change is breaking under VER-39 to VER-41.
 
 **VER-7** MINOR MUST be incremented when the public API gains functionality and nothing breaks.
 
@@ -103,11 +130,49 @@ Incorrect: `2.0.0-rc1`, `2.0.0-test`, `2.0.0-final`
 
 Build metadata is ignored when versions are compared, so two artifacts that differ only there are indistinguishable to a consumer. If the content differs, the version differs.
 
+## The version of record
+
+**VER-3** A repository MUST hold its version in exactly one place.
+
+**VER-4** The version of record MUST be the location its ecosystem defines:
+
+| Ecosystem | Version of record |
+|---|---|
+| Node | `package.json`, `version` |
+| Python | `pyproject.toml`, `[project] version` |
+| Rust | `Cargo.toml`, `[package] version` |
+| Go | the git tag, since Go has no manifest version |
+| Container image | the git tag, mirrored into the image tag |
+| Anything else | a `VERSION` file at the repository root |
+
+**VER-5** Every other occurrence of the version MUST be derived from the version of record when the artifact is built.
+
+A version written by hand in a second place is a version that will disagree with the first. Documentation, build arguments, generated headers and image tags all read from the one location.
+
+**VER-32** A repository that publishes releases MUST gate merges on a check that fails when the version of record and the git tag disagree.
+
+Version grammar, agreement between tag and manifest, monotonic increase and prior publication are all machine checkable, so this check enforces them in CI (TL-10) and this file does not repeat them.
+
+## Tags
+
+**VER-28** A release tag MUST take the form `[<unit>/]v<major>.<minor>.<patch>[-<pre-release>]`: `<unit>/` only in a repository that publishes more than one unit, and `<pre-release>` as VER-17 requires.
+
+Correct: `v2.1.0`, `v2.0.0-rc.1`, `billing-api/v2.1.0` in a repository publishing three services
+Incorrect: `v2.0.0rc1`, `v2.0.0-RC1`, `v2.1.0` in a repository publishing three services
+
 ## Deprecation and removal
 
 **VER-22** Public API MUST NOT be removed until it has been published as deprecated in at least one MINOR release of the current MAJOR line.
 
 **VER-23** A deprecation MUST name the version in which removal is planned.
+
+## Compatibility during rollout
+
+**VER-42** A service deployed without downtime MUST remain compatible with the immediately preceding version for as long as both are running.
+
+**VER-43** A breaking change to a live wire contract MUST be delivered as three releases: add the new surface, migrate consumers, remove the old surface.
+
+Two versions of a service are in production simultaneously during any rolling deployment. A contract change that assumes otherwise fails while the rollout is in progress, not afterwards.
 
 ## Supported lines
 

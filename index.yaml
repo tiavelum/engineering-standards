@@ -11,7 +11,7 @@
 
 schema_version: 1
 repository: tiavelum/engineering-standards
-updated: 2026-10-26
+updated: 2026-10-27
 validated_by: scripts/validate-standards.py
 
 meta:
@@ -74,23 +74,13 @@ standards:
 
   - id: versioning
     path: standards/versioning.md
-    title: Versioning
-    version: 2.0.0
+    title: Versioning and public API
+    version: 2.1.0
     status: active
-    summary: How a release version is formed, where it is recorded, and when each component is incremented.
+    summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
     applies_to: [software]
-    tags: [versions, releases, semver, dependencies]
-    requires: [public-api, tooling]
-
-  - id: public-api
-    path: standards/public-api.md
-    title: Public API
-    version: 1.0.3
-    status: active
-    summary: What a repository publishes as its public API, and which changes to it are breaking.
-    applies_to: [software]
-    tags: [api, compatibility, releases]
-    requires: [versioning]
+    tags: [versions, releases, semver, dependencies, api, compatibility]
+    requires: [tooling]
 
   - id: module-layers
     path: standards/module-layers.md
