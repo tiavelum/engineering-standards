@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 7.0.0
+version: 7.1.0
 status: active
 applies_to: [all]
 summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
@@ -109,6 +109,10 @@ A screen cannot be measured; a word count can. The count covers everything above
 The rules of `standards/documentation.md` apply to a README as to every other document.
 
 **RM-18** A README MUST state the known limitations that affect whether a reader should use the repository.
+
+**RM-40** Where a command the repository provides changes configuration outside the repository, such as the settings of a machine or an account, the README MUST state how that change is undone, or that it cannot be.
+
+A reader decides whether to run such a command on their own machine or account by whether they can get back to where they were. A rollback the command writes, or a report of the values it replaced, answers this.
 
 ## Before merge
 
