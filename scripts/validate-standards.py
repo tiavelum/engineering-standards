@@ -55,6 +55,7 @@ RE_XREF_PATH = re.compile(r"\b((?:standards|meta)/[a-z0-9-]+\.md)\b")
 # Names a tool or convention fixes, which NAM-2 does not govern.
 FIXED_NAMES = {
     "README.md",
+    "CLAUDE.md",
     "LICENSE",
     "CODEOWNERS",
     "Dockerfile",
