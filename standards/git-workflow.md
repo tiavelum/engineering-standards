@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 6.1.0
+version: 7.0.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -43,6 +43,8 @@ A MAJOR increment on a maintenance branch contradicts the reason the branch exis
 
 ## Commits
 
+WR-1 governs the language of a commit message.
+
 **GW-5** A commit MUST leave the repository in a working state.
 
 The tip of the default branch is a commit, so the default branch always works.
@@ -66,11 +68,9 @@ Incorrect: `Added consumer contract.`, `updates`, `wip`
 
 **GW-10** A commit MUST carry only work for the issue it is made for.
 
-**GW-23** A commit message MUST be written in English.
-
 ## Pull requests
 
-**GW-12** A pull request description MUST state what changes and why, in terms a reviewer who did not write it can follow.
+WR-2 governs what the description of a pull request states for a reader who was not present when it was written.
 
 **GW-14** A pull request MUST NOT be merged with failing checks.
 
