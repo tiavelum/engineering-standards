@@ -29,7 +29,7 @@ A second configuration may repeat the first for tools that do not read the forma
 
 ## Repository settings
 
-**TL-29** A repository MUST be in the state that the settings check of tiavelum/github-setup reports as matching.
+**TL-29** A repository that is neither archived nor a fork MUST be in the state that the settings check of tiavelum/github-setup reports as matching.
 
 A repository setting or ruleset enforces a requirement only on the repositories it is applied to. tiavelum/github-setup holds the values and applies them, and its check lists each repository it covers and reports those whose settings differ, so a repository that falls out of its management shows as differing or is missing from the list.
 
