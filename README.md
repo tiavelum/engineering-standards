@@ -75,6 +75,7 @@ Result:   two violations. Lowercasing gives `session-notes-august.md`, which
 | `meta/` | Rules about the rules: file format, precedence, consumer contract. |
 | `scripts/` | The validator that enforces the rules this repo can check itself. |
 | `.github/` | The workflow that runs the formatter check, the linter and the validator on every push and pull request. |
+| `.claude/` | Agent types for Claude Code sessions that work on this repository: `checker` and `worker`, each with its model, effort and tools. |
 
 Start here: [`index.yaml`](index.yaml), then [meta/rule-format.md](meta/rule-format.md).
 
