@@ -66,7 +66,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 7.0.0
+    version: 8.0.0
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
@@ -116,16 +116,16 @@ standards:
   - id: writing
     path: standards/writing.md
     title: Writing
-    version: 1.0.0
+    version: 2.0.0
     status: active
-    summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, and how they name people."
+    summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, how they name people, and how long their titles are."
     applies_to: [all]
     tags: [writing, language, issues, pull-requests, commits]
 
   - id: issues
     path: standards/issues.md
     title: Issues
-    version: 2.0.0
+    version: 2.0.1
     status: active
     summary: When future work is recorded as an issue, what an issue states, and how it is closed.
     applies_to: [all]
