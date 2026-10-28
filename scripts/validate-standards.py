@@ -351,6 +351,8 @@ def check_requires(entries: list[dict], all_rules: list[tuple[str, str]]) -> Non
     through the prefix that owns it, or a repository relative path. A prefix
     that owns no rule here is ignored, so a token of the same shape that is
     not a rule identifier, such as UTF-8, does not register as a reference.
+    Fenced blocks are read too, since RF-26 counts a reference in an example
+    the same as one in a rule.
     """
     id_by_path = {e["path"]: e.get("id") for e in entries if e.get("path")}
     known_ids = {i for i in id_by_path.values() if i}
@@ -376,7 +378,7 @@ def check_requires(entries: list[dict], all_rules: list[tuple[str, str]]) -> Non
             elif name not in known_ids:
                 error(where, "RF-25", f"requires names an unknown entry: {name}")
 
-        text = strip_code_blocks((ROOT / path).read_text(encoding="utf-8"))
+        text = (ROOT / path).read_text(encoding="utf-8")
         referenced: set[str] = set()
         for match in RE_XREF_RULE.finditer(text):
             owner = owner_by_prefix.get(match.group(1))
