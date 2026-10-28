@@ -85,9 +85,9 @@ A standard that defers to another is not a defect; hiding that it does is. RF-26
 
 **RF-11** An identifier MUST NOT be reused for any rule other than the one it was first assigned to, including after that rule is removed.
 
-**RF-43** A rule identifier written in `index.yaml` or in a file it lists, in an example as anywhere else, MUST be the identifier of a rule in a file `index.yaml` lists.
+**RF-43** A term of the form RF-10 defines, written in `index.yaml` or in a file it lists, in an example as anywhere else, MUST be the identifier of a rule in a file `index.yaml` lists, unless it names something other than a rule.
 
-A citation of a removed or mistyped identifier points its reader at nothing, and RF-11 keeps a removed identifier from naming a rule again. A term of the same form that names something other than a rule, such as UTF-8, is not a rule identifier.
+A citation of a removed or mistyped identifier points its reader at nothing, and RF-11 keeps a removed identifier from naming a rule again. A term such as UTF-8 names something other than a rule. The validator cannot tell such a term from a citation, so it reports every one until it is listed in `NOT_RULE_IDS` in `scripts/validate-standards.py`.
 
 **RF-23** A rule whose meaning changes MUST keep its identifier.
 
