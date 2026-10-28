@@ -52,11 +52,9 @@ RE_RFC2119 = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
 RE_XREF_RULE = re.compile(r"\b([A-Z]{2,3})-\d+\b")
 RE_XREF_PATH = re.compile(r"\b((?:standards|meta)/[a-z0-9-]+\.md)\b")
 
-# Terms of the form RF-10 defines that name something other than a rule, which
-# RF-43 does not govern. A term of that form is otherwise read as a cited rule
-# identifier even when no rule here carries its prefix, since the prefix of a
-# removed standard, such as LC or PA, carries none either. A file that names
-# such a term adds it here; RF-43 names UTF-8 as its example.
+# Terms of the shape RF-43 describes that name something other than a rule.
+# RF-43 accepts such a term only if a rule here carries its identifier or it is
+# listed here, so a file that writes one, such as UTF-8, adds it here.
 NOT_RULE_IDS = frozenset({"UTF-8"})
 
 # Names a tool or convention fixes, which NAM-2 does not govern.
@@ -366,8 +364,7 @@ def check_cited_ids(all_rules: list[tuple[str, str]]) -> None:
                 token = match.group(0)
                 if token in NOT_RULE_IDS:
                     continue
-                prefix, digits = token.split("-")
-                if f"{prefix}-{int(digits)}" not in defined:
+                if token not in defined:
                     error(relative, "RF-43", f"line {number} cites {token}, which no rule defines")
 
 
