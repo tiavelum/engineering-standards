@@ -29,7 +29,7 @@ A second configuration may repeat the first for tools that do not read the forma
 
 ## Repository settings
 
-**TL-29** A repository on GitHub whose `archived` and `fork` properties, as the GitHub API returns them, are both `false` MUST be in a state for which `repo-settings.sh`, run from an unmodified checkout of the default branch of tiavelum/github-setup, prints `ok` for that repository.
+**TL-29** A repository on GitHub whose `archived` and `fork` properties, as the GitHub API returns them, are both `false` MUST be in a state for which `repo-settings.sh`, run without `--apply` from an unmodified checkout of the default branch of tiavelum/github-setup, prints `ok` for that repository.
 
 A repository setting or ruleset enforces a requirement only on the repositories it is applied to. tiavelum/github-setup holds the values and applies them. Run without `--apply`, `repo-settings.sh` prints `diff` for a repository whose settings differ, so a repository that falls out of its management shows as differing. It prints `skipped` for a repository whose `archived` or `fork` property is `true`, the repositories TL-29 leaves out.
 
