@@ -1,10 +1,10 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 7.0.0
+version: 7.1.0
 status: active
 applies_to: [all]
-summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
+summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
 ---
 
 # Tooling and enforcement
@@ -26,6 +26,12 @@ The committed configuration is then the rule.
 **TL-22** Where a committed formatter governs a file, its configuration MUST be the authority for any formatting property another committed configuration also sets.
 
 A second configuration may repeat the first for tools that do not read the formatter, but it never decides. Two configurations that have to be kept in step by hand will drift, and the one that drifts is not the one doing the formatting.
+
+## Repository settings
+
+**TL-29** A repository MUST be reported as matching by the settings check of tiavelum/github-setup.
+
+A repository setting or ruleset enforces a requirement only on the repositories it is applied to. tiavelum/github-setup holds the values and applies them, and its check lists each repository it covers and reports those whose settings differ, so a repository that falls out of its management shows as differing or is missing from the list.
 
 ## Baseline configuration
 
