@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 13.0.0
+version: 13.0.1
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, content, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -27,7 +27,7 @@ NAM-2 governs the name of a file in `docs/`, as it does every file name.
 
 ## Content
 
-WR-1 governs the language of a document, and WR-3 and WR-4 how a file names the repository's owner.
+WR-1 governs the language of a document, WR-6 how it names a person, and WR-8 and WR-9 how it links a source outside the repository.
 
 **DOC-35** Documentation MUST state what the reader does, not what the author did.
 
