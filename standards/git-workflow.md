@@ -45,9 +45,9 @@ A MAJOR increment on a maintenance branch contradicts the reason the branch exis
 
 WR-1 governs the language of a commit message, and WR-5 the length of its first line.
 
-**GW-5** A commit on the default branch MUST leave the repository in a working state.
+**GW-5** A commit MUST leave the repository in a working state.
 
-The tip of the default branch is such a commit, so the default branch always works.
+The tip of the default branch is a commit, so the default branch always works.
 
 **GW-33** A commit that reaches the default branch without a pull request MUST carry as its message a title and a description that GW-6, GW-7, GW-25 and WR-2 allow for a pull request, the title as the message's first line and the description as its body.
 
@@ -59,7 +59,7 @@ Under GW-2 such a commit is the first commit of a repository, which creates the 
 
 WR-1 governs the language of a pull request's title and description, WR-2 what the description states for a reader who was not present when it was written, and WR-5 the length of the title.
 
-A repository that merges by squash, as tiavelum/github-setup sets every repository it manages to, turns the title of a pull request into the first line of the commit its merge makes on the default branch, and the description into that commit's body. The rules on what that commit message says are therefore rules on these two texts.
+A repository that merges by squash turns the title of a pull request into the first line of the commit its merge makes on the default branch, and the description into that commit's body. The rules on what that commit message says are therefore rules on these two texts.
 
 **GW-6** A pull request's title MUST take the form `<type>: <summary>`, where `<type>` is one of `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `build`, `ci`, `revert`.
 
@@ -81,7 +81,7 @@ Incorrect: `Tried a config file first; CI could not find it, so switched to PORT
 
 **GW-15** A pull request SHOULD stay small enough to review in one sitting.
 
-**GW-27** A mechanical change to lines that no other change of a pull request touches SHOULD be made in a pull request that carries only mechanical changes.
+**GW-27** A large mechanical change SHOULD be made in a pull request of its own.
 
 A change is mechanical when it changes no behaviour and applies one transformation throughout, such as formatting, a rename or moving files. Commits within one pull request do not keep it apart once the pull request is squashed into one commit; a pull request of its own keeps it apart in the history and lets it be checked on its own.
 
@@ -100,9 +100,9 @@ Incorrect: `Fixes the failing test`, `Skips the import test until the parser fix
 
 A file of review findings has to be pruned by hand once they are resolved. A pull request closes with the change it reviews.
 
-**GW-34** A pull request MUST NOT be merged unless, after its last commit, the repository's owner has reviewed it or a party that neither wrote nor directed its changes has submitted its findings as a review of the pull request.
+**GW-34** A pull request MUST NOT be merged unless, after its last commit, the repository's owner has submitted a review of it, or a party that neither wrote nor directed its changes has submitted a review of it that lists its findings or states that it found none.
 
-A party is a person or an agent session; a person and the agent sessions that act under that person's account are separate parties. A review submitted as a review of the pull request, rather than as a comment in its conversation, shows there whichever account submits it, and states so when it found nothing. A commit made after a review leaves that commit unreviewed, so the review is made again.
+The owner's review counts whoever wrote the changes. A party is a person or an agent session; a person and the agent sessions that act under that person's account are separate parties, so a review submitted by a session under the owner's account is not the owner's review. A review submitted as a review of the pull request, rather than as a comment in its conversation, shows there whichever account submits it. A commit made after a review leaves that commit unreviewed, so the review is made again.
 
 Correct: a review submitted on the pull request with its three findings as its comments, a review submitted on the pull request that states it found nothing
 Incorrect: findings summarised in the pull request's description, findings posted as a comment in the pull request's conversation, a review by the session that wrote the changes or by the session that directed their writing
