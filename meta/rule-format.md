@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 6.0.1
+version: 6.1.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -84,6 +84,10 @@ A standard that defers to another is not a defect; hiding that it does is. RF-26
 **RF-40** A prefix MUST be unique across the repository.
 
 **RF-11** An identifier MUST NOT be reused for any rule other than the one it was first assigned to, including after that rule is removed.
+
+**RF-43** A rule identifier written in `index.yaml` or in a file it lists, in an example as anywhere else, MUST be the identifier of a rule in a file `index.yaml` lists.
+
+A citation of a removed or mistyped identifier points its reader at nothing, and RF-11 keeps a removed identifier from naming a rule again. A term of the same form that names something other than a rule, such as UTF-8, is not a rule identifier.
 
 **RF-23** A rule whose meaning changes MUST keep its identifier.
 

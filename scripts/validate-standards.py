@@ -52,6 +52,13 @@ RE_RFC2119 = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
 RE_XREF_RULE = re.compile(r"\b([A-Z]{2,3})-\d+\b")
 RE_XREF_PATH = re.compile(r"\b((?:standards|meta)/[a-z0-9-]+\.md)\b")
 
+# Terms of the form RF-10 defines that name something other than a rule, which
+# RF-43 does not govern. A term of that form is otherwise read as a cited rule
+# identifier even when no rule here carries its prefix, since the prefix of a
+# removed standard, such as LC or PA, carries none either. A file that names
+# such a term adds it here; RF-43 names UTF-8 as its example.
+NOT_RULE_IDS = frozenset({"UTF-8"})
+
 # Names a tool or convention fixes, which NAM-2 does not govern.
 FIXED_NAMES = {
     "README.md",
@@ -344,6 +351,26 @@ def check_rule_prefix_uniqueness(all_rules: list[tuple[str, str]]) -> None:
         seen.setdefault(rule_id, relative)
 
 
+def check_cited_ids(all_rules: list[tuple[str, str]]) -> None:
+    """Every rule identifier the index or a rule file writes must be a rule's, per RF-43.
+
+    The whole text is read, fenced examples and YAML comments included. A range
+    such as `RF-27 to RF-32` writes only its two ends, so only they are checked.
+    """
+    defined = {rule_id for rule_id, _ in all_rules}
+    for path in [INDEX, *rule_files()]:
+        relative = path.relative_to(ROOT).as_posix()
+        lines = path.read_text(encoding="utf-8").splitlines()
+        for number, line in enumerate(lines, start=1):
+            for match in RE_XREF_RULE.finditer(line):
+                token = match.group(0)
+                if token in NOT_RULE_IDS:
+                    continue
+                prefix, digits = token.split("-")
+                if f"{prefix}-{int(digits)}" not in defined:
+                    error(relative, "RF-43", f"line {number} cites {token}, which no rule defines")
+
+
 def check_requires(entries: list[dict], all_rules: list[tuple[str, str]]) -> None:
     """Every standard a file references must appear in its entry's requires, per RF-25.
 
@@ -420,6 +447,7 @@ def main() -> int:
         all_rules.extend(check_rule_file(path, entries_by_path))
 
     check_rule_prefix_uniqueness(all_rules)
+    check_cited_ids(all_rules)
     check_requires(entries, all_rules)
     check_names()
     check_links()
