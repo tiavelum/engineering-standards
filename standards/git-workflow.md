@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 6.0.1
+version: 6.1.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -81,6 +81,13 @@ Incorrect: `Added consumer contract.`, `updates`, `wip`
 **GW-30** A pull request that states that behaviour is unchanged MUST name the check that shows it.
 
 A diff shows what changed in the code, not what stayed the same in its results, so the claim is the one part of such a pull request a reviewer cannot verify by reading it.
+
+**GW-32** A pull request that removes, skips or weakens a test the default branch has MUST state, for the behaviour the test checked, what checks it after the change or why it is no longer required.
+
+A test is weakened when a change makes it accept a result it rejected before, such as a wider tolerance, a looser assertion or a new expected value. Changing the source and changing the test both turn a failing test green, which is all GW-14 asks; the diff shows that the test changed, not whether the behaviour it guarded is still checked or still required. A test skipped or marked as expected to fail until a defect is fixed leaves a behaviour that is still required checked by nothing, so neither statement is true: the defect is fixed first, or the test stays as it is and GW-14 holds the merge.
+
+Correct: `The nine tests of tests/run.sh moved to tests/import.sh unchanged`, `Import now stops at a corrupt file, so skipping one is no longer required`, `Skips the import test on the Linux runner; the macOS job runs it`
+Incorrect: `Fixes the failing test`, `Skips the import test until the parser fix is merged`
 
 **GW-24** A review MUST take place on a pull request, with its findings recorded as comments there and not in a committed file.
 

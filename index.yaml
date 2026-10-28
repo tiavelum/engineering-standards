@@ -65,7 +65,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 6.0.1
+    version: 6.1.0
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
@@ -131,13 +131,3 @@ standards:
     applies_to: [all]
     tags: [tooling, ci, linting]
     requires: [precedence]
-
-  - id: lifecycle
-    path: standards/lifecycle.md
-    title: Product lifecycle
-    version: 1.2.2
-    status: draft
-    summary: The phases a product passes through from idea to operation, the artifact each produces, and the gate that must be passed to leave it.
-    applies_to: [all]
-    tags: [lifecycle, requirements, verification, gates]
-    requires: [documentation, git-workflow, readme-contract, issues]
