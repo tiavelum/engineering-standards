@@ -1,7 +1,7 @@
 ---
 id: precedence
 title: Precedence and deviation
-version: 2.0.0
+version: 2.0.1
 status: active
 applies_to: [all]
 summary: How conflicts between these standards, a consuming repository and a task instruction are resolved, and how a deviation is recorded.

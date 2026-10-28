@@ -18,7 +18,7 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 6.0.1
+    version: 6.1.0
     status: active
     summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
@@ -27,10 +27,11 @@ meta:
   - id: precedence
     path: meta/precedence.md
     title: Precedence and deviation
-    version: 2.0.0
+    version: 2.0.1
     status: active
-    summary: How conflicts between these standards, a consuming repo and a task instruction are resolved, and how a deviation is recorded.
+    summary: How conflicts between these standards, a consuming repository and a task instruction are resolved, and how a deviation is recorded.
     applies_to: [all]
+    requires: [repo-layout]
 
   - id: consuming
     path: meta/consuming.md
