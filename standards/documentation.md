@@ -1,10 +1,10 @@
 ---
 id: documentation
 title: Documentation
-version: 12.0.0
+version: 13.0.0
 status: active
 applies_to: [all]
-summary: "Rules for every document of a repository, the README included: placement, writing, language, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
+summary: "Rules for every document of a repository, the README included: placement, content, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
 ---
 
 # Documentation
@@ -25,7 +25,9 @@ NAM-2 governs the name of a file in `docs/`, as it does every file name.
 
 **DOC-4** Reference material that can be generated from source MUST be generated, not written by hand.
 
-## Writing
+## Content
+
+WR-1 governs the language of a document, and WR-3 and WR-4 how a file names the repository's owner.
 
 **DOC-35** Documentation MUST state what the reader does, not what the author did.
 
@@ -43,24 +45,6 @@ Correct: "Install the checks:" followed by a fenced block holding `pip install -
 Incorrect: "Install the checks with `pip install -r requirements.txt` before you start."
 
 **DOC-9** A document MUST NOT be published with TODOs, placeholders or empty sections.
-
-**DOC-33** A file that is not a document about the repository MUST refer to the repository's owner by the owner's account handle, if at all.
-
-Correct: `octocat's repositories`
-Incorrect: `Mona's repositories`
-
-**DOC-47** A document about the repository MUST NOT name the repository's owner.
-
-A document says what the repository does, not whose it is. Where a sentence needs a person, a role such as the user or the developer names them. A file that has to name the owner, such as a license, is not a document about the repository.
-
-Correct: `A sailing logbook built from the photos of each charter trip.`
-Incorrect: `A logbook of the charter trips octocat skippers.`
-
-## Language
-
-**DOC-30** A repository's README and every other document about the repository MUST be written in English.
-
-A document that is the repository's content rather than about it, such as a German CV or a German handbook, keeps the language that is the point of it.
 
 ## Manual steps
 

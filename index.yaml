@@ -11,7 +11,7 @@
 
 schema_version: 1
 repository: tiavelum/engineering-standards
-updated: 2026-10-27
+updated: 2026-10-28
 validated_by: scripts/validate-standards.py
 
 meta:
@@ -65,12 +65,12 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 6.1.0
+    version: 7.0.0
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
     tags: [git, commits, branches, review]
-    requires: [naming]
+    requires: [naming, writing]
 
   - id: versioning
     path: standards/versioning.md
@@ -105,22 +105,31 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 12.0.0
+    version: 13.0.0
     status: active
-    summary: "Rules for every document of a repository, the README included: placement, writing, language, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
+    summary: "Rules for every document of a repository, the README included: placement, content, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
     applies_to: [all]
     tags: [documentation, adr]
-    requires: [naming]
+    requires: [naming, writing]
+
+  - id: writing
+    path: standards/writing.md
+    title: Writing
+    version: 1.0.0
+    status: active
+    summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, and how they name people."
+    applies_to: [all]
+    tags: [writing, language, issues, pull-requests, commits]
 
   - id: issues
     path: standards/issues.md
     title: Issues
-    version: 1.0.0
+    version: 2.0.0
     status: active
     summary: When future work is recorded as an issue, what an issue states, and how it is closed.
     applies_to: [all]
     tags: [issues, open-items]
-    requires: [documentation, precedence, readme-contract]
+    requires: [documentation, precedence, readme-contract, writing]
 
   - id: tooling
     path: standards/tooling.md

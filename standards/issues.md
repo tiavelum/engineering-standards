@@ -1,7 +1,7 @@
 ---
 id: issues
 title: Issues
-version: 1.0.0
+version: 2.0.0
 status: active
 applies_to: [all]
 summary: When future work is recorded as an issue, what an issue states, and how it is closed.
@@ -31,12 +31,12 @@ The prohibition covers the file's purpose, not its name. A file listing outstand
 
 ## Content
 
+WR-1 governs the language of an issue, and WR-2 what it states for a reader who was not present when it was written.
+
 **ISS-4** An issue's title MUST state the work as an imperative phrase.
 
 Correct: `Split the rules that hold two independent requirements`, `Decide whether source files may sit at the root`
 Incorrect: `Rule splitting`, `Source files at the root?`, `Two rules disagree on .editorconfig`
-
-**ISS-5** An issue MUST state what is to be done and why, in terms a reader who was not present when it was raised can act on.
 
 **ISS-6** An issue MUST state the condition under which it is done.
 
@@ -45,10 +45,6 @@ The condition lets anyone close the issue, or see that it is not done yet, witho
 **ISS-7** An issue that asks for a decision MUST list the options it knows, each with its consequence.
 
 **ISS-8** An issue that asks for a decision SHOULD name the option its author recommends, with the reason.
-
-**ISS-9** An issue MUST be written in English.
-
-An issue has the readers of the repository's documentation, which DOC-30 requires in English.
 
 **ISS-10** Work that spans several issues SHOULD be held by one tracking issue that links each of them.
 
