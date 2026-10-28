@@ -1,7 +1,7 @@
 ---
 id: issues
 title: Issues
-version: 2.0.0
+version: 2.0.1
 status: active
 applies_to: [all]
 summary: When future work is recorded as an issue, what an issue states, and how it is closed.
@@ -31,7 +31,7 @@ The prohibition covers the file's purpose, not its name. A file listing outstand
 
 ## Content
 
-WR-1 governs the language of an issue, and WR-2 what it states for a reader who was not present when it was written.
+WR-1 governs the language of an issue, WR-2 what it states for a reader who was not present when it was written, and WR-5 the length of its title.
 
 **ISS-4** An issue's title MUST state the work as an imperative phrase.
 
