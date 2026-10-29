@@ -11,7 +11,7 @@
 
 schema_version: 1
 repository: tiavelum/engineering-standards
-updated: 2026-10-28
+updated: 2026-10-29
 validated_by: scripts/validate-standards.py
 
 meta:
@@ -56,11 +56,11 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 7.0.0
+    version: 8.0.0
     status: active
-    summary: Required top-level files, directory roles, and what must not live in a repository.
+    summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
     applies_to: [all]
-    tags: [structure, files]
+    tags: [structure, files, directories, placement]
     requires: [precedence, readme-contract, documentation]
 
   - id: git-workflow

@@ -1,10 +1,10 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 7.0.0
+version: 8.0.0
 status: active
 applies_to: [all]
-summary: Required top-level files, directory roles, and what must not live in a repository.
+summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
 ---
 
 # Repository layout
@@ -21,30 +21,33 @@ Prefix: `RL`
 
 A repository without commits has no default branch yet, so its first commit brings these files.
 
-## Root discipline
-
-**RL-6** The root SHOULD contain only: the required files above, files whose location at the root is fixed by another rule in these standards or by the tool that reads them, and the top-level directories.
-
-The clause is general on purpose. PR-5 fixes `deviations.md` at the root. Enumerating the files here would go stale each time a rule is added.
-
 ## Directory roles
 
-**RL-9** Each top-level directory MUST have exactly one role.
+A repository creates the directories it needs, under names of its choosing. The rules below make the purpose of each directory explicit, so that every file has exactly one place.
 
-RM-11 requires the README's structure section to say which directory holds what.
+**RL-9** Every directory below the root MUST have exactly one role.
 
-**RL-10** A repository SHOULD use these names where the role applies, rather than inventing synonyms:
+**RL-18** The role of a directory that lies inside a top-level directory, and whose role no tool fixes, MUST be stated in the README at the root or in the README of the directory that contains it.
 
-| Directory | Role |
-|-----------|------|
-| `src/` | Source that is built or executed |
-| `tests/` | Automated tests, when not colocated with source |
-| `scripts/` | Operational and development scripts |
-| `templates/` | Files intended to be copied and filled in |
-| `examples/` | Runnable examples, not fragments |
-| `.github/` | Repository automation and templates |
+RM-11 requires the README at the root to describe each top-level directory. A tool fixes the role of a directory when it gives that directory, or every directory at that place, its meaning, as GitHub Actions does for `.github/workflows/` and Claude Code for each directory in `.claude/skills/`. A role stated in the README at the root keeps `.github/` free of a README, which GitHub would show in place of the repository's own.
 
-Documentation's directory is set by DOC-2.
+**RL-19** The roles of directories that share a parent directory MUST NOT overlap.
+
+Two roles overlap when one file can have both.
+
+Correct: `scripts/` for scripts that build, test or run the repository, kept as source, next to `tools/` for prebuilt executables from outside the repository that those scripts run
+Incorrect: `scripts/` for development scripts next to `tools/` for development utilities
+
+## Placement
+
+**RL-20** A file whose path no other rule of these standards fixes MUST live, of the directories in which the tool that reads it accepts it, in the deepest whose role the file has, or in the shallowest where none of them has a role that covers it.
+
+A tool accepts a file in a directory where it finds the file on its own, by default or by searching. A file that a tool reads only from a path its author gives, such as an import, a script call or a path in a configuration file, is accepted in every directory, so it lives in the deepest directory whose role it has, or at the root.
+
+PR-5, for example, fixes `deviations.md` at the root, and DOC-2 and DOC-10 set where documentation and decision records live.
+
+Correct: `project-instructions.md` at the root, which `CLAUDE.md` imports and no directory's role covers; `CONTRIBUTING.md` in `docs/`, where GitHub also finds it, when `docs/` holds the repository's documentation
+Incorrect: `CONTRIBUTING.md` at the root of the same repository
 
 ## What must not be committed
 
