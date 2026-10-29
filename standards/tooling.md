@@ -43,7 +43,7 @@ A requirement written out next to the setting that enforces it drifts from the s
 
 A rule whose requirement a setting enforces only in part, or only on some of the repositories `repo-settings.sh` checks and the rule applies to, stays written in full. Which repositories `repo-settings.sh` checks, and which settings reach which of them, is defined in tiavelum/github-setup and not restated here.
 
-Correct: `**TL-17** Secret scanning MUST be enabled by the security_and_analysis setting in repo-settings.json of tiavelum/github-setup.`
+Correct: `**TL-17** Secret scanning MUST be enabled where the security_and_analysis setting in repo-settings.json of tiavelum/github-setup enables it.`
 Incorrect: `**TL-17** Secret scanning MUST be enabled on every repository that can enable it.`, while that setting enforces it on every repository `repo-settings.sh` checks that can enable it
 
 ## Baseline configuration
