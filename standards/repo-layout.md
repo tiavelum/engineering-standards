@@ -40,9 +40,9 @@ Incorrect: `scripts/` for development scripts next to `tools/` for development u
 
 ## Placement
 
-**RL-20** A file whose path no other rule of these standards fixes MUST live, of the directories in which the tool that reads it accepts it, in the deepest whose role the file has, or in the shallowest where none of them has a role that covers it.
+**RL-20** A file whose path no other rule of these standards fixes MUST live, of the directories in which it is accepted, in the deepest whose role covers it, or in the shallowest where none of their roles covers it.
 
-A tool accepts a file in a directory where it finds the file on its own, by default or by searching. A file that a tool reads only from a path its author gives, such as an import, a script call or a path in a configuration file, is accepted in every directory, so it lives in the deepest directory whose role it has, or at the root.
+A file is accepted in a directory where the tool that reads it finds it on its own, by default or by searching. A file that no tool finds on its own, because a tool reads it only from a path its author gives, such as an import, a script call or a path in a configuration file, or because only people read it, is accepted in every directory, so it lives in the deepest directory whose role covers it, or at the root.
 
 PR-5, for example, fixes `deviations.md` at the root, and DOC-2 and DOC-10 set where documentation and decision records live.
 
