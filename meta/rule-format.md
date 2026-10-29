@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 6.1.0
+version: 6.1.1
 status: active
 applies_to: [authoring]
 summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
@@ -101,7 +101,7 @@ A draft rule stays in its place and keeps its identifier, so it can be cited whi
 
 ## Rule language
 
-**RF-13** A rule MUST state its keyword, one of MUST, MUST NOT, SHOULD, SHOULD NOT and MAY, in uppercase with its meaning from RFC 2119, on the line that carries its identifier.
+**RF-13** A rule MUST state its keyword, one of MUST, MUST NOT, SHOULD, SHOULD NOT and MAY, in uppercase with its meaning from [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119), on the line that carries its identifier.
 
 That line is where a reader looks to find out whether a rule binds them, and where a check finds the keyword without guessing how far a rule extends.
 
@@ -119,7 +119,7 @@ One requirement: `MUST start from index.yaml and MUST NOT discover standards by 
 
 ## Versioning
 
-**RF-17** A file's `version` MUST be a semantic version.
+**RF-17** A file's `version` MUST be a [semantic version](https://semver.org/).
 
 **RF-18** The version MUST be incremented as follows: major when the file's set of requirements loses or changes a requirement; minor when it gains a requirement and loses or changes none; patch when it stays the same.
 

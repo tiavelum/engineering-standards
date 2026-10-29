@@ -11,14 +11,14 @@
 
 schema_version: 1
 repository: tiavelum/engineering-standards
-updated: 2026-10-28
+updated: 2026-10-29
 validated_by: scripts/validate-standards.py
 
 meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 6.1.0
+    version: 6.1.1
     status: active
     summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
@@ -66,7 +66,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 8.0.0
+    version: 8.0.1
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
@@ -125,7 +125,7 @@ standards:
   - id: issues
     path: standards/issues.md
     title: Issues
-    version: 2.0.1
+    version: 2.0.2
     status: active
     summary: When future work is recorded as an issue, what an issue states, and how it is closed.
     applies_to: [all]

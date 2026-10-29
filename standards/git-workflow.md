@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 8.0.0
+version: 8.0.1
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -43,7 +43,7 @@ A MAJOR increment on a maintenance branch contradicts the reason the branch exis
 
 ## Commits
 
-WR-1 governs the language of a commit message, and WR-5 the length of its first line.
+WR-1 governs the language of a commit message, WR-5 the length of its first line, and WR-6 the name of its author.
 
 **GW-5** A commit MUST leave the repository in a working state.
 
@@ -57,7 +57,7 @@ Under GW-2 such a commit is the first commit of a repository, which creates the 
 
 ## Pull requests
 
-WR-1 governs the language of a pull request's title and description, WR-2 what the description states for a reader who was not present when it was written, and WR-5 the length of the title.
+WR-1 governs the language of a pull request's title and description, WR-2 what the description states for a reader who was not present when it was written, WR-5 the length of the title, and WR-7 how the description and the comments on the pull request reference an issue or a pull request.
 
 A repository that merges by squash turns the title of a pull request into the first line of the commit its merge makes on the default branch, and the description into that commit's body. The rules on what that commit message says are therefore rules on these two texts.
 
