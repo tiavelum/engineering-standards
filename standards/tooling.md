@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 7.1.0
+version: 7.2.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
@@ -23,6 +23,10 @@ The committed configuration is then the rule.
 
 **TL-4** When a tool and a written standard disagree, the standard MUST be treated as the defect and corrected.
 
+**TL-31** A rule of a standard MUST NOT be removed, or reduced to a reference, because a check in CI enforces it.
+
+A check reports a violation once the file is written; the author needs the rule to write the file right in the first place.
+
 **TL-22** Where a committed formatter governs a file, its configuration MUST be the authority for any formatting property another committed configuration also sets.
 
 A second configuration may repeat the first for tools that do not read the formatter, but it never decides. Two configurations that have to be kept in step by hand will drift, and the one that drifts is not the one doing the formatting.
@@ -32,6 +36,13 @@ A second configuration may repeat the first for tools that do not read the forma
 **TL-29** A repository on GitHub whose `archived` and `fork` properties, as the GitHub API returns them, are both `false` MUST be in a state for which `repo-settings.sh`, run without `--apply` from an unmodified checkout of the default branch of tiavelum/github-setup, prints `ok` for that repository.
 
 A repository setting or ruleset enforces a requirement only on the repositories it is applied to. tiavelum/github-setup holds the values and applies them. Run without `--apply`, `repo-settings.sh` prints `diff` for a repository whose settings differ, so a repository that falls out of its management shows as differing. It prints `skipped` for a repository whose `archived` or `fork` property is `true`, the repositories TL-29 leaves out.
+
+**TL-30** Where a setting that tiavelum/github-setup applies enforces a requirement on every repository that TL-29 governs and the requirement applies to, a standard MUST state that requirement only as a reference to the setting.
+
+A requirement written out next to the setting that enforces it drifts from the setting the day the setting changes; a reference cannot. Where the setting misses some of those repositories, such as private repositories that a ruleset does not reach on every GitHub plan, the requirement stays written for them.
+
+Correct: `Merged branches are deleted by the delete_branch_on_merge setting of tiavelum/github-setup.`
+Incorrect: `A merged branch MUST be deleted.`, with that setting applied to every repository
 
 ## Baseline configuration
 
