@@ -136,7 +136,7 @@ A split, a merge, or removing a rule whose requirement another rule of the same 
 
 **RF-45** A file that a pull request adds or changes MUST follow, for each file listed in `index.yaml` that the same pull request changes, that file as the pull request leaves it.
 
-The validator run on the pull request's branch checks these files against the changed files, and once the pull request is merged, the changed files are in force for them.
+The validator run on the pull request's branch reads each file listed in `index.yaml` as the pull request leaves it, and once the pull request is merged, that version of the file is in force.
 
 **RF-46** Every text of a pull request that changes a file listed in `index.yaml`, other than the files it adds or changes, such as its title, its description, its commit messages and its branch name, MUST follow, for each such file it changes, that file on the default branch.
 
