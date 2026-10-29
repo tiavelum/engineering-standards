@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 8.0.0
+version: 8.0.1
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -102,7 +102,7 @@ A file of review findings has to be pruned by hand once they are resolved. A pul
 
 **GW-34** A pull request MUST NOT be merged unless, after its last commit, the repository's owner has submitted a review of it, or a party that neither wrote nor directed its changes has submitted a review of it that lists its findings or states that it found none.
 
-The owner's review counts whoever wrote the changes. A party is a person or an agent session; a person and the agent sessions that act under that person's account are separate parties, so a review submitted by a session under the owner's account is not the owner's review. A review submitted as a review of the pull request, rather than as a comment in its conversation, shows there whichever account submits it. A commit made after a review leaves that commit unreviewed, so the review is made again.
+The owner's review counts whoever wrote the changes. A party is a person or an AI agent session; a person and the AI agent sessions that act under that person's account are separate parties, so a review submitted by a session under the owner's account is not the owner's review. A review submitted as a review of the pull request, rather than as a comment in its conversation, shows there whichever account submits it. A commit made after a review leaves that commit unreviewed, so the review is made again.
 
 Correct: a review submitted on the pull request with its three findings as its comments, a review submitted on the pull request that states it found nothing
 Incorrect: findings summarised in the pull request's description, findings posted as a comment in the pull request's conversation, a review by the session that wrote the changes or by the session that directed their writing

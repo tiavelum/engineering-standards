@@ -1,6 +1,6 @@
 # engineering-standards
 
-Normative engineering standards for repositories: naming, repository layout, git workflow, README and documentation rules, written so that a person can read them and a tool or agent can load them.
+Normative engineering standards for repositories: naming, repository layout, git workflow, README and documentation rules, written so that a person can read them and a tool or AI agent can load them.
 
 ## What it is for
 
@@ -18,7 +18,7 @@ It is not a tutorial, not a style guide for any single language, and not a recor
 2. Open the standard you need from [`standards/`](standards/).
 3. Apply the MUST rules. Deviations need a written reason in the consuming repo.
 
-### As a consumer (tool, agent, or script)
+### As a consumer (tool, AI agent, or script)
 
 1. Fetch [`index.yaml`](index.yaml). It is the authoritative catalogue of every standard, with its id, path, scope, summary and dependencies.
 2. Select the entries whose `applies_to` matches the task at hand.
@@ -99,7 +99,7 @@ The distribution mechanism sits outside this repo on purpose. Nothing here assum
 
 ## Contributing
 
-Changes are proposed as pull requests. Whether a new rule belongs here is decided by the admission test RF-1, and what a changed standard must carry with it by RF-17 to RF-19, both in [meta/rule-format.md](meta/rule-format.md).
+Changes are proposed as pull requests. Whether a new rule belongs here is decided by the admission test RF-1, RF-41, RF-42 and RF-44, what a changed standard must carry with it by RF-17 to RF-19, and what its pull request follows by RF-45 and RF-46, all in [meta/rule-format.md](meta/rule-format.md).
 
 CI runs the checks under "As a contributor" on every push and pull request and fails the build on a violation. Each check in [scripts/validate-standards.py](scripts/validate-standards.py) names the rule it enforces; the rules it cannot check are enforced in review.
 

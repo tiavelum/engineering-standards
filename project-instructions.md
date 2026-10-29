@@ -4,7 +4,7 @@ This repository holds the engineering standards that other repositories follow. 
 
 Settings and checks: When a GitHub setting could enforce a rule of a standard, propose the setting in tiavelum/github-setup. When an automated check could enforce one, propose the check.
 
-Rules only for Claude: Propose in tiavelum/claude-setup a rule that applies only because Claude works on a repository, since the standards do not admit it.
+Rules only for Claude: Propose in tiavelum/claude-setup a rule that applies only when Claude works on a repository.
 
 Open decisions: Write into a rule only what a decision on an issue already covers. Ask about everything else instead of deciding it yourself.
 
