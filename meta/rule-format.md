@@ -134,7 +134,7 @@ A split, a merge, or removing a rule whose requirement another rule of the same 
 
 **RF-19** A change to a standard MUST update the file, its front matter `version`, and its `index.yaml` entry in the same commit.
 
-**RF-45** A file that a pull request adds or changes MUST follow, for each file listed in `index.yaml` that the same pull request changes, that file as the pull request leaves it.
+**RF-45** A file that a pull request adds or changes MUST follow, for each file listed in `index.yaml` that the same pull request adds or changes, that file as the pull request leaves it.
 
 The validator run on the pull request's branch reads each file listed in `index.yaml` as the pull request leaves it, and once the pull request is merged, that version of the file is in force.
 

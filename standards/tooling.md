@@ -39,7 +39,7 @@ A repository setting or ruleset enforces a requirement only on the repositories 
 
 **TL-30** Where a setting in `repo-settings.json` of tiavelum/github-setup enforces the whole requirement of a rule on every repository that `repo-settings.sh` checks and the rule applies to, the rule MUST state that requirement only as a reference to the setting.
 
-A requirement written out next to the setting that enforces it drifts from the setting the day the setting changes; a reference cannot. The reference keeps the rule's identifier and keyword (RF-10, RF-13), so it can still be cited.
+A requirement written out next to the setting that enforces it drifts from the setting the day the setting changes; a reference cannot. The reference keeps the rule's identifier and keyword, so it can still be cited.
 
 A rule whose requirement a setting enforces only in part, or only on some of the repositories `repo-settings.sh` checks and the rule applies to, stays written in full. Which repositories `repo-settings.sh` checks, and which settings reach which of them, is defined in tiavelum/github-setup and not restated here.
 
