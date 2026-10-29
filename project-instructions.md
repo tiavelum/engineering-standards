@@ -1,15 +1,15 @@
 Repository tiavelum/engineering-standards.
 
-The standards here are the foundation that every repository following them builds on; a change to them reaches each of those repositories and every Claude session working in one.
+This repository holds the engineering standards that other repositories follow. A change here changes the rules for all of them, and for every Claude session that works in one.
 
-Where a repository setting can enforce a rule, propose the setting in tiavelum/github-setup, and replace the rule with a pointer to it once the setting reaches every repository the rule covers. Where a check can enforce a rule, propose the check and keep the rule, since the author still needs it.
+Settings and checks: When a GitHub setting could enforce a rule of a standard, propose the setting in tiavelum/github-setup. Once the setting applies to every repository the rule is meant for, replace the rule's text with a link to the setting. When an automated check could enforce a rule, propose the check, but keep the rule, because whoever writes the file still needs to know it.
 
-Propose a rule that would not hold for work done without Claude in tiavelum/claude-setup, not as a standard.
+Rules only for Claude: A rule that makes no sense for someone working without Claude does not belong in a standard. Propose it in tiavelum/claude-setup instead.
 
-Leave out of a rule any point that no decision recorded on an issue covers, and raise it as a question instead of deciding it.
+Open decisions: Write into a rule only what a decision on an issue already covers. Ask about everything else instead of deciding it yourself.
 
-Before pushing a new or changed rule, apply it to a concrete case as a reader who did not write it. If it gives more than one result, rework it once; if it still does, leave it out and open an issue.
+Testing a rule: Before pushing a new or changed rule, try it on a real example, reading it as someone who did not write it. If it can be read two ways, rewrite it once. If it still can, leave it out and open an issue for it.
 
-Take rule identifiers, versions and counts from the files on the branch you work on, never from memory or an earlier copy.
+Facts from the files: Look up rule numbers, versions and counts in the files of your branch, not in memory or an older copy, since they change with every merge.
 
-Before marking a pull request ready, run the checks under "As a contributor" in the README. If you cannot run them, wait for the CI run of your last commit and report its result.
+Done: A pull request is ready when the checks under "As a contributor" in the README pass. If you cannot run them yourself, wait for the automated run on GitHub after your last commit and report its result.
