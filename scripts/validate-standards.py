@@ -60,6 +60,7 @@ NOT_RULE_IDS = frozenset({"UTF-8"})
 # Names a tool or convention fixes, which NAM-2 does not govern.
 FIXED_NAMES = {
     "README.md",
+    "CLAUDE.md",
     "LICENSE",
     "CODEOWNERS",
     "Dockerfile",

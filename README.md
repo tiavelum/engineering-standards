@@ -76,8 +76,14 @@ Result:   two violations. Lowercasing gives `session-notes-august.md`, which
 | `scripts/` | The validator that enforces the rules this repo can check itself. |
 | `.github/` | The workflow that runs the formatter check, the linter and the validator on every push and pull request. |
 | `.claude/` | Agent types for Claude Code sessions that work on this repository: `checker` and `worker`, each with its model, effort and tools. |
+| `project-instructions.md` | Rules for Claude sessions that work on this repository. |
+| `CLAUDE.md` | Imports `project-instructions.md` for Claude Code. |
 
 Start here: [`index.yaml`](index.yaml), then [meta/rule-format.md](meta/rule-format.md).
+
+## After changing the project instructions
+
+Once a change to `project-instructions.md` is on `main`, paste the whole file into the instructions field of the claude.ai project used for this repository. That field holds a copy, which no tool updates. Claude Code reads the file from its clone through `CLAUDE.md`.
 
 ## Mental model
 
