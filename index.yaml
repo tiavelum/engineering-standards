@@ -18,7 +18,7 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 6.2.0
+    version: 7.0.0
     status: active
     summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
@@ -36,9 +36,9 @@ meta:
   - id: consuming
     path: meta/consuming.md
     title: Consumer contract
-    version: 3.0.0
+    version: 3.0.1
     status: active
-    summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
+    summary: What a tool, AI agent or script may rely on when loading these standards, and what it must not assume.
     applies_to: [tooling, agents]
     requires: [naming, precedence, rule-format]
 
@@ -66,7 +66,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 8.0.0
+    version: 8.0.1
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
@@ -135,9 +135,9 @@ standards:
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 7.2.0
+    version: 8.0.0
     status: active
     summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]
     tags: [tooling, ci, linting]
-    requires: [precedence]
+    requires: [precedence, rule-format]

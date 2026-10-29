@@ -99,7 +99,7 @@ The distribution mechanism sits outside this repo on purpose. Nothing here assum
 
 ## Contributing
 
-Changes are proposed as pull requests. Whether a new rule belongs here is decided by the admission test RF-1, and what a changed standard must carry with it by RF-17 to RF-19, both in [meta/rule-format.md](meta/rule-format.md).
+Changes are proposed as pull requests. Whether a new rule belongs here is decided by the admission test RF-1 and RF-44, and what a changed standard must carry with it by RF-17 to RF-19, and what its pull request follows by RF-45 and RF-46, all in [meta/rule-format.md](meta/rule-format.md).
 
 CI runs the checks under "As a contributor" on every push and pull request and fails the build on a violation. Each check in [scripts/validate-standards.py](scripts/validate-standards.py) names the rule it enforces; the rules it cannot check are enforced in review.
 
