@@ -66,12 +66,12 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 8.0.1
+    version: 8.1.0
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
     tags: [git, commits, branches, review]
-    requires: [naming, writing]
+    requires: [naming, writing, documentation, issues]
 
   - id: versioning
     path: standards/versioning.md

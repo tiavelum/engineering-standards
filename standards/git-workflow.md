@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 8.0.1
+version: 8.1.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -106,6 +106,15 @@ The owner's review counts whoever wrote the changes. A party is a person or an A
 
 Correct: a review submitted on the pull request with its three findings as its comments, a review submitted on the pull request that states it found nothing
 Incorrect: findings summarised in the pull request's description, findings posted as a comment in the pull request's conversation, a review by the session that wrote the changes or by the session that directed their writing
+
+**GW-35** A step that has to be taken by hand after a pull request is merged, for its change to take effect, MUST be stated in a comment in the pull request's conversation instead of in its description.
+
+The comment holds only the steps that put this pull request's change in place. Work beyond it is recorded as an issue (ISS-1), and a step that every user of the repository takes is also described in a document of the repository (DOC-48). Kept out of the description, the step stays out of the commit message that a squash merge makes from it, and whoever takes the step can reply in the conversation once it is done.
+
+**GW-36** A step stated under GW-35 MUST say why the change needs it.
+
+Correct: a comment in the conversation of a pull request that changes a settings file, holding `Apply the new values to every repository: the merge changes only the file, and each repository keeps its old values until the script applies them.` followed by a fenced block with the command
+Incorrect: `Run the script with --apply.` in the pull request's description
 
 ## History
 
