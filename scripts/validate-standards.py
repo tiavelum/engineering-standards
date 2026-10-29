@@ -52,6 +52,11 @@ RE_RFC2119 = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
 RE_XREF_RULE = re.compile(r"\b([A-Z]{2,3})-\d+\b")
 RE_XREF_PATH = re.compile(r"\b((?:standards|meta)/[a-z0-9-]+\.md)\b")
 
+# Terms of the shape RF-43 describes that name something other than a rule.
+# RF-43 accepts such a term only if a rule here carries its identifier or it is
+# listed here, so a file that writes one, such as UTF-8, adds it here.
+NOT_RULE_IDS = frozenset({"UTF-8"})
+
 # Names a tool or convention fixes, which NAM-2 does not govern.
 FIXED_NAMES = {
     "README.md",
@@ -345,6 +350,25 @@ def check_rule_prefix_uniqueness(all_rules: list[tuple[str, str]]) -> None:
         seen.setdefault(rule_id, relative)
 
 
+def check_cited_ids(all_rules: list[tuple[str, str]]) -> None:
+    """Every rule identifier the index or a rule file writes must be a rule's, per RF-43.
+
+    The whole text is read, fenced examples and YAML comments included. A range
+    such as `RF-27 to RF-32` writes only its two ends, so only they are checked.
+    """
+    defined = {rule_id for rule_id, _ in all_rules}
+    for path in [INDEX, *rule_files()]:
+        relative = path.relative_to(ROOT).as_posix()
+        lines = path.read_text(encoding="utf-8").splitlines()
+        for number, line in enumerate(lines, start=1):
+            for match in RE_XREF_RULE.finditer(line):
+                token = match.group(0)
+                if token in NOT_RULE_IDS:
+                    continue
+                if token not in defined:
+                    error(relative, "RF-43", f"line {number} cites {token}, which no rule defines")
+
+
 def check_requires(entries: list[dict], all_rules: list[tuple[str, str]]) -> None:
     """Every standard a file references must appear in its entry's requires, per RF-25.
 
@@ -352,6 +376,8 @@ def check_requires(entries: list[dict], all_rules: list[tuple[str, str]]) -> Non
     through the prefix that owns it, or a repository relative path. A prefix
     that owns no rule here is ignored, so a token of the same shape that is
     not a rule identifier, such as UTF-8, does not register as a reference.
+    Fenced blocks are read too, since RF-26 counts a reference in an example
+    the same as one in a rule.
     """
     id_by_path = {e["path"]: e.get("id") for e in entries if e.get("path")}
     known_ids = {i for i in id_by_path.values() if i}
@@ -377,7 +403,7 @@ def check_requires(entries: list[dict], all_rules: list[tuple[str, str]]) -> Non
             elif name not in known_ids:
                 error(where, "RF-25", f"requires names an unknown entry: {name}")
 
-        text = strip_code_blocks((ROOT / path).read_text(encoding="utf-8"))
+        text = (ROOT / path).read_text(encoding="utf-8")
         referenced: set[str] = set()
         for match in RE_XREF_RULE.finditer(text):
             owner = owner_by_prefix.get(match.group(1))
@@ -419,6 +445,7 @@ def main() -> int:
         all_rules.extend(check_rule_file(path, entries_by_path))
 
     check_rule_prefix_uniqueness(all_rules)
+    check_cited_ids(all_rules)
     check_requires(entries, all_rules)
     check_names()
     check_links()
