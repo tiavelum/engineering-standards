@@ -1,15 +1,15 @@
 ---
 id: rule-format
 title: Rule file format
-version: 6.1.0
+version: 6.2.0
 status: active
 applies_to: [authoring]
-summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
+summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
 ---
 
 # Rule file format
 
-This file governs how every file in `standards/` is written. It exists so that standards stay loadable in isolation, citable by id, and cheap to keep in sync.
+This file governs how every file in `standards/` is written and changed. It exists so that standards stay loadable in isolation, citable by id, and cheap to keep in sync.
 
 ## Admission test
 
@@ -20,6 +20,13 @@ This file governs how every file in `standards/` is written. It exists so that s
 - an agent can apply it deterministically when producing a file.
 
 Preferences that cannot be checked belong in conversation, not in this repository. What a formatter or linter sets is kept out of a standard by TL-2. A rule in inexact terms cannot be checked objectively either.
+
+**RF-44** A rule MUST be admitted only if it would still apply to repositories on which no AI agent works.
+
+These standards are followed by every repository, whoever does its work. A rule that applies only because an AI agent works on a repository, such as one about the agent's own instructions, belongs with those instructions.
+
+Correct: `A pull request is merged only after a review by a party that neither wrote nor directed its changes.`
+Incorrect: `A pull request that raises the major version of a standard also updates every agent skill that cites the standard.`
 
 **RF-41** A rule MUST NOT exempt anything from another rule.
 
@@ -126,6 +133,17 @@ One requirement: `MUST start from index.yaml and MUST NOT discover standards by 
 A split, a merge, or removing a rule whose requirement another rule of the same file already states leaves the set the same. A SHOULD that becomes a MUST, or a rule whose scope changes, changes a requirement.
 
 **RF-19** A change to a standard MUST update the file, its front matter `version`, and its `index.yaml` entry in the same commit.
+
+**RF-45** A file that a pull request changing a standard adds or changes MUST follow the changed version of that standard.
+
+The validator run on the pull request's branch checks these files against the changed version, and once the pull request is merged, that version is the one in force for them.
+
+**RF-46** Every text of a pull request that changes a standard, other than the files it adds or changes, such as its title, its description and its commit messages, MUST follow the version of that standard on the default branch.
+
+That version is in force while the change is under review. A squash merge turns the title and description into the commit message on the default branch, so they are written to the rules that hold when they are written.
+
+Correct: a pull request that raises a limit on title length from 65 to 72 characters gives its own title at most 65 characters, and the examples in the file it changes up to 72
+Incorrect: the same pull request with a title of 70 characters
 
 ## Prohibited content
 
