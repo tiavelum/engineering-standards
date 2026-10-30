@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 10.0.1
+version: 11.0.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
@@ -50,11 +50,21 @@ Incorrect: `**TL-17** Secret scanning MUST be enabled on every repository that c
 
 **TL-5** The default branch of every repository MUST contain an `.editorconfig` covering at minimum: charset, indentation style and width, end of line, final newline, trailing whitespace.
 
-**TL-6** Every repository containing code MUST commit a formatter configuration.
+**TL-6** Every repository containing code MUST commit, for the code in each of its languages, a formatter configuration for that language or, where no formatter exists that can run in CI and whose own documentation lists that language as supported, in part or in full, the `.editorconfig` that TL-5 requires.
+
+The rule applies per language, since a formatter for one language leaves the code of another unformatted. A tool's own documentation decides whether it supports a language, because every reader can check it.
+
+Correct: a repository of Python and zsh code that commits a formatter configuration for its Python and, since [the documentation of shfmt lists zsh](https://github.com/mvdan/sh), formatting options for its zsh in the `.editorconfig` that shfmt reads
+Incorrect: a Python repository whose CI runs no formatter and that commits only the `.editorconfig`, a repository of Python and zsh code that commits a formatter configuration for its Python alone
 
 **TL-23** A committed formatter MUST be applied to the whole repository, not selectively.
 
-**TL-8** Every repository containing code MUST commit a linter configuration.
+**TL-8** Every repository containing code MUST commit, for the code in each of its languages, a linter configuration for that language or, where no linter exists that can run in CI and whose own documentation lists that language as supported, in part or in full, a CI step that parses that code without running it.
+
+The rule applies per language and a tool's own documentation decides, as under TL-6. A parse check finds code that does not parse.
+
+Correct: a repository of Python and zsh code that commits a linter configuration for its Python and, since [the documentation of zsh-lint lists zsh](https://github.com/z-shell/zsh-lint), one for its zsh
+Incorrect: a Python repository whose CI runs no linter and that commits only a CI step that parses its code, a repository of Python and zsh code that commits a linter configuration for its Python alone
 
 **TL-24** A linter suppression MUST carry a reason on the line that suppresses it.
 
@@ -77,6 +87,10 @@ A check that only warns does not gate.
 **TL-15** Tool versions used in CI MUST be pinned.
 
 A build is reproducible only with pinned tools.
+
+**TL-32** Whether a change passes a check MUST be decided by the check's run in CI, whichever tool version a local run of the check uses.
+
+A local run is advisory. It can use the version a platform's package manager installs, which can report a finding the version CI pins does not, or miss one that version reports; the pinned version gates the merge (TL-10, TL-15).
 
 **TL-16** A repository MUST NOT declare a dependency it does not use.
 
