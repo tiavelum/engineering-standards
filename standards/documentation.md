@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 13.1.0
+version: 13.2.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, content, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -65,7 +65,14 @@ Incorrect: the same sign-in described only in `docs/accounts.md`; the same acces
 
 **DOC-45** A rule that constrains how the content of one directory is built, and is not obvious from that content, MUST be described in the README of that directory.
 
-The README of a directory is written for whoever changes the content of that directory rather than for the user of the repository, and it describes the current rules of the content, not how they came about.
+The README of a directory is written for whoever uses or changes the content of that directory. It holds the details of that content that the README at the root leaves out, such as how a program in it behaves when it fails (DOC-52), and it describes the current rules of the content, not how they came about.
+
+**DOC-52** A description, in a document of the repository, of how a program behaves when it fails, where every file of that program lies in a directory below the root, MUST stand in the README of the deepest such directory.
+
+The README at the root shows what works and links to these details (RM-41), so it stays short. The output of a program tells its user about a failure as it happens; the README of its directory is for whoever wants more without reading the program. A program whose files lie at the root is outside this rule.
+
+Correct: what `sync/photo-sync.sh` prints, and which photos it has already copied, when the Photos library cannot be read, described in `sync/README.md`
+Incorrect: the same described in the "Troubleshooting" of the README at the root, or in `docs/troubleshooting.md`
 
 ## Decision records
 
