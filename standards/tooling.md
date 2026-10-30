@@ -54,7 +54,7 @@ Incorrect: `**TL-17** Secret scanning MUST be enabled on every repository that c
 
 The rule applies per language, since a formatter for one language leaves the code of another unformatted. A tool's own documentation decides whether it supports a language, because every reader can check it.
 
-Correct: a repository of Python and zsh code that commits a formatter configuration for its Python and, since [the documentation of shfmt lists zsh](https://github.com/mvdan/sh), a shfmt configuration for its zsh
+Correct: a repository of Python and zsh code that commits a formatter configuration for its Python and, since [the documentation of shfmt lists zsh](https://github.com/mvdan/sh), options for shfmt for its zsh
 Incorrect: a Python repository whose CI runs no formatter and that commits only the `.editorconfig`, a repository of Python and zsh code that commits a formatter configuration for its Python alone
 
 **TL-23** A committed formatter MUST be applied to the whole repository, not selectively.
@@ -63,7 +63,7 @@ Incorrect: a Python repository whose CI runs no formatter and that commits only 
 
 The rule applies per language and a tool's own documentation decides, as under TL-6. A parse check finds code that does not parse.
 
-Correct: a repository of Python and zsh code that commits a linter configuration for its Python and, where no linter that can run in CI lists zsh in its documentation, a CI step that parses its zsh scripts without running them
+Correct: a repository of Python and zsh code that commits a linter configuration for its Python and, since [the documentation of zsh-lint lists zsh](https://github.com/z-shell/zsh-lint), one for its zsh; a repository of Python code and code in a language that no linter that can run in CI lists in its documentation, which commits a linter configuration for its Python and a CI step that parses that code without running it
 Incorrect: a Python repository whose CI runs no linter and that commits only a CI step that parses its code, a repository of Python and zsh code that commits a linter configuration for its Python alone
 
 **TL-24** A linter suppression MUST carry a reason on the line that suppresses it.
