@@ -58,7 +58,7 @@ Such a step usually comes to light while the change is tested. Written down with
 
 **DOC-45** A rule that constrains how the content of one directory is built, and is not obvious from that content, MUST be described in the README of that directory.
 
-Whoever changes the content of a directory meets its README first, since a forge shows it below the listing. That README is written for them rather than for the user of the repository, and it describes the current rules of the content, not how they came about.
+The README of a directory is written for whoever changes the content of that directory rather than for the user of the repository, and it describes the current rules of the content, not how they came about.
 
 ## Decision records
 
@@ -82,7 +82,7 @@ Whoever changes the content of a directory meets its README first, since a forge
 
 **DOC-16** Change notes MUST be published as the notes of the GitHub release they describe, and MUST NOT be kept in a committed file.
 
-A changelog file repeats what the release holds and has to be kept in step with it by hand. The release is created once, with the tag it describes.
+A changelog file repeats what the release holds and has to be kept in step with it by hand. The release is created once, with [the tag it describes](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases).
 
 **DOC-17** Release notes MUST be written for the user of the release: what changed for them, what breaks, what they must do.
 

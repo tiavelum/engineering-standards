@@ -140,7 +140,7 @@ The validator run on the pull request's branch reads each file listed in `index.
 
 **RF-46** Every text of a pull request that changes a file listed in `index.yaml`, other than the files it adds or changes, such as its title, its description, its commit messages and its branch name, MUST follow, for each such file it changes, that file on the default branch.
 
-The file on the default branch is in force while the change is under review. A squash merge turns the title and description into the commit message on the default branch, so they are written to the rules that hold when they are written.
+The file on the default branch is in force while the change is under review. A squash merge can [turn the title and description into the commit message](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-squashing-for-pull-requests) on the default branch, so they are written to the rules that hold when they are written.
 
 Correct: a pull request that raises a limit on title length from 65 to 72 characters gives its own title at most 65 characters, and the examples in the file it changes up to 72
 Incorrect: the same pull request with a title of 70 characters
