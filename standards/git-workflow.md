@@ -69,13 +69,15 @@ The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits
 
 What does not fit in the title goes in the description.
 
-Correct: `docs: add consumer contract to meta layer`, `fix: correct the README links`\
-Incorrect: `docs: Added consumer contract.`, `docs: consumer contract`, `updates`, `wip`
+> Correct: `docs: add consumer contract to meta layer`, `fix: correct the README links`
+>
+> Incorrect: `docs: Added consumer contract.`, `docs: consumer contract`, `updates`, `wip`
 
 **GW-25** A pull request's description MUST NOT describe the process of arriving at the change.
 
-Correct: `Read the port from PORT, which the container sets.`\
-Incorrect: `Tried a config file first; CI could not find it, so switched to PORT.`
+> Correct: `Read the port from PORT, which the container sets.`
+>
+> Incorrect: `Tried a config file first; CI could not find it, so switched to PORT.`
 
 **GW-14** A pull request MUST NOT be merged with failing checks.
 
@@ -93,8 +95,9 @@ A diff shows what changed in the code, not what stayed the same in its results, 
 
 A test is weakened when a change makes it accept a result it rejected before, such as a wider tolerance, a looser assertion or a new expected value. Changing the source and changing the test both turn a failing test green, which is all GW-14 asks; the diff shows that the test changed, not whether the behaviour it guarded is still checked or still required. A test skipped or marked as expected to fail until a defect is fixed leaves a behaviour that is still required checked by nothing, so neither statement is true: the defect is fixed first, or the test stays as it is and GW-14 holds the merge.
 
-Correct: `The nine tests of tests/run.sh moved to tests/import.sh unchanged`, `Import now stops at a corrupt file, so skipping one is no longer required`, `Skips the import test on the Linux runner; the macOS job runs it`\
-Incorrect: `Fixes the failing test`, `Skips the import test until the parser fix is merged`
+> Correct: `The nine tests of tests/run.sh moved to tests/import.sh unchanged`, `Import now stops at a corrupt file, so skipping one is no longer required`, `Skips the import test on the Linux runner; the macOS job runs it`
+>
+> Incorrect: `Fixes the failing test`, `Skips the import test until the parser fix is merged`
 
 **GW-24** A review MUST take place on a pull request, with its findings recorded as comments there and not in a committed file.
 
@@ -104,8 +107,9 @@ A file of review findings has to be pruned by hand once they are resolved. A pul
 
 The owner's review counts whoever wrote the changes. A party is a person or an AI agent session; a person and the AI agent sessions that act under that person's account are separate parties, so a review submitted by a session under the owner's account is not the owner's review. A commit made after a review leaves that commit unreviewed, so the review is made again.
 
-Correct: a review submitted on the pull request with its three findings as its comments, a review submitted on the pull request that states it found nothing\
-Incorrect: findings summarised in the pull request's description, findings posted as a comment in the pull request's conversation, a review by the session that wrote the changes or by the session that directed their writing
+> Correct: a review submitted on the pull request with its three findings as its comments, a review submitted on the pull request that states it found nothing
+>
+> Incorrect: findings summarised in the pull request's description, findings posted as a comment in the pull request's conversation, a review by the session that wrote the changes or by the session that directed their writing
 
 ## History
 

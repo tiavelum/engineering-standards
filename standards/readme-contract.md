@@ -74,8 +74,9 @@ This is what keeps a small README small. A "What it is for" that repeats the sum
 
 A step such as signing in to an account in an application's settings has no command; the exact action lets the reader take it, and what they see afterwards shows that it worked.
 
-Correct: `brew install shellcheck` in a fenced block; `In photo-sync, open Settings > Account and sign in. The status bar then reads "Signed in".`\
-Incorrect: `Install ShellCheck with Homebrew.`, where `brew install shellcheck` performs the step; `Sign in to photo-sync.`, which says neither where nor what shows that it worked
+> Correct: `brew install shellcheck` in a fenced block; `In photo-sync, open Settings > Account and sign in. The status bar then reads "Signed in".`
+>
+> Incorrect: `Install ShellCheck with Homebrew.`, where `brew install shellcheck` performs the step; `Sign in to photo-sync.`, which says neither where nor what shows that it worked
 
 **RM-7** Where a repository has something to install or run, "Getting started" MUST end with a command that produces visible output, together with the expected output.
 
@@ -117,8 +118,9 @@ The rules of `standards/documentation.md` apply to a README as to every other do
 
 The README at the root shows what works and is the entry point to everything the repository concerns. The details of a directory's content stand in that directory's README: the rules of how it is built (DOC-45) and what a program in it prints and does when it cannot complete its task (DOC-52). The link takes the reader there from the section where they meet that content.
 
-Correct: a "Getting started" that runs `sync/photo-sync.sh` twice and links to `sync/README.md` once, and a "Content and structure" that describes `sync/` and links to the same file\
-Incorrect: the same "Getting started" without a link to `sync/README.md`, because "Content and structure" already links to it
+> Correct: a "Getting started" that runs `sync/photo-sync.sh` twice and links to `sync/README.md` once, and a "Content and structure" that describes `sync/` and links to the same file
+>
+> Incorrect: the same "Getting started" without a link to `sync/README.md`, because "Content and structure" already links to it
 
 ## Before merge
 
@@ -126,15 +128,17 @@ Incorrect: the same "Getting started" without a link to `sync/README.md`, becaus
 
 A command's effect changes without its text when the pull request changes what the command reads or runs. A command the pull request adds exists only with its changes applied.
 
-Correct: `make install` executed before the merge of a pull request that adds a package to `packages.txt`, which `make install` reads, though its line in the README stays the same\
-Incorrect: the same pull request merged without `make install` executed, because its line in the README did not change
+> Correct: `make install` executed before the merge of a pull request that adds a package to `packages.txt`, which `make install` reads, though its line in the README stays the same
+>
+> Incorrect: the same pull request merged without `make install` executed, because its line in the README did not change
 
 **RM-40** The description of a pull request MUST name each command that RM-9 requires to have been executed for it, with where it was executed or, until it has been, that it has not been executed.
 
 A command that needs a platform or an account the author does not work on stays marked as not executed while the pull request is under review, and the merge waits until whoever can run it has done so (RM-9). The description then shows, after the merge too, which commands were run and where.
 
-Correct: `make install-agent: executed on macOS 15.1`, and before that `make install-agent: not executed, needs macOS`\
-Incorrect: `All commands tested.`, or a description that does not mention a command the pull request added
+> Correct: `make install-agent: executed on macOS 15.1`, and before that `make install-agent: not executed, needs macOS`
+>
+> Incorrect: `All commands tested.`, or a description that does not mention a command the pull request added
 
 DOC-51 covers the links of the README.
 
