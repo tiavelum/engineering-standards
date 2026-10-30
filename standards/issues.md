@@ -38,12 +38,19 @@ WR-1 governs the language of an issue, WR-2 what it states for a reader who was 
 Correct: `Split the rules that hold two independent requirements`, `Decide whether source files may sit at the root`
 Incorrect: `Rule splitting`, `Source files at the root?`, `Two rules disagree on .editorconfig`
 
-**ISS-13** An issue's description MUST open with a section headed `In short` that states in at most three sentences what is to be done or decided and why, in words a reader who has not followed the work understands without opening a link or looking anything up.
+**ISS-13** An issue's description MUST open with a section headed `In short` that states in at most three sentences what WR-2 requires the issue to state.
 
 WR-2 sets what an issue states; this rule sets where its reader finds it and how long it takes to read. Besides whoever does or decides the work, an issue is read in lists by someone choosing what to read next, and both learn from its first lines what it is about. Sentences are counted rather than lines, which depend on the width of the screen, and the fixed heading lets a tool or an issue template find the section.
 
 Correct: a description that opens with a section headed `In short` that reads `photo-sync copies every photo again after the Photos library is moved, because it recognises a photo by its path. Decide whether it recognises photos by a checksum instead, which makes its first run after the change read every photo once.`
-Incorrect: a description that opens `The path key from #41 (Add the import) breaks on a relocated library, as finding F3 of its review shows.`, which needs #41, its review and the term "path key" looked up; the two sentences of the correct example under the heading `Summary`, or below a section of logs
+Incorrect: the two sentences of the correct example under the heading `Summary`; the same section after a section headed `Logs` that holds the pasted error output `photo-sync: error: 12400 photos not found at their recorded path`; the same section followed by the sentences `Python's hashlib would compute the checksum. Its code would live in sync/checksum.py.`, four sentences in all; a section headed `In short` that reads only `Decide whether photo-sync recognises photos by a checksum.`, which leaves out why
+
+**ISS-15** The `In short` section of an issue MUST be written in words that a reader who has not followed the work understands without opening a link.
+
+The section is what a reader takes in before deciding whether to read on; a term or identifier that only a link explains makes them open the link first.
+
+Correct: the `In short` section of the ISS-13 example
+Incorrect: a section headed `In short` that reads `The path key from #41 (Add the import) breaks on a relocated library, as finding F3 of its review shows. Decide whether to replace it.`, which needs #41 and its review opened
 
 **ISS-6** An issue MUST state the condition under which it is done.
 
