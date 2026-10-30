@@ -1,13 +1,8 @@
 # Authoritative catalogue of standards in this repository.
-# Every consumer starts here. Do not discover standards by listing directories.
 #
-# Contract:
-#   - The entry schema is defined by RF-27 to RF-32 and is closed.
-#   - Each entry points to exactly one file covering one topic.
-#   - `applies_to` lets a consumer load only what a task needs.
-#   - `requires` names the other entries that must be loaded with this one.
-#   - `version` follows the rules in meta/rule-format.md.
-#   - An entry and its file MUST be updated in the same commit.
+# Contract: RF-27 to RF-32 define the entries, RF-17 to RF-19 their versions and
+# what a change carries with it, and CO-1, CO-2, CO-16 and CO-3 how a consumer
+# uses them.
 
 schema_version: 1
 repository: tiavelum/engineering-standards
@@ -18,7 +13,7 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 8.0.1
+    version: 9.0.1
     status: active
     summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
