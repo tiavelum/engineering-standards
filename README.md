@@ -21,11 +21,10 @@ It is not a tutorial, not a style guide for any single language, and not a recor
 ### As a consumer (person, AI agent, tool or script)
 
 1. Fetch [`index.yaml`](index.yaml). It is the authoritative catalogue of every standard, with its id, path, scope, summary and dependencies.
-2. Select the entries whose `applies_to` matches the task at hand.
-3. Fetch those files and everything their `requires` lists name, resolved transitively. Nothing else.
-4. Apply the rules by id. Cite the id when reporting a violation, for example `NAM-2`. Deviations need a written reason in the consuming repo; [meta/precedence.md](meta/precedence.md) says where and in what form.
+2. Select, load and apply its entries as the consumer contract, [meta/consuming.md](meta/consuming.md), says.
+3. For a deviation of the consuming repository from a rule, follow [meta/precedence.md](meta/precedence.md).
 
-A standard that defers to another says so in its `requires`, so the closure is what makes the rules applicable. The consumer contract, including versioning and what a consumer must not assume, is in [meta/consuming.md](meta/consuming.md).
+The consumer contract also holds its stability guarantees and what a consumer must not assume.
 
 ### As a contributor
 
