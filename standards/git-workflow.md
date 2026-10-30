@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 8.0.3
+version: 9.0.0
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -33,7 +33,7 @@ An issue may take several pull requests, for example when its work lands in step
 
 **GW-28** A release branch MUST be named `release/<major>.<minor>` or `release/<major>.x`.
 
-**GW-21** A fix MUST be committed to the default branch before it is cherry picked or backported to a release branch.
+**GW-21** A fix of a defect that the default branch also has MUST be committed to the default branch before it is cherry picked or backported to a release branch.
 
 Fixing a release branch first is how a fix gets lost in the next major line. The commit exists where it was needed and nowhere else, and nothing notices until the line it was missing from ships.
 
@@ -57,7 +57,7 @@ Under GW-2 such a commit is the first commit of a repository, which creates the 
 
 ## Pull requests
 
-WR-1 governs the language of a pull request's title and description, WR-2 what the description states for a reader who was not present when it was written, WR-5 the length of the title, WR-6 the form of a person's name in the title, the description and the comments on the pull request, and WR-7 how the description and the comments on the pull request reference an issue or a pull request.
+WR-1 governs the language of a pull request's title and description, WR-2 what the description states for a reader who was not present when it was written, WR-10 the top part the description opens with, WR-11 the step that top part names for a reviewer, WR-5 the length of the title, WR-6 the form of a person's name in the title, the description and the comments on the pull request, and WR-7 how the description and the comments on the pull request reference an issue or a pull request.
 
 A repository whose squash merge [takes the pull request's title and description as its default commit message](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-squashing-for-pull-requests) turns the title of a pull request into the first line of the commit its merge makes on the default branch, and the description into that commit's body. The rules on what that commit message says are therefore rules on these two texts.
 
@@ -77,7 +77,7 @@ Incorrect: `docs: Added consumer contract.`, `docs: consumer contract`, `updates
 Correct: `Read the port from PORT, which the container sets.`
 Incorrect: `Tried a config file first; CI could not find it, so switched to PORT.`
 
-**GW-14** A pull request MUST NOT be merged with failing checks.
+**GW-14** A pull request MUST NOT be merged until every check that gates its merge has passed on its last commit.
 
 **GW-15** A pull request SHOULD stay small enough to review in one sitting.
 
