@@ -1,10 +1,10 @@
 ---
 id: writing
 title: Writing
-version: 6.1.1
+version: 6.2.1
 status: active
 applies_to: [all]
-summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, what the top part of a description holds, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
+summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, what the top part of a description holds and what follows it, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
 ---
 
 # Writing
@@ -33,7 +33,7 @@ The work of a pull request is the change it makes, and its reader acts on it by 
 
 WR-2 sets what such a reader needs; this rule sets where they find it. A description has no limit on its length, since a limit cuts by position rather than by what matters. It is layered instead: whoever decides or reviews can stop at the end of the top part, and whoever carries out the work or checks its evidence reads on. A link may stand in the top part as a source, but acting on the description does not depend on opening it.
 
-> Correct: a pull request's description whose first paragraph reads `Rename setup.sh to install.sh: the README and the CI workflow both call install.sh, and both fail because the file is not found. To check, run the CI workflow on this branch: its install step passes.`, followed by the output of the failing run
+> Correct: a pull request's description whose first paragraph reads `Rename setup.sh to install.sh: the README and the CI workflow both call install.sh, and both fail because the file is not found. To check, run the CI workflow on this branch: its install step passes.`, followed by the output of the failing run in a `<details>` element
 >
 > Incorrect: the same description with the output of the failing run before that paragraph; an issue's description that opens with `Choose one of the options in the comment linked below.`
 
@@ -44,6 +44,14 @@ WR-10 makes the top part enough to review, and a change can often be reviewed fr
 > Correct: `To check, run ./install.sh --dry-run on this branch: it prints the four install steps and exits with status 0.`, `To check, open the README on this branch: each of its three setup steps calls install.sh.`
 >
 > Incorrect: `Tested locally.`, `Works now.`, `To check, run ./install.sh --dry-run.`, which names no result, the correct example of WR-2 as the whole description
+
+**WR-12** Everything in the description of an issue or a pull request that follows its top part, as WR-10 defines it, MUST stand in collapsed sections; the top part ends where the first collapsed section begins, or with the description where it has none.
+
+The end of the top part is then a mark every reader sees and a tool can find, and what follows it, such as program output, a quotation, draft wording or the reasoning behind an option, stays one click away for whoever carries out the work or checks its evidence. A description without a collapsed section is all top part, so WR-10 judges it as a whole. On GitHub a collapsed section is a `<details>` element without the `open` attribute, which GitHub [shows collapsed](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections) until the reader expands it, under the label its `<summary>` gives. A squash merge that [takes a pull request's description as the body of its commit](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-squashing-for-pull-requests) keeps the text of every section, with the tags as lines of their own.
+
+> Correct: the pull request description of the correct example of WR-10, with `Closes #12` on a line before its `<details>` element; an issue's description whose condition for done is followed by one `<details>` element holding the output `photo-sync: error: 12400 photos not found at their recorded path` and a second one holding the draft commit message `photo-sync: recognise photos by checksum, not by path`
+>
+> Incorrect: the same pull request description with `Closes #12` after its `<details>` element; the same issue's description with a paragraph on why photo-sync first recognised photos by their path standing between its two `<details>` elements
 
 ## Names of people
 

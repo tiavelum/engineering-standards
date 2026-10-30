@@ -111,16 +111,16 @@ standards:
   - id: writing
     path: standards/writing.md
     title: Writing
-    version: 6.1.1
+    version: 6.2.1
     status: active
-    summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, what the top part of a description holds, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
+    summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, what the top part of a description holds and what follows it, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
     applies_to: [all]
     tags: [writing, language, issues, pull-requests, commits]
 
   - id: issues
     path: standards/issues.md
     title: Issues
-    version: 3.0.1
+    version: 4.0.1
     status: active
     summary: When future work is recorded as an issue, what an issue states and where it states it, and how it is closed.
     applies_to: [all]

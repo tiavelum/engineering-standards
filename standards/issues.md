@@ -1,7 +1,7 @@
 ---
 id: issues
 title: Issues
-version: 3.0.1
+version: 4.0.1
 status: active
 applies_to: [all]
 summary: When future work is recorded as an issue, what an issue states and where it states it, and how it is closed.
@@ -31,7 +31,7 @@ The prohibition covers the file's purpose, not its name. A file listing outstand
 
 ## Content
 
-WR-1 governs the language of an issue, WR-2 what it states for a reader who was not present when it was written, WR-10 the top part its description opens with, WR-5 the length of its title, WR-6 the form of a person's name in it and in the comments on it, and WR-7 how its description and the comments on it reference an issue or a pull request.
+WR-1 governs the language of an issue, WR-2 what it states for a reader who was not present when it was written, WR-10 the top part its description opens with, WR-12 what follows that top part, WR-5 the length of its title, WR-6 the form of a person's name in it and in the comments on it, and WR-7 how its description and the comments on it reference an issue or a pull request.
 
 **ISS-4** An issue's title MUST state the work as an imperative phrase.
 
@@ -46,14 +46,6 @@ WR-2 sets what an issue states; this rule sets where its reader finds it and how
 > Correct: a description that opens with a section headed `In short` that reads `photo-sync copies every photo again after the Photos library is moved, because it recognises a photo by its path. Decide whether it recognises photos by a checksum instead, which makes its first run after the change read every photo once.`
 >
 > Incorrect: the two sentences of the correct example under the heading `Summary`; the same section after a section headed `Logs` that holds the pasted error output `photo-sync: error: 12400 photos not found at their recorded path`; the same section followed by the sentences `Python's hashlib would compute the checksum. Its code would live in sync/checksum.py.`, four sentences in all; a section headed `In short` that reads only `Decide whether photo-sync recognises photos by a checksum.`, which leaves out why
-
-**ISS-18** An issue's description MUST give the evidence, draft wording and reasoning it holds in one or more `<details>` elements without the `open` attribute, after its top part as WR-10 defines it. Evidence is material that backs a statement, such as the output of a program, a quotation or a measurement; the example ISS-14 requires is not evidence, even where it quotes or measures. Draft wording is text proposed for a file, a rule or a message. Reasoning is argument beyond the why WR-2 requires, what each option changes and what it costs as ISS-17 gives them, and the reason ISS-8 asks for, such as why an option changes or costs what it does, or which ways were considered and not taken.
-
-GitHub [shows a `<details>` element collapsed](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections) until the reader expands it, under the label its `<summary>` gives. These three kinds make a description long without making it more precise for whoever acts on it, so they stay one click away for whoever checks the evidence or carries out the work, and the top part stays short without a limit on length.
-
-> Correct: the issue of the ISS-13 example with the pasted output `photo-sync: error: 12400 photos not found at their recorded path` and the draft commit message `photo-sync: recognise photos by checksum, not by path` in a `<details>` element after its condition for done
->
-> Incorrect: the same output pasted between the `In short` section and the options; a paragraph on why photo-sync first recognised photos by their path, standing between the recommendation and the condition for done
 
 **ISS-6** An issue MUST state the condition under which it is done.
 
