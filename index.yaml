@@ -96,7 +96,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 7.0.0
+    version: 8.0.0
     status: active
     summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
     applies_to: [all]

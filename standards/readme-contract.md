@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 7.0.0
+version: 8.0.0
 status: active
 applies_to: [all]
 summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
@@ -80,7 +80,7 @@ A repository that is read, such as a knowledge base, has no command to give. Its
 
 **RM-8** "Getting started" MUST be usable without reading any other section.
 
-**RM-25** At most 150 words MUST precede the "Getting started" heading in the README source.
+**RM-25** At most 200 words MUST precede the "Getting started" heading in the README source.
 
 A screen cannot be measured; a word count can. The count covers everything above the heading: the title, the summary and "What it is for".
 
