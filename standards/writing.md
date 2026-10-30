@@ -1,7 +1,7 @@
 ---
 id: writing
 title: Writing
-version: 3.0.0
+version: 4.0.0
 status: active
 applies_to: [all]
 summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
@@ -15,7 +15,7 @@ Prefix: `WR`
 
 ## Language
 
-**WR-1** A repository's README, every other document about the repository, every issue, the title and description of every pull request, and every commit message MUST be written in English.
+**WR-1** A repository's README, every other document about the repository, every issue, the title and description of every pull request, and every commit message MUST be written in English. A document about the repository is any document of the repository, as WR-8 defines it, other than a document that is the repository's content, a license, and an instruction file that directs an AI agent, such as `CLAUDE.md`.
 
 Issues, pull requests and commit messages have the readers of the repository's documents. A document that is the repository's content rather than about it, such as a German CV or a German handbook, keeps the language that is the point of it.
 
@@ -36,13 +36,14 @@ Incorrect: `Apply the rename we agreed on.`, `Fix as discussed.`
 |---|---|
 | A field made to record a person as author or rights holder, such as the author of a commit or the copyright line of a license | The real name the field requires |
 | An identifier that a tool or a link resolves, other than an `@` mention in a document about the repository, such as a repository path like `octocat/tools`, a URL, an entry of [`CODEOWNERS`](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-syntax) or [an `@` mention](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#mentioning-people-and-teams) in an issue | The account handle |
-| A name of the owner in a file that is not a document about the repository, such as a license, source code or a configuration file, outside the places of the first two rows | The account handle |
+| A name in a file that is not a document about the repository, such as a license, source code, a configuration file or an instruction file that directs an AI agent, such as `CLAUDE.md`, outside the places of the first two rows | The account handle; the real name for a person who has no account |
 | A name of the owner, or a name that says who does something, in a document about the repository, such as the README, whether written out, as an `@` mention or as the visible text of a link, outside the places of the first two rows | No name and no handle; a role such as the user or the maintainer, where the sentence needs a person |
+| A name in the running text of an issue, a pull request, a comment on either, or a commit message, outside the places of the first two rows | The account handle; the real name for a person who has no account |
 
-What a name does decides its form, not the file it is in: a field made for an author asks for the person, a path or [a mention](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#mentioning-people-and-teams) works only with the handle, and a document about the repository says what the repository does, not whose it is. A clone URL or a repository path that contains the owner's handle is a path, not a name, so it stays in the second row in a document about the repository too. A file that is the repository's content, such as a crew list in a sailing handbook or a CV, names people as its content requires.
+What a name does decides its form, not the file it is in: a field made for an author asks for the person, a path or [a mention](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#mentioning-people-and-teams) works only with the handle, and a document about the repository says what the repository does, not whose it is. A clone URL or a repository path that contains the owner's handle is a path, not a name, so it stays in the second row in a document about the repository too. In an issue, a pull request, a commit message and a file such as source code or an instruction file, a person is named by the handle that mentions and paths already work with, so one person has one name in all of them; a person without an account has no handle, so the real name stands instead. An instruction file directs an AI agent rather than describing the repository, so it names the owner as source code does. A file that is the repository's content, such as a crew list in a sailing handbook or a CV, names people as its content requires.
 
-Correct: `A sailing logbook built from the photos of each charter trip.` and `git clone https://github.com/octocat/sailing-logbook` in a README, `Copyright (c) 2026 Mona Lisa Octocat` in a LICENSE, `# Mirrors octocat's backup drive` in a shell script
-Incorrect: `A logbook of the charter trips octocat skippers.`, `Maintained by @octocat.` and `Maintained by [octocat](https://github.com/octocat).` in a README, `Copyright (c) 2026 octocat` in a LICENSE, `# Mirrors Mona's backup drive` in a shell script
+Correct: `A sailing logbook built from the photos of each charter trip.` and `git clone https://github.com/octocat/sailing-logbook` in a README, `Copyright (c) 2026 Mona Lisa Octocat` in a LICENSE, `# Mirrors octocat's backup drive` in a shell script, `Ask octocat before you publish a release.` in `CLAUDE.md`, `Reported by hubot, who also tested the fix.` in a pull request, `# Uses the formula from Jane Roe's thesis` in a Python file, where Jane Roe has no account
+Incorrect: `A logbook of the charter trips octocat skippers.`, `Maintained by @octocat.` and `Maintained by [octocat](https://github.com/octocat).` in a README, `Copyright (c) 2026 octocat` in a LICENSE, `# Mirrors Mona's backup drive` in a shell script, `Ask Mona before you publish a release.` in `CLAUDE.md`, `Reported by Hubot Jones, who also tested the fix.` in a pull request
 
 ## Titles
 
