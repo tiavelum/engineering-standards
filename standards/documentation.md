@@ -82,7 +82,7 @@ The README of a directory is written for whoever changes the content of that dir
 
 **DOC-16** Change notes MUST be published as the notes of the GitHub release they describe, and MUST NOT be kept in a committed file.
 
-A changelog file repeats what the release holds and has to be kept in step with it by hand. The release is created once, with [the tag it describes](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases).
+A changelog file repeats what the release holds and has to be kept in step with it by hand. The release is created once, with the tag it describes.
 
 **DOC-17** Release notes MUST be written for the user of the release: what changed for them, what breaks, what they must do.
 

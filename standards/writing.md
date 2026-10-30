@@ -35,7 +35,7 @@ Incorrect: `Apply the rename we agreed on.`, `Fix as discussed.`
 | Where the name stands | Form |
 |---|---|
 | A field made to record a person as author or rights holder, such as the author of a commit or the copyright line of a license | The real name the field requires |
-| An identifier that a tool or a link resolves, other than an `@` mention in a document about the repository, such as a repository path like `octocat/tools`, a URL, an entry of `CODEOWNERS` or an `@` mention in an issue | The account handle |
+| An identifier that a tool or a link resolves, other than an `@` mention in a document about the repository, such as a repository path like `octocat/tools`, a URL, an entry of [`CODEOWNERS`](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-syntax) or [an `@` mention](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#mentioning-people-and-teams) in an issue | The account handle |
 | A name of the owner in a file that is not a document about the repository, such as a license, source code or a configuration file, outside the places of the first two rows | The account handle |
 | A name of the owner, or a name that says who does something, in a document about the repository, such as the README, whether written out, as an `@` mention or as the visible text of a link, outside the places of the first two rows | No name and no handle; a role such as the user or the maintainer, where the sentence needs a person |
 
