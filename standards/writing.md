@@ -1,7 +1,7 @@
 ---
 id: writing
 title: Writing
-version: 5.0.0
+version: 6.0.0
 status: active
 applies_to: [all]
 summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
@@ -47,12 +47,12 @@ Incorrect: `A logbook of the charter trips octocat skippers.`, `Maintained by @o
 
 ## Titles
 
-**WR-5** The title of an issue, the title of a pull request and the first line of a commit message MUST each be at most 65 characters, not counting a pull request number that a forge appends to that line on merge.
+**WR-5** The title of an issue, the title of a pull request and the first line of a commit message MUST each be at most 105 characters, not counting a pull request number that a forge appends to that line on merge.
 
-A squash merge can [take a pull request's title as the first line of its commit](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-squashing-for-pull-requests), so one limit lets either be written as the other. With a number such as ` (#145)` appended, the line still reads without wrapping.
+A squash merge can [take a pull request's title as the first line of its commit](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-squashing-for-pull-requests), so one limit lets either be written as the other.
 
-Correct: `feat: add a writing standard for the rules on every text (#145)`, 56 characters before the appended number
-Incorrect: `fix: stop the import at the first corrupt file instead of skipping it silently`, 78 characters
+Correct: `feat: add a writing standard for the rules on every text, from a README to its issues and commit messages (#145)`, 105 characters before the appended number
+Incorrect: `fix: stop the import at the first corrupt file instead of skipping it and reporting the import as complete`, 106 characters
 
 ## References to issues and pull requests
 
