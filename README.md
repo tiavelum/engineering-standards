@@ -74,7 +74,7 @@ Result:   two violations. Lowercasing gives `session-notes-august.md`, which
 | `standards/` | The standards themselves. One topic per file. |
 | `meta/` | Rules about the rules: file format, precedence, consumer contract. |
 | `scripts/` | The validator that enforces the rules this repo can check itself. |
-| `.github/` | The workflow that runs the formatter check, the linter and the validator on every push and pull request. |
+| `.github/` | The workflow that runs the formatter check, the linter and the validator on every pull request and every push to the default branch. |
 | `.claude/` | Agent types for Claude Code sessions that work on this repository: `checker` and `worker`, each with its model, effort and tools. |
 | `project-instructions.md` | Rules for Claude sessions that work on this repository. |
 | `CLAUDE.md` | Imports `project-instructions.md` for Claude Code. |
@@ -101,7 +101,7 @@ The distribution mechanism sits outside this repo on purpose. Nothing here assum
 
 Changes are proposed as pull requests. Whether a new rule belongs here is decided by the admission test RF-1, RF-41, RF-42 and RF-44, what a changed standard must carry with it by RF-17 to RF-19, and what its pull request follows by RF-45 and RF-46, all in [meta/rule-format.md](meta/rule-format.md).
 
-CI runs the checks under "As a contributor" on every push and pull request and fails the build on a violation. Each check in [scripts/validate-standards.py](scripts/validate-standards.py) names the rule it enforces; the rules it cannot check are enforced in review.
+CI runs the checks under "As a contributor" on every pull request and every push to the default branch and fails the build on a violation. Each check in [scripts/validate-standards.py](scripts/validate-standards.py) names the rule it enforces; the rules it cannot check are enforced in review.
 
 ## License
 
