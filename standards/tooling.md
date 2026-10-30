@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 10.0.1
+version: 11.0.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
@@ -50,11 +50,15 @@ Incorrect: `**TL-17** Secret scanning MUST be enabled on every repository that c
 
 **TL-5** The default branch of every repository MUST contain an `.editorconfig` covering at minimum: charset, indentation style and width, end of line, final newline, trailing whitespace.
 
-**TL-6** Every repository containing code MUST commit a formatter configuration.
+**TL-6** Every repository containing code MUST commit a formatter configuration or, where no formatter that can run in CI supports any language of its code, the `.editorconfig` that TL-5 requires.
+
+Whether a formatter can run in CI depends on the formatter and the language, not on what a repository's CI runs today, so leaving a formatter out of CI does not open the alternative.
 
 **TL-23** A committed formatter MUST be applied to the whole repository, not selectively.
 
-**TL-8** Every repository containing code MUST commit a linter configuration.
+**TL-8** Every repository containing code MUST commit a linter configuration or, where no linter that can run in CI supports any language of its code, a CI step that runs a parse check of its code, such as `zsh -n` or `osacompile`.
+
+Whether a linter can run in CI depends on the linter and the language, as for a formatter under TL-6. A parse check finds the first defect a linter finds: code that does not parse.
 
 **TL-24** A linter suppression MUST carry a reason on the line that suppresses it.
 
@@ -77,6 +81,10 @@ A check that only warns does not gate.
 **TL-15** Tool versions used in CI MUST be pinned.
 
 A build is reproducible only with pinned tools.
+
+**TL-32** Whether a change passes a check MUST be decided by the check's run in CI, whichever tool version a local run of the check uses.
+
+A local run is advisory. It can use the version a platform's package manager installs, which can report a finding the version CI pins does not, or miss one that version reports; the pinned version gates the merge (TL-15).
 
 **TL-16** A repository MUST NOT declare a dependency it does not use.
 
