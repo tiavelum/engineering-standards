@@ -37,12 +37,12 @@ Incorrect: `Apply the rename we agreed on.`, `Fix as discussed.`
 | A field made to record a person as author or rights holder, such as the author of a commit or the copyright line of a license | The real name the field requires |
 | An identifier that a tool or a link resolves, other than an `@` mention in a document about the repository, such as a repository path like `octocat/tools`, a URL, an entry of `CODEOWNERS` or an `@` mention in an issue | The account handle |
 | A name of the owner in a file that is not a document about the repository, such as a license, source code or a configuration file, outside the places of the first two rows | The account handle |
-| A name of the owner, or a name that says who does something, in a document about the repository, such as the README, outside the places of the first two rows and outside an `@` mention and the visible text of a link | No name and no handle; a role such as the user or the maintainer, where the sentence needs a person |
+| A name of the owner, or a name that says who does something, in a document about the repository, such as the README, whether written out, as an `@` mention or as the visible text of a link, outside the places of the first two rows | No name and no handle; a role such as the user or the maintainer, where the sentence needs a person |
 
-What a name does decides its form, not the file it is in: a field made for an author asks for the person, a path or a mention works only with the handle, and a document about the repository says what the repository does, not whose it is. A file that is the repository's content, such as a crew list in a sailing handbook or a CV, names people as its content requires.
+What a name does decides its form, not the file it is in: a field made for an author asks for the person, a path or a mention works only with the handle, and a document about the repository says what the repository does, not whose it is. A clone URL or a repository path that contains the owner's handle is a path, not a name, so it stays in the second row in a document about the repository too. A file that is the repository's content, such as a crew list in a sailing handbook or a CV, names people as its content requires.
 
 Correct: `A sailing logbook built from the photos of each charter trip.` and `git clone https://github.com/octocat/sailing-logbook` in a README, `Copyright (c) 2026 Mona Lisa Octocat` in a LICENSE, `# Mirrors octocat's backup drive` in a shell script
-Incorrect: `A logbook of the charter trips octocat skippers.` in a README, `Copyright (c) 2026 octocat` in a LICENSE, `# Mirrors Mona's backup drive` in a shell script
+Incorrect: `A logbook of the charter trips octocat skippers.`, `Maintained by @octocat.` and `Maintained by [octocat](https://github.com/octocat).` in a README, `Copyright (c) 2026 octocat` in a LICENSE, `# Mirrors Mona's backup drive` in a shell script
 
 ## Titles
 
