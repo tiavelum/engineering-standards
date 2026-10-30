@@ -38,7 +38,7 @@ Incorrect: an exclusion that exists only in the declaration, invisible to someon
 
 ## Public surfaces
 
-**VER-38** The declaration MUST cover every surface the following table lists for each type in it that describes the repository:
+**VER-38** The declaration MUST cover every surface the following table lists for each type in the table that describes the repository:
 
 | Type | Public surface |
 |---|---|
