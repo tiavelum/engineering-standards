@@ -1,6 +1,6 @@
 # engineering-standards
 
-Normative engineering standards for repositories: naming, repository layout, git workflow, README and documentation rules, written so that a person can read them and a tool or AI agent can load them.
+Normative engineering standards for repositories: naming, repository layout, git workflow, README and documentation rules, written so that anyone can read them and a person, AI agent, tool or script can load them to apply them.
 
 ## What it is for
 
@@ -16,14 +16,14 @@ It is not a tutorial, not a style guide for any single language, and not a recor
 
 1. Read [meta/rule-format.md](meta/rule-format.md) to understand how a standard is written and how rules are identified.
 2. Open the standard you need from [`standards/`](standards/).
-3. Apply the MUST rules. Deviations need a written reason in the consuming repo.
+3. To apply the rules, follow "As a consumer" below.
 
-### As a consumer (tool, AI agent, or script)
+### As a consumer (person, AI agent, tool or script)
 
 1. Fetch [`index.yaml`](index.yaml). It is the authoritative catalogue of every standard, with its id, path, scope, summary and dependencies.
 2. Select the entries whose `applies_to` matches the task at hand.
 3. Fetch those files and everything their `requires` lists name, resolved transitively. Nothing else.
-4. Apply the rules by id. Cite the id when reporting a violation, for example `NAM-2`.
+4. Apply the rules by id. Cite the id when reporting a violation, for example `NAM-2`. Deviations need a written reason in the consuming repo; [meta/precedence.md](meta/precedence.md) says where and in what form.
 
 A standard that defers to another says so in its `requires`, so the closure is what makes the rules applicable. The consumer contract, including versioning and what a consumer must not assume, is in [meta/consuming.md](meta/consuming.md).
 
@@ -58,7 +58,10 @@ Checking a file name against the standards:
 
 ```
 Question: is `Session_Notes_August.md` acceptable?
-Load:     index.yaml -> entry `naming` -> standards/naming.md
+Load:     index.yaml -> entry `naming` and its `requires`, resolved
+          transitively (CO-3): standards/naming.md, standards/git-workflow.md,
+          standards/readme-contract.md, standards/writing.md,
+          standards/documentation.md
 Rules:    NAM-2  file names use lowercase words separated by single hyphens
           NAM-1  a name describes what the thing is, not when it was made
 Result:   two violations. Lowercasing gives `session-notes-august.md`, which
