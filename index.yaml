@@ -116,7 +116,7 @@ standards:
   - id: writing
     path: standards/writing.md
     title: Writing
-    version: 5.0.0
+    version: 6.0.0
     status: active
     summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
     applies_to: [all]
