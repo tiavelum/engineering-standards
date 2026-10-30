@@ -86,7 +86,7 @@ standards:
   - id: module-layers
     path: standards/module-layers.md
     title: Module layers
-    version: 2.0.0
+    version: 3.0.0
     status: active
     summary: How the modules of a source directory are arranged in layers, which way they import, where files are read and written, and how the layers are described and checked.
     applies_to: [software]
