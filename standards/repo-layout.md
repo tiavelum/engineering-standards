@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 8.0.0
+version: 9.0.0
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
@@ -13,11 +13,13 @@ Prefix: `RL`
 
 ## Required at the root
 
-**RL-1** The default branch of every repository MUST contain a `README.md` conforming to `standards/readme-contract.md`.
+**RL-1** The default branch of every repository MUST contain a `README.md` at its root.
 
-**RL-2** The default branch of every public repository MUST contain a `LICENSE` file.
+RM-39 applies `standards/readme-contract.md` to this file.
 
-**RL-3** The default branch of every repository MUST contain a `.gitignore` appropriate to its stack.
+**RL-2** The default branch of every public repository MUST contain a `LICENSE` file at its root.
+
+**RL-3** The default branch of every repository MUST contain at its root a `.gitignore` appropriate to its stack.
 
 A repository without commits has no default branch yet, so its first commit brings these files.
 
@@ -29,7 +31,7 @@ A repository creates the directories it needs, under names of its choosing. The 
 
 **RL-18** The role of a directory that lies inside a top-level directory, and whose role no tool fixes, MUST be stated in the README at the root or in the README of the directory that contains it.
 
-RM-11 requires the README at the root to describe each top-level directory. A tool fixes the role of a directory when it gives that directory, or every directory at that place, its meaning, as GitHub Actions does for `.github/workflows/` and Claude Code for each directory in `.claude/skills/`. A role stated in the README at the root keeps `.github/` free of a README, which GitHub would show in place of the repository's own.
+RM-11 requires the README at the root to describe each top-level directory. A tool fixes the role of a directory when it gives that directory, or every directory at that place, its meaning, as [GitHub Actions does for `.github/workflows/`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax) and [Claude Code for each directory in `.claude/skills/`](https://code.claude.com/docs/en/skills). A role stated in the README at the root keeps `.github/` free of a README, which [GitHub would show in place of the repository's own](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes).
 
 **RL-19** The roles of directories that share a parent directory MUST NOT overlap.
 
@@ -46,8 +48,8 @@ A file is accepted in a directory where the tool that reads it finds it on its o
 
 PR-5, for example, fixes `deviations.md` at the root, and DOC-2 and DOC-10 set where documentation and decision records live.
 
-Correct: `project-instructions.md` at the root, which `CLAUDE.md` imports and no directory's role covers; `CONTRIBUTING.md` in `docs/`, where GitHub also finds it, when `docs/` holds the repository's documentation
-Incorrect: `CONTRIBUTING.md` at the root of the same repository
+Correct: `project-instructions.md` at the root, which `CLAUDE.md` imports and no directory's role covers; `CODEOWNERS` in `.github/`, where [GitHub finds it, as it does at the root and in `docs/`](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-file-location), when `.github/` holds the repository's configuration for GitHub
+Incorrect: `CODEOWNERS` at the root of the same repository
 
 ## What must not be committed
 
