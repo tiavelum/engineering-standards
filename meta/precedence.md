@@ -1,7 +1,7 @@
 ---
 id: precedence
 title: Precedence and deviation
-version: 2.0.1
+version: 2.0.2
 status: active
 applies_to: [all]
 summary: How conflicts between these standards, a consuming repository and a task instruction are resolved, and how a deviation is recorded.
@@ -29,11 +29,12 @@ Such a conflict is a defect in the standards. Until it is fixed, an explicit ins
 
 ## Deviation
 
-**PR-5** A repository that deviates from a MUST rule MUST record it in a file named `deviations.md` at its root, with one entry per deviation containing: the rule id, the reason, and the date.
+**PR-5** A repository MUST record each of its deviations from a rule whose keyword is MUST or MUST NOT in a file named `deviations.md` at its root, as one entry that gives the rule id, the reason and the date the entry was recorded.
 
 **PR-6** A deviation entry MUST give a reason specific to that repository.
 
-"Not applicable" without explanation is not a reason.
+Correct: `This repository holds two text files, and nothing that works on them writes build output, caches or local settings into it.` as the reason for a deviation from RL-3
+Incorrect: `Not applicable.`, `The rule does not fit this repository.` as the reason for the same deviation
 
 **PR-8** A deviation that turns out to apply to several repositories SHOULD be raised as a change to the standard rather than repeated.
 
@@ -41,6 +42,10 @@ Such a conflict is a defect in the standards. Until it is fixed, an explicit ins
 
 ```markdown
 # Deviations
+
+This file lists the rules of tiavelum/engineering-standards that this
+repository deviates from, with the reason for each, for its maintainers and
+for anyone who applies the standards to it.
 
 ## RL-3: no `.gitignore`
 
