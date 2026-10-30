@@ -1,10 +1,10 @@
 ---
 id: writing
 title: Writing
-version: 6.0.0
+version: 6.1.0
 status: active
 applies_to: [all]
-summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
+summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, what the top part of a description holds, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
 ---
 
 # Writing
@@ -27,6 +27,20 @@ The work of a pull request is the change it makes, and its reader acts on it by 
 
 Correct: `Rename setup.sh to install.sh: the README and the CI workflow both call install.sh, and both fail because the file is not found.`
 Incorrect: `Apply the rename we agreed on.`, `Fix as discussed.`
+
+**WR-10** The description of an issue or a pull request MUST open with a part, its top part, that is enough for a reader who was not present when it was written to do or decide the issue's work, or to review the pull request, without reading the rest of the description or opening a link.
+
+WR-2 sets what such a reader needs; this rule sets where they find it. A description has no limit on its length, since a limit cuts by position rather than by what matters. It is layered instead: whoever decides or reviews can stop at the end of the top part, and whoever carries out the work or checks its evidence reads on. A link may stand in the top part as a source, but acting on the description does not depend on opening it.
+
+Correct: a pull request's description whose first paragraph reads `Rename setup.sh to install.sh: the README and the CI workflow both call install.sh, and both fail because the file is not found. To check, run the CI workflow on this branch: its install step passes.`, followed by the output of the failing run
+Incorrect: the same description with the output of the failing run before that paragraph; an issue's description that opens with `Choose one of the options in the comment linked below.`
+
+**WR-11** The top part of a pull request's description, as WR-10 defines it, MUST state how a reviewer can check that the pull request makes the change the description states.
+
+The diff shows what changed; how to see that the change works, such as the command to run and what it prints, or the page to open and what it shows, is often known only to whoever made it.
+
+Correct: `To check, run ./install.sh --dry-run on this branch: it prints the four install steps and exits with status 0.`, `To check, open the README on this branch: each of its three setup steps calls install.sh.`
+Incorrect: `Tested locally.`, `Works now.`, the correct example of WR-2 as the whole description
 
 ## Names of people
 
