@@ -1,10 +1,10 @@
 ---
 id: consuming
 title: Consumer contract
-version: 3.0.1
+version: 4.0.0
 status: active
 applies_to: [tooling, agents]
-summary: What a tool, AI agent or script may rely on when loading these standards, and what it must not assume.
+summary: What a person, tool, AI agent or script may rely on when loading these standards, and what it must not assume.
 ---
 
 # Consumer contract
@@ -24,7 +24,7 @@ A consumer is anything that loads these standards to apply them: a skill, a plug
 | `all` | Work in any repository |
 | `software` | Work in a repository whose product is software: a program, library, package or image that is run or depended on |
 | `authoring` | Writing or changing a standard in this repository |
-| `tooling`, `agents` | A tool or AI agent that loads these standards to apply them |
+| `tooling`, `agents` | A person, tool or AI agent that loads these standards to apply them |
 
 **CO-3** A consumer MUST load, with any entry it selects, every entry that entry names in `requires`, resolved transitively.
 
