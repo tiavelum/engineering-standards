@@ -27,6 +27,9 @@ The committed configuration is then the rule.
 
 A check reports a violation once the file is written; the author needs the rule to write the file right in the first place. A repository setting is not an automated check under this rule; TL-30 governs a rule that a setting enforces.
 
+Correct: the rule TL-17 reduced to a reference to the `security_and_analysis` setting, which is a repository setting (TL-30)
+Incorrect: a rule that every date MUST be written in ISO 8601 removed because a CI check fails on any other form of date
+
 **TL-22** Where a committed formatter governs a file, its configuration MUST be the authority for any formatting property another committed configuration also sets.
 
 A second configuration may repeat the first for tools that do not read the formatter, but it never decides. Two configurations that have to be kept in step by hand will drift, and the one that drifts is not the one doing the formatting.
