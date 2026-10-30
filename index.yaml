@@ -125,7 +125,7 @@ standards:
   - id: issues
     path: standards/issues.md
     title: Issues
-    version: 2.2.0
+    version: 3.0.0
     status: active
     summary: When future work is recorded as an issue, what an issue states and where it states it, and how it is closed.
     applies_to: [all]

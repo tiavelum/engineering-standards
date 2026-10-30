@@ -35,12 +35,12 @@ WR-2 sets what such a reader needs; this rule sets where they find it. A descrip
 Correct: a pull request's description whose first paragraph reads `Rename setup.sh to install.sh: the README and the CI workflow both call install.sh, and both fail because the file is not found. To check, run the CI workflow on this branch: its install step passes.`, followed by the output of the failing run
 Incorrect: the same description with the output of the failing run before that paragraph; an issue's description that opens with `Choose one of the options in the comment linked below.`
 
-**WR-11** The top part of a pull request's description, as WR-10 defines it, MUST state how a reviewer can check that the pull request makes the change the description states.
+**WR-11** The top part of a pull request's description, as WR-10 defines it, MUST name a step a reviewer can take to see that the pull request makes the change the description states, such as a command to run or a page to open, together with the result that step shows.
 
-The diff shows what changed; how to see that the change works, such as the command to run and what it prints, or the page to open and what it shows, is often known only to whoever made it.
+WR-10 makes the top part enough to review, and a change can often be reviewed from its diff alone; the diff shows what changed, not that the change works. The step that shows it, and what it shows, is often known only to whoever made the change, so the top part names them even where the diff would do for the review.
 
 Correct: `To check, run ./install.sh --dry-run on this branch: it prints the four install steps and exits with status 0.`, `To check, open the README on this branch: each of its three setup steps calls install.sh.`
-Incorrect: `Tested locally.`, `Works now.`, the correct example of WR-2 as the whole description
+Incorrect: `Tested locally.`, `Works now.`, `To check, run ./install.sh --dry-run.`, which names no result, the correct example of WR-2 as the whole description
 
 ## Names of people
 
