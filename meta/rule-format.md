@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 8.0.0
+version: 9.0.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
@@ -76,7 +76,9 @@ DOC-51 covers the links of a file listed in `index.yaml`.
 
 ## Dependencies between standards
 
-**RF-24** A file MUST be applicable given only itself and the standards its `index.yaml` entry names in `requires`.
+**RF-24** A file MUST be applicable without any standard other than itself and those its `index.yaml` entry names in `requires`.
+
+`requires` can name only entries of the index. A rule may still rest on a source outside them, as RF-13 rests on RFC 2119 and TL-17 on a setting of tiavelum/github-setup.
 
 **RF-25** A file's `index.yaml` entry MUST name in `requires` every other standard the file references.
 
@@ -128,9 +130,9 @@ One requirement: `MUST start from index.yaml and MUST NOT discover standards by 
 
 **RF-17** A file's `version` MUST be a [semantic version](https://semver.org/).
 
-**RF-18** The version MUST be incremented as follows: major when the file's set of requirements loses or changes a requirement; minor when it gains a requirement and loses or changes none; patch when it stays the same.
+**RF-18** The version MUST be incremented as follows: major when the file's set of requirements loses or changes a requirement, or when the file's path changes (CO-10); otherwise minor when the set gains a requirement; otherwise patch.
 
-A split, a merge, or removing a rule whose requirement another rule of the same file already states leaves the set the same. A SHOULD that becomes a MUST, or a rule whose scope changes, changes a requirement.
+A split, a merge, or removing a rule whose requirement another rule of the same file already states leaves the set the same. A SHOULD that becomes a MUST, or a rule whose scope changes, including through the file's `applies_to`, changes a requirement. A rule that carries the marker of RF-34 is outside the set, since a consumer ignores it (CO-17): adding the marker to a rule takes its requirement out of the set, and removing the marker puts it back.
 
 **RF-19** A change to a standard MUST update the file, its front matter `version`, and its `index.yaml` entry in the same commit.
 
@@ -147,4 +149,4 @@ Incorrect: the same pull request with a title of 70 characters
 
 ## Prohibited content
 
-**RF-22** A standard file MUST NOT reference private repositories, internal systems or credentials.
+**RF-22** A standard file MUST NOT name a private repository, an internal system or a credential.
