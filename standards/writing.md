@@ -57,23 +57,23 @@ Incorrect: `fix: stop the import at the first corrupt file instead of skipping i
 
 **WR-7** In the description of an issue or a pull request and in a comment on either, each reference to an issue or a pull request MUST be written as its number, preceded by its repository path where it is in another repository, and followed in parentheses by its full title as the title reads when the reference is written.
 
-As GitHub's [Autolinked references and URLs](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls) describes, GitHub renders a number, and a pasted URL of an issue or a pull request, as a short link that shows the number, and unfurls a reference to show its title only in a list, and there only on github.com and GitHub Enterprise Cloud. In such a list the title shows twice. The text carries it all the same: a squash merge makes a pull request's description the body of a commit, where nothing unfurls, and one form in every place needs no exception. The number comes first, so that GitHub still links it and a closing keyword such as `Closes` still works. A title changed later does not make the reference wrong: the number stays authoritative.
+As GitHub's [Autolinked references and URLs](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls) describes, GitHub renders a number, and a pasted URL of an issue or a pull request, as a short link that shows the number, and unfurls a reference to show its title only in a list, and there only on github.com and GitHub Enterprise Cloud. The text carries the title all the same: a squash merge makes a pull request's description the body of a commit, and one form in every place needs no exception. The number comes first, so that GitHub still links it and a closing keyword such as `Closes` still works. A title changed later does not make the reference wrong: the number stays authoritative.
 
-Correct: `Lands with #132 (Settle when a file names a person, a role or an account handle).`, `Closes #131 (Decide how sound reference links found in research are kept)`, `See octocat/tools#12 (Add a dry-run flag).`
-Incorrect: `Lands with #132.`, `Lands with Settle when a file names a person, a role or an account handle (#132).`, `Lands with [Settle when a file names a person, a role or an account handle](https://github.com/octocat/tools/issues/132).`, `Lands with https://github.com/octocat/tools/issues/132.`
+Correct: `Lands with #132 (Settle when a file names a person, a role or an account handle).`, `Closes #131 (Decide how sound reference links found in research are kept open)`, `See octocat/tools#12 (Add a dry-run flag).`
+Incorrect: `Lands with #132.`, `Lands with Settle when a file names a person, a role or an account handle (#132).`, `Lands with [Settle when a file names a person, a role or an account handle](https://github.com/tiavelum/engineering-standards/issues/132).`, `Lands with https://github.com/tiavelum/engineering-standards/issues/132.`
 
 ## Links to sources
 
-**WR-8** A fact that a document of the repository takes from a source outside the repository that has a URL MUST be linked to that source in the sentence, list item or table cell that states it.
+**WR-8** Where a document of the repository, any file of it written as prose for a person or an AI agent to read, states a fact taken from a source outside the repository that has a URL, the sentence, list item or table cell that states it MUST link to that source.
 
 The link stands where a reader checks the fact and stays as long as the statement does, so a sound source found in research is kept without a list to maintain.
 
 Correct: `Versions follow [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).`
 Incorrect: `Versions follow Semantic Versioning 2.0.0.`, with the link only in a list of references at the end of the document
 
-**WR-9** A link in a document of the repository to a page outside the repository MUST stand in a sentence, list item or table cell that states a fact the document takes from that page.
+**WR-9** A link in a document of the repository, as WR-8 defines it, to a page outside the repository MUST stand in a sentence, list item or table cell that states a fact the document takes from that page.
 
 A link that supports no statement has nothing that shows when it can go. A list or section of links apart from the statements they back grows without pruning and drifts from them.
 
-Correct: `The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), without a scope.`, `Every option is listed in [the configuration reference](https://example.org/reference), which this README does not copy.`
+Correct: `The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), without a scope.`, `The default timeout is 30 seconds, as [the configuration reference](https://example.org/reference) lists.`
 Incorrect: a section "Further reading" that lists links, `See also [Semantic Versioning](https://semver.org/).`, `Read [the Git book](https://git-scm.com/book/en/v2) for details.`
