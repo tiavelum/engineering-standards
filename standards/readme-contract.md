@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 9.1.0
+version: 9.1.1
 status: active
 applies_to: [all]
 summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
@@ -26,16 +26,16 @@ A directory README is written for whoever uses or changes that directory's conte
 | Role | Required | Answers | For example headed |
 |---|---|---|---|
 | Summary | MUST | What is this? | The title and the first paragraph |
-| What it is for | MAY | When do I use it, and when not? | What it is for, Scope |
+| What it is for | Optional | When do I use it, and when not? | What it is for, Scope |
 | Getting started | MUST | How do I get a first result? | Getting started, Setup, Usage |
-| Example | MAY | What does using it look like? | Example |
-| Tasks | MAY | How do I do a particular thing with it? | Named for the task, such as After changing a file |
+| Example | Optional | What does using it look like? | Example |
+| Tasks | Optional | How do I do a particular thing with it? | Named for the task, such as After changing a file |
 | Content and structure | MUST | What is in it, and where? | Files, Contents, Content and structure |
-| How it works | MAY | How do the parts work together? | How it works, Design |
-| Configuration | MAY | What can I change? | Configuration |
-| Troubleshooting | MAY | What goes wrong, and what do I do? | Troubleshooting |
-| Known limits | MAY | What does it not do, or not do well? | Known limits |
-| Contributing and support | MAY | How do I report or change something? | Contributing |
+| How it works | Optional | How do the parts work together? | How it works, Design |
+| Configuration | Optional | What can I change? | Configuration |
+| Troubleshooting | Optional | What goes wrong, and what do I do? | Troubleshooting |
+| Known limits | Optional | What does it not do, or not do well? | Known limits |
+| Contributing and support | Optional | How do I report or change something? | Contributing |
 | License | MUST (public) | What may I do with it? | License |
 
 **RM-38** A role named in quotes in this standard MUST be read as the section that answers that role's question, whatever its heading.
@@ -56,7 +56,7 @@ Beyond these, the order follows what the reader needs next and is not fixed.
 
 ## Optional sections
 
-**RM-30** A section that answers a question marked MAY MUST carry content that no other section of the README states.
+**RM-30** A section that answers a question the table of RM-1 marks as optional MUST carry content that no other section of the README states.
 
 This is what keeps a small README small. A "What it is for" that repeats the summary, a "Configuration" that says there is nothing to configure, or a "How it works" that restates the file table fails it and is left out.
 
@@ -154,7 +154,7 @@ A command-line tool for anyone who imports CSV exports into a spreadsheet. It tr
 Requires Python 3.10 or later.
 
 ```bash
-pip install csv-tidy==1.4.0
+pip install csv-tidy
 csv-tidy orders.csv
 ```
 
@@ -167,6 +167,7 @@ orders.csv: 1204 rows read, 17 empty rows dropped, written to orders.tidy.csv
 | Path | Contains |
 |---|---|
 | `src/csv_tidy/` | The tool |
+| `src/csv_tidy/cli.py` | The entry point of the `csv-tidy` command |
 | `tests/` | Its tests, run with `pytest` |
 
 ## License
