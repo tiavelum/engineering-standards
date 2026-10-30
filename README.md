@@ -58,10 +58,15 @@ Checking a file name against the standards:
 
 ```
 Question: is `Session_Notes_August.md` acceptable?
-Load:     index.yaml -> entry `naming` and its `requires`, resolved
-          transitively (CO-3): standards/naming.md, standards/git-workflow.md,
-          standards/readme-contract.md, standards/writing.md,
-          standards/documentation.md
+Load:     index.yaml -> the entries whose `applies_to` matches the task
+          (CO-2, CO-16): every `all` entry, and `consuming`, since
+          whoever checks the name loads the standards to apply them;
+          with their `requires`, resolved transitively (CO-3):
+          meta/rule-format.md, meta/precedence.md, meta/consuming.md,
+          standards/naming.md, standards/repo-layout.md,
+          standards/git-workflow.md, standards/readme-contract.md,
+          standards/documentation.md, standards/writing.md,
+          standards/issues.md, standards/tooling.md
 Rules:    NAM-2  file names use lowercase words separated by single hyphens
           NAM-1  a name describes what the thing is, not when it was made
 Result:   two violations. Lowercasing gives `session-notes-august.md`, which
