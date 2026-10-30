@@ -4,12 +4,12 @@ title: Consumer contract
 version: 4.0.0
 status: active
 applies_to: [tooling, agents]
-summary: What a person, tool, AI agent or script may rely on when loading these standards, and what it must not assume.
+summary: What a person, AI agent, tool or script may rely on when loading these standards, and what it must not assume.
 ---
 
 # Consumer contract
 
-A consumer is anything that loads these standards to apply them: a skill, a plugin, a CI check, a script, or a person with a browser. This file is the interface those consumers code against.
+A consumer is anything that loads these standards to apply them: a skill, a plugin, a CI check, a script, or a person with a browser. This file is the interface those consumers rely on.
 
 ## Loading
 
@@ -24,7 +24,7 @@ A consumer is anything that loads these standards to apply them: a skill, a plug
 | `all` | Work in any repository |
 | `software` | Work in a repository whose product is software: a program, library, package or image that is run or depended on |
 | `authoring` | Writing or changing a standard in this repository |
-| `tooling`, `agents` | A person, tool or AI agent that loads these standards to apply them |
+| `tooling`, `agents` | A person, AI agent, tool or script that loads these standards to apply them |
 
 **CO-3** A consumer MUST load, with any entry it selects, every entry that entry names in `requires`, resolved transitively.
 
