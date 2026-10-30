@@ -109,7 +109,7 @@ Incorrect: findings summarised in the pull request's description, findings poste
 
 **GW-35** A step that has to be taken by hand after a pull request is merged, for its change to take effect, MUST be stated in a comment in the pull request's conversation instead of in its description.
 
-The comment holds only the steps that put this pull request's change in place. Work beyond it is recorded as an issue (ISS-1), and a step that every user of the repository takes is also described in a document of the repository (DOC-48). Kept out of the description, the step stays out of the commit message that a squash merge makes from it, and whoever takes the step can reply in the conversation once it is done.
+The comment holds only the steps that put this pull request's change in place. Work beyond it is recorded as an issue (ISS-1), and a step that every user of the repository takes is also described in a document of the repository (DOC-48). A comment can be added whenever the step becomes known, without rewriting the description, and keeps the step out of the commit message that a squash merge makes from the description. An issue is no home for it either: one issue may take several pull requests (GW-31), each with steps of its own.
 
 **GW-36** A step stated under GW-35 MUST say why the change needs it.
 
