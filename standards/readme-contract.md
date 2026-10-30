@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 8.0.0
+version: 9.0.0
 status: active
 applies_to: [all]
 summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
@@ -70,7 +70,12 @@ This is what keeps a small README small. A "What it is for" that repeats the sum
 
 **RM-6** Where a repository has something to install or run, "Getting started" MUST list prerequisites with versions.
 
-**RM-34** Where a repository has something to install or run, "Getting started" MUST give the install and run steps as commands.
+**RM-34** Where a repository has something to install or run, "Getting started" MUST give each step as a command where a command can perform it, and otherwise as the exact manual action with the visible result DOC-8 requires.
+
+A step such as signing in to an account in an application's settings has no command; the exact action lets the reader take it, and what they see afterwards shows that it worked.
+
+Correct: `brew install shellcheck` in a fenced block; `In photo-sync, open Settings > Account and sign in. The status bar then reads "Signed in".`
+Incorrect: `Install ShellCheck with Homebrew.`, where `brew install shellcheck` performs the step; `Sign in to photo-sync.`, which says neither where nor what shows that it worked
 
 **RM-7** Where a repository has something to install or run, "Getting started" MUST end with a command that produces visible output, together with the expected output.
 
@@ -83,8 +88,6 @@ A repository that is read, such as a knowledge base, has no command to give. Its
 **RM-25** At most 200 words MUST precede the "Getting started" heading in the README source.
 
 A screen cannot be measured; a word count can. The count covers everything above the heading: the title, the summary and "What it is for".
-
-**RM-9** Every command in a README MUST have been executed successfully against the current default branch before merge.
 
 **RM-10** "Example" MUST show at least one real usage with concrete values and its actual output, not a bare signature or an all-placeholder command.
 
@@ -112,7 +115,21 @@ The rules of `standards/documentation.md` apply to a README as to every other do
 
 ## Before merge
 
-**RM-23** Before merge, every link in the README MUST resolve.
+**RM-9** Every command in the README that a pull request adds or changes, or whose effect it changes, MUST have been executed successfully before merge, with the pull request's changes applied to the current default branch.
+
+A command's effect changes without its text when the pull request changes what the command reads or runs. A command the pull request adds exists only with its changes applied.
+
+Correct: `make install` executed before the merge of a pull request that adds a package to `packages.txt`, which `make install` reads, though its line in the README stays the same
+Incorrect: the same pull request merged without `make install` executed, because its line in the README did not change
+
+**RM-40** The description of a pull request MUST name each command that RM-9 requires to have been executed for it, with where it was executed or, until it has been, that it has not been executed.
+
+A command that needs a platform or an account the author does not work on stays marked as not executed while the pull request is under review, and the merge waits until whoever can run it has done so (RM-9). The description then shows, after the merge too, which commands were run and where.
+
+Correct: `make install-agent: executed on macOS 15.1`, and before that `make install-agent: not executed, needs macOS`
+Incorrect: `All commands tested.`, or a description that does not mention a command the pull request added
+
+DOC-51 covers the links of the README.
 
 ## Examples
 

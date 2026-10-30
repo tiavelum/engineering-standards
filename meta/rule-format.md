@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 7.0.1
+version: 8.0.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
@@ -70,9 +70,9 @@ Beyond that, split it by topic rather than adding sections.
 
 **RF-32** Every file in `standards/` and `meta/` MUST be listed in exactly one entry.
 
-**RF-33** A relative link in a file listed in `index.yaml` MUST resolve to an existing path.
-
 The entry is closed rather than open. CO-20 promises a consumer that `schema_version` tracks a breaking change to the index structure, and that promise is empty while a field can appear without anyone announcing it. The cost is that a new field needs a rule before it needs code, which is the order this repository wants anyway.
+
+DOC-51 covers the links of a file listed in `index.yaml`.
 
 ## Dependencies between standards
 
