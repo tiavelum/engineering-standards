@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 8.0.1
+version: 8.0.2
 status: active
 applies_to: [all]
 summary: Branching, commit messages, pull requests and history hygiene.
@@ -43,7 +43,7 @@ A MAJOR increment on a maintenance branch contradicts the reason the branch exis
 
 ## Commits
 
-WR-1 governs the language of a commit message, and WR-5 the length of its first line.
+WR-1 governs the language of a commit message, WR-5 the length of its first line, and WR-6 the name of its author.
 
 **GW-5** A commit MUST leave the repository in a working state.
 
@@ -57,9 +57,9 @@ Under GW-2 such a commit is the first commit of a repository, which creates the 
 
 ## Pull requests
 
-WR-1 governs the language of a pull request's title and description, WR-2 what the description states for a reader who was not present when it was written, and WR-5 the length of the title.
+WR-1 governs the language of a pull request's title and description, WR-2 what the description states for a reader who was not present when it was written, WR-5 the length of the title, and WR-7 how the description and the comments on the pull request reference an issue or a pull request.
 
-A repository that merges by squash turns the title of a pull request into the first line of the commit its merge makes on the default branch, and the description into that commit's body. The rules on what that commit message says are therefore rules on these two texts.
+A repository whose squash merge [takes the pull request's title and description as its default commit message](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-squashing-for-pull-requests) turns the title of a pull request into the first line of the commit its merge makes on the default branch, and the description into that commit's body. The rules on what that commit message says are therefore rules on these two texts.
 
 **GW-6** A pull request's title MUST take the form `<type>: <summary>`, where `<type>` is one of `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `build`, `ci`, `revert`.
 
@@ -83,7 +83,7 @@ Incorrect: `Tried a config file first; CI could not find it, so switched to PORT
 
 **GW-27** A large mechanical change SHOULD be made in a pull request of its own.
 
-A change is mechanical when it changes no behaviour and applies one transformation throughout, such as formatting, a rename or moving files. Commits within one pull request do not keep it apart once the pull request is squashed into one commit; a pull request of its own keeps it apart in the history and lets it be checked on its own.
+A change is mechanical when it changes no behaviour and applies one transformation throughout, such as formatting, a rename or moving files. Commits within one pull request do not keep it apart once the pull request is [squashed into one commit](https://docs.github.com/en/pull-requests/reference/pull-request-merges#squash-and-merge-your-commits); a pull request of its own keeps it apart in the history and lets it be checked on its own.
 
 **GW-30** A pull request that states that behaviour is unchanged MUST name the check that shows it.
 
@@ -102,7 +102,7 @@ A file of review findings has to be pruned by hand once they are resolved. A pul
 
 **GW-34** A pull request MUST NOT be merged unless, after its last commit, the repository's owner has submitted a review of it, or a party that neither wrote nor directed its changes has submitted a review of it that lists its findings or states that it found none.
 
-The owner's review counts whoever wrote the changes. A party is a person or an AI agent session; a person and the AI agent sessions that act under that person's account are separate parties, so a review submitted by a session under the owner's account is not the owner's review. A review submitted as a review of the pull request, rather than as a comment in its conversation, shows there whichever account submits it. A commit made after a review leaves that commit unreviewed, so the review is made again.
+The owner's review counts whoever wrote the changes. A party is a person or an AI agent session; a person and the AI agent sessions that act under that person's account are separate parties, so a review submitted by a session under the owner's account is not the owner's review. A commit made after a review leaves that commit unreviewed, so the review is made again.
 
 Correct: a review submitted on the pull request with its three findings as its comments, a review submitted on the pull request that states it found nothing
 Incorrect: findings summarised in the pull request's description, findings posted as a comment in the pull request's conversation, a review by the session that wrote the changes or by the session that directed their writing

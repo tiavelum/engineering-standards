@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 10.0.0
+version: 10.0.1
 status: active
 applies_to: [all]
 summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
@@ -35,7 +35,7 @@ A second configuration may repeat the first for tools that do not read the forma
 
 **TL-29** Every repository that `repo-settings.sh` checks MUST be in a state for which `repo-settings.sh`, run without `--apply` from an unmodified checkout of the default branch of tiavelum/github-setup, prints `ok` for that repository.
 
-A repository setting or ruleset enforces a requirement only on the repositories it is applied to. tiavelum/github-setup holds the values and applies them. Run without `--apply`, `repo-settings.sh` prints `diff` for a repository whose settings differ, so a repository that falls out of its management shows as differing.
+A repository setting or ruleset enforces a requirement only on the repositories it is applied to. [tiavelum/github-setup](https://github.com/tiavelum/github-setup) holds the values and applies them. Run without `--apply`, `repo-settings.sh` [prints `diff` for a repository whose settings differ](https://github.com/tiavelum/github-setup#getting-started), so a repository that falls out of its management shows as differing.
 
 **TL-30** Where a setting in `repo-settings.json` of tiavelum/github-setup enforces the whole requirement of a rule on every repository that `repo-settings.sh` checks and the rule applies to, the rule MUST state that requirement only as a reference to the setting.
 

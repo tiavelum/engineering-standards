@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 13.0.0
+version: 13.0.1
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, content, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -27,7 +27,7 @@ NAM-2 governs the name of a file in `docs/`, as it does every file name.
 
 ## Content
 
-WR-1 governs the language of a document, and WR-3 and WR-4 how a file names the repository's owner.
+WR-1 governs the language of a document, WR-6 how it names a person, and WR-8 and WR-9 how it links a source outside the repository.
 
 **DOC-35** Documentation MUST state what the reader does, not what the author did.
 
@@ -58,7 +58,7 @@ Such a step usually comes to light while the change is tested. Written down with
 
 **DOC-45** A rule that constrains how the content of one directory is built, and is not obvious from that content, MUST be described in the README of that directory.
 
-Whoever changes the content of a directory meets its README first, since a forge shows it below the listing. That README is written for them rather than for the user of the repository, and it describes the current rules of the content, not how they came about.
+The README of a directory is written for whoever changes the content of that directory rather than for the user of the repository, and it describes the current rules of the content, not how they came about.
 
 ## Decision records
 
@@ -82,7 +82,7 @@ Whoever changes the content of a directory meets its README first, since a forge
 
 **DOC-16** Change notes MUST be published as the notes of the GitHub release they describe, and MUST NOT be kept in a committed file.
 
-A changelog file repeats what the release holds and has to be kept in step with it by hand. The release is created once, with the tag it describes.
+A changelog file repeats what the release holds and has to be kept in step with it by hand. The release already holds the notes, so a second copy only adds work and a place where the two can differ.
 
 **DOC-17** Release notes MUST be written for the user of the release: what changed for them, what breaks, what they must do.
 

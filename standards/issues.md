@@ -1,7 +1,7 @@
 ---
 id: issues
 title: Issues
-version: 2.0.1
+version: 2.0.2
 status: active
 applies_to: [all]
 summary: When future work is recorded as an issue, what an issue states, and how it is closed.
@@ -23,7 +23,7 @@ These rules name GitHub because that is where these repositories live. A reposit
 
 **ISS-2** An open item MUST NOT be recorded in a file committed to the repository. A file whose purpose is to list outstanding work, such as `open-items.md`, `todo.md` or `backlog.md`, MUST NOT exist.
 
-Such a file has to be pruned by hand. In practice it is not, and it becomes the stale document that DOC-6 rules out. A GitHub issue closes itself when the commits made for it reach the default branch, so the list stays accurate without anyone maintaining it.
+Such a file has to be pruned by hand. In practice it is not, and it becomes the stale document that DOC-6 rules out. A GitHub issue [closes itself](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue) when the commits made for it reach the default branch, so the list stays accurate without anyone maintaining it.
 
 The prohibition covers the file's purpose, not its name. A file listing outstanding work is forbidden whatever it is called; a file whose name happens to resemble one of the examples but which records the current state is not.
 
@@ -31,7 +31,7 @@ The prohibition covers the file's purpose, not its name. A file listing outstand
 
 ## Content
 
-WR-1 governs the language of an issue, WR-2 what it states for a reader who was not present when it was written, and WR-5 the length of its title.
+WR-1 governs the language of an issue, WR-2 what it states for a reader who was not present when it was written, WR-5 the length of its title, and WR-7 how its description and the comments on it reference an issue or a pull request.
 
 **ISS-4** An issue's title MUST state the work as an imperative phrase.
 
@@ -52,7 +52,7 @@ The condition lets anyone close the issue, or see that it is not done yet, witho
 
 **ISS-11** An issue MUST be closed by a closing keyword that reaches the default branch with the commits made for it.
 
-A pull request carries the keyword in its description; the first commit of a repository, which has no pull request, carries it in its message.
+A pull request carries [the keyword](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) in its description; the first commit of a repository, which has no pull request, carries it in its message.
 
 **ISS-12** An issue closed without commits made for it MUST carry a comment stating how it was resolved.
 

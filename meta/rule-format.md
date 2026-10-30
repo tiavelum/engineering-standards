@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 7.0.0
+version: 7.0.1
 status: active
 applies_to: [authoring]
 summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
@@ -108,7 +108,7 @@ A draft rule stays in its place and keeps its identifier, so it can be cited whi
 
 ## Rule language
 
-**RF-13** A rule MUST state its keyword, one of MUST, MUST NOT, SHOULD, SHOULD NOT and MAY, in uppercase with its meaning from RFC 2119, on the line that carries its identifier.
+**RF-13** A rule MUST state its keyword, one of MUST, MUST NOT, SHOULD, SHOULD NOT and MAY, in uppercase with its meaning from [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119), on the line that carries its identifier.
 
 That line is where a reader looks to find out whether a rule binds them, and where a check finds the keyword without guessing how far a rule extends.
 
@@ -126,7 +126,7 @@ One requirement: `MUST start from index.yaml and MUST NOT discover standards by 
 
 ## Versioning
 
-**RF-17** A file's `version` MUST be a semantic version.
+**RF-17** A file's `version` MUST be a [semantic version](https://semver.org/).
 
 **RF-18** The version MUST be incremented as follows: major when the file's set of requirements loses or changes a requirement; minor when it gains a requirement and loses or changes none; patch when it stays the same.
 
@@ -140,7 +140,7 @@ The validator run on the pull request's branch reads each file listed in `index.
 
 **RF-46** Every text of a pull request that changes a file listed in `index.yaml`, other than the files it adds or changes, such as its title, its description, its commit messages and its branch name, MUST follow, for each such file it changes, that file on the default branch.
 
-The file on the default branch is in force while the change is under review. A squash merge turns the title and description into the commit message on the default branch, so they are written to the rules that hold when they are written.
+The file on the default branch is in force while the change is under review. A squash merge can [turn the title and description into the commit message](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-squashing-for-pull-requests) on the default branch, so they are written to the rules that hold when they are written.
 
 Correct: a pull request that raises a limit on title length from 65 to 72 characters gives its own title at most 65 characters, and the examples in the file it changes up to 72
 Incorrect: the same pull request with a title of 70 characters
