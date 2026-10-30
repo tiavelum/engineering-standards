@@ -1,10 +1,10 @@
 ---
 id: issues
 title: Issues
-version: 2.1.0
+version: 3.0.0
 status: active
 applies_to: [all]
-summary: When future work is recorded as an issue, what an issue states, and how it is closed.
+summary: When future work is recorded as an issue, what an issue states and where it states it, and how it is closed.
 ---
 
 # Issues
@@ -31,7 +31,7 @@ The prohibition covers the file's purpose, not its name. A file listing outstand
 
 ## Content
 
-WR-1 governs the language of an issue, WR-2 what it states for a reader who was not present when it was written, WR-5 the length of its title, WR-6 the form of a person's name in it and in the comments on it, and WR-7 how its description and the comments on it reference an issue or a pull request.
+WR-1 governs the language of an issue, WR-2 what it states for a reader who was not present when it was written, WR-10 the top part its description opens with, WR-5 the length of its title, WR-6 the form of a person's name in it and in the comments on it, and WR-7 how its description and the comments on it reference an issue or a pull request.
 
 **ISS-4** An issue's title MUST state the work as an imperative phrase.
 
@@ -45,12 +45,12 @@ WR-2 sets what an issue states; this rule sets where its reader finds it and how
 Correct: a description that opens with a section headed `In short` that reads `photo-sync copies every photo again after the Photos library is moved, because it recognises a photo by its path. Decide whether it recognises photos by a checksum instead, which makes its first run after the change read every photo once.`
 Incorrect: the two sentences of the correct example under the heading `Summary`; the same section after a section headed `Logs` that holds the pasted error output `photo-sync: error: 12400 photos not found at their recorded path`; the same section followed by the sentences `Python's hashlib would compute the checksum. Its code would live in sync/checksum.py.`, four sentences in all; a section headed `In short` that reads only `Decide whether photo-sync recognises photos by a checksum.`, which leaves out why
 
-**ISS-15** The `In short` section of an issue MUST be written in words that a reader who has not followed the work understands without opening a link.
+**ISS-18** An issue's description MUST give the evidence, draft wording and reasoning it holds in one or more `<details>` elements without the `open` attribute, after its top part as WR-10 defines it. Evidence is material that backs a statement, such as the output of a program, a quotation or a measurement; the example ISS-14 requires is not evidence, even where it quotes or measures. Draft wording is text proposed for a file, a rule or a message. Reasoning is argument beyond the why WR-2 requires, what each option changes and what it costs as ISS-17 gives them, and the reason ISS-8 asks for, such as why an option changes or costs what it does, or which ways were considered and not taken.
 
-The section is what a reader takes in before deciding whether to read on; a term or identifier that only a link explains makes them open the link first.
+GitHub [shows a `<details>` element collapsed](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections) until the reader expands it, under the label its `<summary>` gives. These three kinds make a description long without making it more precise for whoever acts on it, so they stay one click away for whoever checks the evidence or carries out the work, and the top part stays short without a limit on length.
 
-Correct: the `In short` section of the ISS-13 example
-Incorrect: a section headed `In short` that reads `The path key from #41 (Add the import) breaks on a relocated library, as finding F3 of its review shows. Decide whether to replace it.`, which needs #41 and its review opened
+Correct: the issue of the ISS-13 example with the pasted output `photo-sync: error: 12400 photos not found at their recorded path` and the draft commit message `photo-sync: recognise photos by checksum, not by path` in a `<details>` element after its condition for done
+Incorrect: the same output pasted between the `In short` section and the options; a paragraph on why photo-sync first recognised photos by their path, standing between the recommendation and the condition for done
 
 **ISS-6** An issue MUST state the condition under which it is done.
 
@@ -66,6 +66,20 @@ Options stated in general terms, or by the identifiers of the rules they touch, 
 
 Correct: `After the Photos library moved from the internal disk to the external disk Photos-2, the next run of photo-sync copied all 12 400 photos again and filled the backup drive.` in the issue of the ISS-13 example
 Incorrect: `Moving the library has side effects on the sync.`, or the same issue with its options and no example
+
+**ISS-16** An issue that asks for a decision MUST give in its top part, as WR-10 defines it, the example ISS-14 requires, the options ISS-7 requires, the recommendation ISS-8 asks for where it names one, and the condition ISS-6 requires.
+
+With the `In short` section that ISS-13 puts first, these are what whoever decides needs: the case, what each option changes and costs, which option the author would take, and when the issue is done. The example belongs among them because the top part has to be enough to decide, and the example is what lets whoever decides picture the case, as ISS-14 asks; behind a collapsed section it would leave them to picture the case alone. Together the four make up one form, the top part of an issue that asks for a decision, so they are one requirement rather than four.
+
+Correct: the issue of the ISS-13 example whose `In short` section is followed by the example of ISS-14, the table of options of ISS-17, the recommendation `Recognise photos by a checksum: the library has moved twice this year, and the change costs one full read of the photos.` and `Done when: an option is chosen here and photo-sync's next release recognises photos by it.`, all before its first `<details>` element
+Incorrect: the same issue with its options only inside its `<details>` element; the same issue with the example only inside it
+
+**ISS-17** An issue that asks for a decision MUST give the options ISS-7 requires as a table with one row per option and one column each for the option, what it changes and what it costs.
+
+What an option changes and what it costs together are the consequence ISS-7 requires. A row per option lets whoever decides compare the options cell by cell, where a paragraph per consequence makes them hold one option in mind while reading the next.
+
+Correct: a table with the header row `| Option | What changes | Cost |` and the row `| Recognise a photo by its checksum | Moving the library no longer copies its photos again | The first run after the change reads all 12 400 photos once |`
+Incorrect: each option under a heading of its own with its consequence in a paragraph; a table with the columns `Option` and `Consequence`
 
 **ISS-10** Work that spans several issues SHOULD be held by one tracking issue that links each of them.
 
