@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 13.2.0
+version: 13.2.1
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, content, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -69,7 +69,7 @@ The README of a directory is written for whoever uses or changes the content of 
 
 **DOC-52** A description, in a document of the repository, of what a program prints and does when it cannot complete its task, where the files of the repository that make up the program or that it runs or reads all lie within one directory below the root, MUST stand in the README of the deepest directory that holds them all.
 
-The README at the root shows what works and links to these details (RM-41), so it stays short. The output of a program tells its user, as it happens, that it cannot complete its task; the README of its directory is for whoever wants more without reading the program. A program is outside this rule where no directory below the root holds all those files, as where one of them lies at the root.
+The README at the root shows what works and links to these details (RM-41), so it stays short. The output of a program tells its user, as it happens, that it cannot complete its task; the README of its directory is for whoever wants more without reading the program. A program is outside this rule where no directory below the root holds all those files, as where one of them lies at the root. A step the user takes by hand (DOC-50) and a known limitation (RM-18) stay in the README at the root, even where the program prints a line about them.
 
 Correct: what `sync/photo-sync.sh` prints, and which photos it has already copied, when the Photos library cannot be read, described in `sync/README.md`
 Incorrect: the same described in the "Troubleshooting" of the README at the root, or in `docs/troubleshooting.md`
