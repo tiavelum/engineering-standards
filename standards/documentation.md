@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 13.0.1
+version: 13.1.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, content, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -54,6 +54,13 @@ Incorrect: "Install the checks with `pip install -r requirements.txt` before you
 
 Such a step usually comes to light while the change is tested. Written down with the change, it reaches whoever sets the repository up next; left in a conversation or a review comment, it does not. A step taken only to develop or debug the change is not a step of what the repository delivers.
 
+**DOC-50** The description DOC-48 requires MUST stand in the README's "Getting started" (RM-1) where a first result needs the step, and otherwise in the section that gives the steps of the task that needs it.
+
+"Getting started" has to be usable on its own (RM-8), and a step a first result needs that stands elsewhere leaves it incomplete. RM-34 sets the form the step takes there.
+
+Correct: signing in to the sync account of photo-sync, which its first run needs, described in "Getting started"
+Incorrect: the same sign-in described only in `docs/accounts.md`
+
 ## Directory READMEs
 
 **DOC-45** A rule that constrains how the content of one directory is built, and is not obvious from that content, MUST be described in the README of that directory.
@@ -89,3 +96,10 @@ A changelog file repeats what the release holds and has to be kept in step with 
 ## Maintenance
 
 **DOC-19** A pull request whose commits invalidate a document MUST update that document.
+
+**DOC-51** Every link in a document of the repository, as WR-8 defines it, MUST resolve before merge.
+
+A link that does not resolve sends its reader nowhere, and WR-8 puts links to outside sources into every document, not only the README.
+
+Correct: a link in `docs/setup.md` to the install guide of a tool the repository uses, which opens that guide when the pull request is merged
+Incorrect: the same link after the guide has moved, so that it returns "404 Not Found" when the pull request is merged
