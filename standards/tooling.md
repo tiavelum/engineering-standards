@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 11.0.0
+version: 11.0.1
 status: active
 applies_to: [all]
 summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
@@ -25,7 +25,7 @@ The committed configuration is then the rule.
 
 **TL-31** A rule of a standard that states something other than a property TL-2 keeps out of a standard MUST NOT be removed, or reduced to a reference, on the ground that an automated check enforces it.
 
-A check reports a violation once the file is written; the author needs the rule to write the file right in the first place.
+A check reports a violation once the file is written; the author needs the rule to write the file right in the first place. A repository setting is not an automated check under this rule; TL-30 governs a rule that a setting enforces.
 
 **TL-22** Where a committed formatter governs a file, its configuration MUST be the authority for any formatting property another committed configuration also sets.
 
