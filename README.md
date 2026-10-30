@@ -1,6 +1,6 @@
 # engineering-standards
 
-Normative engineering standards for repositories: naming, repository layout, git workflow, README and documentation rules, written so that a person can read them and a tool or agent can load them.
+Normative engineering standards for repositories: naming, repository layout, git workflow, README and documentation rules, written so that anyone can read them and a person, AI agent, tool or script can load them to apply them.
 
 ## What it is for
 
@@ -16,14 +16,14 @@ It is not a tutorial, not a style guide for any single language, and not a recor
 
 1. Read [meta/rule-format.md](meta/rule-format.md) to understand how a standard is written and how rules are identified.
 2. Open the standard you need from [`standards/`](standards/).
-3. Apply the MUST rules. Deviations need a written reason in the consuming repo.
+3. To apply the rules, follow "As a consumer" below.
 
-### As a consumer (tool, agent, or script)
+### As a consumer (person, AI agent, tool or script)
 
 1. Fetch [`index.yaml`](index.yaml). It is the authoritative catalogue of every standard, with its id, path, scope, summary and dependencies.
 2. Select the entries whose `applies_to` matches the task at hand.
 3. Fetch those files and everything their `requires` lists name, resolved transitively. Nothing else.
-4. Apply the rules by id. Cite the id when reporting a violation, for example `NAM-2`.
+4. Apply the rules by id. Cite the id when reporting a violation, for example `NAM-2`. Deviations need a written reason in the consuming repo; [meta/precedence.md](meta/precedence.md) says where and in what form.
 
 A standard that defers to another says so in its `requires`, so the closure is what makes the rules applicable. The consumer contract, including versioning and what a consumer must not assume, is in [meta/consuming.md](meta/consuming.md).
 
@@ -58,7 +58,10 @@ Checking a file name against the standards:
 
 ```
 Question: is `Session_Notes_August.md` acceptable?
-Load:     index.yaml -> entry `naming` -> standards/naming.md
+Load:     index.yaml -> entry `naming` and its `requires`, resolved
+          transitively (CO-3): standards/naming.md, standards/git-workflow.md,
+          standards/readme-contract.md, standards/writing.md,
+          standards/documentation.md
 Rules:    NAM-2  file names use lowercase words separated by single hyphens
           NAM-1  a name describes what the thing is, not when it was made
 Result:   two violations. Lowercasing gives `session-notes-august.md`, which
@@ -74,10 +77,16 @@ Result:   two violations. Lowercasing gives `session-notes-august.md`, which
 | `standards/` | The standards themselves. One topic per file. |
 | `meta/` | Rules about the rules: file format, precedence, consumer contract. |
 | `scripts/` | The validator that enforces the rules this repo can check itself. |
-| `.github/` | The workflow that runs the formatter check, the linter and the validator on every push and pull request. |
+| `.github/` | The workflow that runs the formatter check, the linter and the validator on every pull request and every push to the default branch. |
 | `.claude/` | Agent types for Claude Code sessions that work on this repository: `checker` and `worker`, each with its model, effort and tools. |
+| `project-instructions.md` | Rules for Claude sessions that work on this repository. |
+| `CLAUDE.md` | Imports `project-instructions.md` for Claude Code. |
 
 Start here: [`index.yaml`](index.yaml), then [meta/rule-format.md](meta/rule-format.md).
+
+## After changing the project instructions
+
+Once a change to `project-instructions.md` is on `main`, paste the whole file into the instructions field of the claude.ai project used for this repository. That field holds a copy, which no tool updates. Claude Code reads the file from its clone through `CLAUDE.md`.
 
 ## Mental model
 
@@ -93,9 +102,9 @@ The distribution mechanism sits outside this repo on purpose. Nothing here assum
 
 ## Contributing
 
-Changes are proposed as pull requests. Whether a new rule belongs here is decided by the admission test RF-1, and what a changed standard must carry with it by RF-17 to RF-19, both in [meta/rule-format.md](meta/rule-format.md).
+Changes are proposed as pull requests. Whether a new rule belongs here is decided by the admission test RF-1, RF-41, RF-42 and RF-44, what a changed standard must carry with it by RF-17 to RF-19, and what its pull request follows by RF-45 and RF-46, all in [meta/rule-format.md](meta/rule-format.md).
 
-CI runs the checks under "As a contributor" on every push and pull request and fails the build on a violation. Each check in [scripts/validate-standards.py](scripts/validate-standards.py) names the rule it enforces; the rules it cannot check are enforced in review.
+CI runs the checks under "As a contributor" on every pull request and every push to the default branch and fails the build on a violation. Each check in [scripts/validate-standards.py](scripts/validate-standards.py) names the rule it enforces; the rules it cannot check are enforced in review.
 
 ## License
 

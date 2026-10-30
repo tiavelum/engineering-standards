@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 7.1.0
+version: 10.0.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
@@ -23,15 +23,28 @@ The committed configuration is then the rule.
 
 **TL-4** When a tool and a written standard disagree, the standard MUST be treated as the defect and corrected.
 
+**TL-31** A rule of a standard that states something other than a property TL-2 keeps out of a standard MUST NOT be removed, or reduced to a reference, on the ground that an automated check enforces it.
+
+A check reports a violation once the file is written; the author needs the rule to write the file right in the first place.
+
 **TL-22** Where a committed formatter governs a file, its configuration MUST be the authority for any formatting property another committed configuration also sets.
 
 A second configuration may repeat the first for tools that do not read the formatter, but it never decides. Two configurations that have to be kept in step by hand will drift, and the one that drifts is not the one doing the formatting.
 
 ## Repository settings
 
-**TL-29** A repository on GitHub whose `archived` and `fork` properties, as the GitHub API returns them, are both `false` MUST be in a state for which `repo-settings.sh`, run without `--apply` from an unmodified checkout of the default branch of tiavelum/github-setup, prints `ok` for that repository.
+**TL-29** Every repository that `repo-settings.sh` checks MUST be in a state for which `repo-settings.sh`, run without `--apply` from an unmodified checkout of the default branch of tiavelum/github-setup, prints `ok` for that repository.
 
-A repository setting or ruleset enforces a requirement only on the repositories it is applied to. tiavelum/github-setup holds the values and applies them. Run without `--apply`, `repo-settings.sh` prints `diff` for a repository whose settings differ, so a repository that falls out of its management shows as differing. It prints `skipped` for a repository whose `archived` or `fork` property is `true`, the repositories TL-29 leaves out.
+A repository setting or ruleset enforces a requirement only on the repositories it is applied to. tiavelum/github-setup holds the values and applies them. Run without `--apply`, `repo-settings.sh` prints `diff` for a repository whose settings differ, so a repository that falls out of its management shows as differing.
+
+**TL-30** Where a setting in `repo-settings.json` of tiavelum/github-setup enforces the whole requirement of a rule on every repository that `repo-settings.sh` checks and the rule applies to, the rule MUST state that requirement only as a reference to the setting.
+
+A requirement written out next to the setting that enforces it drifts from the setting the day the setting changes; a reference cannot. The reference keeps the rule's identifier and keyword, so it can still be cited.
+
+A rule whose requirement a setting enforces only in part, or only on some of the repositories `repo-settings.sh` checks and the rule applies to, stays written in full. Which repositories `repo-settings.sh` checks, and which settings reach which of them, is defined in tiavelum/github-setup and not restated here.
+
+Correct: `**TL-17** Secret scanning MUST be enabled where the security_and_analysis setting in repo-settings.json of tiavelum/github-setup enables it.`
+Incorrect: `**TL-17** Secret scanning MUST be enabled on every repository that can enable it.`, while that setting enforces it on every repository `repo-settings.sh` checks that can enable it
 
 ## Baseline configuration
 
@@ -69,7 +82,7 @@ A build is reproducible only with pinned tools.
 
 ## Secrets
 
-**TL-17** Secret scanning MUST be enabled on every repository that can enable it.
+**TL-17** Secret scanning MUST be enabled where the `security_and_analysis` setting in `repo-settings.json` of tiavelum/github-setup enables it.
 
 **TL-18** A repository MUST read its secrets from the environment or a secret store.
 

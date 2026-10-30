@@ -11,16 +11,16 @@
 
 schema_version: 1
 repository: tiavelum/engineering-standards
-updated: 2026-10-29
+updated: 2026-10-30
 validated_by: scripts/validate-standards.py
 
 meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 6.1.1
+    version: 7.0.1
     status: active
-    summary: How a standard file is written, how rules are identified and versioned, and the admission test for new rules.
+    summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
     requires: [consuming, tooling]
 
@@ -36,9 +36,9 @@ meta:
   - id: consuming
     path: meta/consuming.md
     title: Consumer contract
-    version: 3.0.0
+    version: 4.0.0
     status: active
-    summary: What a tool, agent or script may rely on when loading these standards, and what it must not assume.
+    summary: What a person, AI agent, tool or script may rely on when loading these standards, and what it must not assume.
     applies_to: [tooling, agents]
     requires: [naming, precedence, rule-format]
 
@@ -56,17 +56,17 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 7.0.0
+    version: 8.0.0
     status: active
-    summary: Required top-level files, directory roles, and what must not live in a repository.
+    summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
     applies_to: [all]
-    tags: [structure, files]
+    tags: [structure, files, directories, placement]
     requires: [precedence, readme-contract, documentation]
 
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 8.0.1
+    version: 8.0.2
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
@@ -135,7 +135,7 @@ standards:
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 7.1.0
+    version: 10.0.0
     status: active
     summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]
