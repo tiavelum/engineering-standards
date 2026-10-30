@@ -115,16 +115,21 @@ The rules of `standards/documentation.md` apply to a README as to every other do
 
 ## Before merge
 
-**RM-9** Every command that a pull request adds to the README or changes in it MUST have been executed successfully against the current default branch before merge.
+**RM-9** Every command in the README that a pull request adds or changes, or whose effect it changes, MUST have been executed successfully before merge, with the pull request's changes applied to the current default branch.
 
-**RM-40** The description of a pull request that adds a command to the README or changes one in it MUST name each such command, with where it was executed or, until it has been, that it has not been executed.
+A command's effect changes without its text when the pull request changes what the command reads or runs. A command the pull request adds exists only with its changes applied.
+
+Correct: `make install` executed before the merge of a pull request that adds a package to `packages.txt`, which `make install` reads, though its line in the README stays the same
+Incorrect: the same pull request merged without `make install` executed, because its line in the README did not change
+
+**RM-40** The description of a pull request MUST name each command that RM-9 requires to have been executed for it, with where it was executed or, until it has been, that it has not been executed.
 
 A command that needs a platform or an account the author does not work on stays marked as not executed while the pull request is under review, and the merge waits until whoever can run it has done so (RM-9). The description then shows, after the merge too, which commands were run and where.
 
 Correct: `make install-agent: executed on macOS 15.1`, and before that `make install-agent: not executed, needs macOS`
 Incorrect: `All commands tested.`, or a description that does not mention a command the pull request added
 
-DOC-51 requires every link in the README, as in every other document, to resolve before merge.
+DOC-51 covers the links of the README.
 
 ## Examples
 

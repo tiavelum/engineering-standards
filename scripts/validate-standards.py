@@ -13,6 +13,7 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
+from urllib.parse import unquote
 
 import yaml
 
@@ -42,7 +43,9 @@ RE_RULE = re.compile(r"^\*\*([A-Z]{2,3})-(\d+)\*\*", re.MULTILINE)
 # The marker RF-34 puts directly after the identifier of a rule under review.
 RE_DRAFT = re.compile(r"^ \(draft: #\d+\) ")
 RE_FILENAME = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*\.[a-z0-9]+$")
-RE_MD_LINK = re.compile(r"\[[^\]]*\]\(([^)#]+?)(?:#[^)]*)?\)")
+RE_MD_LINK = re.compile(r"\[[^\]]*\]\(([^)#]*)(?:#([^)]*))?\)")
+RE_INLINE_CODE = re.compile(r"`[^`\n]*`")
+RE_HEADING = re.compile(r"^#{1,6}\s+(.*?)\s*#*\s*$")
 RE_MARKER = re.compile(r"\b(TODO|FIXME|TBD|XXX)\b\s*[:(]|^\s*(TODO|FIXME|TBD)\b")
 
 # The RFC 2119 keywords RF-13 requires, uppercase only.
@@ -322,19 +325,56 @@ def check_names() -> None:
             error(relative.as_posix(), "NAM-1", "directory name is not descriptive")
 
 
+def heading_anchors(path: Path) -> set[str]:
+    """The fragments GitHub gives the headings of a Markdown file, lowercased.
+
+    The rules are those of GitHub's "Section links":
+    https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#section-links
+    Markup is reduced to its text first; HTML in a heading is not, since no
+    file here puts any there. Fragments are compared lowercased, because
+    GitHub's own example links a heading with an uppercase letter kept.
+    """
+    anchors: set[str] = set()
+    counts: dict[str, int] = {}
+    for line in strip_code_blocks(path.read_text(encoding="utf-8")).splitlines():
+        match = RE_HEADING.match(line)
+        if not match:
+            continue
+        text = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", match.group(1))
+        text = re.sub(r"[`*]|(?<!\w)_|_(?!\w)", "", text).strip().lower()
+        slug = re.sub(r"[^\w\- ]", "", text).replace(" ", "-")
+        number = counts.get(slug, 0)
+        counts[slug] = number + 1
+        anchors.add(slug if number == 0 else f"{slug}-{number}")
+    return anchors
+
+
 def check_links() -> None:
-    """RF-33 covers a file listed in the index; DOC-51 covers the README."""
+    """DOC-51 for the README and every file listed in the index.
+
+    A link within the repository must reach its path and, for a Markdown file,
+    the heading its fragment names. Outside links are not fetched, and code,
+    fenced or inline, is skipped, since a link there is written as an example.
+    """
     for path in [*rule_files(), ROOT / "README.md"]:
         relative = path.relative_to(ROOT).as_posix()
-        rule = "DOC-51" if relative == "README.md" else "RF-33"
-        text = strip_code_blocks(path.read_text(encoding="utf-8"))
+        text = RE_INLINE_CODE.sub("", strip_code_blocks(path.read_text(encoding="utf-8")))
         for match in RE_MD_LINK.finditer(text):
             target = match.group(1).strip()
+            fragment = match.group(2)
             if target.startswith(("http://", "https://", "mailto:")):
                 continue
-            resolved = (path.parent / target).resolve()
+            resolved = (path.parent / target).resolve() if target else path
             if not resolved.exists():
-                error(relative, rule, f"relative link does not resolve: {target}")
+                error(relative, "DOC-51", f"relative link does not resolve: {target}")
+                continue
+            if (
+                fragment
+                and resolved.is_file()
+                and resolved.suffix == ".md"
+                and unquote(fragment).lower() not in heading_anchors(resolved)
+            ):
+                error(relative, "DOC-51", f"link names no heading of its file: {target}#{fragment}")
 
 
 def check_rule_prefix_uniqueness(all_rules: list[tuple[str, str]]) -> None:

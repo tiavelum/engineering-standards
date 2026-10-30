@@ -54,12 +54,12 @@ Incorrect: "Install the checks with `pip install -r requirements.txt` before you
 
 Such a step usually comes to light while the change is tested. Written down with the change, it reaches whoever sets the repository up next; left in a conversation or a review comment, it does not. A step taken only to develop or debug the change is not a step of what the repository delivers.
 
-**DOC-50** The description DOC-48 requires MUST stand in the README's "Getting started" (RM-1) where a first result needs the step, and otherwise in the section that gives the steps of the task that needs it.
+**DOC-50** The description DOC-48 requires MUST stand in the section that gives the steps of the task that needs the step, in whichever document of the repository that section is; where a first result needs the step, that section is the README's "Getting started" (RM-1).
 
 "Getting started" has to be usable on its own (RM-8), and a step a first result needs that stands elsewhere leaves it incomplete. RM-34 sets the form the step takes there.
 
-Correct: signing in to the sync account of photo-sync, which its first run needs, described in "Getting started"
-Incorrect: the same sign-in described only in `docs/accounts.md`
+Correct: signing in to the sync account of photo-sync, which its first run needs, described in "Getting started"; granting photo-sync access to the Photos library, which only the import that `docs/import.md` describes needs, described in the section of `docs/import.md` that gives the steps of the import
+Incorrect: the same sign-in described only in `docs/accounts.md`; the same access described only in the README's "Getting started", though a first result does not need it
 
 ## Directory READMEs
 
@@ -97,9 +97,9 @@ A changelog file repeats what the release holds and has to be kept in step with 
 
 **DOC-19** A pull request whose commits invalidate a document MUST update that document.
 
-**DOC-51** Every link in a document of the repository, as WR-8 defines it, MUST resolve before merge.
+**DOC-51** Every link in a document of the repository, as WR-8 defines it, other than a link written only as an example, MUST resolve before merge: a link within the repository to the path it names and, where it has a fragment, to the heading the fragment names; a link to a page outside the repository to that page.
 
-A link that does not resolve sends its reader nowhere, and WR-8 puts links to outside sources into every document, not only the README.
+A link that does not resolve sends its reader nowhere, and WR-8 puts links to outside sources into every document, not only the README. A heading of the repository's own files is what its changes break, and a tool can check it in every link within the repository; the fragment of a link to an outside page is not part of what has to resolve, since checking it means fetching and parsing each page. A link written only as an example, such as `[LICENSE](LICENSE)` in a sample README that a document shows in a code block, is not followed by a reader.
 
-Correct: a link in `docs/setup.md` to the install guide of a tool the repository uses, which opens that guide when the pull request is merged
-Incorrect: the same link after the guide has moved, so that it returns "404 Not Found" when the pull request is merged
+Correct: a link in `docs/setup.md` to `https://semver.org/spec/v2.0.0.html`, which opens the specification when the pull request is merged; a link in the README to `docs/setup.md#install-the-tools`, where `docs/setup.md` has the heading "Install the tools"
+Incorrect: the same link after the page has moved, so that it returns "404 Not Found" when the pull request is merged; the same link to `docs/setup.md#install-the-tools` after the pull request renames that heading to "Tools"

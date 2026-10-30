@@ -18,11 +18,11 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 7.0.1
+    version: 8.0.0
     status: active
     summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
-    requires: [consuming, tooling]
+    requires: [consuming, documentation, tooling]
 
   - id: precedence
     path: meta/precedence.md
