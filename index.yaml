@@ -71,7 +71,7 @@ standards:
   - id: versioning
     path: standards/versioning.md
     title: Versioning and public API
-    version: 3.0.0
+    version: 4.0.0
     status: active
     summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
     applies_to: [software]
@@ -130,7 +130,7 @@ standards:
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 11.0.1
+    version: 12.0.0
     status: active
     summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]

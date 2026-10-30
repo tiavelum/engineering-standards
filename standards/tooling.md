@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 11.0.1
+version: 12.0.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
@@ -81,7 +81,7 @@ Incorrect: a Python repository whose CI runs no linter and that commits only a C
 
 A check that only warns does not gate.
 
-**TL-21** Publication to a registry MUST happen only from a build of a tag on a protected branch.
+**TL-21** Publication to a package or image registry MUST happen only from a build of a tag whose commit is reachable from the default branch or from a release branch.
 
 ## Dependencies
 
