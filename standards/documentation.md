@@ -65,11 +65,11 @@ Incorrect: the same sign-in described only in `docs/accounts.md`; the same acces
 
 **DOC-45** A rule that constrains how the content of one directory is built, and is not obvious from that content, MUST be described in the README of that directory.
 
-The README of a directory is written for whoever uses or changes the content of that directory. It holds the details of that content that the README at the root leaves out, such as how a program in it behaves when it fails (DOC-52), and it describes the current rules of the content, not how they came about.
+The README of a directory is written for whoever uses or changes the content of that directory. It holds the details of that content that the README at the root leaves out, such as what a program in it prints and does when it cannot complete its task (DOC-52), and it describes the current rules of the content, not how they came about.
 
-**DOC-52** A description, in a document of the repository, of what a program prints and does when it cannot complete its task, where all the files the program runs or reads lie in one directory below the root, MUST stand in the README of the deepest directory that holds them all.
+**DOC-52** A description, in a document of the repository, of what a program prints and does when it cannot complete its task, where the files of the repository that make up the program or that it runs or reads all lie within one directory below the root, MUST stand in the README of the deepest directory that holds them all.
 
-The README at the root shows what works and links to these details (RM-41), so it stays short. The output of a program tells its user about a failure as it happens; the README of its directory is for whoever wants more without reading the program. A program whose files lie at the root is outside this rule.
+The README at the root shows what works and links to these details (RM-41), so it stays short. The output of a program tells its user, as it happens, that it cannot complete its task; the README of its directory is for whoever wants more without reading the program. A program is outside this rule where no directory below the root holds all those files, as where one of them lies at the root.
 
 Correct: what `sync/photo-sync.sh` prints, and which photos it has already copied, when the Photos library cannot be read, described in `sync/README.md`
 Incorrect: the same described in the "Troubleshooting" of the README at the root, or in `docs/troubleshooting.md`

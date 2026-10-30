@@ -113,11 +113,11 @@ The rules of `standards/documentation.md` apply to a README as to every other do
 
 **RM-18** A README MUST state the known limitations that affect whether a reader should use the repository.
 
-**RM-41** A section of the README that names a file or a directory below the root, in its text, a table or a command, MUST link, for each file or directory it names, to the README of the deepest directory that lies below the root, has a README, and is or contains it.
+**RM-41** A section of the README MUST link to every README that, for a file or a directory below the root that the section names in its text, a table or a command, is the README of the deepest directory that lies below the root, has a README, and is or contains that file or directory.
 
 The README at the root shows what works and is the entry point to everything the repository concerns. The details of a directory's content stand in that directory's README: the rules of how it is built (DOC-45) and what a program in it prints and does when it cannot complete its task (DOC-52). The link takes the reader there from the section where they meet that content.
 
-Correct: a "Getting started" that runs `sync/photo-sync.sh` and links to `sync/README.md`, and a "Content and structure" that describes `sync/` and links to the same file
+Correct: a "Getting started" that runs `sync/photo-sync.sh` twice and links to `sync/README.md` once, and a "Content and structure" that describes `sync/` and links to the same file
 Incorrect: the same "Getting started" without a link to `sync/README.md`, because "Content and structure" already links to it
 
 ## Before merge
