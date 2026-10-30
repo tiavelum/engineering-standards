@@ -27,5 +27,8 @@ jobs:
       - name: Lint
         run: ruff check .
 
+      - name: Check line breaks
+        run: python3 scripts/check-line-breaks.py
+
       - name: Validate standards
         run: python3 scripts/validate-standards.py
