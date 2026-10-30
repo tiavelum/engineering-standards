@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning and public API
-version: 2.1.0
+version: 3.0.0
 status: active
 applies_to: [software]
 summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
@@ -38,7 +38,7 @@ Incorrect: an exclusion that exists only in the declaration, invisible to someon
 
 ## Public surfaces
 
-**VER-38** The declaration MUST cover every surface listed for the repository's type:
+**VER-38** The declaration MUST cover every surface the following table lists for each type in it that describes the repository:
 
 | Type | Public surface |
 |---|---|
@@ -78,13 +78,13 @@ The cost of an unnecessary MAJOR release is an inconvenience to the publisher. T
 
 ## Incrementing
 
-**VER-6** MAJOR MUST be incremented when a change is breaking under VER-39 to VER-41.
+**VER-6** From a version of `1.0.0` or higher, MAJOR MUST be incremented when a change is breaking under VER-39 to VER-41.
 
-**VER-7** MINOR MUST be incremented when the public API gains functionality and nothing breaks.
+**VER-7** From a version of `1.0.0` or higher, MINOR MUST be incremented when the public API gains functionality and nothing breaks.
 
-**VER-8** MINOR MUST be incremented when any part of the public API is marked deprecated.
+**VER-8** From a version of `1.0.0` or higher, MINOR MUST be incremented when any part of the public API is marked deprecated.
 
-**VER-9** PATCH MUST be incremented when shipped behaviour changes and the public API does not.
+**VER-9** From a version of `1.0.0` or higher, PATCH MUST be incremented when shipped behaviour changes and the public API does not.
 
 **VER-10** When more than one of VER-6 to VER-9 applies to a release, the highest MUST be taken.
 
@@ -94,7 +94,7 @@ The cost of an unnecessary MAJOR release is an inconvenience to the publisher. T
 
 A dependency going from 3.x to 4.x is not by itself a MAJOR here. It is MAJOR here only if this repository's own contract changes as a result.
 
-**VER-31** A pull request MUST state which increment the change requires under VER-6 to VER-9.
+**VER-31** A pull request MUST state which increment the change requires under VER-6 to VER-9 or VER-16.
 
 This makes the pull request the record of the versioning decision. Without it the increment is chosen at release time, by whoever cuts the release, from a history they did not write.
 
@@ -113,9 +113,11 @@ This makes the pull request the record of the versioning decision. Without it th
 
 **VER-15** A repository that runs in production, or that has any consumer outside its own repository, MUST be at `1.0.0` or higher.
 
-`0.y.z` states that the public API is not stable, which software others already depend on cannot claim.
+Under [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html), `0.y.z` states that the public API is not stable, which software others already depend on cannot claim.
 
-**VER-16** Below `1.0.0`, a breaking change MUST increment MINOR and every other change MUST increment PATCH.
+**VER-16** A release that stays below `1.0.0` MUST increment MINOR when it contains a breaking change, and PATCH when it contains none.
+
+[Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) scopes its items on the increments to versions of `1.0.0` or higher. VER-6 to VER-9 narrow those items and keep their scope, so they and this rule never govern the same release.
 
 ## Pre-release and build metadata
 
@@ -128,22 +130,22 @@ Incorrect: `2.0.0-rc1`, `2.0.0-test`, `2.0.0-final`
 
 **VER-19** Build metadata MUST NOT be the only difference between two published artifacts.
 
-Build metadata is ignored when versions are compared, so two artifacts that differ only there are indistinguishable to a consumer. If the content differs, the version differs.
+Build metadata is ignored when versions are compared, as [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) specifies, so two artifacts that differ only there are indistinguishable to a consumer. If the content differs, the version differs.
 
 ## The version of record
 
-**VER-3** A repository MUST hold its version in exactly one place.
+**VER-3** A repository MUST hold the version of each unit it publishes in exactly one place.
 
 **VER-4** The version of record MUST be the location its ecosystem defines:
 
 | Ecosystem | Version of record |
 |---|---|
-| Node | `package.json`, `version` |
-| Python | `pyproject.toml`, `[project] version` |
-| Rust | `Cargo.toml`, `[package] version` |
-| Go | the git tag, since Go has no manifest version |
+| Node | `package.json`, [`version`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#version) |
+| Python | `pyproject.toml`, [`[project] version`](https://packaging.python.org/en/latest/specifications/pyproject-toml/#version) |
+| Rust | `Cargo.toml`, [`[package] version`](https://doc.rust-lang.org/cargo/reference/manifest.html#the-version-field) |
+| Go | the git tag, since Go has no manifest version and [maps each module version to a tag](https://go.dev/ref/mod#vcs-version) |
 | Container image | the git tag, mirrored into the image tag |
-| Anything else | a `VERSION` file at the repository root |
+| Anything else | the location its ecosystem defines, or a `VERSION` file at the repository root where it defines none |
 
 **VER-5** Every other occurrence of the version MUST be derived from the version of record when the artifact is built.
 
