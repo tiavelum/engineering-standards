@@ -37,7 +37,7 @@ It takes its input as data and returns its result as data, so it can be called a
 
 **ML-8** The README of the directory MUST show the imports between its modules as a diagram.
 
-The diagram is reference material that DOC-4 requires to be generated from the code, since one written by hand goes stale with the first changed import. The layers of a directory constrain how its content is built, and DOC-45 has such a rule described in the README of that directory.
+The diagram is reference material that DOC-4 requires to be generated from the code, since one written by hand goes stale with the first changed import.
 
 ## Checks
 
