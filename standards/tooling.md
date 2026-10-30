@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 11.0.0
+version: 11.0.1
 status: active
 applies_to: [all]
 summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
@@ -43,7 +43,7 @@ A requirement written out next to the setting that enforces it drifts from the s
 
 A rule whose requirement a setting enforces only in part, or only on some of the repositories `repo-settings.sh` checks and the rule applies to, stays written in full. Which repositories `repo-settings.sh` checks, and which settings reach which of them, is defined in tiavelum/github-setup and not restated here.
 
-Correct: `**TL-17** Secret scanning MUST be enabled where the security_and_analysis setting in repo-settings.json of tiavelum/github-setup enables it.`
+Correct: `**TL-17** Secret scanning MUST be enabled where the security_and_analysis setting in repo-settings.json of tiavelum/github-setup enables it.`\
 Incorrect: `**TL-17** Secret scanning MUST be enabled on every repository that can enable it.`, while that setting enforces it on every repository `repo-settings.sh` checks that can enable it
 
 ## Baseline configuration
@@ -54,7 +54,7 @@ Incorrect: `**TL-17** Secret scanning MUST be enabled on every repository that c
 
 The rule applies per language, since a formatter for one language leaves the code of another unformatted. A tool's own documentation decides whether it supports a language, because every reader can check it.
 
-Correct: a repository of Python and zsh code that commits a formatter configuration for its Python and, since [the documentation of shfmt lists zsh](https://github.com/mvdan/sh), formatting options for its zsh in the `.editorconfig` that shfmt reads
+Correct: a repository of Python and zsh code that commits a formatter configuration for its Python and, since [the documentation of shfmt lists zsh](https://github.com/mvdan/sh), formatting options for its zsh in the `.editorconfig` that shfmt reads\
 Incorrect: a Python repository whose CI runs no formatter and that commits only the `.editorconfig`, a repository of Python and zsh code that commits a formatter configuration for its Python alone
 
 **TL-23** A committed formatter MUST be applied to the whole repository, not selectively.
@@ -63,7 +63,7 @@ Incorrect: a Python repository whose CI runs no formatter and that commits only 
 
 The rule applies per language and a tool's own documentation decides, as under TL-6. A parse check finds code that does not parse.
 
-Correct: a repository of Python and zsh code that commits a linter configuration for its Python and, since [the documentation of zsh-lint lists zsh](https://github.com/z-shell/zsh-lint), one for its zsh
+Correct: a repository of Python and zsh code that commits a linter configuration for its Python and, since [the documentation of zsh-lint lists zsh](https://github.com/z-shell/zsh-lint), one for its zsh\
 Incorrect: a Python repository whose CI runs no linter and that commits only a CI step that parses its code, a repository of Python and zsh code that commits a linter configuration for its Python alone
 
 **TL-24** A linter suppression MUST carry a reason on the line that suppresses it.

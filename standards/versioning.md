@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning and public API
-version: 2.1.0
+version: 2.1.1
 status: active
 applies_to: [software]
 summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
@@ -33,7 +33,7 @@ The default is deliberately expensive. A repository that declares nothing has pr
 
 **VER-37** An excluded surface MUST be marked where a consumer would encounter it, in the path, the symbol name, or the generated documentation.
 
-Correct: an `internal/` package, a symbol prefixed `_`, an endpoint documented as experimental
+Correct: an `internal/` package, a symbol prefixed `_`, an endpoint documented as experimental\
 Incorrect: an exclusion that exists only in the declaration, invisible to someone reading the code
 
 ## Public surfaces
@@ -121,7 +121,7 @@ This makes the pull request the record of the versioning decision. Without it th
 
 **VER-17** A pre-release identifier MUST be `alpha`, `beta` or `rc`, followed by a dot and an integer counting from 1.
 
-Correct: `2.0.0-rc.1`, `2.0.0-beta.3`
+Correct: `2.0.0-rc.1`, `2.0.0-beta.3`\
 Incorrect: `2.0.0-rc1`, `2.0.0-test`, `2.0.0-final`
 
 **VER-18** A released repository MUST NOT depend on a pre-release version of anything.
@@ -157,7 +157,7 @@ Version grammar, agreement between tag and manifest, monotonic increase and prio
 
 **VER-28** A release tag MUST take the form `[<unit>/]v<major>.<minor>.<patch>[-<pre-release>]`: `<unit>/` only in a repository that publishes more than one unit, and `<pre-release>` as VER-17 requires.
 
-Correct: `v2.1.0`, `v2.0.0-rc.1`, `billing-api/v2.1.0` in a repository publishing three services
+Correct: `v2.1.0`, `v2.0.0-rc.1`, `billing-api/v2.1.0` in a repository publishing three services\
 Incorrect: `v2.0.0rc1`, `v2.0.0-RC1`, `v2.1.0` in a repository publishing three services
 
 ## Deprecation and removal
@@ -182,5 +182,5 @@ Where a repository says nothing, only the current MAJOR line is supported.
 
 **VER-27** A consumer MUST express a dependency as a range bounded above by the next MAJOR.
 
-Correct: `>=3.1.0 <4.0.0`
+Correct: `>=3.1.0 <4.0.0`\
 Incorrect: `>=3.1.0`, `*`, a bare `latest`

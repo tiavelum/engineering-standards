@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 8.0.0
+version: 8.0.1
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
@@ -35,7 +35,7 @@ RM-11 requires the README at the root to describe each top-level directory. A to
 
 Two roles overlap when one file can have both.
 
-Correct: `scripts/` for scripts that build, test or run the repository, kept as source, next to `tools/` for prebuilt executables from outside the repository that those scripts run
+Correct: `scripts/` for scripts that build, test or run the repository, kept as source, next to `tools/` for prebuilt executables from outside the repository that those scripts run\
 Incorrect: `scripts/` for development scripts next to `tools/` for development utilities
 
 ## Placement
@@ -46,7 +46,7 @@ A file is accepted in a directory where the tool that reads it finds it on its o
 
 PR-5, for example, fixes `deviations.md` at the root, and DOC-2 and DOC-10 set where documentation and decision records live.
 
-Correct: `project-instructions.md` at the root, which `CLAUDE.md` imports and no directory's role covers; `CONTRIBUTING.md` in `docs/`, where GitHub also finds it, when `docs/` holds the repository's documentation
+Correct: `project-instructions.md` at the root, which `CLAUDE.md` imports and no directory's role covers; `CONTRIBUTING.md` in `docs/`, where GitHub also finds it, when `docs/` holds the repository's documentation\
 Incorrect: `CONTRIBUTING.md` at the root of the same repository
 
 ## What must not be committed
