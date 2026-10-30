@@ -36,7 +36,7 @@ meta:
   - id: consuming
     path: meta/consuming.md
     title: Consumer contract
-    version: 4.0.0
+    version: 5.0.0
     status: active
     summary: What a person, AI agent, tool or script may rely on when loading these standards, and what it must not assume.
     applies_to: [tooling, agents]

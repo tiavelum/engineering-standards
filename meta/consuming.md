@@ -1,7 +1,7 @@
 ---
 id: consuming
 title: Consumer contract
-version: 4.0.0
+version: 5.0.0
 status: active
 applies_to: [tooling, agents]
 summary: What a person, AI agent, tool or script may rely on when loading these standards, and what it must not assume.
@@ -52,7 +52,7 @@ The closure can contain cycles, because two standards may each define a term the
 
 **CO-10** File paths listed in `index.yaml` MUST be stable within a major version of the standard they point at.
 
-**CO-12** Consumers MUST NOT rely on line numbers, heading order, or any structure not described in `meta/rule-format.md`.
+**CO-12** A consumer MUST NOT rely on any structure of `index.yaml` or of a file it lists that `meta/rule-format.md` does not describe, such as line numbers or the order of headings.
 
 ## What a consumer must not assume
 
