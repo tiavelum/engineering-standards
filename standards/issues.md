@@ -1,7 +1,7 @@
 ---
 id: issues
 title: Issues
-version: 2.0.3
+version: 2.1.0
 status: active
 applies_to: [all]
 summary: When future work is recorded as an issue, what an issue states, and how it is closed.
@@ -38,6 +38,13 @@ WR-1 governs the language of an issue, WR-2 what it states for a reader who was 
 Correct: `Split the rules that hold two independent requirements`, `Decide whether source files may sit at the root`
 Incorrect: `Rule splitting`, `Source files at the root?`, `Two rules disagree on .editorconfig`
 
+**ISS-13** An issue's description MUST open with a section headed `In short` that states in at most three sentences what is to be done or decided and why, in words a reader who has not followed the work understands without opening a link or looking anything up.
+
+WR-2 sets what an issue states; this rule sets where its reader finds it and how long it takes to read. Besides whoever does or decides the work, an issue is read in lists by someone choosing what to read next, and both learn from its first lines what it is about. Sentences are counted rather than lines, which depend on the width of the screen, and the fixed heading lets a tool or an issue template find the section.
+
+Correct: a description that opens with a section headed `In short` that reads `photo-sync copies every photo again after the Photos library is moved, because it recognises a photo by its path. Decide whether it recognises photos by a checksum instead, which makes its first run after the change read every photo once.`
+Incorrect: a description that opens `The path key from #41 (Add the import) breaks on a relocated library, as finding F3 of its review shows.`, which needs #41, its review and the term "path key" looked up; the two sentences of the correct example under the heading `Summary`, or below a section of logs
+
 **ISS-6** An issue MUST state the condition under which it is done.
 
 The condition lets anyone close the issue, or see that it is not done yet, without asking its author.
@@ -45,6 +52,13 @@ The condition lets anyone close the issue, or see that it is not done yet, witho
 **ISS-7** An issue that asks for a decision MUST list the options it knows, each with its consequence.
 
 **ISS-8** An issue that asks for a decision SHOULD name the option its author recommends, with the reason.
+
+**ISS-14** An issue that asks for a decision MUST show the case it decides in at least one concrete example.
+
+Options stated in general terms, or by the identifiers of the rules they touch, leave whoever decides to picture the case alone; an example of the case shows what each option does to it.
+
+Correct: `After the Photos library moved from the internal disk to the external disk Photos-2, the next run of photo-sync copied all 12 400 photos again and filled the backup drive.` in the issue of the ISS-13 example
+Incorrect: `Moving the library has side effects on the sync.`, or the same issue with its options and no example
 
 **ISS-10** Work that spans several issues SHOULD be held by one tracking issue that links each of them.
 
