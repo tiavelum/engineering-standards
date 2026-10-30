@@ -33,8 +33,9 @@ Such a conflict is a defect in the standards. Until it is fixed, an explicit ins
 
 **PR-6** A deviation entry MUST give a reason specific to that repository.
 
-Correct: `This repository holds two text files, and nothing that works on them writes build output, caches or local settings into it.` as the reason for a deviation from RL-3\
-Incorrect: `Not applicable.`, `The rule does not fit this repository.` as the reason for the same deviation
+> Correct: `This repository holds two text files, and nothing that works on them writes build output, caches or local settings into it.` as the reason for a deviation from RL-3
+>
+> Incorrect: `Not applicable.`, `The rule does not fit this repository.` as the reason for the same deviation
 
 **PR-8** A deviation that turns out to apply to several repositories SHOULD be raised as a change to the standard rather than repeated.
 
