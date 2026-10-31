@@ -65,7 +65,7 @@ A deviation entry MUST give a reason specific to that repository.
 
 ### PR-11
 
-A rule that a repository setting enforces MUST NOT be deviated from, and needs no entry in deviations.md.
+A rule that a repository setting enforces MUST NOT be deviated from.
 
 ### PR-8
 
