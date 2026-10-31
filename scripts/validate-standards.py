@@ -61,7 +61,6 @@ LENGTH_PENDING = frozenset(
         "standards/issues.md",
         "standards/module-layers.md",
         "standards/readme-contract.md",
-        "standards/repo-layout.md",
         "standards/tooling.md",
         "standards/versioning.md",
         "standards/writing.md",
