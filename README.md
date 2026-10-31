@@ -66,8 +66,7 @@ Load:     index.yaml -> the entries whose `applies_to` matches the task
           standards/naming.md, standards/repo-layout.md,
           standards/git-workflow.md, standards/readme-contract.md,
           standards/documentation.md, standards/writing.md,
-          standards/issues.md, standards/tooling.md,
-          standards/versioning.md
+          standards/issues.md, standards/tooling.md
 Rules:    NAM-2  file names use lowercase words separated by single hyphens
           NAM-1  a name describes what the thing is, not when it was made
 Result:   two violations. Lowercasing gives `session-notes-august.md`, which

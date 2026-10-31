@@ -97,7 +97,7 @@ Publication to a package or image registry MUST happen only from a build of a ta
 
 ### TL-14
 
-Dependency versions a build or CI run installs MUST be pinned or locked in a committed file; the range VER-27 requires states what a consumer accepts, and the lock states what is installed.
+Dependency versions a build or CI run installs MUST be pinned or locked in a committed file.
 
 ### TL-15
 

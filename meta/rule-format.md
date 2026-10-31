@@ -203,7 +203,7 @@ A pull request that changes a standard file MUST raise its version from the one 
 
 | Increment | Change |
 |---|---|
-| Major | A requirement the file applies, its own or one from a standard it requires, stops applying to the file or is changed; an existing rule gains the marker of RF-34; the entry's `id` or `applies_to` changes; or the file moves (CO-10) |
+| Major | A requirement the file states stops applying to the file or is changed; an existing rule gains the marker of RF-34; the entry's `id` or `applies_to` changes; or the file moves (CO-10) |
 | Minor | A requirement is added, or a rule loses the marker of RF-34 |
 | Patch | Anything else, such as splitting or merging rules, or removing a rule whose requirement still applies through the file or a standard it requires |
 
