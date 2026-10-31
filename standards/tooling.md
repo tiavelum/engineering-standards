@@ -61,13 +61,13 @@ A repository MUST commit, for each programming or scripting language of its sour
 
 ### TL-23
 
-A committed formatter MUST check, in CI, every file in a language it supports, other than a copy of another project's file and a file a tool generates.
+A committed formatter MUST gate merges, in CI, on every file in a language it supports, other than a copy of another project's file and a file a tool generates.
 
 A copy would differ from its source at its next update, and a generated file is overwritten by its generator.
 
 ### TL-33
 
-A committed linter MUST check, in CI, every file in a language it supports, other than the files TL-23 leaves out.
+A committed linter MUST gate merges, in CI, on every file in a language it supports, other than the files TL-23 leaves out.
 
 ### TL-24
 

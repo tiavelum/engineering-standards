@@ -138,7 +138,7 @@ A dependency update MUST be classified by its effect on this repository's public
 
 ### VER-14
 
-A repository with no production use and no consumer outside itself MUST give its first release `0.1.0` and stay below `1.0.0` while its public API is not stable.
+A repository with no production use and no consumer outside itself MUST release below `1.0.0`, starting at `0.1.0`, while its public API is not stable.
 
 ### VER-15
 
