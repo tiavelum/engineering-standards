@@ -27,7 +27,7 @@ The default branch of every public repository MUST contain a `LICENSE` file at i
 
 ### RL-3
 
-The default branch of every repository MUST contain at its root a `.gitignore` that lists each file or directory a tool used on the repository writes into it and that is not committed.
+The default branch of every repository MUST contain at its root a `.gitignore` that lists each file or directory a tool used on the repository writes into it and that is not committed, such as build output, caches and local environment files.
 
 ## Directory roles
 
@@ -37,7 +37,7 @@ A repository creates the directories it needs, under names of its choosing; the 
 
 Every directory below the root MUST have exactly one role.
 
-A role is what one statement says the directory holds, and it may name several kinds of file, such as a module's code and its tests.
+A role is what the statement that RM-11 or RL-18 requires says the directory holds, and it may name several kinds of file, such as a module's code and its tests.
 
 ### RL-18
 
