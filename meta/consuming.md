@@ -1,7 +1,7 @@
 ---
 id: consuming
 title: Consumer contract
-version: 4.0.1
+version: 5.0.0
 status: active
 applies_to: [tooling, agents]
 summary: What a person, AI agent, tool or script may rely on when loading these standards, and what it must not assume.
@@ -9,7 +9,7 @@ summary: What a person, AI agent, tool or script may rely on when loading these 
 
 # Consumer contract
 
-A consumer is anything that loads these standards to apply them: a skill, a plugin, a CI check, a script, or a person with a browser. This file is the interface those consumers rely on.
+A consumer is anything that loads these standards to apply them, such as a skill, a plugin, a CI check, a script or a person with a browser, and this file is the interface those consumers rely on.
 
 ## Loading
 
@@ -28,7 +28,7 @@ A consumer MUST match `applies_to` values against the task as follows.
 | Value | Matches |
 |---|---|
 | `all` | Work in any repository |
-| `software` | Work in a repository whose product is software: a program, library, package or image that is run or depended on |
+| `software` | Work in a repository whose product others run or depend on: a program, library, package, image, infrastructure module, schema or configuration |
 | `authoring` | Writing or changing a standard in this repository |
 | `tooling`, `agents` | A person, AI agent, tool or script that loads these standards to apply them |
 
@@ -66,13 +66,13 @@ A consumer that applies a community default under PR-3 MUST say so.
 
 ### CO-8
 
-A consumer that produces a file governed by a standard SHOULD state which standards it applied.
+A consumer that produces a file governed by a standard SHOULD state which standards it applied where it hands the file over, such as in its pull request, not in the file itself.
 
 ## Stability guarantees
 
 ### CO-20
 
-A breaking change to the index structure MUST increment `schema_version`.
+A change to the top-level keys or entry fields that RF-27, RF-28 and RF-29 define, or to the `applies_to` values CO-16 defines, MUST increment `schema_version`.
 
 ### CO-10
 
@@ -80,15 +80,23 @@ File paths listed in `index.yaml` MUST be stable within a major version of the s
 
 ### CO-12
 
-Consumers MUST NOT rely on line numbers, heading order, or any structure not described in `meta/rule-format.md`.
+Consumers MUST NOT rely on line numbers, heading order, or any structure not described by a rule of these standards.
 
 ## What a consumer must not assume
 
 ### CO-13
 
-A consumer that cannot fetch MUST say so rather than proceeding from memory of an earlier version.
+A consumer that can neither fetch the standards nor read a bundled or vendored copy of them MUST say so rather than proceed from memory of an earlier version.
 
 The repository is not guaranteed to be reachable at any given moment.
+
+### CO-21
+
+A consumer that applies a bundled or vendored copy of the standards MUST name the release or commit that copy holds.
+
+### CO-22
+
+A consumer that meets a `schema_version` greater than the one it was written for MUST say so rather than apply the standards.
 
 ## Distribution mechanisms
 
