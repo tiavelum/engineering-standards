@@ -203,9 +203,9 @@ A pull request that changes a standard file MUST raise its version from the one 
 
 | Increment | Change |
 |---|---|
-| Major | A requirement is removed or changed, a rule gains the marker of RF-34, the entry's `id` or `applies_to` changes, or the file moves (CO-10) |
+| Major | A requirement the file applies, its own or one from a standard it requires, is removed or changed; a rule gains the marker of RF-34; the entry's `id` or `applies_to` changes; or the file moves (CO-10) |
 | Minor | A requirement is added, or a rule loses the marker of RF-34 |
-| Patch | Anything else, such as splitting or merging rules, or removing a rule whose requirement the file still cites from a standard it requires |
+| Patch | Anything else, such as splitting or merging rules, or removing a rule whose requirement still applies through the file or a standard it requires |
 
 ### RF-19
 

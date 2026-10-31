@@ -97,7 +97,9 @@ RE_XREF_RULE = re.compile(r"\b([A-Z]{2,3})-\d+\b")
 RE_XREF_PATH = re.compile(r"\b((?:standards|meta)/[a-z0-9-]+\.md)\b")
 
 # A range of rule identifiers, which RF-49 rules out.
-RE_RANGE = re.compile(r"\b[A-Z]{2,3}-\d+\s+(?:to|through)\s+[A-Z]{2,3}-\d+\b")
+RE_RANGE = re.compile(
+    r"\b[A-Z]{2,3}-\d+\s*(?:to|through|-|\N{EN DASH}|\N{EM DASH}|\.\.)\s*(?:[A-Z]{2,3}-)?\d+\b"
+)
 
 # Terms of the shape RF-43 describes that name something other than a rule.
 # RF-43 accepts such a term only if a rule here carries its identifier or it

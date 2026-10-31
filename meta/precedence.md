@@ -39,7 +39,7 @@ Such a conflict is a defect of the standards, raised as an issue on this reposit
 
 ### PR-5
 
-A repository MUST record each deviation from a MUST or MUST NOT rule in `deviations.md` at its root, as one entry giving the rule id, the reason and the date recorded as YYYY-MM-DD; a rule a repository setting enforces admits no deviation.
+A repository MUST record each deviation from a MUST or MUST NOT rule in `deviations.md` at its root, as one entry giving the rule id, the reason and the date recorded as YYYY-MM-DD.
 
 ```markdown
 # Deviations
@@ -62,6 +62,10 @@ A deviation entry MUST give a reason specific to that repository.
 > Correct: `This repository holds two text files, and nothing that works on them writes build output, caches or local settings into it.` as the reason for a deviation from RL-3
 >
 > Incorrect: `Not applicable.`, `The rule does not fit this repository.` as the reason for the same deviation
+
+### PR-11
+
+A rule that a repository setting enforces MUST NOT be deviated from, and needs no entry in deviations.md.
 
 ### PR-8
 
