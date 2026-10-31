@@ -58,9 +58,7 @@ LENGTH_PENDING = frozenset(
     {
         "standards/documentation.md",
         "standards/module-layers.md",
-        "standards/naming.md",
         "standards/readme-contract.md",
-        "standards/repo-layout.md",
         "standards/tooling.md",
         "standards/versioning.md",
     }
@@ -436,11 +434,11 @@ def check_names() -> None:
             continue
         if not RE_FILENAME.match(name):
             error(relative.as_posix(), "NAM-2", "file name is not lowercase hyphen separated")
-        if name.lower() == "readme.md" and path.parent != ROOT:
+        if name.split(".")[0].lower() == "readme" and path.parent != ROOT:
             error(
                 relative.as_posix(),
                 "NAM-17",
-                "only a directory's own README may be named readme.md",
+                "only a directory's own README.md may be named readme",
             )
 
     for path in ROOT.rglob("*"):
