@@ -19,7 +19,7 @@ meta:
   - id: precedence
     path: meta/precedence.md
     title: Precedence and deviation
-    version: 2.0.3
+    version: 2.0.4
     status: active
     summary: How conflicts between these standards, a consuming repository and a task instruction are resolved, and how a deviation is recorded.
     applies_to: [all]
@@ -28,7 +28,7 @@ meta:
   - id: consuming
     path: meta/consuming.md
     title: Consumer contract
-    version: 4.0.0
+    version: 4.0.1
     status: active
     summary: What a person, AI agent, tool or script may rely on when loading these standards, and what it must not assume.
     applies_to: [tooling, agents]
@@ -38,7 +38,7 @@ standards:
   - id: naming
     path: standards/naming.md
     title: Naming
-    version: 6.0.1
+    version: 6.0.2
     status: active
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]
@@ -48,7 +48,7 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 8.0.1
+    version: 8.0.2
     status: active
     summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
     applies_to: [all]
@@ -58,7 +58,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 8.0.4
+    version: 8.0.5
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
@@ -78,7 +78,7 @@ standards:
   - id: module-layers
     path: standards/module-layers.md
     title: Module layers
-    version: 3.0.1
+    version: 3.0.2
     status: active
     summary: How the modules of a source directory are arranged in layers, which way they import, where files are read and written, and how the layers are described and checked.
     applies_to: [software]
@@ -88,7 +88,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 9.1.1
+    version: 9.1.2
     status: active
     summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
     applies_to: [all]
@@ -98,7 +98,7 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 13.2.2
+    version: 13.2.3
     status: active
     summary: "Rules for every document of a repository, the README included: placement, content, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
     applies_to: [all]
@@ -108,7 +108,7 @@ standards:
   - id: writing
     path: standards/writing.md
     title: Writing
-    version: 6.2.1
+    version: 6.2.2
     status: active
     summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, what the top part of a description holds and what follows it, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
     applies_to: [all]
@@ -117,7 +117,7 @@ standards:
   - id: issues
     path: standards/issues.md
     title: Issues
-    version: 4.0.1
+    version: 4.0.2
     status: active
     summary: When future work is recorded as an issue, what an issue states and where it states it, and how it is closed.
     applies_to: [all]
@@ -127,7 +127,7 @@ standards:
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 12.0.1
+    version: 12.0.2
     status: active
     summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]

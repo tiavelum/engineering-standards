@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 9.1.1
+version: 9.1.2
 status: active
 applies_to: [all]
 summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
@@ -15,13 +15,17 @@ The README is written for the user of the repository, not for its author. Assume
 
 This standard fixes what a README answers and in which order the reader meets it. It does not fix headings or a list of sections: a README is as long as its repository gives the reader questions, and no longer.
 
-**RM-39** This standard MUST be applied to the README at the root of a repository and MUST NOT be applied to the README of a directory below it.
+### RM-39
+
+This standard MUST be applied to the README at the root of a repository and MUST NOT be applied to the README of a directory below it.
 
 A directory README is written for whoever uses or changes that directory's content, and `standards/documentation.md` governs it, DOC-45 and DOC-52 among its rules.
 
 ## What a README answers
 
-**RM-1** A README MUST answer every question the following table marks as required.
+### RM-1
+
+A README MUST answer every question the following table marks as required.
 
 | Role | Required | Answers | For example headed |
 |---|---|---|---|
@@ -38,39 +42,59 @@ A directory README is written for whoever uses or changes that directory's conte
 | Contributing and support | MAY | How do I report or change something? | Contributing |
 | License | MUST (public) | What may I do with it? | License |
 
-**RM-38** A role named in quotes in this standard MUST be read as the section that answers that role's question, whatever its heading.
+### RM-38
+
+A role named in quotes in this standard MUST be read as the section that answers that role's question, whatever its heading.
 
 One section may answer several questions, and one question may take several sections where its answer is long.
 
 ## Order
 
-**RM-27** The summary and, where present, "What it is for" MUST precede every other section.
+### RM-27
 
-**RM-28** "Getting started" SHOULD be the first section after them.
+The summary and, where present, "What it is for" MUST precede every other section.
+
+### RM-28
+
+"Getting started" SHOULD be the first section after them.
 
 The reader came for a first result. The list of files is what they consult once they have one, so it rarely belongs first.
 
-**RM-29** "How it works" SHOULD follow "Getting started", "Example" and every task section.
+### RM-29
+
+"How it works" SHOULD follow "Getting started", "Example" and every task section.
 
 Beyond these, the order follows what the reader needs next and is not fixed.
 
 ## Optional sections
 
-**RM-30** A section that answers a question marked MAY MUST carry content that no other section of the README states.
+### RM-30
+
+A section that answers a question marked MAY MUST carry content that no other section of the README states.
 
 This is what keeps a small README small. A "What it is for" that repeats the summary, a "Configuration" that says there is nothing to configure, or a "How it works" that restates the file table fails it and is left out.
 
 ## Section rules
 
-**RM-3** The summary MUST state in one or two sentences what the repository is, before any badge, logo or table of contents.
+### RM-3
 
-**RM-4** "What it is for" MUST name the concrete problem solved.
+The summary MUST state in one or two sentences what the repository is, before any badge, logo or table of contents.
 
-**RM-33** "What it is for" MUST state the scope boundary: what the repository does not do.
+### RM-4
 
-**RM-6** Where a repository has something to install or run, "Getting started" MUST list prerequisites with versions.
+"What it is for" MUST name the concrete problem solved.
 
-**RM-34** Where a repository has something to install or run, "Getting started" MUST give each step as a command where a command can perform it, and otherwise as the exact manual action with the visible result DOC-8 requires.
+### RM-33
+
+"What it is for" MUST state the scope boundary: what the repository does not do.
+
+### RM-6
+
+Where a repository has something to install or run, "Getting started" MUST list prerequisites with versions.
+
+### RM-34
+
+Where a repository has something to install or run, "Getting started" MUST give each step as a command where a command can perform it, and otherwise as the exact manual action with the visible result DOC-8 requires.
 
 A step such as signing in to an account in an application's settings has no command; the exact action lets the reader take it, and what they see afterwards shows that it worked.
 
@@ -78,43 +102,73 @@ A step such as signing in to an account in an application's settings has no comm
 >
 > Incorrect: `Install ShellCheck with Homebrew.`, where `brew install shellcheck` performs the step; `Sign in to photo-sync.`, which says neither where nor what shows that it worked
 
-**RM-7** Where a repository has something to install or run, "Getting started" MUST end with a command that produces visible output, together with the expected output.
+### RM-7
 
-**RM-26** Where a repository has nothing to install or run, "Getting started" MUST name what the reader opens or reads first.
+Where a repository has something to install or run, "Getting started" MUST end with a command that produces visible output, together with the expected output.
+
+### RM-26
+
+Where a repository has nothing to install or run, "Getting started" MUST name what the reader opens or reads first.
 
 A repository that is read, such as a knowledge base, has no command to give. Its README keeps every other rule of this standard and is shorter for it.
 
-**RM-8** "Getting started" MUST be usable without reading any other section.
+### RM-8
 
-**RM-25** At most 200 words MUST precede the "Getting started" heading in the README source.
+"Getting started" MUST be usable without reading any other section.
+
+### RM-25
+
+At most 200 words MUST precede the "Getting started" heading in the README source.
 
 A screen cannot be measured; a word count can. The count covers everything above the heading: the title, the summary and "What it is for".
 
-**RM-10** "Example" MUST show at least one real usage with concrete values and its actual output, not a bare signature or an all-placeholder command.
+### RM-10
 
-**RM-11** "Content and structure" MUST describe each top-level directory, so that a reader can tell which directory holds what without opening files.
+"Example" MUST show at least one real usage with concrete values and its actual output, not a bare signature or an all-placeholder command.
 
-**RM-35** "Content and structure" MUST name the entry point files a reader opens first.
+### RM-11
 
-**RM-12** "Configuration" MUST list only options a normal user changes.
+"Content and structure" MUST describe each top-level directory, so that a reader can tell which directory holds what without opening files.
 
-**RM-37** An exhaustive reference of options MUST be linked from "Configuration", not inlined.
+### RM-35
 
-**RM-36** Each option in "Configuration" MUST carry its default and its effect.
+"Content and structure" MUST name the entry point files a reader opens first.
 
-**RM-13** "Troubleshooting" MUST list only failure modes actually observed, symptom first, fix second.
+### RM-12
 
-**RM-31** A task section MUST open with the command or the first step of the task.
+"Configuration" MUST list only options a normal user changes.
 
-**RM-32** "How it works" MUST describe how parts named in "Content and structure" depend on each other.
+### RM-37
+
+An exhaustive reference of options MUST be linked from "Configuration", not inlined.
+
+### RM-36
+
+Each option in "Configuration" MUST carry its default and its effect.
+
+### RM-13
+
+"Troubleshooting" MUST list only failure modes actually observed, symptom first, fix second.
+
+### RM-31
+
+A task section MUST open with the command or the first step of the task.
+
+### RM-32
+
+"How it works" MUST describe how parts named in "Content and structure" depend on each other.
 
 ## Global rules
 
 The rules of `standards/documentation.md` apply to a README as to every other document.
 
-**RM-18** A README MUST state the known limitations that affect whether a reader should use the repository.
+### RM-18
 
-**RM-41** A section of the README MUST link to every README that, for a file or a directory below the root that the section names in its text, a table or a command, is the README of the deepest directory that lies below the root, has a README, and is or contains that file or directory.
+A README MUST state the known limitations that affect whether a reader should use the repository.
+
+### RM-41
+
+A section of the README MUST link to every README that, for a file or a directory below the root that the section names in its text, a table or a command, is the README of the deepest directory that lies below the root, has a README, and is or contains that file or directory.
 
 The README at the root shows what works and is the entry point to everything the repository concerns. The details of a directory's content stand in that directory's README: the rules of how it is built (DOC-45) and what a program in it prints and does when it cannot complete its task (DOC-52). The link takes the reader there from the section where they meet that content.
 
@@ -124,7 +178,9 @@ The README at the root shows what works and is the entry point to everything the
 
 ## Before merge
 
-**RM-9** Every command in the README that a pull request adds or changes, or whose effect it changes, MUST have been executed successfully before merge, with the pull request's changes applied to the current default branch.
+### RM-9
+
+Every command in the README that a pull request adds or changes, or whose effect it changes, MUST have been executed successfully before merge, with the pull request's changes applied to the current default branch.
 
 A command's effect changes without its text when the pull request changes what the command reads or runs. A command the pull request adds exists only with its changes applied.
 
@@ -132,7 +188,9 @@ A command's effect changes without its text when the pull request changes what t
 >
 > Incorrect: the same pull request merged without `make install` executed, because its line in the README did not change
 
-**RM-40** The description of a pull request MUST name each command that RM-9 requires to have been executed for it, with where it was executed or, until it has been, that it has not been executed.
+### RM-40
+
+The description of a pull request MUST name each command that RM-9 requires to have been executed for it, with where it was executed or, until it has been, that it has not been executed.
 
 A command that needs a platform or an account the author does not work on stays marked as not executed while the pull request is under review, and the merge waits until whoever can run it has done so (RM-9). The description then shows, after the merge too, which commands were run and where.
 
