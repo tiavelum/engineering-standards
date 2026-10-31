@@ -1,37 +1,34 @@
 # Authoritative catalogue of standards in this repository.
 #
-# Contract: RF-27 to RF-32 define the entries, RF-17 to RF-19 their versions and
-# what a change carries with it, and CO-1, CO-2, CO-16 and CO-3 how a consumer
-# uses them.
+# Contract: RF-27, RF-28, RF-29, RF-30, RF-31 and RF-32 define the entries,
+# RF-17, RF-18 and RF-19 their versions and what a change carries with it, and
+# CO-1, CO-2, CO-16 and CO-3 how a consumer uses them.
 
 schema_version: 1
-repository: tiavelum/engineering-standards
-updated: 2026-10-30
-validated_by: scripts/validate-standards.py
 
 meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 10.0.1
+    version: 11.0.0
     status: active
     summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
-    requires: [consuming, documentation, tooling]
+    requires: [consuming, precedence]
 
   - id: precedence
     path: meta/precedence.md
     title: Precedence and deviation
-    version: 2.0.3
+    version: 3.0.0
     status: active
     summary: How conflicts between these standards, a consuming repository and a task instruction are resolved, and how a deviation is recorded.
     applies_to: [all]
-    requires: [repo-layout]
+    requires: [issues, repo-layout]
 
   - id: consuming
     path: meta/consuming.md
     title: Consumer contract
-    version: 4.0.0
+    version: 5.0.0
     status: active
     summary: What a person, AI agent, tool or script may rely on when loading these standards, and what it must not assume.
     applies_to: [tooling, agents]
@@ -41,7 +38,7 @@ standards:
   - id: naming
     path: standards/naming.md
     title: Naming
-    version: 6.0.1
+    version: 6.0.2
     status: active
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]
@@ -51,7 +48,7 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 8.0.1
+    version: 8.0.2
     status: active
     summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
     applies_to: [all]
@@ -61,7 +58,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 8.0.4
+    version: 8.0.5
     status: active
     summary: Branching, commit messages, pull requests and history hygiene.
     applies_to: [all]
@@ -71,7 +68,7 @@ standards:
   - id: versioning
     path: standards/versioning.md
     title: Versioning and public API
-    version: 4.0.1
+    version: 4.0.2
     status: active
     summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
     applies_to: [software]
@@ -81,7 +78,7 @@ standards:
   - id: module-layers
     path: standards/module-layers.md
     title: Module layers
-    version: 3.0.1
+    version: 3.0.2
     status: active
     summary: How the modules of a source directory are arranged in layers, which way they import, where files are read and written, and how the layers are described and checked.
     applies_to: [software]
@@ -91,7 +88,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 9.1.1
+    version: 9.1.2
     status: active
     summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
     applies_to: [all]
@@ -101,7 +98,7 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 13.2.2
+    version: 13.2.3
     status: active
     summary: "Rules for every document of a repository, the README included: placement, content, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
     applies_to: [all]
@@ -111,7 +108,7 @@ standards:
   - id: writing
     path: standards/writing.md
     title: Writing
-    version: 6.2.1
+    version: 6.2.2
     status: active
     summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, what the top part of a description holds and what follows it, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
     applies_to: [all]
@@ -120,7 +117,7 @@ standards:
   - id: issues
     path: standards/issues.md
     title: Issues
-    version: 4.0.1
+    version: 4.0.2
     status: active
     summary: When future work is recorded as an issue, what an issue states and where it states it, and how it is closed.
     applies_to: [all]
@@ -130,7 +127,7 @@ standards:
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 12.0.1
+    version: 12.0.2
     status: active
     summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]

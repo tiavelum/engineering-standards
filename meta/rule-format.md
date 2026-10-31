@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 10.0.1
+version: 11.0.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
@@ -9,146 +9,214 @@ summary: How a standard file is written and changed, how rules are identified an
 
 # Rule file format
 
-This file governs how every file in `standards/` and `meta/` is written and changed. It exists so that standards stay loadable in isolation, citable by id, and cheap to keep in sync.
+This file governs how a standard file, any file of `standards/` or `meta/` not named `README.md`, is written, indexed, identified and versioned.
 
 ## Admission test
 
-**RF-1** A rule MUST be admitted only if at least one of the following holds:
+### RF-1
 
-- a tool can enforce it automatically,
-- a reviewer can check it objectively in a pull request,
-- an AI agent can apply it deterministically when producing a file.
+A rule MUST be admitted only if a tool can enforce it, a person can check it objectively in a pull request, or an AI agent can apply it deterministically.
 
-Preferences that cannot be checked belong in conversation, not in this repository. What a formatter or linter sets is kept out of a standard by TL-2. A rule in inexact terms cannot be checked objectively either.
+### RF-44
 
-**RF-44** A rule MUST be admitted only if it holds whether a person or an AI agent does the work it governs.
+A rule MUST be admitted only if it holds whether a person or an AI agent does the work it governs.
 
-These standards are followed by every repository, whoever does its work. A rule that binds an AI agent doing the work but not a person doing the same work, such as one about the AI agent's own instructions, belongs with those instructions.
+A rule that binds only an AI agent, such as one on its own instructions, belongs with those instructions.
 
-> Correct: `A pull request is merged only after a review by a party that neither wrote nor directed its changes.`
+> Correct: `A merged branch MUST be deleted.`
 >
 > Incorrect: `An AI agent names its model at the end of every commit message it writes.`
 
-**RF-41** A rule MUST NOT exempt anything from another rule.
+### RF-41
+
+A rule MUST NOT exempt anything from another rule, other than through the order of precedence that PR-1 sets.
 
 A rule that needs an exemption from another shows that the other is scoped wrongly, and rescoping it removes the need.
 
-**RF-42** A rule MUST NOT state a requirement another rule already states.
+### RF-42
 
-Two statements of one requirement drift apart; a citation by identifier keeps one.
+A rule MUST NOT state a requirement another rule already states; it cites that rule by its identifier instead.
 
 ## File structure
 
-**RF-4** Each file in `standards/` MUST cover only what the summary of its `index.yaml` entry states.
+### RF-4
 
-The summary is one sentence (RF-8), so a file that no one sentence describes holds more than one topic and is split into files whose summaries each describe one. A file's length does not decide a split: a topic takes as many lines as its rules need.
+Each standard file MUST cover one topic: what the summary of its `index.yaml` entry states.
 
-**RF-5** Each file MUST begin with YAML front matter carrying: `id`, `title`, `version`, `status`, `applies_to`, `summary`.
+A file is split by topic, not by length.
 
-**RF-6** `id` MUST be unique across the repository.
+### RF-5
 
-**RF-35** `id` MUST be lowercase and hyphen separated.
+Each standard file MUST begin with YAML front matter carrying `id`, `title`, `version`, `status`, `applies_to` and `summary`.
 
-**RF-7** `status` MUST be one of `active`, `draft`, `deprecated`.
+### RF-6
 
-**RF-37** A `deprecated` file MUST name its replacement in the first paragraph.
+`id` MUST be unique across the repository.
 
-**RF-8** `summary` MUST be a single sentence stating what the file governs.
+### RF-35
+
+`id` MUST be lowercase and hyphen separated.
+
+### RF-7
+
+`status` MUST be one of `active`, `draft`, `deprecated`.
+
+### RF-37
+
+A `deprecated` file MUST name its replacement in the first paragraph.
+
+### RF-8
+
+`summary` MUST be a single sentence stating what the file governs.
 
 ## Index entries
 
-**RF-27** `index.yaml` MUST carry `schema_version` and the sections `meta` and `standards`.
+### RF-27
 
-**RF-28** An entry MUST carry `id`, `path`, `title`, `version`, `status`, `summary` and `applies_to`.
+`index.yaml` MUST carry `schema_version` and the sections `meta` and `standards`, and MUST NOT carry another top-level key.
 
-**RF-29** An entry MUST NOT carry a field other than those named in RF-28, `tags` and `requires`.
+### RF-28
 
-**RF-30** An entry's `id`, `title` and `version` MUST equal those in the front matter of the file at its `path`.
+An entry MUST carry `id`, `path`, `title`, `version`, `status`, `summary` and `applies_to`.
 
-**RF-31** An entry's `path` MUST resolve to an existing file in `standards/` or `meta/`.
+### RF-29
 
-**RF-32** Every file in `standards/` and `meta/` MUST be listed in exactly one entry.
+An entry MUST NOT carry a field other than those named in RF-28, `tags` and `requires`.
 
-The entry is closed rather than open. CO-20 promises a consumer that `schema_version` tracks a breaking change to the index structure, and that promise is empty while a field can appear without anyone announcing it. The cost is that a new field needs a rule before it needs code, which is the order this repository wants anyway.
+### RF-30
 
-DOC-51 covers the links of a file listed in `index.yaml`.
+An entry's `id`, `title`, `version`, `status`, `summary` and `applies_to` MUST equal those in the front matter of the file at its `path`.
+
+### RF-31
+
+An entry's `path` MUST resolve to an existing standard file, with the entry under `meta` for a file in `meta/` and under `standards` for a file in `standards/`.
+
+### RF-32
+
+Every standard file MUST be listed in exactly one entry.
+
+### RF-50
+
+An entry with `status: active` MUST NOT name in `requires` an entry with `status: draft`.
+
+A consumer ignores a draft (CO-4), so an active standard that rests on one cannot be applied whole.
 
 ## Dependencies between standards
 
-**RF-24** A file MUST be applicable without any standard other than itself and those its `index.yaml` entry names in `requires`.
+### RF-24
 
-`requires` can name only entries of the index. A rule may still rest on a source outside them where the rule links it, as RF-13 links RFC 2119, or points to the setting that enforces it, as TL-17 does (TL-30).
+A standard file MUST be applicable without any standard other than itself and those its `index.yaml` entry names in `requires`.
 
-**RF-25** A file's `index.yaml` entry MUST name in `requires` every other standard the file references.
+### RF-25
 
-**RF-26** A reference to another standard MUST name it by a rule identifier or by its repository relative path.
+A file's `index.yaml` entry MUST name in `requires` every other standard the file references, in an example as anywhere else.
 
-A standard that defers to another is not a defect; hiding that it does is. RF-26 fixes the reference form so that RF-25 can be checked mechanically rather than by reading. Over-declaring costs a consumer one fetch, and under-declaring makes it apply a rule whose terms it has not loaded, so a reference in an example counts the same as one in a rule.
+### RF-26
+
+A reference to another standard MUST name it by a rule identifier or by its repository relative path.
 
 ## Rule identifiers
 
-**RF-10** Every rule MUST carry an identifier of the form `<PREFIX>-<n>`, where `<PREFIX>` is a two or three letter uppercase abbreviation of the file `id`.
+### RF-10
 
-**RF-40** A prefix MUST be unique across the repository.
+Every rule MUST carry an identifier of the form `<PREFIX>-<n>`, where `<PREFIX>` is a two or three letter uppercase abbreviation of the file `id`.
 
-**RF-11** An identifier MUST NOT be reused for any rule other than the one it was first assigned to, including after that rule is removed.
+### RF-40
 
-**RF-43** A term written as a prefix of two or three uppercase letters, a hyphen and a number, in `index.yaml` or in a file it lists, in an example as anywhere else, MUST be the identifier of a rule in a file `index.yaml` lists, or be listed in `NOT_RULE_IDS` in `scripts/validate-standards.py`.
+A prefix MUST NOT be used by more than one file, including a file that was removed.
 
-A citation of a removed or mistyped identifier points its reader at nothing, and RF-11 keeps a removed identifier from naming a rule again. A term such as UTF-8 has the same shape but names something other than a rule; listing it is how a file says so.
+### RF-11
 
-**RF-23** A rule whose meaning changes MUST keep its identifier.
+An identifier MUST NOT be reused for any rule other than the one it was first assigned to, including after that rule is removed.
 
-A rule is amended in place and the version carries the change. RF-18 makes every change to a requirement a major increment, so a consumer that pinned a version meets the break where it already looks for one, and an identifier it stored stays valid.
+### RF-23
 
-**RF-12** The identifier MUST be the first thing in the rule, in bold.
+A rule whose meaning changes MUST keep its identifier.
 
-**RF-34** A rule under review MUST carry the marker `(draft: #<issue>)` directly after its identifier, naming the issue that decides it.
+### RF-12
 
-A draft rule stays in its place and keeps its identifier, so it can be cited while it is discussed, and removing the marker puts it back in force. CO-17 tells a consumer to skip it.
+Each rule MUST stand under a heading of its own, `### <identifier>`, with its text in the paragraph below the heading.
+
+The heading makes the identifier stand out, gives the rule a link anchor and lists it in GitHub's outline of the file.
+
+### RF-34
+
+A rule under review MUST carry the marker `(draft: #<issue>)` in its heading, after its identifier, naming the issue that decides it.
+
+### RF-43
+
+A term of the form of RF-10 in `index.yaml` or a file it lists MUST be the identifier of a rule in a file `index.yaml` lists, unless it names something other than a rule, such as `UTF-8`.
+
+### RF-49
+
+A citation MUST name each rule identifier on its own, never a range such as `RF-27 to RF-32`.
+
+A range hides the identifiers inside it, so a removed one goes unnoticed (RF-43).
 
 ## Rule language
 
-**RF-13** A rule MUST state its keyword, one of MUST, MUST NOT, SHOULD, SHOULD NOT and MAY, in uppercase with its meaning from [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119), on the line that carries its identifier.
+### RF-13
 
-That line is where a reader looks to find out whether a rule binds them, and where a check finds the keyword without guessing how far a rule extends.
+A rule MUST state its keyword, one of MUST, MUST NOT, SHOULD, SHOULD NOT and MAY, in uppercase with its meaning from [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119), in the first line of its text.
 
-**RF-14** A rule MUST state the required outcome; reasoning, where needed, stands in a separate paragraph without an identifier.
+### RF-14
 
-**RF-15** A rule MUST NOT contain two independent requirements.
+A rule MUST state only the required outcome; a reason, where its purpose is not self-evident, follows it as one paragraph, at most 250 characters.
 
-Two requirements are independent when one can be met while the other is broken. Two parts are still one requirement when the second forbids only the alternative the first replaces, or when together they define one form, such as the form of a name or of a line. A rule that holds two independent requirements is split, and its identifier stays with the first (RF-23).
+### RF-47
 
-> One requirement: `MUST start from index.yaml and MUST NOT discover standards by listing directories`.
+The paragraph under a rule's heading MUST be at most 250 characters.
+
+### RF-15
+
+A rule MUST NOT hold two requirements of which one can be met while the other is broken, unless one only forbids the alternative to the other, or together they define one form or list one set.
+
+> One requirement: `MUST start from index.yaml and MUST NOT discover standards by listing directories`
 >
-> Two: `MUST name the problem solved and MUST state the scope boundary`.
+> Two: `MUST name the problem solved and MUST state the scope boundary`
 
-**RF-16** Examples MUST be concrete.
+### RF-16
 
-**RF-39** Examples MUST show both the correct and the incorrect form where the distinction is the point.
+Examples MUST be concrete.
+
+### RF-39
+
+Examples MUST show both the correct and the incorrect form where the distinction is the point.
+
+### RF-51
+
+Each example of a rule MUST stand in a blockquote below the rule, as a paragraph of its own; a sample of a whole file MAY stand in a fenced code block instead.
+
+### RF-48
+
+Each line of an example MUST be at most 200 characters.
 
 ## Versioning
 
-**RF-17** A file's `version` MUST be a [semantic version](https://semver.org/).
+### RF-17
 
-**RF-18** The version MUST be incremented as follows: major when the file's set of requirements loses or changes a requirement, or when CO-10 requires a new major version; otherwise minor when the set gains a requirement; otherwise patch.
+A file's `version` MUST be a [semantic version](https://semver.org/).
 
-A split, a merge, or removing a rule whose requirement another rule of the same file already states leaves the set the same. A SHOULD that becomes a MUST, or a rule whose scope changes, changes a requirement. A change of the file's path takes the major version CO-10 requires. A rule that carries the marker of RF-34 is outside the set, since a consumer ignores it (CO-17): adding the marker to a rule takes its requirement out of the set, and removing the marker puts it back.
+### RF-18
 
-**RF-19** A change to a standard MUST update the file, its front matter `version`, and its `index.yaml` entry in the same commit.
+A pull request that changes a standard file MUST raise its version from the one on the default branch by the first row of this table that fits the change.
 
-**RF-45** A file that a pull request adds or changes MUST follow, for each file listed in `index.yaml` that the same pull request adds or changes, that file as the pull request leaves it.
+| Increment | Change |
+|---|---|
+| Major | A requirement the file applies, its own or one from a standard it requires, stops applying to the file or is changed; an existing rule gains the marker of RF-34; the entry's `id` or `applies_to` changes; or the file moves (CO-10) |
+| Minor | A requirement is added, or a rule loses the marker of RF-34 |
+| Patch | Anything else, such as splitting or merging rules, or removing a rule whose requirement still applies through the file or a standard it requires |
 
-The validator run on the pull request's branch reads each file listed in `index.yaml` as the pull request leaves it, and once the pull request is merged, that version of the file is in force.
+### RF-19
 
-**RF-46** Every text of a pull request that changes a file listed in `index.yaml`, other than the files it adds or changes, such as its title, its description, its commit messages and its branch name, MUST follow, for each such file it changes, that file on the default branch.
+A commit that changes a standard file MUST carry the version RF-18 gives the change in its front matter and its `index.yaml` entry.
 
-The file on the default branch is in force while the change is under review. A squash merge can [turn the title and description into the commit message](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-squashing-for-pull-requests) on the default branch, so they are written to the rules that hold when they are written.
+### RF-45
 
-> Correct: a pull request that raises a limit on title length from 65 to 72 characters gives its own title at most 65 characters, and the examples in the file it changes up to 72
->
-> Incorrect: the same pull request with a title of 70 characters
+A file that a pull request adds or changes MUST follow each standard file as the same pull request leaves it.
 
 ## Prohibited content
 
-**RF-22** A standard file MUST NOT reference private repositories, internal systems or credentials.
+### RF-22
+
+A standard file MUST NOT reference private repositories or internal systems.
