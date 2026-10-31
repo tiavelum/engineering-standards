@@ -57,7 +57,7 @@ A repository name SHOULD be a noun phrase naming the artifact, not a sentence or
 
 ### NAM-12
 
-A branch other than the default branch or a release branch MUST be named `<type>/<issue>-<description>`: `<type>` a type GW-6 allows, `<issue>` the number of an issue it serves, `<description>` at most five words in the form of NAM-2.
+A branch other than the default branch or a release branch MUST be named `<type>/<issue>-<description>`: `<type>` a type GW-6 allows, `<issue>` the number of one of the issues its work is for, `<description>` at most five words in the form of NAM-2.
 
 > Correct: `fix/142-broken-links`, `feat/88-index-schema`
 >
