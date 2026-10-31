@@ -57,7 +57,6 @@ RETIRED_PREFIXES = frozenset({"LC", "PA"})
 LENGTH_PENDING = frozenset(
     {
         "standards/documentation.md",
-        "standards/issues.md",
         "standards/module-layers.md",
         "standards/naming.md",
         "standards/readme-contract.md",

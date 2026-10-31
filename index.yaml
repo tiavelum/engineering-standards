@@ -117,12 +117,12 @@ standards:
   - id: issues
     path: standards/issues.md
     title: Issues
-    version: 4.0.2
+    version: 5.0.0
     status: active
-    summary: When future work is recorded as an issue, what an issue states and where it states it, and how it is closed.
+    summary: When work becomes an issue, what an issue states, and how it is closed.
     applies_to: [all]
     tags: [issues, open-items]
-    requires: [documentation, precedence, readme-contract, writing]
+    requires: [precedence, writing]
 
   - id: tooling
     path: standards/tooling.md
