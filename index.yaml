@@ -38,7 +38,7 @@ standards:
   - id: naming
     path: standards/naming.md
     title: Naming
-    version: 6.0.2
+    version: 7.0.0
     status: active
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]
@@ -48,12 +48,12 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 8.0.2
+    version: 9.0.0
     status: active
     summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
     applies_to: [all]
     tags: [structure, files, directories, placement]
-    requires: [precedence, readme-contract, documentation]
+    requires: [git-workflow, readme-contract]
 
   - id: git-workflow
     path: standards/git-workflow.md
@@ -87,7 +87,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 9.1.2
+    version: 10.0.0
     status: active
     summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
     applies_to: [all]
@@ -97,12 +97,12 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 13.2.3
+    version: 14.0.0
     status: active
-    summary: "Rules for every document of a repository, the README included: placement, content, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
+    summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, decision records, comments in source, release notes and upkeep."
     applies_to: [all]
     tags: [documentation, adr]
-    requires: [naming, readme-contract, writing]
+    requires: [writing]
 
   - id: writing
     path: standards/writing.md
