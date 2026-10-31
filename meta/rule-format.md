@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 9.0.1
+version: 10.0.1
 status: active
 applies_to: [authoring]
 summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
@@ -39,7 +39,9 @@ Two statements of one requirement drift apart; a citation by identifier keeps on
 
 ## File structure
 
-**RF-4** Each file in `standards/` MUST cover exactly one topic.
+**RF-4** Each file in `standards/` MUST cover only what the summary of its `index.yaml` entry states.
+
+The summary is one sentence (RF-8), so a file that no one sentence describes holds more than one topic and is split into files whose summaries each describe one. A file's length does not decide a split: a topic takes as many lines as its rules need.
 
 **RF-5** Each file MUST begin with YAML front matter carrying: `id`, `title`, `version`, `status`, `applies_to`, `summary`.
 
@@ -52,10 +54,6 @@ Two statements of one requirement drift apart; a citation by identifier keeps on
 **RF-37** A `deprecated` file MUST name its replacement in the first paragraph.
 
 **RF-8** `summary` MUST be a single sentence stating what the file governs.
-
-**RF-9** A standard file SHOULD stay under 200 lines.
-
-Beyond that, split it by topic rather than adding sections.
 
 ## Index entries
 

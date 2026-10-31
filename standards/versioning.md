@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning and public API
-version: 3.0.1
+version: 4.0.1
 status: active
 applies_to: [software]
 summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
@@ -12,6 +12,8 @@ summary: What a repository publishes as its public API, which changes to it are 
 Prefix: `VER`
 
 ## The scheme
+
+A repository publishes a release by pushing a release tag in the form VER-28 sets.
 
 **VER-1** A repository that publishes releases MUST version them according to [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
@@ -59,7 +61,7 @@ Log text is not a public surface unless the repository documents a machine reada
 
 - removing or renaming a public surface
 - narrowing what an input accepts
-- widening what an output may return
+- widening the values an existing output field may take
 - making an optional input required
 - changing a default in a way that alters existing behaviour
 - changing the type, unit or meaning of a field
@@ -69,7 +71,7 @@ Log text is not a public surface unless the repository documents a machine reada
 
 **VER-40** The following MUST NOT be treated as breaking:
 
-- adding an optional input, an endpoint, a command, a symbol or an optional field
+- adding an optional input, an optional output field, an endpoint, a command or a symbol
 - widening what an input accepts
 - changing performance without changing the contract
 
@@ -89,13 +91,15 @@ The cost of an unnecessary MAJOR release is an inconvenience to the publisher. T
 
 **VER-10** When more than one of VER-6 to VER-9 applies to a release, the highest MUST be taken.
 
-**VER-11** A change that alters no shipped artifact MUST NOT produce a release.
+**VER-11** A change that alters no shipped artifact and marks no part of the public API deprecated MUST NOT produce a release.
+
+A shipped artifact is what a release publishes: the package, image or files a user installs. A deprecation produces a release even where it is marked only in documentation that ships with none of them, so that the MINOR release VER-22 counts on exists.
 
 **VER-12** A dependency update MUST be classified by its effect on this repository's public API, not by the increment the dependency itself took.
 
 A dependency going from 3.x to 4.x is not by itself a MAJOR here. It is MAJOR here only if this repository's own contract changes as a result.
 
-**VER-31** A pull request MUST state which increment the change requires under VER-6 to VER-9 or VER-16.
+**VER-31** A repository that publishes releases MUST state in each pull request which increment the change requires under VER-6 to VER-9 or VER-16.
 
 This makes the pull request the record of the versioning decision. Without it the increment is chosen at release time, by whoever cuts the release, from a history they did not write.
 
@@ -106,13 +110,13 @@ This makes the pull request the record of the versioning decision. Without it th
 | Deprecation marked | MINOR | 2.5.0 |
 | Bug fix, no API change | PATCH | 2.4.8 |
 | Internal refactor, observable behaviour unchanged | PATCH | 2.4.8 |
-| Documentation, tests or CI only | none | 2.4.7 |
+| Documentation, tests or CI only, marking nothing deprecated | none | 2.4.7 |
 
 ## Initial development
 
-**VER-14** Initial development MUST start at `0.1.0`.
+**VER-14** A repository MUST give its first release the version `0.1.0` while its public API is not stable.
 
-**VER-15** A repository that runs in production, or that has any consumer outside its own repository, MUST be at `1.0.0` or higher.
+**VER-15** A repository that runs in production, or that has any consumer outside its own repository, MUST publish releases at `1.0.0` or higher.
 
 Under [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html), `0.y.z` states that the public API is not stable, which software others already depend on cannot claim.
 
@@ -136,7 +140,7 @@ Build metadata is ignored when versions are compared, as [Semantic Versioning 2.
 
 ## The version of record
 
-**VER-3** A repository MUST hold the version of each unit it publishes in exactly one place.
+**VER-3** A repository that publishes releases MUST hold the version of each unit it publishes in exactly one place.
 
 **VER-4** The version of record MUST be the location its ecosystem defines:
 
@@ -149,13 +153,17 @@ Build metadata is ignored when versions are compared, as [Semantic Versioning 2.
 | Container image | the git tag, mirrored into the image tag |
 | Anything else | the location its ecosystem defines, or a `VERSION` file at the repository root where it defines none |
 
+Where a unit is built into a container image, the row of the ecosystem of its source applies; the Container image row applies to an image built from no such ecosystem.
+
 **VER-5** Every other occurrence of the version MUST be derived from the version of record when the artifact is built.
 
 A version written by hand in a second place is a version that will disagree with the first. Documentation, build arguments, generated headers and image tags all read from the one location.
 
-**VER-32** A repository that publishes releases MUST gate merges on a check that fails when the version of record and the git tag disagree.
+**VER-32** A repository that publishes releases MUST gate merges on a check that fails when the version of record does not take the form of VER-28 or is not higher than the latest release tag of its unit.
 
-Version grammar, agreement between tag and manifest, monotonic increase and prior publication are all machine checkable, so this check enforces them in CI (TL-10) and this file does not repeat them.
+**VER-44** Publication of a release MUST fail when its tag and the version of record disagree, or when a tag that is the version of record does not take the form of VER-28.
+
+A release's tag exists only once its pull request is merged, so the merge gate checks what the pull request can already show, the form of the version and that it rises, where VER-31 records the increment; like every merge gate, it runs in CI (TL-10). Agreement between tag and version of record can be checked only once the tag exists, so it is checked where the release is published.
 
 ## Tags
 
@@ -173,9 +181,9 @@ Version grammar, agreement between tag and manifest, monotonic increase and prio
 
 ## Compatibility during rollout
 
-**VER-42** A service deployed without downtime MUST remain compatible with the immediately preceding version for as long as both are running.
+**VER-42** A service deployed without downtime MUST, while it and its immediately preceding version both run, handle every request, message and stored record that the preceding version handles on each surface a client still uses.
 
-**VER-43** A breaking change to a live wire contract MUST be delivered as three releases: add the new surface, migrate consumers, remove the old surface.
+**VER-43** A breaking change to the HTTP or event surface of a service MUST be delivered as a release that adds the new surface and marks the old one deprecated, then, once no client uses the old one, a release that removes it.
 
 Two versions of a service are in production simultaneously during any rolling deployment. A contract change that assumes otherwise fails while the rollout is in progress, not afterwards.
 
@@ -185,8 +193,10 @@ Two versions of a service are in production simultaneously during any rolling de
 
 Where a repository says nothing, only the current MAJOR line is supported.
 
-**VER-27** A consumer MUST express a dependency as a range bounded above by the next MAJOR.
+**VER-27** A consumer MUST express a dependency as a range bounded above by the next MAJOR, or by the next MINOR where the range starts below `1.0.0`; an exact version is such a range.
 
-> Correct: `>=3.1.0 <4.0.0`
+Below `1.0.0` a MINOR release may break (VER-16), so the bound moves down one place there. An exact version admits no other release at all, so it is the narrowest range the rule allows.
+
+> Correct: `>=3.1.0 <4.0.0`, `>=0.3.1 <0.4.0`, `==0.16.6`
 >
-> Incorrect: `>=3.1.0`, `*`, a bare `latest`
+> Incorrect: `>=3.1.0`, `*`, a bare `latest`, `>=0.3.1 <1.0.0`

@@ -280,10 +280,6 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
     if not prefixes and relative.startswith("standards/"):
         error(relative, "RF-10", "standard contains no identified rules")
 
-    line_count = text.count("\n")
-    if relative.startswith("standards/") and line_count > 200:
-        warn(relative, "RF-9", f"file is {line_count} lines, over the 200 line guideline")
-
     # A rule may legitimately name these markers, so skip rule statements and
     # code blocks and look only for an actual unfinished marker.
     prose = strip_code_blocks(text)
