@@ -19,11 +19,11 @@ meta:
   - id: precedence
     path: meta/precedence.md
     title: Precedence and deviation
-    version: 2.0.4
+    version: 3.0.0
     status: active
     summary: How conflicts between these standards, a consuming repository and a task instruction are resolved, and how a deviation is recorded.
     applies_to: [all]
-    requires: [repo-layout]
+    requires: [issues, repo-layout]
 
   - id: consuming
     path: meta/consuming.md
