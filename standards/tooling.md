@@ -31,9 +31,7 @@ The committed configuration is then the rule for what TL-2 keeps out of a standa
 
 A rule MUST NOT be removed from a standard because an automated check enforces it, unless TL-2 keeps what it states out of a standard.
 
-A repository setting is not such a check.
-
-A check reports a violation once the work is done; the rule tells the author how to do it right in the first place.
+A check reports a violation once the work is done; the rule tells the author how to do it right in the first place. A repository setting is not such a check.
 
 ### TL-22
 
