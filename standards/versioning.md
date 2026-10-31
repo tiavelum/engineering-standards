@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning and public API
-version: 5.0.0
+version: 6.0.0
 status: active
 applies_to: [software]
 summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, how a release version is formed and recorded, and how release branches are kept.
@@ -138,7 +138,7 @@ A dependency update MUST be classified by its effect on this repository's public
 
 ### VER-14
 
-A repository MUST give its first release the version `0.1.0` while its public API is not stable.
+A repository with no production use and no consumer outside itself MUST give its first release `0.1.0` and stay below `1.0.0` while its public API is not stable.
 
 ### VER-15
 
@@ -199,7 +199,7 @@ A version written by hand in a second place will come to disagree with the first
 
 ### VER-32
 
-A repository that publishes releases MUST gate merges on a check that fails when the version of record does not take the form of VER-28 or is lower than the latest release tag of its unit.
+A repository that publishes releases MUST gate merges on a check that fails when a version of record held in a file is not a version VER-28 allows after its `v`, or is lower than the latest release tag of its unit on the target branch.
 
 ### VER-44
 

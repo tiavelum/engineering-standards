@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 9.0.0
+version: 9.0.1
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
@@ -43,7 +43,7 @@ A role is what the statement that RM-11 or RL-18 requires says the directory hol
 
 The role of a directory that lies inside a top-level directory and whose role no tool fixes MUST be stated in the README at the root or in the README of a directory that contains it.
 
-A tool fixes a directory's role where it gives that directory its meaning, as GitHub Actions does for `.github/workflows/`.
+A tool fixes a directory's role where it gives that directory its meaning, such as `.github/workflows/`.
 
 ### RL-19
 
@@ -63,7 +63,7 @@ A file whose path no other rule fixes MUST live in the deepest directory whose r
 
 A file that only people read, or that a tool reads only from a path given to it, is found in every directory.
 
-> Correct: `CONTRIBUTING.md` in `docs/`, where GitHub also finds it, when `docs/` holds the repository's documentation
+> Correct: `CONTRIBUTING.md` in `docs/`, when `docs/` holds the repository's documentation
 >
 > Incorrect: `CONTRIBUTING.md` at the root of the same repository
 

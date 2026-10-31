@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 13.0.0
+version: 14.0.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -45,7 +45,7 @@ A tool supports a language where it can run in CI and its own documentation list
 
 ### TL-5
 
-The default branch of every repository MUST contain an `.editorconfig` covering at minimum: charset, indentation style and width, end of line, final newline, trailing whitespace.
+The default branch of every repository MUST contain at its root an `.editorconfig` covering at minimum: charset, indentation style and width, end of line, final newline, trailing whitespace.
 
 ### TL-6
 
@@ -61,13 +61,13 @@ A repository MUST commit, for each programming or scripting language of its sour
 
 ### TL-23
 
-A committed formatter MUST run in CI as a check that gates a merge, over every file in a language it supports, other than a copy of another project's file and a file a tool generates.
+A committed formatter MUST check, in CI, every file in a language it supports, other than a copy of another project's file and a file a tool generates.
 
 A copy would differ from its source at its next update, and a generated file is overwritten by its generator.
 
 ### TL-33
 
-A committed linter MUST run in CI as a check that gates a merge, over every file in a language it supports, other than the files TL-23 leaves out.
+A committed linter MUST check, in CI, every file in a language it supports, other than the files TL-23 leaves out.
 
 ### TL-24
 
@@ -83,10 +83,6 @@ Checks that gate a merge MUST run in CI, not only locally.
 
 A check that gates a merge MUST fail the build on a violation.
 
-### TL-25
-
-A check that only warns MUST NOT be described as enforced.
-
 ### TL-32
 
 Whether a change passes a check MUST be decided by the check's run in CI, whichever tool version a local run of the check uses.
@@ -101,7 +97,7 @@ Publication to a package or image registry MUST happen only from a build of a ta
 
 ### TL-14
 
-Dependency versions MUST be pinned or locked in a committed file.
+Dependency versions a build or CI run installs MUST be pinned or locked in a committed file; the range VER-27 requires states what a consumer accepts, and the lock states what is installed.
 
 ### TL-15
 

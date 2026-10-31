@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 9.0.0
+version: 10.0.0
 status: active
 applies_to: [all]
 summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
@@ -31,7 +31,11 @@ WR-10 sets how a pull request's description opens: with what the pull request me
 
 ### GW-29
 
-A pull request MUST be made for one or more issues of its own repository, which its description names, and MUST carry only work for them.
+A pull request MUST be made for one or more issues of its own repository, which its description names.
+
+### GW-41
+
+A pull request MUST NOT carry work for an issue its description does not name.
 
 ### GW-6
 
@@ -49,7 +53,7 @@ The `<summary>` of a pull request's title MUST begin with a lowercase verb in th
 
 ### GW-38
 
-A pull request's description MUST carry a closing keyword, such as `Closes #12`, for each issue whose work the pull request completes.
+A pull request's description MUST carry a closing keyword, such as `Closes #12 (Rename setup.sh to install.sh)`, for each issue whose work the pull request completes.
 
 ### GW-39
 
@@ -89,11 +93,11 @@ A comment can be added whenever the step becomes known, without rewriting the de
 
 ### GW-40
 
-A squash or merge commit that merging a pull request creates MUST have the pull request's title as its first line, and as its body a short summary of the description and the pull request's URL.
+A squash or merge commit that merging a pull request creates MUST have the pull request's title as its first line, apart from a number the forge appends, and as its body a short summary of the description and the pull request's URL.
 
 ### GW-33
 
-A commit that reaches the default branch without a pull request MUST have a first line that GW-6 and GW-7 allow for a title, and a body that states what and why, with references written as WR-7 requires.
+A commit that reaches the default branch without a pull request MUST have a first line that GW-6 and GW-7 allow for a title, and a body that states what and why.
 
 Under GW-2 such a commit is the first commit of a repository.
 

@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 11.0.0
+version: 12.0.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
@@ -199,17 +199,13 @@ A file's `version` MUST be a [semantic version](https://semver.org/).
 
 ### RF-18
 
-A pull request that changes a standard file MUST raise its version from the one on the default branch by the first row of this table that fits the change.
+A pull request that changes a standard file MUST raise its version from the one on the default branch by the first row of this table that fits the change, in the file's front matter and in its `index.yaml` entry.
 
 | Increment | Change |
 |---|---|
 | Major | A requirement the file applies, its own or one from a standard it requires, stops applying to the file or is changed; an existing rule gains the marker of RF-34; the entry's `id` or `applies_to` changes; or the file moves (CO-10) |
 | Minor | A requirement is added, or a rule loses the marker of RF-34 |
 | Patch | Anything else, such as splitting or merging rules, or removing a rule whose requirement still applies through the file or a standard it requires |
-
-### RF-19
-
-A commit that changes a standard file MUST carry the version RF-18 gives the change in its front matter and its `index.yaml` entry.
 
 ### RF-45
 
