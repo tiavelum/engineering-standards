@@ -1,7 +1,7 @@
 ---
 id: module-layers
 title: Module layers
-version: 3.0.0
+version: 3.0.1
 status: active
 applies_to: [software]
 summary: How the modules of a source directory are arranged in layers, which way they import, where files are read and written, and how the layers are described and checked.
@@ -58,5 +58,6 @@ A command-line tool with these layers in `src/`, as its README states them, lowe
 | Steps | `compute` | Reads the input files, calls the layers below, writes the report |
 | Command line | `cli` | Parses the arguments and runs a step |
 
-Correct: `route` imports `geo`; `compute` imports `route`, `report` and `tables`; only `compute` reads and writes files, and it parses and formats their content with `tables`.
-Incorrect: `report` imports `compute` (ML-3); `route` opens the input file itself (ML-4).
+> Correct: `route` imports `geo`; `compute` imports `route`, `report` and `tables`; only `compute` reads and writes files, and it parses and formats their content with `tables`.
+>
+> Incorrect: `report` imports `compute` (ML-3); `route` opens the input file itself (ML-4).

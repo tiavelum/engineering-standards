@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 13.2.1
+version: 13.2.2
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: placement, content, manual steps, directory READMEs, decision records, comments in source, change notes and maintenance."
@@ -41,8 +41,9 @@ Historical narrative belongs in git history. A decision record describes a decis
 
 **DOC-46** A command the reader runs MUST be given in a fenced code block, not inline in running text.
 
-Correct: "Install the checks:" followed by a fenced block holding `pip install -r requirements.txt`
-Incorrect: "Install the checks with `pip install -r requirements.txt` before you start."
+> Correct: "Install the checks:" followed by a fenced block holding `pip install -r requirements.txt`
+>
+> Incorrect: "Install the checks with `pip install -r requirements.txt` before you start."
 
 **DOC-9** A document MUST NOT be published with TODOs, placeholders or empty sections.
 
@@ -58,8 +59,9 @@ Such a step usually comes to light while the change is tested. Written down with
 
 "Getting started" has to be usable on its own (RM-8), and a step a first result needs that stands elsewhere leaves it incomplete. RM-34 sets the form the step takes there.
 
-Correct: signing in to the sync account of photo-sync, which its first run needs, described in "Getting started"; granting photo-sync access to the Photos library, which only the import that `docs/import.md` describes needs, described in the section of `docs/import.md` that gives the steps of the import
-Incorrect: the same sign-in described only in `docs/accounts.md`; the same access described only in the README's "Getting started", though a first result does not need it
+> Correct: signing in to the sync account of photo-sync, which its first run needs, described in "Getting started"; granting photo-sync access to the Photos library, which only the import that `docs/import.md` describes needs, described in the section of `docs/import.md` that gives the steps of the import
+>
+> Incorrect: the same sign-in described only in `docs/accounts.md`; the same access described only in the README's "Getting started", though a first result does not need it
 
 ## Directory READMEs
 
@@ -71,8 +73,9 @@ The README of a directory is written for whoever uses or changes the content of 
 
 The README at the root shows what works and links to these details (RM-41), so it stays short. The output of a program tells its user, as it happens, that it cannot complete its task; the README of its directory is for whoever wants more without reading the program. A program is outside this rule where no directory below the root holds all those files, as where one of them lies at the root. That a program prints a line about a step the user takes by hand or about a known limitation does not move it into the README of the directory: DOC-50 places the step, where a first result needs it, in the README's "Getting started" at the root, and RM-18 has the README state the limitation where it affects whether a reader should use the repository.
 
-Correct: what `sync/photo-sync.sh` prints, and which photos it has already copied, when the Photos library cannot be read, described in `sync/README.md`
-Incorrect: the same described in the "Troubleshooting" of the README at the root, or in `docs/troubleshooting.md`
+> Correct: what `sync/photo-sync.sh` prints, and which photos it has already copied, when the Photos library cannot be read, described in `sync/README.md`
+>
+> Incorrect: the same described in the "Troubleshooting" of the README at the root, or in `docs/troubleshooting.md`
 
 ## Decision records
 
@@ -108,5 +111,6 @@ A changelog file repeats what the release holds and has to be kept in step with 
 
 A link that does not resolve sends its reader nowhere, and WR-8 puts links to outside sources into every document, not only the README. A heading of the repository's own files is what its changes break, and a tool can check it in every link within the repository; the fragment of a link to an outside page is not part of what has to resolve, since checking it means fetching and parsing each page. A link written only as an example, such as `[LICENSE](LICENSE)` in a sample README that a document shows in a code block, is not followed by a reader.
 
-Correct: a link in `docs/setup.md` to `https://semver.org/spec/v2.0.0.html`, which opens the specification when the pull request is merged; a link in the README to `docs/setup.md#install-the-tools`, where `docs/setup.md` has the heading "Install the tools"
-Incorrect: the same link after the page has moved, so that it returns "404 Not Found" when the pull request is merged; the same link to `docs/setup.md#install-the-tools` after the pull request renames that heading to "Tools"
+> Correct: a link in `docs/setup.md` to `https://semver.org/spec/v2.0.0.html`, which opens the specification when the pull request is merged; a link in the README to `docs/setup.md#install-the-tools`, where `docs/setup.md` has the heading "Install the tools"
+>
+> Incorrect: the same link after the page has moved, so that it returns "404 Not Found" when the pull request is merged; the same link to `docs/setup.md#install-the-tools` after the pull request renames that heading to "Tools"

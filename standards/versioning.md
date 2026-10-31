@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning and public API
-version: 4.0.0
+version: 4.0.1
 status: active
 applies_to: [software]
 summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
@@ -35,8 +35,9 @@ The default is deliberately expensive. A repository that declares nothing has pr
 
 **VER-37** An excluded surface MUST be marked where a consumer would encounter it, in the path, the symbol name, or the generated documentation.
 
-Correct: an `internal/` package, a symbol prefixed `_`, an endpoint documented as experimental
-Incorrect: an exclusion that exists only in the declaration, invisible to someone reading the code
+> Correct: an `internal/` package, a symbol prefixed `_`, an endpoint documented as experimental
+>
+> Incorrect: an exclusion that exists only in the declaration, invisible to someone reading the code
 
 ## Public surfaces
 
@@ -127,8 +128,9 @@ Under [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html), `0.y.z` 
 
 **VER-17** A pre-release identifier MUST be `alpha`, `beta` or `rc`, followed by a dot and an integer counting from 1.
 
-Correct: `2.0.0-rc.1`, `2.0.0-beta.3`
-Incorrect: `2.0.0-rc1`, `2.0.0-test`, `2.0.0-final`
+> Correct: `2.0.0-rc.1`, `2.0.0-beta.3`
+>
+> Incorrect: `2.0.0-rc1`, `2.0.0-test`, `2.0.0-final`
 
 **VER-18** A released repository MUST NOT depend on a pre-release version of anything.
 
@@ -167,8 +169,9 @@ A release's tag exists only once its pull request is merged, so the merge gate c
 
 **VER-28** A release tag MUST take the form `[<unit>/]v<major>.<minor>.<patch>[-<pre-release>]`: `<unit>/` only in a repository that publishes more than one unit, and `<pre-release>` as VER-17 requires.
 
-Correct: `v2.1.0`, `v2.0.0-rc.1`, `billing-api/v2.1.0` in a repository publishing three services
-Incorrect: `v2.0.0rc1`, `v2.0.0-RC1`, `v2.1.0` in a repository publishing three services
+> Correct: `v2.1.0`, `v2.0.0-rc.1`, `billing-api/v2.1.0` in a repository publishing three services
+>
+> Incorrect: `v2.0.0rc1`, `v2.0.0-RC1`, `v2.1.0` in a repository publishing three services
 
 ## Deprecation and removal
 
@@ -194,5 +197,6 @@ Where a repository says nothing, only the current MAJOR line is supported.
 
 Below `1.0.0` a MINOR release may break (VER-16), so the bound moves down one place there. An exact version admits no other release at all, so it is the narrowest range the rule allows.
 
-Correct: `>=3.1.0 <4.0.0`, `>=0.3.1 <0.4.0`, `==0.16.6`
-Incorrect: `>=3.1.0`, `*`, a bare `latest`, `>=0.3.1 <1.0.0`
+> Correct: `>=3.1.0 <4.0.0`, `>=0.3.1 <0.4.0`, `==0.16.6`
+>
+> Incorrect: `>=3.1.0`, `*`, a bare `latest`, `>=0.3.1 <1.0.0`

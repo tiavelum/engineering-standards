@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 10.0.0
+version: 10.0.1
 status: active
 applies_to: [authoring]
 summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
@@ -25,8 +25,9 @@ Preferences that cannot be checked belong in conversation, not in this repositor
 
 These standards are followed by every repository, whoever does its work. A rule that binds an AI agent doing the work but not a person doing the same work, such as one about the AI agent's own instructions, belongs with those instructions.
 
-Correct: `A pull request is merged only after a review by a party that neither wrote nor directed its changes.`
-Incorrect: `An AI agent names its model at the end of every commit message it writes.`
+> Correct: `A pull request is merged only after a review by a party that neither wrote nor directed its changes.`
+>
+> Incorrect: `An AI agent names its model at the end of every commit message it writes.`
 
 **RF-41** A rule MUST NOT exempt anything from another rule.
 
@@ -118,7 +119,9 @@ That line is where a reader looks to find out whether a rule binds them, and whe
 
 Two requirements are independent when one can be met while the other is broken. Two parts are still one requirement when the second forbids only the alternative the first replaces, or when together they define one form, such as the form of a name or of a line. A rule that holds two independent requirements is split, and its identifier stays with the first (RF-23).
 
-One requirement: `MUST start from index.yaml and MUST NOT discover standards by listing directories`. Two: `MUST name the problem solved and MUST state the scope boundary`.
+> One requirement: `MUST start from index.yaml and MUST NOT discover standards by listing directories`.
+>
+> Two: `MUST name the problem solved and MUST state the scope boundary`.
 
 **RF-16** Examples MUST be concrete.
 
@@ -142,8 +145,9 @@ The validator run on the pull request's branch reads each file listed in `index.
 
 The file on the default branch is in force while the change is under review. A squash merge can [turn the title and description into the commit message](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-squashing-for-pull-requests) on the default branch, so they are written to the rules that hold when they are written.
 
-Correct: a pull request that raises a limit on title length from 65 to 72 characters gives its own title at most 65 characters, and the examples in the file it changes up to 72
-Incorrect: the same pull request with a title of 70 characters
+> Correct: a pull request that raises a limit on title length from 65 to 72 characters gives its own title at most 65 characters, and the examples in the file it changes up to 72
+>
+> Incorrect: the same pull request with a title of 70 characters
 
 ## Prohibited content
 
