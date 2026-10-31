@@ -15,6 +15,8 @@ Prefix: `VER`
 
 ## The scheme
 
+A repository publishes a release by pushing a release tag in the form VER-28 sets.
+
 ### VER-1
 
 A repository that publishes releases MUST version them according to [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
@@ -197,7 +199,7 @@ A version written by hand in a second place will come to disagree with the first
 
 ### VER-32
 
-A repository that publishes releases MUST gate merges on a check that fails when the version of record does not take the form of VER-28 or is not higher than the latest release tag of its unit.
+A repository that publishes releases MUST gate merges on a check that fails when the version of record does not take the form of VER-28 or is lower than the latest release tag of its unit.
 
 ### VER-44
 

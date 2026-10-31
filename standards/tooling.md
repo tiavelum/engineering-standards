@@ -19,7 +19,7 @@ Prefix: `TL`
 
 A written standard MUST NOT prescribe a formatting property of a source file of a programming or scripting language, such as indentation, line length, quote style or import order.
 
-Such a property belongs in the formatter or linter configuration that TL-6 and TL-8 require.
+Such a property belongs in the formatter or linter configuration that TL-6 and TL-8 require. A standard may require that the configuration covers it, as TL-5 does.
 
 ### TL-3
 
@@ -30,6 +30,8 @@ The committed configuration is then the rule for what TL-2 keeps out of a standa
 ### TL-31
 
 A rule MUST NOT be removed from a standard because an automated check enforces it, unless TL-2 keeps what it states out of a standard.
+
+A repository setting is not such a check.
 
 A check reports a violation once the work is done; the rule tells the author how to do it right in the first place.
 
@@ -67,7 +69,7 @@ A copy would differ from its source at its next update, and a generated file is 
 
 ### TL-33
 
-A committed linter MUST run in CI as a check that gates a merge, over every file in a language it supports.
+A committed linter MUST run in CI as a check that gates a merge, over every file in a language it supports, other than the files TL-23 leaves out.
 
 ### TL-24
 
