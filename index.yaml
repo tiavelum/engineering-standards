@@ -58,21 +58,21 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 8.0.5
+    version: 9.0.0
     status: active
-    summary: Branching, commit messages, pull requests and history hygiene.
+    summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
     applies_to: [all]
-    tags: [git, commits, branches, review]
-    requires: [naming, writing]
+    tags: [git, branches, pull-requests, commits]
+    requires: [writing]
 
   - id: versioning
     path: standards/versioning.md
     title: Versioning and public API
-    version: 4.0.2
+    version: 4.1.0
     status: active
-    summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
+    summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, how a release version is formed and recorded, and how release branches are kept.
     applies_to: [software]
-    tags: [versions, releases, semver, dependencies, api, compatibility]
+    tags: [versions, releases, semver, dependencies, api, compatibility, branches]
     requires: [tooling]
 
   - id: module-layers
