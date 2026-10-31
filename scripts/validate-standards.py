@@ -21,8 +21,16 @@ ROOT = Path(__file__).resolve().parent.parent
 INDEX = ROOT / "index.yaml"
 RULE_DIRS = ("standards", "meta")
 
+# The one name in RULE_DIRS that is not a standard file, per the definition at
+# the top of meta/rule-format.md: a directory's own README.
+DIRECTORY_README = "README.md"
+
 FRONT_MATTER_FIELDS = ("id", "title", "version", "status", "applies_to", "summary")
 VALID_STATUS = {"active", "draft", "deprecated"}
+
+# The top level of index.yaml, RF-27. Closed like the entry: any other key is
+# an error.
+INDEX_KEYS = ("schema_version", "meta", "standards")
 
 # The index entry contract, RF-28 and RF-29. The entry is closed: a field
 # named by neither tuple is an error rather than something to ignore.
@@ -37,16 +45,49 @@ ENTRY_REQUIRED_FIELDS = (
 )
 ENTRY_OPTIONAL_FIELDS = ("tags", "requires")
 
+# The fields an entry and its file's front matter must agree on, RF-30.
+MATCHED_FIELDS = ("id", "title", "version", "status", "summary", "applies_to")
+
+# Prefixes of removed files, which RF-40 keeps any other file from taking.
+RETIRED_PREFIXES = frozenset({"LC", "PA"})
+
+# Standard files not yet shortened to the limits of RF-14, RF-47 and RF-48.
+# A breach of those limits in one of them is a warning, not an error. Each file
+# leaves the list once it is refactored to the limits.
+LENGTH_PENDING = frozenset(
+    {
+        "standards/documentation.md",
+        "standards/git-workflow.md",
+        "standards/issues.md",
+        "standards/module-layers.md",
+        "standards/naming.md",
+        "standards/readme-contract.md",
+        "standards/repo-layout.md",
+        "standards/tooling.md",
+        "standards/versioning.md",
+        "standards/writing.md",
+    }
+)
+
+# The limits of RF-47, RF-48 and RF-14, in characters of the Markdown source.
+MAX_RULE = 250
+MAX_EXAMPLE_LINE = 200
+MAX_REASON = 250
+
 RE_ID = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 RE_SEMVER = re.compile(r"^\d+\.\d+\.\d+$")
-RE_RULE = re.compile(r"^\*\*([A-Z]{2,3})-(\d+)\*\*", re.MULTILINE)
-# The marker RF-34 puts directly after the identifier of a rule under review.
-RE_DRAFT = re.compile(r"^ \(draft: #\d+\) ")
+# The heading RF-12 puts above each rule, and the bold form it replaced.
+RE_RULE = re.compile(r"^### ([A-Z]{2,3})-(\d+)\b(.*)$")
+RE_BOLD_RULE = re.compile(r"^\*\*[A-Z]{2,3}-\d+\*\*")
+# The marker RF-34 puts in the heading of a rule under review.
+RE_DRAFT = re.compile(r"^ \(draft: #\d+\)$")
 RE_FILENAME = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*\.[a-z0-9]+$")
 RE_MD_LINK = re.compile(r"\[[^\]]*\]\(([^)#]*)(?:#([^)]*))?\)")
 RE_INLINE_CODE = re.compile(r"`[^`\n]*`")
 RE_HEADING = re.compile(r"^#{1,6}\s+(.*?)\s*#*\s*$")
 RE_MARKER = re.compile(r"\b(TODO|FIXME|TBD|XXX)\b\s*[:(]|^\s*(TODO|FIXME|TBD)\b")
+# Blocks below a rule that are neither its text, an example nor a reason.
+RE_TABLE_OR_LIST = re.compile(r"^\s*(\||[-*+]\s|\d+\.\s)")
 
 # The RFC 2119 keywords RF-13 requires, uppercase only.
 RE_RFC2119 = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
@@ -55,9 +96,14 @@ RE_RFC2119 = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
 RE_XREF_RULE = re.compile(r"\b([A-Z]{2,3})-\d+\b")
 RE_XREF_PATH = re.compile(r"\b((?:standards|meta)/[a-z0-9-]+\.md)\b")
 
+# A range of rule identifiers, which RF-49 rules out.
+RE_RANGE = re.compile(
+    r"\b[A-Z]{2,3}-\d+(?:\s+(?:to|through)\s+|\s*[–—]\s*)[A-Z]{2,3}-\d+\b"
+)
+
 # Terms of the shape RF-43 describes that name something other than a rule.
-# RF-43 accepts such a term only if a rule here carries its identifier or it is
-# listed here, so a file that writes one, such as UTF-8, adds it here.
+# RF-43 accepts such a term only if a rule here carries its identifier or it
+# names something else, so a file that writes one, such as UTF-8, adds it here.
 NOT_RULE_IDS = frozenset({"UTF-8"})
 
 # Names a tool or convention fixes, which NAM-2 does not govern.
@@ -80,6 +126,14 @@ def error(where: str, rule: str, message: str) -> None:
 
 def warn(where: str, rule: str, message: str) -> None:
     warnings.append(f"{where}: [{rule}] {message}")
+
+
+def length_issue(where: str, rule: str, message: str) -> None:
+    """A breach of a length limit: an error, or a warning while LENGTH_PENDING holds the file."""
+    if where in LENGTH_PENDING:
+        warn(where, rule, message)
+    else:
+        error(where, rule, message)
 
 
 def ignored_dirs() -> set[str]:
@@ -142,9 +196,14 @@ def split_front_matter(text: str, where: str) -> dict | None:
 
 
 def rule_files() -> list[Path]:
+    """The standard files: every Markdown file of RULE_DIRS but a directory README."""
     found: list[Path] = []
     for directory in RULE_DIRS:
-        found.extend(sorted((ROOT / directory).glob("*.md")))
+        found.extend(
+            path
+            for path in sorted((ROOT / directory).glob("*.md"))
+            if path.name != DIRECTORY_README
+        )
     return found
 
 
@@ -177,6 +236,8 @@ def check_catalogue(index: dict, entries: list[dict]) -> None:
     for section in ("meta", "standards"):
         if not index.get(section):
             error("index.yaml", "RF-27", f"index has no {section} section")
+    for key in sorted(set(index) - set(INDEX_KEYS)):
+        error("index.yaml", "RF-27", f"index carries an unrecognised top-level key: {key}")
 
     catalogued: dict[str, str] = {}
     seen_ids: dict[str, str] = {}
@@ -214,11 +275,86 @@ def check_catalogue(index: dict, entries: list[dict]) -> None:
             error(where, "RF-31", f"path is not in standards/ or meta/: {path}")
         elif not (ROOT / path).exists():
             error(where, "RF-31", f"path does not exist: {path}")
+        elif Path(path).name == DIRECTORY_README:
+            error(where, "RF-31", f"path names a directory README, not a standard file: {path}")
+        elif not str(path).startswith(f"{entry['_section']}/"):
+            error(where, "RF-31", f"entry for {path} stands under {entry['_section']}")
 
     for path in rule_files():
         relative = path.relative_to(ROOT).as_posix()
         if relative not in catalogued:
             error(relative, "RF-32", "file is not listed in index.yaml")
+
+
+def rule_sections(text: str) -> list[tuple[re.Match, list[list[tuple[int, str]]]]]:
+    """Each rule's heading with the blocks below it, up to the next heading.
+
+    A block is a run of non-blank lines, each kept with its line number. Fenced
+    code is blanked first, so a sample in a code block ends a block.
+    """
+    sections: list[tuple[re.Match, list[list[tuple[int, str]]]]] = []
+    blocks: list[list[tuple[int, str]]] | None = None
+    for number, line in enumerate(strip_code_blocks(text).splitlines(), start=1):
+        if RE_HEADING.match(line):
+            match = RE_RULE.match(line)
+            blocks = [] if match else None
+            if match:
+                sections.append((match, blocks))
+            continue
+        if blocks is None:
+            continue
+        if not line.strip():
+            if blocks and blocks[-1]:
+                blocks.append([])
+            continue
+        if not blocks:
+            blocks.append([])
+        blocks[-1].append((number, line))
+    return [(match, [block for block in found if block]) for match, found in sections]
+
+
+def check_rule_body(relative: str, rule_id: str, blocks: list[list[tuple[int, str]]]) -> None:
+    """RF-12, RF-13 and the limits of RF-14, RF-47 and RF-48 for one rule."""
+    if not blocks or RE_TABLE_OR_LIST.match(blocks[0][0][1]) or blocks[0][0][1].startswith(">"):
+        error(relative, "RF-12", f"rule {rule_id} has no text paragraph below its heading")
+        return
+
+    text = blocks[0]
+    # RF-13 wants the keyword in the first line of the rule's text. This is a
+    # floor: a keyword named rather than used still passes, which RF-1 leaves
+    # to a person's check.
+    if not RE_RFC2119.search(text[0][1]):
+        error(relative, "RF-13", f"rule {rule_id} states no RFC 2119 keyword")
+    length = len(" ".join(line.strip() for _, line in text))
+    if length > MAX_RULE:
+        length_issue(relative, "RF-47", f"rule {rule_id} is {length} characters, over {MAX_RULE}")
+
+    reasons = 0
+    for block in blocks[1:]:
+        first = block[0][1]
+        if first.startswith(">"):
+            for number, line in block:
+                if len(line) > MAX_EXAMPLE_LINE:
+                    length_issue(
+                        relative,
+                        "RF-48",
+                        f"line {number}, an example of {rule_id}, is {len(line)} characters, "
+                        f"over {MAX_EXAMPLE_LINE}",
+                    )
+        elif RE_TABLE_OR_LIST.match(first):
+            continue
+        else:
+            reasons += 1
+            length = len(" ".join(line.strip() for _, line in block))
+            if length > MAX_REASON:
+                length_issue(
+                    relative,
+                    "RF-14",
+                    f"reason at line {block[0][0]}, of {rule_id}, is {length} characters, "
+                    f"over {MAX_REASON}",
+                )
+    if reasons > 1:
+        length_issue(relative, "RF-14", f"rule {rule_id} has {reasons} reason paragraphs, not one")
 
 
 def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[str, str]]:
@@ -239,12 +375,9 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
 
     entry = entries_by_path.get(relative)
     if entry:
-        if entry.get("id") != front.get("id"):
-            error(relative, "RF-30", "front matter id does not match the index entry id")
-        if str(entry.get("version")) != str(front.get("version")):
-            error(relative, "RF-30", "front matter version does not match the index entry")
-        if entry.get("title") != front.get("title"):
-            error(relative, "RF-30", "front matter title does not match the index entry")
+        for field in MATCHED_FIELDS:
+            if str(entry.get(field)) != str(front.get(field)):
+                error(relative, "RF-30", f"front matter {field} does not match the index entry")
 
     summary = str(front.get("summary", ""))
     if summary.count(".") > 1:
@@ -252,10 +385,8 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
 
     prefixes = set()
     numbers: dict[str, int] = {}
-    for line in text.splitlines():
-        match = RE_RULE.match(line)
-        if not match:
-            continue
+    rule_text_lines: set[int] = set()
+    for match, blocks in rule_sections(text):
         prefix, number = match.group(1), int(match.group(2))
         prefixes.add(prefix)
         rule_id = f"{prefix}-{number}"
@@ -264,27 +395,29 @@ def check_rule_file(path: Path, entries_by_path: dict[str, dict]) -> list[tuple[
         numbers[rule_id] = number
         found_rules.append((rule_id, relative))
 
-        rest = line.removeprefix(match.group(0))
-        if rest.lstrip().startswith("(draft") and not RE_DRAFT.match(rest):
-            error(relative, "RF-34", f"rule {rule_id} carries a malformed draft marker")
+        rest = match.group(3)
+        if rest.lstrip().startswith("(draft"):
+            if not RE_DRAFT.match(rest):
+                error(relative, "RF-34", f"rule {rule_id} carries a malformed draft marker")
+        elif rest:
+            error(relative, "RF-12", f"heading of {rule_id} carries more than its identifier")
 
-        # RF-13 wants the keyword on the identifier's own line. A rule whose
-        # keyword sits further down is a rule that does not say what it binds.
-        # This is a floor: a keyword named rather than used still passes, which
-        # RF-1 leaves to review.
-        if not RE_RFC2119.search(line.removeprefix(match.group(0))):
-            error(relative, "RF-13", f"rule {rule_id} states no RFC 2119 keyword")
+        check_rule_body(relative, rule_id, blocks)
+        if blocks:
+            rule_text_lines.update(number for number, _ in blocks[0])
 
     if len(prefixes) > 1:
         error(relative, "RF-10", f"file mixes rule prefixes: {sorted(prefixes)}")
     if not prefixes and relative.startswith("standards/"):
         error(relative, "RF-10", "standard contains no identified rules")
 
-    # A rule may legitimately name these markers, so skip rule statements and
-    # code blocks and look only for an actual unfinished marker.
+    # A rule may legitimately name these markers, so skip rule texts and code
+    # blocks and look only for an actual unfinished marker.
     prose = strip_code_blocks(text)
-    for line in prose.splitlines():
-        if RE_RULE.match(line):
+    for number, line in enumerate(prose.splitlines(), start=1):
+        if RE_BOLD_RULE.match(line):
+            error(relative, "RF-12", f"line {number} opens a rule in bold instead of a heading")
+        if number in rule_text_lines:
             continue
         if RE_MARKER.search(line):
             error(relative, "DOC-9", f"file contains an unfinished marker: {line.strip()[:60]}")
@@ -345,14 +478,24 @@ def heading_anchors(path: Path) -> set[str]:
     return anchors
 
 
+def readmes() -> list[Path]:
+    """The root README and any directory README of RULE_DIRS."""
+    found = [ROOT / "README.md"]
+    for directory in RULE_DIRS:
+        candidate = ROOT / directory / DIRECTORY_README
+        if candidate.exists():
+            found.append(candidate)
+    return found
+
+
 def check_links() -> None:
-    """DOC-51 for the README and every file listed in the index.
+    """DOC-51 for the READMEs and every file listed in the index.
 
     A link within the repository must reach its path and, for a Markdown file,
     the heading its fragment names. Outside links are not fetched, and code,
     fenced or inline, is skipped, since a link there is written as an example.
     """
-    for path in [*rule_files(), ROOT / "README.md"]:
+    for path in [*rule_files(), *readmes()]:
         relative = path.relative_to(ROOT).as_posix()
         text = RE_INLINE_CODE.sub("", strip_code_blocks(path.read_text(encoding="utf-8")))
         for match in RE_MD_LINK.finditer(text):
@@ -378,6 +521,8 @@ def check_rule_prefix_uniqueness(all_rules: list[tuple[str, str]]) -> None:
     seen: dict[str, str] = {}
     for rule_id, relative in all_rules:
         prefix = rule_id.split("-")[0]
+        if prefix in RETIRED_PREFIXES and prefix not in prefix_owner:
+            error(relative, "RF-40", f"prefix {prefix} belonged to a removed file")
         if prefix in prefix_owner and prefix_owner[prefix] != relative:
             error(relative, "RF-40", f"prefix {prefix} is already used by {prefix_owner[prefix]}")
         prefix_owner.setdefault(prefix, relative)
@@ -389,8 +534,7 @@ def check_rule_prefix_uniqueness(all_rules: list[tuple[str, str]]) -> None:
 def check_cited_ids(all_rules: list[tuple[str, str]]) -> None:
     """Every rule identifier the index or a rule file writes must be a rule's, per RF-43.
 
-    The whole text is read, fenced examples and YAML comments included. A range
-    such as `RF-27 to RF-32` writes only its two ends, so only they are checked.
+    The whole text is read, fenced examples and YAML comments included.
     """
     defined = {rule_id for rule_id, _ in all_rules}
     for path in [INDEX, *rule_files()]:
@@ -405,6 +549,20 @@ def check_cited_ids(all_rules: list[tuple[str, str]]) -> None:
                     error(relative, "RF-43", f"line {number} cites {token}, which no rule defines")
 
 
+def check_ranges() -> None:
+    """No range of rule identifiers in the index, a rule file or a README, per RF-49.
+
+    Code, fenced or inline, is skipped, since a range there is written as an
+    example, as RF-49 itself writes one.
+    """
+    for path in [INDEX, *rule_files(), *readmes()]:
+        relative = path.relative_to(ROOT).as_posix()
+        text = strip_code_blocks(path.read_text(encoding="utf-8"))
+        for number, line in enumerate(text.splitlines(), start=1):
+            for match in RE_RANGE.finditer(RE_INLINE_CODE.sub("", line)):
+                error(relative, "RF-49", f"line {number} cites a range: {match.group(0)}")
+
+
 def check_requires(entries: list[dict], all_rules: list[tuple[str, str]]) -> None:
     """Every standard a file references must appear in its entry's requires, per RF-25.
 
@@ -412,11 +570,13 @@ def check_requires(entries: list[dict], all_rules: list[tuple[str, str]]) -> Non
     through the prefix that owns it, or a repository relative path. A prefix
     that owns no rule here is ignored, so a token of the same shape that is
     not a rule identifier, such as UTF-8, does not register as a reference.
-    Fenced blocks are read too, since RF-26 counts a reference in an example
-    the same as one in a rule.
+    Fenced blocks are read too, since RF-25 counts a reference in an example
+    the same as one in a rule. An active entry must not require a draft, per
+    RF-50.
     """
     id_by_path = {e["path"]: e.get("id") for e in entries if e.get("path")}
     known_ids = {i for i in id_by_path.values() if i}
+    status_by_id = {e.get("id"): e.get("status") for e in entries}
 
     owner_by_prefix: dict[str, str] = {}
     for rule_id, relative in all_rules:
@@ -438,6 +598,8 @@ def check_requires(entries: list[dict], all_rules: list[tuple[str, str]]) -> Non
                 error(where, "RF-25", "requires names the entry itself")
             elif name not in known_ids:
                 error(where, "RF-25", f"requires names an unknown entry: {name}")
+            elif entry.get("status") == "active" and status_by_id.get(name) == "draft":
+                error(where, "RF-50", f"active entry requires the draft entry {name}")
 
         text = (ROOT / path).read_text(encoding="utf-8")
         referenced: set[str] = set()
@@ -482,6 +644,7 @@ def main() -> int:
 
     check_rule_prefix_uniqueness(all_rules)
     check_cited_ids(all_rules)
+    check_ranges()
     check_requires(entries, all_rules)
     check_names()
     check_links()

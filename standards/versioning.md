@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning and public API
-version: 4.0.1
+version: 4.0.2
 status: active
 applies_to: [software]
 summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
@@ -81,7 +81,7 @@ The cost of an unnecessary MAJOR release is an inconvenience to the publisher. T
 
 ## Incrementing
 
-**VER-6** From a version of `1.0.0` or higher, MAJOR MUST be incremented when a change is breaking under VER-39 to VER-41.
+**VER-6** From a version of `1.0.0` or higher, MAJOR MUST be incremented when a change is breaking under VER-39, VER-40 and VER-41.
 
 **VER-7** From a version of `1.0.0` or higher, MINOR MUST be incremented when the public API gains functionality and nothing breaks.
 
@@ -89,7 +89,7 @@ The cost of an unnecessary MAJOR release is an inconvenience to the publisher. T
 
 **VER-9** From a version of `1.0.0` or higher, PATCH MUST be incremented when shipped behaviour changes and the public API does not.
 
-**VER-10** When more than one of VER-6 to VER-9 applies to a release, the highest MUST be taken.
+**VER-10** When more than one of VER-6, VER-7, VER-8 and VER-9 applies to a release, the highest MUST be taken.
 
 **VER-11** A change that alters no shipped artifact and marks no part of the public API deprecated MUST NOT produce a release.
 
@@ -99,7 +99,7 @@ A shipped artifact is what a release publishes: the package, image or files a us
 
 A dependency going from 3.x to 4.x is not by itself a MAJOR here. It is MAJOR here only if this repository's own contract changes as a result.
 
-**VER-31** A repository that publishes releases MUST state in each pull request which increment the change requires under VER-6 to VER-9 or VER-16.
+**VER-31** A repository that publishes releases MUST state in each pull request which increment the change requires under VER-6, VER-7, VER-8, VER-9 or VER-16.
 
 This makes the pull request the record of the versioning decision. Without it the increment is chosen at release time, by whoever cuts the release, from a history they did not write.
 
@@ -122,7 +122,7 @@ Under [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html), `0.y.z` 
 
 **VER-16** A release that stays below `1.0.0` MUST increment MINOR when it contains a breaking change, and PATCH when it contains none.
 
-[Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) scopes its items on the increments to versions of `1.0.0` or higher. VER-6 to VER-9 narrow those items and keep their scope, so they and this rule never govern the same release.
+[Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) scopes its items on the increments to versions of `1.0.0` or higher. VER-6, VER-7, VER-8 and VER-9 narrow those items and keep their scope, so they and this rule never govern the same release.
 
 ## Pre-release and build metadata
 
