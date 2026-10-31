@@ -58,21 +58,21 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 8.0.5
+    version: 9.0.0
     status: active
-    summary: Branching, commit messages, pull requests and history hygiene.
+    summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
     applies_to: [all]
-    tags: [git, commits, branches, review]
-    requires: [naming, writing]
+    tags: [git, branches, pull-requests, commits]
+    requires: [writing]
 
   - id: versioning
     path: standards/versioning.md
     title: Versioning and public API
-    version: 4.0.2
+    version: 4.1.0
     status: active
-    summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
+    summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, how a release version is formed and recorded, and how release branches are kept.
     applies_to: [software]
-    tags: [versions, releases, semver, dependencies, api, compatibility]
+    tags: [versions, releases, semver, dependencies, api, compatibility, branches]
     requires: [tooling]
 
   - id: module-layers
@@ -108,21 +108,21 @@ standards:
   - id: writing
     path: standards/writing.md
     title: Writing
-    version: 6.2.2
+    version: 7.0.0
     status: active
-    summary: "How the texts of a repository are written, from its documents to its issues, pull requests and commit messages: their language, the reader they are written for, what the top part of a description holds and what follows it, how they name people, how long their titles are, how they reference issues and pull requests, and how they link external sources."
+    summary: "How the texts of a repository are written, from its documents to its issues, pull requests, comments and commit messages: their language, how a description opens, how they name people, how long their titles are, and how they reference issues, pull requests and sources."
     applies_to: [all]
     tags: [writing, language, issues, pull-requests, commits]
 
   - id: issues
     path: standards/issues.md
     title: Issues
-    version: 4.0.2
+    version: 5.0.0
     status: active
-    summary: When future work is recorded as an issue, what an issue states and where it states it, and how it is closed.
+    summary: When work becomes an issue, what an issue states, and how it is closed.
     applies_to: [all]
     tags: [issues, open-items]
-    requires: [documentation, precedence, readme-contract, writing]
+    requires: [precedence, writing]
 
   - id: tooling
     path: standards/tooling.md

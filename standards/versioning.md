@@ -1,10 +1,10 @@
 ---
 id: versioning
 title: Versioning and public API
-version: 4.0.2
+version: 4.1.0
 status: active
 applies_to: [software]
-summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, and how a release version is formed and recorded.
+summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, how a release version is formed and recorded, and how release branches are kept.
 ---
 
 # Versioning and public API
@@ -272,3 +272,25 @@ Below `1.0.0` a MINOR release may break (VER-16), so the bound moves down one pl
 > Correct: `>=3.1.0 <4.0.0`, `>=0.3.1 <0.4.0`, `==0.16.6`
 >
 > Incorrect: `>=3.1.0`, `*`, a bare `latest`, `>=0.3.1 <1.0.0`
+
+## Release branches
+
+### VER-45
+
+A release branch MUST exist only while more than one MAJOR line is supported under VER-24.
+
+### VER-46
+
+A release branch MUST be named `release/<major>.<minor>` or `release/<major>.x`.
+
+### VER-47
+
+A fix of a defect that the default branch also has MUST be committed to the default branch before it is cherry picked or backported to a release branch.
+
+A fix made on a release branch first is easily missing from the next MAJOR line, and nothing notices until that line ships.
+
+### VER-48
+
+A release branch MUST NOT receive a change that VER-6 makes a MAJOR increment.
+
+Consumers chose the line a release branch carries because it does not break.
