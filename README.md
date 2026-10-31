@@ -6,7 +6,7 @@ Normative engineering standards for repositories: naming, repository layout, git
 
 This repo is the single source of truth for how work is structured across repositories: what files are called, how a repo is laid out, what a commit message says, what a README must contain. It exists so those decisions are made once, in one place, and applied everywhere, including when the files are not written by hand.
 
-It covers conventions that have to be read to be followed. Formatting, import order and line length belong in tool configuration, not here. See [standards/tooling.md](standards/tooling.md) for that boundary.
+It covers conventions that have to be read to be followed. The formatting of code, such as its import order and line length, belongs in tool configuration, not here. See [standards/tooling.md](standards/tooling.md) for that boundary.
 
 It is not a tutorial, not a style guide for any single language, and not a record of past decisions.
 
@@ -109,7 +109,7 @@ The distribution mechanism sits outside this repo on purpose. Nothing here assum
 
 Changes are proposed as pull requests. Whether a new rule belongs here is decided by the admission test RF-1, RF-41, RF-42 and RF-44, how long a rule, its reason and its examples may be by RF-47, RF-14 and RF-48, what a changed standard must carry with it by RF-17, RF-18 and RF-19, and what its pull request follows by RF-45, all in [meta/rule-format.md](meta/rule-format.md).
 
-CI runs the checks under "As a contributor" on every pull request and every push to the default branch and fails the build on a violation. Each check in [scripts/validate-standards.py](scripts/validate-standards.py) names the rule it enforces; the rules it cannot check are left to whoever reads the change. While the standards are shortened to the length limits, the validator lists the files not yet shortened in `LENGTH_PENDING` and only warns where they exceed a limit; each file leaves the list once it is shortened. [scripts/check-line-breaks.py](scripts/check-line-breaks.py) enforces no rule, since TL-2 keeps formatting out of the standards: it fails where two lines of a Markdown file would render as one, and names the line where that paragraph starts.
+CI runs the checks under "As a contributor" on every pull request and every push to the default branch and fails the build on a violation. Each check in [scripts/validate-standards.py](scripts/validate-standards.py) names the rule it enforces; the rules it cannot check are left to whoever reads the change. While the standards are shortened to the length limits, the validator lists the files not yet shortened in `LENGTH_PENDING` and only warns where they exceed a limit; each file leaves the list once it is shortened. [scripts/check-line-breaks.py](scripts/check-line-breaks.py) enforces no rule: it fails where two lines of a Markdown file would render as one, and names the line where that paragraph starts.
 
 ## License
 

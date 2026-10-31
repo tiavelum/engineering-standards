@@ -61,7 +61,6 @@ LENGTH_PENDING = frozenset(
         "standards/naming.md",
         "standards/readme-contract.md",
         "standards/repo-layout.md",
-        "standards/tooling.md",
         "standards/versioning.md",
     }
 )

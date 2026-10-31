@@ -127,9 +127,8 @@ standards:
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 12.0.2
+    version: 13.0.0
     status: active
-    summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
+    summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]
     tags: [tooling, ci, linting]
-    requires: [precedence]

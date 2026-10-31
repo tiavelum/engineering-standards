@@ -1,13 +1,15 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 12.0.2
+version: 13.0.0
 status: active
 applies_to: [all]
-summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
+summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
 ---
 
 # Tooling and enforcement
+
+This file governs what a tool enforces instead of a written standard, and the tool configuration, checks, dependencies and secrets every repository keeps.
 
 Prefix: `TL`
 
@@ -15,57 +17,31 @@ Prefix: `TL`
 
 ### TL-2
 
-A written standard MUST NOT prescribe a formatting property of files, such as indentation, line length, quote style or import order.
+A written standard MUST NOT prescribe a formatting property of a source file of a programming or scripting language, such as indentation, line length, quote style or import order.
 
-Such a property belongs in the formatter or linter configuration of the repository it governs (TL-6, TL-8). A standard may require that the configuration exists and what it covers, as TL-5 does.
+Such a property belongs in the formatter or linter configuration that TL-6 and TL-8 require.
 
 ### TL-3
 
 Tool configuration MUST be committed to the repository it governs.
 
-The committed configuration is then the rule.
-
-### TL-4
-
-When a tool and a written standard disagree, the standard MUST be treated as the defect and corrected.
+The committed configuration is then the rule for what TL-2 keeps out of a standard.
 
 ### TL-31
 
-A rule of a standard that states something other than a property TL-2 keeps out of a standard MUST NOT be removed, or reduced to a reference, on the ground that an automated check enforces it.
+A rule MUST NOT be removed from a standard because an automated check enforces it, unless TL-2 keeps what it states out of a standard.
 
-A check reports a violation once the file is written; the author needs the rule to write the file right in the first place. A repository setting is not an automated check under this rule; TL-30 governs a rule that a setting enforces.
-
-> Correct: the rule TL-17 reduced to a reference to the `security_and_analysis` setting, which is a repository setting (TL-30)
->
-> Incorrect: a rule that every pull request MUST name the issue it closes removed because a CI check fails a pull request without a closing keyword
+A check reports a violation once the work is done; the rule tells the author how to do it right in the first place.
 
 ### TL-22
 
 Where a committed formatter governs a file, its configuration MUST be the authority for any formatting property another committed configuration also sets.
 
-A second configuration may repeat the first for tools that do not read the formatter, but it never decides. Two configurations that have to be kept in step by hand will drift, and the one that drifts is not the one doing the formatting.
-
-## Repository settings
-
-### TL-29
-
-Every repository that `repo-settings.sh` checks MUST be in a state for which `repo-settings.sh`, run without `--apply` from an unmodified checkout of the default branch of tiavelum/github-setup, prints `ok` for that repository.
-
-A repository setting or ruleset enforces a requirement only on the repositories it is applied to. [tiavelum/github-setup](https://github.com/tiavelum/github-setup) holds the values and applies them. Run without `--apply`, `repo-settings.sh` [prints `diff` for a repository whose settings differ](https://github.com/tiavelum/github-setup#getting-started), so a repository that falls out of its management shows as differing.
-
-### TL-30
-
-Where a setting in `repo-settings.json` of tiavelum/github-setup enforces the whole requirement of a rule on every repository that `repo-settings.sh` checks and the rule applies to, the rule MUST state that requirement only as a reference to the setting.
-
-A requirement written out next to the setting that enforces it drifts from the setting the day the setting changes; a reference cannot. The reference keeps the rule's identifier and keyword, so it can still be cited.
-
-A rule whose requirement a setting enforces only in part, or only on some of the repositories `repo-settings.sh` checks and the rule applies to, stays written in full. Which repositories `repo-settings.sh` checks, and which settings reach which of them, is defined in tiavelum/github-setup and not restated here.
-
-> Correct: `**TL-17** Secret scanning MUST be enabled where the security_and_analysis setting in repo-settings.json of tiavelum/github-setup enables it.`
->
-> Incorrect: `**TL-17** Secret scanning MUST be enabled on every repository that can enable it.`, while that setting enforces it on every repository `repo-settings.sh` checks that can enable it
+Another configuration may repeat it for tools that do not read the formatter's, but it never decides.
 
 ## Baseline configuration
+
+A tool supports a language where it can run in CI and its own documentation lists that language as supported, in part or in full.
 
 ### TL-5
 
@@ -73,31 +49,29 @@ The default branch of every repository MUST contain an `.editorconfig` covering 
 
 ### TL-6
 
-Every repository containing code MUST commit, for the code in each of its languages, a formatter configuration for that language or, where no formatter exists that can run in CI and whose own documentation lists that language as supported, in part or in full, the `.editorconfig` that TL-5 requires.
+A repository MUST commit a formatter configuration for each programming or scripting language of its source files that a formatter supports.
 
-The rule applies per language, since a formatter for one language leaves the code of another unformatted. A tool's own documentation decides whether it supports a language, because every reader can check it.
-
-> Correct: a repository of Python and zsh code that commits a formatter configuration for its Python and, since [the documentation of shfmt lists zsh](https://github.com/mvdan/sh), formatting options for its zsh in the `.editorconfig` that shfmt reads
+> Correct: Python and zsh code, with a configuration for ruff and, as [shfmt lists zsh](https://github.com/mvdan/sh), shfmt options in `.editorconfig`
 >
-> Incorrect: a Python repository whose CI runs no formatter and that commits only the `.editorconfig`, a repository of Python and zsh code that commits a formatter configuration for its Python alone
-
-### TL-23
-
-A committed formatter MUST be applied to the whole repository, not selectively.
+> Incorrect: Python and zsh code, with a formatter configuration for the Python alone
 
 ### TL-8
 
-Every repository containing code MUST commit, for the code in each of its languages, a linter configuration for that language or, where no linter exists that can run in CI and whose own documentation lists that language as supported, in part or in full, a CI step that parses that code without running it.
+A repository MUST commit, for each programming or scripting language of its source files, a linter configuration or, where no linter supports that language, a CI step that parses those files without running them.
 
-The rule applies per language and a tool's own documentation decides, as under TL-6. A parse check finds code that does not parse.
+### TL-23
 
-> Correct: a repository of Python and zsh code that commits a linter configuration for its Python and, since [the documentation of zsh-lint lists zsh](https://github.com/z-shell/zsh-lint), one for its zsh
->
-> Incorrect: a Python repository whose CI runs no linter and that commits only a CI step that parses its code, a repository of Python and zsh code that commits a linter configuration for its Python alone
+A committed formatter MUST run in CI as a check that gates a merge, over every file in a language it supports, other than a copy of another project's file and a file a tool generates.
+
+A copy would differ from its source at its next update, and a generated file is overwritten by its generator.
+
+### TL-33
+
+A committed linter MUST run in CI as a check that gates a merge, over every file in a language it supports.
 
 ### TL-24
 
-A linter suppression MUST carry a reason on the line that suppresses it.
+A linter suppression, in a source file or in a configuration file, MUST carry its reason in a comment on the line that suppresses it.
 
 ## Automation
 
@@ -107,13 +81,17 @@ Checks that gate a merge MUST run in CI, not only locally.
 
 ### TL-11
 
-CI MUST fail the build on a violation.
+A check that gates a merge MUST fail the build on a violation.
 
 ### TL-25
 
 A check that only warns MUST NOT be described as enforced.
 
-A check that only warns does not gate.
+### TL-32
+
+Whether a change passes a check MUST be decided by the check's run in CI, whichever tool version a local run of the check uses.
+
+A local run may use another version than the one CI pins, and so find more or less.
 
 ### TL-21
 
@@ -127,25 +105,15 @@ Dependency versions MUST be pinned or locked in a committed file.
 
 ### TL-15
 
-Tool versions used in CI MUST be pinned.
+Every tool and runtime CI installs MUST be named by an exact version, every action by a full commit SHA, and every runner by a label that names an operating system version.
 
-A build is reproducible only with pinned tools.
-
-### TL-32
-
-Whether a change passes a check MUST be decided by the check's run in CI, whichever tool version a local run of the check uses.
-
-A local run is advisory. It can use the version a platform's package manager installs, which can report a finding the version CI pins does not, or miss one that version reports; the pinned version gates the merge (TL-10, TL-15).
+A tag or a range can move under a workflow, so a build could not be repeated.
 
 ### TL-16
 
 A repository MUST NOT declare a dependency it does not use.
 
 ## Secrets
-
-### TL-17
-
-Secret scanning MUST be enabled where the `security_and_analysis` setting in `repo-settings.json` of tiavelum/github-setup enables it.
 
 ### TL-18
 
@@ -154,5 +122,3 @@ A repository MUST read its secrets from the environment or a secret store.
 ### TL-19
 
 A repository that reads configuration from the environment MUST commit an example environment file listing the required variable names with placeholder values.
-
-A repository that reads nothing from the environment has no variable names to list. Requiring the file of it produces a placeholder that documents nothing, or a deviation under PR-5 explaining an absence, which PR-6 refuses as a reason.
