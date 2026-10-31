@@ -57,15 +57,12 @@ RETIRED_PREFIXES = frozenset({"LC", "PA"})
 LENGTH_PENDING = frozenset(
     {
         "standards/documentation.md",
-        "standards/git-workflow.md",
-        "standards/issues.md",
         "standards/module-layers.md",
         "standards/naming.md",
         "standards/readme-contract.md",
         "standards/repo-layout.md",
         "standards/tooling.md",
         "standards/versioning.md",
-        "standards/writing.md",
     }
 )
 
