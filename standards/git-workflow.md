@@ -31,7 +31,7 @@ WR-10 sets how a pull request's description opens: with what the pull request me
 
 ### GW-29
 
-A pull request MUST carry only work for the issues its description names, all of its own repository.
+A pull request MUST be made for one or more issues of its own repository, which its description names, and MUST carry only work for them.
 
 ### GW-6
 
@@ -59,14 +59,6 @@ A pull request's description MUST name a step a reviewer can take to see that th
 >
 > Incorrect: `Tested locally.`, `To check, run ./install.sh --dry-run.`
 
-### GW-25
-
-A pull request's description MUST NOT recount the steps or attempts by which the change was arrived at.
-
-> Correct: `Read the port from PORT instead of a config file, which the CI runner cannot find.`
->
-> Incorrect: `Tried a config file first; CI could not find it, so switched to PORT.`
-
 ### GW-27
 
 A mechanical change SHOULD be made in a pull request of its own.
@@ -77,7 +69,7 @@ A change is mechanical when it changes no behaviour and applies one transformati
 
 A pull request MUST NOT remove, skip or weaken a test while the behaviour the test checks is still required and nothing else checks it.
 
-A test is weakened when it accepts a result it rejected before, such as through a wider tolerance, a looser assertion or a new expected value.
+A test is weakened when it accepts a result it rejected before, such as through a wider tolerance or a looser assertion.
 
 ### GW-24
 
@@ -101,7 +93,7 @@ A squash or merge commit that merging a pull request creates MUST have the pull 
 
 ### GW-33
 
-A commit that reaches the default branch without a pull request MUST have a first line that GW-6 and GW-7 allow for a title, and a body stating what and why that GW-25, GW-38 and WR-7 allow for a description.
+A commit that reaches the default branch without a pull request MUST have a first line that GW-6 and GW-7 allow for a title, and a body that states what and why, with references written as WR-7 requires.
 
 Under GW-2 such a commit is the first commit of a repository.
 

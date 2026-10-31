@@ -59,7 +59,7 @@ The title of an issue, the title of a pull request and the first line of a commi
 
 ### WR-7
 
-In an issue's or pull request's description and in a comment on either, a reference to an issue or pull request MUST be its number, after its repository path if in another one, with its title in parentheses at its first reference outside a list item.
+In a description or comment of an issue or pull request, a reference to an issue or pull request MUST be its number, after its repository path if in another one; in each text its first one outside a list item MUST add its title in parentheses.
 
 GitHub shows the title next to a reference only in a list item, so elsewhere the text carries it, once.
 
