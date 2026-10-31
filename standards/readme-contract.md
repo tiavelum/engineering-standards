@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 10.0.0
+version: 10.0.1
 status: active
 applies_to: [all]
 summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
@@ -159,8 +159,6 @@ Every command in the README that a change adds or changes, or whose effect it ch
 > Correct: `make install` run before merging a pull request that adds a package to `packages.txt`, which `make install` reads
 >
 > Incorrect: the same pull request merged without running `make install`, because its line in the README did not change
-
-That commit reaches the default branch without a pull request, so its message is the only record of what was run.
 
 ## Examples
 

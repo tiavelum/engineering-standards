@@ -1,7 +1,7 @@
 # Authoritative catalogue of standards in this repository.
 #
 # Contract: RF-27, RF-28, RF-29, RF-30, RF-31 and RF-32 define the entries,
-# RF-17, RF-18 and RF-19 their versions and what a change carries with it, and
+# RF-17 and RF-18 their versions and what a change carries with it, and
 # CO-1, CO-2, CO-16 and CO-3 how a consumer uses them.
 
 schema_version: 1
@@ -10,7 +10,7 @@ meta:
   - id: rule-format
     path: meta/rule-format.md
     title: Rule file format
-    version: 11.0.0
+    version: 12.0.0
     status: active
     summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
     applies_to: [authoring]
@@ -48,7 +48,7 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 9.0.0
+    version: 9.0.1
     status: active
     summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
     applies_to: [all]
@@ -58,7 +58,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 9.0.0
+    version: 10.0.0
     status: active
     summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
     applies_to: [all]
@@ -68,7 +68,7 @@ standards:
   - id: versioning
     path: standards/versioning.md
     title: Versioning and public API
-    version: 5.0.0
+    version: 6.0.0
     status: active
     summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, how a release version is formed and recorded, and how release branches are kept.
     applies_to: [software]
@@ -87,7 +87,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 10.0.0
+    version: 10.0.1
     status: active
     summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
     applies_to: [all]
@@ -126,7 +126,7 @@ standards:
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 13.0.0
+    version: 14.0.0
     status: active
     summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]
