@@ -104,7 +104,7 @@ Where a repository has something to install or run, "Getting started" MUST give 
 
 ### RM-7
 
-Where a repository has something to install or run, "Getting started" MUST end with the step that shows the first result: a command with its expected output or, where no command shows it, the manual action with its visible result.
+Where a repository has something to install or run, "Getting started" MUST end with the step that shows the first result, with what the reader then sees (RM-34 gives the form).
 
 ### RM-26
 
@@ -154,19 +154,11 @@ A section of the README that names a file or directory below the root MUST link 
 
 ### RM-9
 
-Every command in the README that a pull request adds or changes, or whose effect it changes, MUST have run successfully before merge, with the pull request applied to the current default branch.
+Every command in the README that a change adds or changes, or whose effect it changes, MUST have run successfully before the change reaches the default branch, with the change applied to the current default branch where one exists.
 
 > Correct: `make install` run before merging a pull request that adds a package to `packages.txt`, which `make install` reads
 >
 > Incorrect: the same pull request merged without running `make install`, because its line in the README did not change
-
-### RM-42
-
-Every command in the README that the first commit of a repository adds MUST have run successfully before that commit is pushed.
-
-### RM-43
-
-The message of the first commit of a repository MUST name each command RM-42 requires to have run, with where it ran.
 
 That commit reaches the default branch without a pull request, so its message is the only record of what was run.
 
