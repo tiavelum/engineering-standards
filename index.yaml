@@ -68,12 +68,11 @@ standards:
   - id: versioning
     path: standards/versioning.md
     title: Versioning and public API
-    version: 4.1.0
+    version: 5.0.0
     status: active
     summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, how a release version is formed and recorded, and how release branches are kept.
     applies_to: [software]
     tags: [versions, releases, semver, dependencies, api, compatibility, branches]
-    requires: [tooling]
 
   - id: module-layers
     path: standards/module-layers.md

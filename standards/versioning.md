@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning and public API
-version: 4.1.0
+version: 5.0.0
 status: active
 applies_to: [software]
 summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, how a release version is formed and recorded, and how release branches are kept.
@@ -9,17 +9,17 @@ summary: What a repository publishes as its public API, which changes to it are 
 
 # Versioning and public API
 
+This file governs the public API a repository declares, how its release versions are chosen, recorded and tagged, and how its release branches are kept.
+
 Prefix: `VER`
 
 ## The scheme
-
-A repository publishes a release by pushing a release tag in the form VER-28 sets.
 
 ### VER-1
 
 A repository that publishes releases MUST version them according to [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
-The specification is incorporated by reference. The rules below narrow it for these repositories; none of them contradicts it. Where this file is silent, the specification governs.
+The rules below narrow the specification without contradicting it; where this file is silent, the specification governs.
 
 ### VER-2
 
@@ -27,21 +27,15 @@ A repository that publishes no release MUST NOT carry a version.
 
 ## The public API
 
-Semantic versioning is meaningless without a declared public API, because every increment is a statement about that API.
-
 ### VER-34
 
-A repository that publishes releases MUST declare its public API.
-
-### VER-35
-
-The declaration MUST name each surface that is public and each surface that is deliberately excluded.
+A repository that publishes releases MUST declare its public API, naming each surface that is public and each surface that is deliberately excluded.
 
 ### VER-36
 
 A surface that the declaration does not mention MUST be treated as public.
 
-The default is deliberately expensive. A repository that declares nothing has promised everything, including behaviour it never intended to guarantee. The way out is to declare.
+A repository that declares nothing has promised everything, including behaviour it never meant to guarantee.
 
 ### VER-37
 
@@ -50,8 +44,6 @@ An excluded surface MUST be marked where a consumer would encounter it, in the p
 > Correct: an `internal/` package, a symbol prefixed `_`, an endpoint documented as experimental
 >
 > Incorrect: an exclusion that exists only in the declaration, invisible to someone reading the code
-
-## Public surfaces
 
 ### VER-38
 
@@ -97,7 +89,7 @@ The following MUST NOT be treated as breaking:
 
 Where it is unclear whether a change is breaking, it MUST be treated as breaking.
 
-The cost of an unnecessary MAJOR release is an inconvenience to the publisher. The cost of a missed one is an outage in someone else's system.
+An unnecessary MAJOR release inconveniences the publisher; a missed one breaks someone else's system.
 
 ## Incrementing
 
@@ -121,24 +113,6 @@ From a version of `1.0.0` or higher, PATCH MUST be incremented when shipped beha
 
 When more than one of VER-6, VER-7, VER-8 and VER-9 applies to a release, the highest MUST be taken.
 
-### VER-11
-
-A change that alters no shipped artifact and marks no part of the public API deprecated MUST NOT produce a release.
-
-A shipped artifact is what a release publishes: the package, image or files a user installs. A deprecation produces a release even where it is marked only in documentation that ships with none of them, so that the MINOR release VER-22 counts on exists.
-
-### VER-12
-
-A dependency update MUST be classified by its effect on this repository's public API, not by the increment the dependency itself took.
-
-A dependency going from 3.x to 4.x is not by itself a MAJOR here. It is MAJOR here only if this repository's own contract changes as a result.
-
-### VER-31
-
-A repository that publishes releases MUST state in each pull request which increment the change requires under VER-6, VER-7, VER-8, VER-9 or VER-16.
-
-This makes the pull request the record of the versioning decision. Without it the increment is chosen at release time, by whoever cuts the release, from a history they did not write.
-
 | Change | Increment | From 2.4.7 |
 |---|---|---|
 | Breaking change to the public API | MAJOR | 3.0.0 |
@@ -147,6 +121,16 @@ This makes the pull request the record of the versioning decision. Without it th
 | Bug fix, no API change | PATCH | 2.4.8 |
 | Internal refactor, observable behaviour unchanged | PATCH | 2.4.8 |
 | Documentation, tests or CI only, marking nothing deprecated | none | 2.4.7 |
+
+### VER-11
+
+A change that alters no shipped artifact and marks no part of the public API deprecated MUST NOT produce a release.
+
+A shipped artifact is what a release publishes, such as a package, an image or files. A deprecation produces a release even where only documentation marks it, so that VER-22 can count it.
+
+### VER-12
+
+A dependency update MUST be classified by its effect on this repository's public API, not by the increment the dependency itself took.
 
 ## Initial development
 
@@ -158,13 +142,11 @@ A repository MUST give its first release the version `0.1.0` while its public AP
 
 A repository that runs in production, or that has any consumer outside its own repository, MUST publish releases at `1.0.0` or higher.
 
-Under [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html), `0.y.z` states that the public API is not stable, which software others already depend on cannot claim.
+A version `0.y.z` states that the public API is not stable, which software others already depend on cannot claim.
 
 ### VER-16
 
 A release that stays below `1.0.0` MUST increment MINOR when it contains a breaking change, and PATCH when it contains none.
-
-[Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) scopes its items on the increments to versions of `1.0.0` or higher. VER-6, VER-7, VER-8 and VER-9 narrow those items and keep their scope, so they and this rule never govern the same release.
 
 ## Pre-release and build metadata
 
@@ -184,7 +166,7 @@ A released repository MUST NOT depend on a pre-release version of anything.
 
 Build metadata MUST NOT be the only difference between two published artifacts.
 
-Build metadata is ignored when versions are compared, as [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) specifies, so two artifacts that differ only there are indistinguishable to a consumer. If the content differs, the version differs.
+Versions that differ only in build metadata compare as equal, so a consumer cannot tell the two artifacts apart.
 
 ## The version of record
 
@@ -211,7 +193,7 @@ Where a unit is built into a container image, the row of the ecosystem of its so
 
 Every other occurrence of the version MUST be derived from the version of record when the artifact is built.
 
-A version written by hand in a second place is a version that will disagree with the first. Documentation, build arguments, generated headers and image tags all read from the one location.
+A version written by hand in a second place will come to disagree with the first.
 
 ### VER-32
 
@@ -221,7 +203,7 @@ A repository that publishes releases MUST gate merges on a check that fails when
 
 Publication of a release MUST fail when its tag and the version of record disagree, or when a tag that is the version of record does not take the form of VER-28.
 
-A release's tag exists only once its pull request is merged, so the merge gate checks what the pull request can already show, the form of the version and that it rises, where VER-31 records the increment; like every merge gate, it runs in CI (TL-10). Agreement between tag and version of record can be checked only once the tag exists, so it is checked where the release is published.
+A release's tag exists only after its pull request is merged, so the agreement is checked where the release is published.
 
 ## Tags
 
@@ -253,7 +235,7 @@ A service deployed without downtime MUST, while it and its immediately preceding
 
 A breaking change to the HTTP or event surface of a service MUST be delivered as a release that adds the new surface and marks the old one deprecated, then, once no client uses the old one, a release that removes it.
 
-Two versions of a service are in production simultaneously during any rolling deployment. A contract change that assumes otherwise fails while the rollout is in progress, not afterwards.
+During a rolling deployment two versions run at once, so a contract change that assumes otherwise fails mid-rollout.
 
 ## Supported lines
 
@@ -267,7 +249,7 @@ Where a repository says nothing, only the current MAJOR line is supported.
 
 A consumer MUST express a dependency as a range bounded above by the next MAJOR, or by the next MINOR where the range starts below `1.0.0`; an exact version is such a range.
 
-Below `1.0.0` a MINOR release may break (VER-16), so the bound moves down one place there. An exact version admits no other release at all, so it is the narrowest range the rule allows.
+Below `1.0.0` a MINOR release may break (VER-16), so the bound moves down one place there.
 
 > Correct: `>=3.1.0 <4.0.0`, `>=0.3.1 <0.4.0`, `==0.16.6`
 >
@@ -287,7 +269,7 @@ A release branch MUST be named `release/<major>.<minor>` or `release/<major>.x`.
 
 A fix of a defect that the default branch also has MUST be committed to the default branch before it is cherry picked or backported to a release branch.
 
-A fix made on a release branch first is easily missing from the next MAJOR line, and nothing notices until that line ships.
+A fix made on a release branch first is easily missing from the next MAJOR line.
 
 ### VER-48
 
