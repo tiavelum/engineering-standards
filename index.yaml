@@ -68,22 +68,21 @@ standards:
   - id: versioning
     path: standards/versioning.md
     title: Versioning and public API
-    version: 4.1.0
+    version: 5.0.0
     status: active
     summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, how a release version is formed and recorded, and how release branches are kept.
     applies_to: [software]
     tags: [versions, releases, semver, dependencies, api, compatibility, branches]
-    requires: [tooling]
 
   - id: module-layers
     path: standards/module-layers.md
     title: Module layers
-    version: 3.0.2
+    version: 4.0.0
     status: active
     summary: How the modules of a source directory are arranged in layers, which way they import, where files are read and written, and how the layers are described and checked.
     applies_to: [software]
     tags: [architecture, modules, dependencies]
-    requires: [documentation, tooling]
+    requires: [documentation]
 
   - id: readme-contract
     path: standards/readme-contract.md
@@ -127,9 +126,8 @@ standards:
   - id: tooling
     path: standards/tooling.md
     title: Tooling and enforcement
-    version: 12.0.2
+    version: 13.0.0
     status: active
-    summary: The boundary between what a tool or a repository setting enforces and what a written standard covers, plus the required baseline configuration.
+    summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
     applies_to: [all]
     tags: [tooling, ci, linting]
-    requires: [precedence]

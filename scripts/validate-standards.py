@@ -51,17 +51,6 @@ MATCHED_FIELDS = ("id", "title", "version", "status", "summary", "applies_to")
 # Prefixes of removed files, which RF-40 keeps any other file from taking.
 RETIRED_PREFIXES = frozenset({"LC", "PA"})
 
-# Standard files not yet shortened to the limits of RF-14, RF-47 and RF-48.
-# A breach of those limits in one of them is a warning, not an error. Each file
-# leaves the list once it is refactored to the limits.
-LENGTH_PENDING = frozenset(
-    {
-        "standards/module-layers.md",
-        "standards/tooling.md",
-        "standards/versioning.md",
-    }
-)
-
 # The limits of RF-47, RF-48 and RF-14, in characters of the Markdown source.
 MAX_RULE = 250
 MAX_EXAMPLE_LINE = 200
@@ -122,11 +111,8 @@ def warn(where: str, rule: str, message: str) -> None:
 
 
 def length_issue(where: str, rule: str, message: str) -> None:
-    """A breach of a length limit: an error, or a warning while LENGTH_PENDING holds the file."""
-    if where in LENGTH_PENDING:
-        warn(where, rule, message)
-    else:
-        error(where, rule, message)
+    """A breach of a length limit of RF-14, RF-47 or RF-48."""
+    error(where, rule, message)
 
 
 def ignored_dirs() -> set[str]:
