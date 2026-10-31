@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 9.1.2
+version: 9.1.3
 status: active
 applies_to: [all]
 summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
@@ -19,7 +19,7 @@ This standard fixes what a README answers and in which order the reader meets it
 
 This standard MUST be applied to the README at the root of a repository and MUST NOT be applied to the README of a directory below it.
 
-A directory README is written for whoever uses or changes that directory's content, and `standards/documentation.md` governs it, DOC-45 and DOC-52 among its rules.
+A directory README is written for whoever uses or changes that directory's content, and `standards/documentation.md` governs it, DOC-45 and DOC-53 among its rules.
 
 ## What a README answers
 
@@ -170,7 +170,7 @@ A README MUST state the known limitations that affect whether a reader should us
 
 A section of the README MUST link to every README that, for a file or a directory below the root that the section names in its text, a table or a command, is the README of the deepest directory that lies below the root, has a README, and is or contains that file or directory.
 
-The README at the root shows what works and is the entry point to everything the repository concerns. The details of a directory's content stand in that directory's README: the rules of how it is built (DOC-45) and what a program in it prints and does when it cannot complete its task (DOC-52). The link takes the reader there from the section where they meet that content.
+The README at the root shows what works and is the entry point to everything the repository concerns. The details of a directory's content stand in that directory's README (DOC-53). The link takes the reader there from the section where they meet that content.
 
 > Correct: a "Getting started" that runs `sync/photo-sync.sh` twice and links to `sync/README.md` once, and a "Content and structure" that describes `sync/` and links to the same file
 >

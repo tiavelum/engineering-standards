@@ -56,7 +56,6 @@ RETIRED_PREFIXES = frozenset({"LC", "PA"})
 # leaves the list once it is refactored to the limits.
 LENGTH_PENDING = frozenset(
     {
-        "standards/documentation.md",
         "standards/git-workflow.md",
         "standards/issues.md",
         "standards/module-layers.md",
