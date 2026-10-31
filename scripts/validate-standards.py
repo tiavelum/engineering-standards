@@ -63,7 +63,6 @@ LENGTH_PENDING = frozenset(
         "standards/repo-layout.md",
         "standards/tooling.md",
         "standards/versioning.md",
-        "standards/writing.md",
     }
 )
 
