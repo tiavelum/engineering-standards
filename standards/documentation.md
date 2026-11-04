@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 15.0.0
+version: 16.0.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, decision records, comments in source, release notes and upkeep."
@@ -39,7 +39,7 @@ Reference material that can be generated from source MUST be generated, not writ
 
 ### DOC-7
 
-Every document MUST state what it covers and for whom in its first sentence, or in its front matter where its format begins with one.
+Every document written for people MUST state what it covers and for whom in its first sentence, or in its front matter where its format begins with one.
 
 ### DOC-35
 
