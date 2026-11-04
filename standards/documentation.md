@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 14.0.0
+version: 15.0.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, decision records, comments in source, release notes and upkeep."
