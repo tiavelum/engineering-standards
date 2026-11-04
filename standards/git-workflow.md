@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 10.0.0
+version: 10.1.0
 status: active
 applies_to: [all]
 summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
@@ -88,6 +88,10 @@ A pull request MUST NOT be merged until its checks have passed on its last commi
 A step to be taken by hand after the merge, for the change to take effect, MUST be stated in a comment on the pull request, as a command where one performs it.
 
 A comment can be added whenever the step becomes known, without rewriting the description.
+
+### GW-42
+
+A pull request that waits on a step only one person can take MUST carry the label of ISS-16.
 
 ## Commits
 

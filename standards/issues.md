@@ -1,15 +1,15 @@
 ---
 id: issues
 title: Issues
-version: 5.0.0
+version: 6.0.0
 status: active
 applies_to: [all]
-summary: When work becomes an issue, what an issue states, and how it is closed.
+summary: When work becomes an issue, what an issue states, how it is labelled while it waits on a person, and how it is closed.
 ---
 
 # Issues
 
-This file governs the issues of a repository: when work becomes an issue, what the issue states, and how it is closed.
+This file governs the issues of a repository: when work becomes an issue, what an issue states, how it is labelled while it waits on a person, and how it is closed.
 
 Prefix: `ISS`
 
@@ -35,6 +35,12 @@ An issue MUST NOT duplicate an open issue of the same repository.
 
 Work that spans several issues SHOULD be held by one tracking issue that links each of them.
 
+### ISS-14
+
+A decision that an answer raises MUST be asked in a new issue.
+
+The answered issue closes once its answer is carried out, and a question added to it would close with it.
+
 ## Content
 
 WR-10 sets how an issue's description opens: with what the work is and why.
@@ -55,7 +61,37 @@ The condition lets anyone see whether the issue is done without asking its autho
 
 ### ISS-7
 
-An issue that asks for a decision MUST list its options, each with its consequence, and recommend one of them, with the reason.
+An issue that asks for a decision MUST list its options, numbered, each with its consequence, and recommend one of them by its number, with the reason.
+
+### ISS-13
+
+An issue that asks for a decision MUST ask for exactly one.
+
+One decision per issue lets each be answered, carried out and closed on its own.
+
+## Waiting on a person
+
+### ISS-15
+
+An issue that waits on a decision only one person can make MUST carry the label `<handle>-decides`, with that person's handle on the forge.
+
+> Correct: `octocat-decides`
+>
+> Incorrect: `needs-decision`, `decides-octocat`
+
+### ISS-16
+
+An issue that waits on a step only one person can take MUST carry the label `<handle>-acts`, with that person's handle on the forge.
+
+> Correct: `octocat-acts`
+>
+> Incorrect: `waiting`, `action-needed`
+
+### ISS-17
+
+An issue whose awaited answer or report has been read MUST carry the label `answer-acknowledged` beside the label of ISS-15 or ISS-16.
+
+The first label still says whose answer it was; the second says nobody waits on that person any more.
 
 ## Closing
 
