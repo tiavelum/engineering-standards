@@ -39,7 +39,7 @@ Reference material that can be generated from source MUST be generated, not writ
 
 ### DOC-7
 
-Every document written for people to read MUST open with one sentence stating what it covers and for whom.
+Every document MUST state what it covers and for whom in its first sentence, or in its front matter where its format begins with one.
 
 ### DOC-35
 
