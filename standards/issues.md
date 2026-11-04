@@ -4,12 +4,12 @@ title: Issues
 version: 6.0.0
 status: active
 applies_to: [all]
-summary: When work becomes an issue, what an issue states, and how it is closed.
+summary: When work becomes an issue, what an issue states, how it is labelled while it waits on a person, and how it is closed.
 ---
 
 # Issues
 
-This file governs the issues of a repository: when work becomes an issue, what the issue states, and how it is closed.
+This file governs the issues of a repository: when work becomes an issue, what an issue states, how it is labelled while it waits on a person, and how it is closed.
 
 Prefix: `ISS`
 
@@ -73,7 +73,7 @@ One decision per issue lets each be answered, carried out and closed on its own.
 
 ### ISS-15
 
-An issue that waits on a decision only one person can make MUST carry the label `<github-handle>-decides`, with that person's handle on the forge.
+An issue that waits on a decision only one person can make MUST carry the label `<handle>-decides`, with that person's handle on the forge.
 
 > Correct: `octocat-decides`
 >
@@ -81,7 +81,7 @@ An issue that waits on a decision only one person can make MUST carry the label 
 
 ### ISS-16
 
-An issue that waits on a step only one person can take MUST carry the label `<github-handle>-acts`, with that person's handle on the forge.
+An issue that waits on a step only one person can take MUST carry the label `<handle>-acts`, with that person's handle on the forge.
 
 > Correct: `octocat-acts`
 >
@@ -89,7 +89,7 @@ An issue that waits on a step only one person can take MUST carry the label `<gi
 
 ### ISS-17
 
-An issue whose awaited answer or report has been read MUST carry the label `answer-ack` beside the label of ISS-15 or ISS-16.
+An issue whose awaited answer or report has been read MUST carry the label `answer-acknowledged` beside the label of ISS-15 or ISS-16.
 
 The first label still says whose answer it was; the second says nobody waits on that person any more.
 

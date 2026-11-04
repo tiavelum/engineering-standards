@@ -69,7 +69,7 @@ GitHub shows the title next to a reference only in a list item, so elsewhere the
 
 ### WR-11
 
-A description or comment of an issue or pull request MUST link another issue or pull request for what that one states, not restate it.
+A description or comment of an issue or pull request MUST reference another issue or pull request, as WR-7 sets, for what that one states, not restate it.
 
 ## Links to sources
 
