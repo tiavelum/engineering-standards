@@ -58,12 +58,12 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 10.0.0
+    version: 10.1.0
     status: active
     summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
     applies_to: [all]
     tags: [git, branches, pull-requests, commits]
-    requires: [writing]
+    requires: [writing, issues]
 
   - id: versioning
     path: standards/versioning.md
@@ -107,7 +107,7 @@ standards:
   - id: writing
     path: standards/writing.md
     title: Writing
-    version: 7.0.0
+    version: 7.1.0
     status: active
     summary: "How the texts of a repository are written, from its documents to its issues, pull requests, comments and commit messages: their language, how a description opens, how they name people, how long their titles are, and how they reference issues, pull requests and sources."
     applies_to: [all]
@@ -116,9 +116,9 @@ standards:
   - id: issues
     path: standards/issues.md
     title: Issues
-    version: 5.0.0
+    version: 6.0.0
     status: active
-    summary: When work becomes an issue, what an issue states, and how it is closed.
+    summary: When work becomes an issue, what an issue states, how it is labelled while it waits on a person, and how it is closed.
     applies_to: [all]
     tags: [issues, open-items]
     requires: [precedence, writing]

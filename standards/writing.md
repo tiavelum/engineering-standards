@@ -1,7 +1,7 @@
 ---
 id: writing
 title: Writing
-version: 7.0.0
+version: 7.1.0
 status: active
 applies_to: [all]
 summary: "How the texts of a repository are written, from its documents to its issues, pull requests, comments and commit messages: their language, how a description opens, how they name people, how long their titles are, and how they reference issues, pull requests and sources."
@@ -66,6 +66,10 @@ GitHub shows the title next to a reference only in a list item, so elsewhere the
 > Correct: `Closes #131 (Decide how sound reference links are kept open)`, `- #135: the proposal as written.` as a list item
 >
 > Incorrect: `Lands with #132.` as the first reference to #132, `Lands with [Settle how a file names a person](https://github.com/o/r/issues/132).`
+
+### WR-11
+
+A description or comment of an issue or pull request MUST link another issue or pull request for what that one states, not restate it.
 
 ## Links to sources
 
