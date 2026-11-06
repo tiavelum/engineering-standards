@@ -51,10 +51,11 @@ MATCHED_FIELDS = ("id", "title", "version", "status", "summary", "applies_to")
 # Prefixes of removed files, which RF-40 keeps any other file from taking.
 RETIRED_PREFIXES = frozenset({"LC", "PA"})
 
-# The limits of RF-47, RF-48 and RF-14, in characters of the Markdown source.
-MAX_RULE = 250
+# The limits of RF-47 and RF-14, in words of the Markdown source, which are
+# what whitespace separates, and of RF-48, in characters of the Markdown source.
+MAX_RULE = 50
 MAX_EXAMPLE_LINE = 200
-MAX_REASON = 250
+MAX_REASON = 50
 
 RE_ID = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 RE_SEMVER = re.compile(r"^\d+\.\d+\.\d+$")
@@ -304,9 +305,9 @@ def check_rule_body(relative: str, rule_id: str, blocks: list[list[tuple[int, st
     # to a person's check.
     if not RE_RFC2119.search(text[0][1]):
         error(relative, "RF-13", f"rule {rule_id} states no RFC 2119 keyword")
-    length = len(" ".join(line.strip() for _, line in text))
-    if length > MAX_RULE:
-        length_issue(relative, "RF-47", f"rule {rule_id} is {length} characters, over {MAX_RULE}")
+    words = sum(len(line.split()) for _, line in text)
+    if words > MAX_RULE:
+        length_issue(relative, "RF-47", f"rule {rule_id} is {words} words, over {MAX_RULE}")
 
     reasons = 0
     for block in blocks[1:]:
@@ -324,12 +325,12 @@ def check_rule_body(relative: str, rule_id: str, blocks: list[list[tuple[int, st
             continue
         else:
             reasons += 1
-            length = len(" ".join(line.strip() for _, line in block))
-            if length > MAX_REASON:
+            words = sum(len(line.split()) for _, line in block)
+            if words > MAX_REASON:
                 length_issue(
                     relative,
                     "RF-14",
-                    f"reason at line {block[0][0]}, of {rule_id}, is {length} characters, "
+                    f"reason at line {block[0][0]}, of {rule_id}, is {words} words, "
                     f"over {MAX_REASON}",
                 )
     if reasons > 1:
