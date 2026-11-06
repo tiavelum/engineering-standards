@@ -1,7 +1,7 @@
 ---
 id: writing
 title: Writing
-version: 7.1.0
+version: 8.0.0
 status: active
 applies_to: [all]
 summary: "How the texts of a repository are written, from its documents to its issues, pull requests, comments and commit messages: their language, how a description opens, how they name people, how long their titles are, and how they reference issues, pull requests and sources."
@@ -49,11 +49,11 @@ A person's name, whether a real name or an account handle, MUST take the form th
 
 ### WR-5
 
-The title of an issue, the title of a pull request and the first line of a commit message MUST each be at most 105 characters, not counting a pull request number that a forge appends to that line on merge.
+The title of an issue, the title of a pull request and the first line of a commit message MUST each be at most 100 characters, not counting a pull request number that a forge appends to that line on merge.
 
-> Correct: `feat: add a writing standard for the rules on every text, from a README to its issues and commit messages (#145)`, 105 characters before the appended number
+> Correct: `feat: add a writing standard with the rules on every text, from the README to its issues and commits (#145)`, 100 characters before the appended number
 >
-> Incorrect: `fix: stop the import at the first corrupt file instead of skipping it and reporting the import as complete`, 106 characters
+> Incorrect: `fix: stop the import at the first corrupt file instead of skipping it and calling the import complete`, 101 characters
 
 ## References to issues and pull requests
 
