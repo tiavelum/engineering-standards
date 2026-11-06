@@ -189,7 +189,7 @@ Each example of a rule MUST stand in a blockquote below the rule, as a paragraph
 
 ### RF-48
 
-Each line of an example MUST be at most 200 characters in the Markdown source, its leading `>` included.
+Each line of an example MUST be at most 200 characters of the Markdown source, counting the leading `> ` of a blockquote line.
 
 ## Versioning
 
