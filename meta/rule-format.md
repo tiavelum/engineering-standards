@@ -1,7 +1,7 @@
 ---
 id: rule-format
 title: Rule file format
-version: 12.0.0
+version: 13.0.0
 status: active
 applies_to: [authoring]
 summary: How a standard file is written and changed, how rules are identified and versioned, and the admission test for new rules.
@@ -161,11 +161,11 @@ A rule MUST state its keyword, one of MUST, MUST NOT, SHOULD, SHOULD NOT and MAY
 
 ### RF-14
 
-A rule MUST state only the required outcome; a reason, where its purpose is not self-evident, follows it as one paragraph, at most 250 characters.
+A rule MUST state only the required outcome; a reason, where its purpose is not self-evident, follows it as one paragraph, at most 50 words, counted as RF-47 sets.
 
 ### RF-47
 
-The paragraph under a rule's heading MUST be at most 250 characters.
+The paragraph under a rule's heading MUST be at most 50 words of its Markdown source, where a word is any run of characters between whitespace.
 
 ### RF-15
 
@@ -189,7 +189,7 @@ Each example of a rule MUST stand in a blockquote below the rule, as a paragraph
 
 ### RF-48
 
-Each line of an example MUST be at most 200 characters.
+Each line of an example MUST be at most 200 characters of the Markdown source, counting the leading `> ` of a blockquote line.
 
 ## Versioning
 
