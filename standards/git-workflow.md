@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 10.1.0
+version: 10.2.0
 status: active
 applies_to: [all]
 summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
@@ -82,6 +82,12 @@ A review of a pull request MUST record its findings on the pull request, not in 
 ### GW-14
 
 A pull request MUST NOT be merged until its checks have passed on its last commit.
+
+### GW-43
+
+A pull request on whose last commit no check runs MUST NOT be merged until a person or an AI agent that did not make its change has reviewed it on the pull request.
+
+Without a check, that review is the only test the change gets before it reaches the branch it merges into.
 
 ### GW-37
 
