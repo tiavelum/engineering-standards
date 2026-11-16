@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 14.2.0
+version: 14.3.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -108,6 +108,24 @@ A job that checks nothing still concludes `success`, which reads as a pass to wh
 > Correct: the pull request that adds a repository's first Python file adds its workflow, with a job that runs `ruff check .`.
 >
 > Incorrect: a placeholder job that only runs `actions/checkout`, so every pull request shows a green check that checked nothing.
+
+### TL-36
+
+CI MUST run every check that the README asks a contributor to run before opening a pull request.
+
+> Correct: the README lists `python3 scripts/validate-standards.py` for contributors, and the workflow runs it.
+>
+> Incorrect: the README lists `pytest` for contributors, and the workflow runs only `ruff check .`.
+
+### TL-37
+
+Every script of the repository that a command block of its README runs MUST be run in CI by a check that fails when the script exits with a failure status.
+
+A script the README runs is what the repository offers its users; a linter shows that it parses, not that it works.
+
+> Correct: the README runs `./repo-settings/repo-settings.sh`, and a test in CI runs it against a stub `gh` and fails on a non-zero exit status.
+>
+> Incorrect: the README runs `./setup-local.sh`, and CI only lints it with `shellcheck`.
 
 ### TL-21
 
