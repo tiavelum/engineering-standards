@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 14.0.0
+version: 14.1.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -88,6 +88,16 @@ A check that gates a merge MUST fail the build on a violation.
 Whether a change passes a check MUST be decided by the check's run in CI, whichever tool version a local run of the check uses.
 
 A local run may use another version than the one CI pins, and so find more or less.
+
+### TL-34
+
+A workflow that runs on pull requests MUST cancel its run for a pull request's commit once a newer commit of the same pull request starts a run of it.
+
+Only the checks of a pull request's last commit decide its merge, so a superseded run only holds a runner the newest commit waits for.
+
+> Correct: `concurrency: { group: "${{ github.workflow }}-${{ github.head_ref || github.run_id }}", cancel-in-progress: true }`
+>
+> Incorrect: no `concurrency` key, so a fix pushed to a pull request waits for the macOS runner its superseded run still holds.
 
 ### TL-21
 
