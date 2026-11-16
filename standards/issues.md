@@ -37,7 +37,7 @@ Work that spans several issues SHOULD be held by one tracking issue that links e
 
 ### ISS-19
 
-Each run of a task that a repository's documentation describes for running more than once, such as a migration, a machine setup or the replay of a repository, SHOULD be recorded in an issue of its own that holds the run's inputs, its state and what it hit.
+Each run of a procedure that a repository's documentation describes for running more than once, such as a migration, a machine setup or the replay of a repository, SHOULD be recorded in an issue of its own that holds the run's inputs, its state and what it hit.
 
 Whoever takes over a stopped run resumes it from that issue, and the next run learns from it; a tracking issue under ISS-10 holds work across issues, not one run.
 
