@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 14.1.0
+version: 14.2.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -98,6 +98,16 @@ Only the checks of a pull request's last commit decide its merge, so a supersede
 > Correct: `concurrency: { group: "${{ github.workflow }}-${{ github.head_ref || github.run_id }}", cancel-in-progress: true }`
 >
 > Incorrect: no `concurrency` key, so a fix pushed to a pull request waits for the macOS runner its superseded run still holds.
+
+### TL-35
+
+A job of a workflow that runs on pull requests MUST run at least one check of the change, such as a formatter, a linter or a test.
+
+A job that checks nothing still concludes `success`, which reads as a pass to whoever merges and to auto-merge; a repository without a check has no such workflow yet.
+
+> Correct: the pull request that adds a repository's first Python file adds its workflow, with a job that runs `ruff check .`.
+>
+> Incorrect: a placeholder job that only runs `actions/checkout`, so every pull request shows a green check that checked nothing.
 
 ### TL-21
 
