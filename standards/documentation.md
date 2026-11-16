@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 16.0.0
+version: 17.0.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, decision records, comments in source, release notes and upkeep."
@@ -71,9 +71,13 @@ A document MUST NOT be published with TODOs, placeholders or empty sections.
 
 ### DOC-48
 
-A pull request that adds a step the user of the repository takes by hand MUST describe that step in the repository's documentation, with the other steps of the task that needs it.
+A pull request that adds a step the user of the repository takes by hand, or that is made for a run of a task the documentation describes, MUST describe in the documentation, with the other steps of that task, each step it adds or the run took by hand.
 
-Written down with the change, the step reaches whoever sets the repository up next; left in a conversation, it does not.
+Written down with the change, the step reaches whoever sets the repository up or runs the task next; left in a conversation or in the notes of a run, it does not.
+
+> Correct: a pull request for the issue of a run that turned off a setting by hand describes that step in the procedure, beside the steps before and after it
+>
+> Incorrect: the same pull request fixes only the script the run stopped in, and the setting stays in the run's notes
 
 ## Directory READMEs
 
