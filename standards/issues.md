@@ -1,7 +1,7 @@
 ---
 id: issues
 title: Issues
-version: 6.0.0
+version: 6.1.0
 status: active
 applies_to: [all]
 summary: When work becomes an issue, what an issue states, how it is labelled while it waits on a person, and how it is closed.
@@ -34,6 +34,16 @@ An issue MUST NOT duplicate an open issue of the same repository.
 ### ISS-10
 
 Work that spans several issues SHOULD be held by one tracking issue that links each of them.
+
+### ISS-19
+
+Each run of a procedure that a repository's documentation describes for running more than once, such as a migration, a machine setup or the replay of a repository, SHOULD be recorded in an issue of its own that holds the run's inputs, its state and what it hit.
+
+Whoever takes over a stopped run resumes it from that issue, and the next run learns from it; a tracking issue under ISS-10 holds work across issues, not one run.
+
+> Correct: `Run: replay octocat/tool into octocat/tool-new`, holding the options chosen, each stop with its cause and fix, and the result of the check
+>
+> Incorrect: the same run recorded only in comments on the issue that built the replay script, between those on the script's own changes
 
 ### ISS-14
 
