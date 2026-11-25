@@ -53,7 +53,7 @@ History belongs in git history.
 
 ### DOC-54
 
-A document that states a constraint its subject does not make obvious MUST give the reason for it in a clause that links to the issue that decided it.
+A document that states a constraint decided in an issue, and not made obvious by its subject, MUST give the reason for it in a clause that links to that issue.
 
 Whoever changes the work meets the constraint and its reason where they work, and the alternatives keep one home: the issue, which stays as answered when a later issue changes the decision.
 
