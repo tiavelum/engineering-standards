@@ -38,7 +38,7 @@ standards:
   - id: naming
     path: standards/naming.md
     title: Naming
-    version: 7.0.0
+    version: 7.0.1
     status: active
     summary: Names for files, directories, branches, tags and repositories.
     applies_to: [all]
@@ -97,11 +97,11 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 17.0.0
+    version: 18.0.0
     status: active
-    summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, decision records, comments in source, release notes and upkeep."
+    summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, comments in source, release notes and upkeep."
     applies_to: [all]
-    tags: [documentation, adr]
+    tags: [documentation]
     requires: [writing]
 
   - id: writing
