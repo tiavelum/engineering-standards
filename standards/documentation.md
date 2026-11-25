@@ -53,13 +53,13 @@ History belongs in git history.
 
 ### DOC-54
 
-A document that states a constraint its subject does not make obvious MUST give the reason for it in a clause and link to the issue that decided it.
+A document that states a constraint its subject does not make obvious MUST give the reason for it in a clause that links to the issue that decided it.
 
 Whoever changes the work meets the constraint and its reason where they work, and the alternatives keep one home: the issue, which stays as answered when a later issue changes the decision.
 
 > Correct: `Labels are created before the issues, since an issue replayed before its label loses it ([octocat/tool#62](https://github.com/octocat/tool/issues/62)).` in `replay/README.md`
 >
-> Incorrect: the same constraint in `replay/README.md` without its reason, or with its reason only in `docs/decisions/0002-create-labels-first.md`
+> Incorrect: `Labels are created before the issues, since an issue replayed before its label loses it.` with no link to the issue, or the reason only in `docs/decisions/0002-create-labels-first.md`
 
 ### DOC-8
 
