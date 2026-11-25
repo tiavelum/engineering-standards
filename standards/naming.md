@@ -1,7 +1,7 @@
 ---
 id: naming
 title: Naming
-version: 7.0.0
+version: 7.0.1
 status: active
 applies_to: [all]
 summary: Names for files, directories, branches, tags and repositories.
@@ -21,7 +21,7 @@ The name of a file, directory or repository MUST describe what the thing is, not
 
 A date, version or number is part of what a thing is where the thing is about it, or where it tells the thing apart from others of its kind in use beside it.
 
-> Correct: `design.md`, `q3-tax-rates.md` in a tax engine, `api/v2/` beside `api/v1/`, `0004-use-postgres.md` as a decision record
+> Correct: `design.md`, `q3-tax-rates.md` in a tax engine, `api/v2/` beside `api/v1/`
 >
 > Incorrect: `report-v2.md`, `notes-final.md`, `sprint-4-notes.md`, a directory named `misc` or `temp`, `octocat-tools` for a repository of the account octocat
 

@@ -1,10 +1,10 @@
 ---
 id: documentation
 title: Documentation
-version: 17.0.0
+version: 18.0.0
 status: active
 applies_to: [all]
-summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, decision records, comments in source, release notes and upkeep."
+summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, comments in source, release notes and upkeep."
 ---
 
 # Documentation
@@ -49,7 +49,17 @@ Documentation MUST state what the reader does, not what the author did.
 
 Documentation MUST describe the current state.
 
-History belongs in git history. A decision record describes a decision in force, which is current state.
+History belongs in git history.
+
+### DOC-54
+
+A document that states a constraint its subject does not make obvious MUST give the reason for it in a clause and link to the issue that decided it.
+
+Whoever changes the work meets the constraint and its reason where they work, and the alternatives keep one home: the issue, which stays as answered when a later issue changes the decision.
+
+> Correct: `Labels are created before the issues, since an issue replayed before its label loses it ([octocat/tool#62](https://github.com/octocat/tool/issues/62)).` in `replay/README.md`
+>
+> Incorrect: the same constraint in `replay/README.md` without its reason, or with its reason only in `docs/decisions/0002-create-labels-first.md`
 
 ### DOC-8
 
@@ -92,24 +102,6 @@ A description of files that all lie in one directory below the root MUST stand i
 > Correct: how `sync/photo-sync.sh` matches photos, in `sync/README.md`; the root README says in one sentence what `sync/` does and links there
 >
 > Incorrect: the same description in the root README or in `docs/sync.md`
-
-## Decision records
-
-### DOC-10
-
-A decision that constrains future work across more than one directory and is not obvious from the code MUST be recorded as a decision record in `docs/decisions/`.
-
-### DOC-11
-
-A decision record MUST be named `<nnnn>-<short-title>.md` with a zero padded sequence number.
-
-### DOC-36
-
-A decision record MUST contain: context, the decision, the alternatives considered, and the consequences.
-
-### DOC-12
-
-A decision record MUST NOT be edited after acceptance except to mark it superseded and name its successor.
 
 ## Comments in source
 
