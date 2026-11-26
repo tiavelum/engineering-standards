@@ -29,6 +29,14 @@ In the README of a directory below the root, "the repository" in a rule of this 
 >
 > Incorrect: `replay/README.md` lists every prerequisite of the whole repository
 
+### RM-54
+
+The README of a directory below the root that has something to install or run MUST have "Getting started".
+
+> Correct: `replay/README.md`, whose directory holds `replay.py`, with `## Getting started` leading to a first replay
+>
+> Incorrect: the same README with the steps of a replay under `## Steps` and no `## Getting started`
+
 ## What a README answers
 
 ### RM-1
@@ -39,7 +47,7 @@ The root README MUST answer every question the following table marks as required
 |---|---|---|---|
 | Summary | MUST | What is this? | None: the title and the text before the first level-2 heading |
 | What it is for | Optional | When do I use it, and when not? | `## What it is for` |
-| Getting started | MUST | How do I get from nothing to a first result? | `## Getting started` |
+| Getting started | MUST | How do I get a first result? | `## Getting started` |
 | Example | Optional | What does using it look like? | `## Example` |
 | Files | Optional | What is in it, and how is it structured? | `## Files` |
 | Known limits | Optional | What does it not do, or not do well? | `## Known limits` |
