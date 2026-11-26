@@ -151,7 +151,7 @@ A statement of the result stays true when ordinary work changes the output, such
 
 ### RM-7
 
-Where a repository has something to install or run, "Getting started" MUST end with the step that shows the first result RM-52 names, with what the reader then sees (RM-34 gives the form).
+Where a repository has something to install or run, "Getting started" MUST end with the step that shows the first result, with what the reader then sees (RM-34 gives the form).
 
 ### RM-26
 
