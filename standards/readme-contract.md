@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 11.0.0
+version: 12.0.0
 status: active
 applies_to: [all]
 summary: What every README of a repository must answer, in which order the reader meets it, and what it leaves to other documents.
@@ -39,17 +39,23 @@ The root README MUST answer every question the following table marks as required
 |---|---|---|---|
 | Summary | MUST | What is this? | The title and the first paragraph |
 | What it is for | Optional | When do I use it, and when not? | What it is for, Scope |
-| Getting started | MUST | How do I get a first result? | Getting started, Setup, Usage |
+| Getting started | MUST | How do I get from nothing to a first result? | Getting started, Setup, Usage |
 | Example | Optional | What does using it look like? | Example |
-| Tasks | Optional | How do I do a particular thing with it? | Named for the task, such as After changing a file |
-| Content and structure | Optional | What is in it, and where? | Files, Contents, Content and structure |
-| How it works | Optional | How do the parts work together? | How it works, Design |
-| Configuration | Optional | What can I change? | Configuration |
-| Troubleshooting | Optional | What goes wrong, and what do I do? | Troubleshooting |
+| Content and structure | Optional | What is in it, and how is it structured? | Files, Contents, Layers |
 | Known limits | Optional | What does it not do, or not do well? | Known limits |
-| Contributing and support | Optional | How do I report or change something? | Contributing |
+| Contributing | Optional | How do I check a change? | Contributing |
 | Documentation | Optional | Where do I read on? | Documentation |
 | License | MUST (public) | What may I do with it? | License |
+
+### RM-42
+
+A README MUST NOT hold a section that answers a question the table of RM-1 does not name.
+
+What a reader needs after the first result stands in a document of `docs/` (DOC-2), which a README links (RM-43).
+
+> Correct: `replay/README.md` names a first replay as its first result and ends "Getting started" with it; renaming the new repository to the source's name stands in `docs/replay/`
+>
+> Incorrect: a section "Taking over the source's name", "Troubleshooting" or "How it works" in `replay/README.md`
 
 ### RM-38
 
@@ -72,10 +78,6 @@ The summary and, where present, "What it is for" MUST precede every other sectio
 ### RM-28
 
 "Getting started" SHOULD be the first section after them.
-
-### RM-29
-
-"How it works" SHOULD follow "Getting started", "Example" and every task section.
 
 ### RM-25
 
@@ -102,6 +104,14 @@ The root README MUST state the known limitations that affect whether a reader sh
 ### RM-8
 
 "Getting started" MUST be usable without reading any other section.
+
+### RM-52
+
+Where a repository has something to install or run, the first sentence of "Getting started" MUST name the first result it leads to.
+
+> Correct: `These steps take a new Mac to a passing run of the tests.`; `These steps replay a test repository into a new one.`
+>
+> Incorrect: a "Getting started" that opens with `Install the prerequisites:`
 
 ### RM-6
 
@@ -135,7 +145,7 @@ A statement of the result stays true when ordinary work changes the output, such
 
 ### RM-7
 
-Where a repository has something to install or run, "Getting started" MUST end with the step that shows the first result, with what the reader then sees (RM-34 gives the form).
+Where a repository has something to install or run, "Getting started" MUST end with the step that shows the first result RM-52 names, with what the reader then sees (RM-34 gives the form).
 
 ### RM-26
 
@@ -145,29 +155,9 @@ Where a repository has nothing to install or run, "Getting started" MUST name wh
 
 "Example" MUST show at least one real usage with concrete values and what it produces, not a bare signature or an all-placeholder command.
 
-### RM-31
-
-A task section MUST open with the command or the first step of the task.
-
 ### RM-35
 
 "Content and structure" MUST name the entry point files a reader opens first.
-
-### RM-32
-
-"How it works" MUST describe how parts named in "Content and structure" depend on each other.
-
-### RM-12
-
-"Configuration" MUST list only options a normal user changes.
-
-### RM-36
-
-Each option in "Configuration" MUST carry its default and its effect.
-
-### RM-13
-
-"Troubleshooting" MUST list only failure modes actually observed, symptom first, fix second.
 
 ## Commands
 
@@ -238,7 +228,7 @@ A command-line tool for anyone who imports CSV exports into a spreadsheet. It tr
 
 ## Usage
 
-Requires Python 3.10 or later.
+These steps tidy a first CSV export. They need Python 3.10 or later.
 
 ```bash
 pip install csv-tidy
