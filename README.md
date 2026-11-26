@@ -28,7 +28,7 @@ The consumer contract also holds its stability guarantees and what a consumer mu
 
 ### As a contributor
 
-Every change is validated against the rules in [meta/rule-format.md](meta/rule-format.md) and against the few rules of other standards that the validator names. Run the checks CI runs locally before opening a pull request.
+Every change is validated against the rules in [meta/rule-format.md](meta/rule-format.md) and against the few rules of other standards that the validator names. CI runs these checks on every pull request; while you make a change pass, run those that cover what you changed.
 
 Prerequisites: Python 3.10 or later. The tool versions are pinned in [requirements.txt](requirements.txt).
 
