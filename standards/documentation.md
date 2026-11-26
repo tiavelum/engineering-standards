@@ -1,7 +1,7 @@
 ---
 id: documentation
 title: Documentation
-version: 18.0.0
+version: 19.0.0
 status: active
 applies_to: [all]
 summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, comments in source, release notes and upkeep."
@@ -97,11 +97,11 @@ A rule for how the content of a directory is built MUST be documented where that
 
 ### DOC-53
 
-A description of files that all lie in one directory below the root MUST stand in the README of the deepest directory that holds them all, except what a rule requires of another document.
+A description of files that all lie in one directory below the root MUST stand in the README of the deepest directory that holds them all, or in a document that this README links and that is not a README, except what a rule requires of another document.
 
-> Correct: how `sync/photo-sync.sh` matches photos, in `sync/README.md`; the root README says in one sentence what `sync/` does and links there
+> Correct: `sync/README.md` describes how `sync/photo-sync.sh` matches photos, or links `docs/photo-matching.md`, which does; the root README says in one sentence what `sync/` does and links there
 >
-> Incorrect: the same description in the root README or in `docs/sync.md`
+> Incorrect: the same description in the root README, or in `docs/photo-matching.md` with no link to it from `sync/README.md`
 
 ## Comments in source
 
