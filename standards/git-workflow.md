@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 13.0.0
+version: 14.0.0
 status: active
 applies_to: [all]
 summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
@@ -25,6 +25,18 @@ A repository without commits has no default branch; its first commit creates it.
 
 The head branch of a merged pull request MUST be deleted.
 
+### GW-46
+
+A branch other than the default branch or a release branch MUST have a pull request once it holds a pushed commit.
+
+A pushed commit without a pull request is easily forgotten.
+
+### GW-48
+
+A commit MUST NOT be pushed to the head branch of a merged pull request.
+
+Nobody reviews or merges it there; further work goes to a new branch and a new pull request.
+
 ## Pull requests
 
 WR-10 sets how a pull request's description opens: with what the pull request merges and why, for one issue or several.
@@ -32,6 +44,12 @@ WR-10 sets how a pull request's description opens: with what the pull request me
 ### GW-29
 
 A pull request MUST be made for one or more issues of its own repository, which its description names.
+
+### GW-47
+
+A pull request MUST be a draft if and only if the work it does for the issues its description names is not done.
+
+Whoever reviews or merges can then tell from the draft state alone whether the pull request waits on its author.
 
 ### GW-41
 
@@ -67,7 +85,13 @@ The `<summary>` of a pull request's title MUST begin with a lowercase verb in th
 
 ### GW-38
 
-A pull request's description MUST carry a closing keyword, such as `Closes #12 (Rename setup.sh to install.sh)`, for each issue whose work the pull request completes.
+A pull request's description MUST carry a closing keyword, such as `Closes #12 (Rename setup.sh to install.sh)`, for each issue whose work the pull request completes, and its description and commit messages MUST NOT carry one for another issue.
+
+GitHub closes every issue a closing keyword names when the pull request merges, wherever the keyword stands in a sentence.
+
+> Correct: `#57 stays open for the releases, which a later pull request builds.`
+>
+> Incorrect: `A later pull request closes #57.`
 
 ### GW-39
 
