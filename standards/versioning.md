@@ -1,7 +1,7 @@
 ---
 id: versioning
 title: Versioning and public API
-version: 6.0.0
+version: 6.1.0
 status: active
 applies_to: [software]
 summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, how a release version is formed and recorded, and how release branches are kept.
@@ -92,6 +92,16 @@ The following MUST NOT be treated as breaking:
 Where it is unclear whether a change is breaking, it MUST be treated as breaking.
 
 An unnecessary MAJOR release inconveniences the publisher; a missed one breaks someone else's system.
+
+### VER-49
+
+A pull request's title MUST carry the `!` of GW-6 if and only if its change is breaking under VER-39, VER-40 and VER-41.
+
+`git log --oneline` and the tools that set a version from commits, such as release-please, then show which change raised MAJOR under VER-6.
+
+> Correct: `feat!: remove the --legacy flag`, for a command-line tool that documented the flag
+>
+> Incorrect: `feat: remove the --legacy flag`, for the same tool; `fix!: correct a typo in the README`
 
 ## Incrementing
 

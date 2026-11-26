@@ -58,7 +58,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 12.0.0
+    version: 13.0.0
     status: active
     summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
     applies_to: [all]
@@ -68,11 +68,12 @@ standards:
   - id: versioning
     path: standards/versioning.md
     title: Versioning and public API
-    version: 6.0.0
+    version: 6.1.0
     status: active
     summary: What a repository publishes as its public API, which changes to it are breaking, when each component of its version is incremented, how a release version is formed and recorded, and how release branches are kept.
     applies_to: [software]
     tags: [versions, releases, semver, dependencies, api, compatibility, branches]
+    requires: [git-workflow]
 
   - id: module-layers
     path: standards/module-layers.md
@@ -107,7 +108,7 @@ standards:
   - id: writing
     path: standards/writing.md
     title: Writing
-    version: 9.0.0
+    version: 9.0.1
     status: active
     summary: "How the texts of a repository are written, from its documents to its issues, pull requests, comments and commit messages: their language, how a description opens, how they name people, how long their titles and commit messages are, and how they reference issues, pull requests and sources."
     applies_to: [all]

@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 12.0.0
+version: 13.0.0
 status: active
 applies_to: [all]
 summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
@@ -39,9 +39,43 @@ A pull request MUST NOT carry work for an issue its description does not name.
 
 ### GW-6
 
-A pull request's title MUST take the form `<type>: <summary>`, where `<type>` is one of `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `build`, `ci`, `revert`.
+A pull request's title MUST take the form `<type>(<scope>)!: <summary>`, where `(<scope>)` and `!` may each be left out, `<type>` is a type of the table of GW-44 and `<scope>` is set by GW-45.
 
-The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), without a scope and with the types limited to this list.
+The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), with the types limited to the table of GW-44.
+
+> Correct: `feat: add a rule on scopes`, `fix(replay): keep the labels of closed issues`, `feat!: drop the --legacy flag`
+>
+> Incorrect: `installer: add zsh`, `Feat: add a rule`, `feat(replay, rewrite): share the gh stub`
+
+### GW-44
+
+A pull request's `<type>` MUST be the type of the first row of the following table whose condition its change meets.
+
+| Type | Condition |
+|---|---|
+| `revert` | An earlier change is undone |
+| `feat` | Whoever uses the repository gets something new or different, such as a new alias, a new rule or an app the Brewfile installs |
+| `fix` | Whoever uses the repository gets what was intended, where it did not work as intended before |
+| `perf` | The same result arrives faster or with fewer resources |
+| `docs` | Only documentation changes |
+| `test` | Only tests change |
+| `build` | Only how the repository is built or checked changes, such as its linters and their configuration |
+| `ci` | Only the CI configuration changes |
+| `style` | Only formatting changes |
+| `refactor` | Only the structure of the code changes |
+| `chore` | Anything else, such as a license or the removal of something unused |
+
+The type then says the same for the same kind of change: first whether whoever uses the repository gets anything different, then what alone changed.
+
+> Correct: `feat: install spotify from the brewfile`, `feat: show the age before the date in the log aliases`
+>
+> Incorrect: `chore: install spotify from the brewfile`, `chore: align message-log with the other logs`, which changes what an alias shows
+
+### GW-45
+
+A pull request's title MUST NOT carry a scope other than a name that the root README lists as a scope, for a part of the repository that holds every change the pull request makes.
+
+A listed name gives the same part the same scope each time, so `git log --grep '(replay)'` finds every change to it.
 
 ### GW-7
 
