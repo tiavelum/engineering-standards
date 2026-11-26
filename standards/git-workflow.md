@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 13.1.0
+version: 14.0.0
 status: active
 applies_to: [all]
 summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
@@ -21,9 +21,15 @@ A commit MUST reach the default branch or a release branch through a pull reques
 
 A repository without commits has no default branch; its first commit creates it.
 
-### GW-4
+### GW-46
 
-The head branch of a merged pull request MUST be deleted.
+A branch on the forge other than the default branch, a release branch and a branch a tool publishes from, such as `gh-pages`, MUST be the head branch of an open pull request.
+
+A pushed branch without an open pull request is easily forgotten.
+
+> Correct: `fix/142-broken-links` pushed and its pull request opened at once
+>
+> Incorrect: `feat/88-index-schema` left on the forge after its pull request was merged or closed
 
 ### GW-48
 
@@ -42,6 +48,16 @@ A pull request MUST be made for one or more issues of its own repository, which 
 ### GW-41
 
 A pull request MUST NOT carry work for an issue its description does not name.
+
+### GW-47
+
+A pull request MUST be a draft while its description holds an unticked item of a task list, and MUST NOT be one once it holds none.
+
+The task list shows what the branch still lacks, so the draft state tells whoever reviews or merges whether the pull request waits on its author.
+
+> Correct: a draft with `- [ ] Add GW-47` in its description, marked ready once the item is ticked
+>
+> Incorrect: a draft whose description holds no unticked item, or a ready one that still holds `- [ ] Add GW-47`
 
 ### GW-6
 
@@ -73,7 +89,13 @@ The `<summary>` of a pull request's title MUST begin with a lowercase verb in th
 
 ### GW-38
 
-A pull request's description MUST carry a closing keyword, such as `Closes #12 (Rename setup.sh to install.sh)`, for each issue whose work the pull request completes.
+A pull request's description MUST carry a line `Closes #<n> (<title>)` for each issue whose work the pull request completes, and the issues the forge lists as closed by its merge MUST be only those.
+
+A closing keyword directly before an issue number links that issue wherever it stands, even in a sentence, and the forge closes every linked issue on the merge.
+
+> Correct: `Closes #12 (Rename setup.sh to install.sh)` on a line of its own; `#57 (Build the releases) stays open for a later pull request.`
+>
+> Incorrect: `A later pull request closes #57.`, which the forge then lists as closed by the merge
 
 ### GW-39
 
@@ -129,7 +151,7 @@ A pull request that waits on a step only one person can take MUST carry the labe
 
 ### GW-40
 
-A squash or merge commit that merging a pull request creates MUST have the pull request's title as its first line, apart from a number the forge appends, and as its body, apart from trailers, either nothing or a summary of the description without HTML or the pull request's URL.
+A squash or merge commit that a pull request's merge creates MUST have the pull request's title as its first line, apart from an appended number, and as its body, apart from trailers, nothing or a summary of the description without HTML, closing keywords or the pull request's URL.
 
 The appended number leads to the pull request and its description; tags such as `<details>` show as noise in `git log`, and WR-5 limits the body's length.
 
