@@ -27,7 +27,7 @@ The head branch of a merged pull request MUST be deleted.
 
 ### GW-46
 
-A branch other than the default branch or a release branch MUST have a pull request once it holds a pushed commit.
+A branch other than the default branch or a release branch MUST have an open or merged pull request once it holds a pushed commit that the default branch does not.
 
 A pushed commit without a pull request is easily forgotten.
 
@@ -47,9 +47,13 @@ A pull request MUST be made for one or more issues of its own repository, which 
 
 ### GW-47
 
-A pull request MUST be a draft if and only if the work it does for the issues its description names is not done.
+A pull request MUST be a draft if and only if its branch lacks a change that its description says it makes.
 
 Whoever reviews or merges can then tell from the draft state alone whether the pull request waits on its author.
+
+> Correct: a draft whose description adds GW-46 and GW-47 while its branch holds only GW-46
+>
+> Incorrect: the same pull request marked ready, or kept a draft once its branch holds both
 
 ### GW-41
 
@@ -85,11 +89,11 @@ The `<summary>` of a pull request's title MUST begin with a lowercase verb in th
 
 ### GW-38
 
-A pull request's description MUST carry a closing keyword, such as `Closes #12 (Rename setup.sh to install.sh)`, for each issue whose work the pull request completes, and its description and commit messages MUST NOT carry one for another issue.
+A pull request's description MUST carry a closing keyword for each issue whose work the pull request completes, and its description and commit messages MUST NOT carry one for another issue, where a closing keyword is one GitHub lists, followed by an issue reference.
 
-GitHub closes every issue a closing keyword names when the pull request merges, wherever the keyword stands in a sentence.
+GitHub closes every issue so named when the pull request merges into the default branch, wherever the keyword stands in a sentence.
 
-> Correct: `#57 stays open for the releases, which a later pull request builds.`
+> Correct: `Closes #12 (Rename setup.sh to install.sh)`; `#57 (Build the releases) stays open for a later pull request.`
 >
 > Incorrect: `A later pull request closes #57.`
 
