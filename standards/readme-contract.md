@@ -4,12 +4,12 @@ title: README contract
 version: 12.0.0
 status: active
 applies_to: [all]
-summary: What every README of a repository must answer, in which order the reader meets it, and what it leaves to other documents.
+summary: What every README of a repository must answer, under which headings and in which order the reader meets it, and what it leaves to other documents.
 ---
 
 # README contract
 
-This file governs every README of a repository: what it answers, in which order, and what it leaves to other documents, for a reader who has never seen the repository and wants a first result; it fixes no headings.
+This file governs every README of a repository: what it answers, in which order, and what it leaves to other documents, for a reader who has never seen the repository and wants a first result; it fixes the level-2 headings and leaves the others free.
 
 Prefix: `RM`
 
@@ -35,39 +35,37 @@ In the README of a directory below the root, "the repository" in a rule of this 
 
 The root README MUST answer every question the following table marks as required.
 
-| Role | Required at the root | Answers | For example headed |
+| Role | Required at the root | Answers | Heading |
 |---|---|---|---|
-| Summary | MUST | What is this? | The title and the first paragraph |
-| What it is for | Optional | When do I use it, and when not? | What it is for, Scope |
-| Getting started | MUST | How do I get from nothing to a first result? | Getting started, Setup, Usage |
-| Example | Optional | What does using it look like? | Example |
-| Content and structure | Optional | What is in it, and how is it structured? | Files, Contents, Layers |
-| Known limits | Optional | What does it not do, or not do well? | Known limits |
-| Contributing | Optional | How do I check a change? | Contributing |
-| Documentation | Optional | Where do I read on? | Documentation |
-| License | MUST (public) | What may I do with it? | License |
+| Summary | MUST | What is this? | None: the title and the text before the first level-2 heading |
+| What it is for | Optional | When do I use it, and when not? | `## What it is for` |
+| Getting started | MUST | How do I get from nothing to a first result? | `## Getting started` |
+| Example | Optional | What does using it look like? | `## Example` |
+| Files | Optional | What is in it, and how is it structured? | `## Files` |
+| Known limits | Optional | What does it not do, or not do well? | `## Known limits` |
+| Contributing | Optional | How do I check a change? | `## Contributing` |
+| Documentation | Optional | Where do I read on? | `## Documentation` |
+| License | MUST (public) | What may I do with it? | `## License` |
 
 ### RM-42
 
-A README MUST NOT hold a section that answers a question the table of RM-1 does not name.
+The level-2 headings of a README MUST be distinct headings of the last column of the table of RM-1.
 
 What a reader needs after the first result stands in a document of `docs/` (DOC-2), which a README links (RM-43).
 
-> Correct: `replay/README.md` names a first replay as its first result and ends "Getting started" with it; renaming the new repository to the source's name stands in `docs/replay/`
+> Correct: `## Getting started`, `## Files` and `## License`, with `### Replaying a test repository` under the first
 >
-> Incorrect: a section "Taking over the source's name", "Troubleshooting" or "How it works" in `replay/README.md`
+> Incorrect: `## Usage`, `## How it works`, `## Taking over the source's name`, or `## Getting started` twice
 
 ### RM-38
 
-A role named in quotes in this standard MUST be read as the section that answers that role's question, whatever its heading.
-
-One section may answer several questions, and one question may take several sections.
+A role named in quotes in this standard MUST be read as the section under the heading that the table of RM-1 gives for that role, down to the next level-2 heading.
 
 ### RM-30
 
 A section that answers a question the table of RM-1 marks as optional MUST carry content that no other section of the README states.
 
-A "Content and structure" that lists only the files "Getting started" already names, or a "Documentation" that repeats its links, is left out.
+A "Files" that lists only the files "Getting started" already names, or a "Documentation" that repeats its links, is left out.
 
 ## Order
 
@@ -157,7 +155,7 @@ Where a repository has nothing to install or run, "Getting started" MUST name wh
 
 ### RM-35
 
-"Content and structure" MUST name the entry point files a reader opens first.
+"Files" MUST name the entry point files a reader opens first.
 
 ## Commands
 
@@ -226,7 +224,7 @@ A tool. Its summary already says what it does not do, so it needs no "What it is
 
 A command-line tool for anyone who imports CSV exports into a spreadsheet. It trims whitespace, unifies dates and drops empty rows; it does not merge files.
 
-## Usage
+## Getting started
 
 These steps tidy a first CSV export. They need Python 3.10 or later.
 
@@ -257,7 +255,7 @@ Printable checklists for hikers preparing a day walk or a hut tour in the Alps.
 
 Open `day-walk.md` and print it.
 
-## Contents
+## Files
 
 | File | For |
 |---|---|
