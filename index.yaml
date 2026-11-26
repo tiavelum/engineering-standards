@@ -63,7 +63,7 @@ standards:
     summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
     applies_to: [all]
     tags: [git, branches, pull-requests, commits]
-    requires: [writing, issues]
+    requires: [writing, issues, readme-contract]
 
   - id: versioning
     path: standards/versioning.md
@@ -88,7 +88,7 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 12.0.0
+    version: 13.0.0
     status: active
     summary: What every README of a repository must answer, under which headings and in which order the reader meets it, and what it leaves to other documents.
     applies_to: [all]

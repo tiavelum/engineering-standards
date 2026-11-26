@@ -54,28 +54,32 @@ A pull request's `<type>` MUST be the type of the first row of the following tab
 | Type | Condition |
 |---|---|
 | `revert` | An earlier change is undone |
-| `feat` | Whoever uses the repository gets something new or different, such as a new alias, a new rule or an app the Brewfile installs |
-| `fix` | Whoever uses the repository gets what was intended, where it did not work as intended before |
-| `perf` | The same result arrives faster or with fewer resources |
-| `docs` | Only documentation changes |
+| `docs` | Only documents about the repository change, such as its README |
 | `test` | Only tests change |
-| `build` | Only how the repository is built or checked changes, such as its linters and their configuration |
 | `ci` | Only the CI configuration changes |
-| `style` | Only formatting changes |
-| `refactor` | Only the structure of the code changes |
-| `chore` | Anything else, such as a license or the removal of something unused |
+| `build` | Only how the repository is built or checked changes, such as its linters and their configuration |
+| `style` | Only the formatting of code changes |
+| `refactor` | Only the structure of the code changes, and nothing it does |
+| `perf` | Only the speed or the resources of what it does change |
+| `fix` | Something that did not work as intended now does |
+| `feat` | Whoever uses the repository gets something new or different, such as a new alias, a new rule or an app the Brewfile installs |
+| `chore` | Anything else, such as a license |
 
-The type then says the same for the same kind of change: first whether whoever uses the repository gets anything different, then what alone changed.
+The narrow types come first, so the type says what alone changed, and `feat` takes every other change that whoever uses the repository notices.
 
-> Correct: `feat: install spotify from the brewfile`, `feat: show the age before the date in the log aliases`
+> Correct: `feat: install spotify from the brewfile`, `fix: put an empty line before the files of every message`, `docs: fix the clone command in the README`
 >
-> Incorrect: `chore: install spotify from the brewfile`, `chore: align message-log with the other logs`, which changes what an alias shows
+> Incorrect: `chore: install spotify from the brewfile`, `feat: fix the clone command in the README`
 
 ### GW-45
 
-A pull request's title MUST NOT carry a scope other than a name that the root README lists as a scope, for a part of the repository that holds every change the pull request makes.
+A pull request's title MUST NOT carry a scope other than one that "Contributing" of the root README (RM-1) lists, naming a part of the repository that holds every change the pull request makes.
 
-A listed name gives the same part the same scope each time, so `git log --grep '(replay)'` finds every change to it.
+A listed name lets `git log --grep '(replay)'` find every change to that part.
+
+> Correct: `fix(replay): keep the labels of closed issues`, where "Contributing" lists the scope `replay` for `replay/` and `docs/replay/`
+>
+> Incorrect: the same title where "Contributing" lists no scopes, or where the change also touches `rewrite/`
 
 ### GW-7
 
