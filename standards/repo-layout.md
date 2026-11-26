@@ -1,7 +1,7 @@
 ---
 id: repo-layout
 title: Repository layout
-version: 9.0.1
+version: 9.0.2
 status: active
 applies_to: [all]
 summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
@@ -37,13 +37,7 @@ A repository creates the directories it needs, under names of its choosing; the 
 
 Every directory below the root MUST have exactly one role.
 
-A role is what the statement that RM-11 or RL-18 requires says the directory holds, and it may name several kinds of file, such as a module's code and its tests.
-
-### RL-18
-
-The role of a directory that lies inside a top-level directory and whose role no tool fixes MUST be stated in the README at the root or in the README of a directory that contains it.
-
-A tool fixes a directory's role where it gives that directory its meaning, such as `.github/workflows/`.
+A role is what the statement that RM-48 requires says the directory holds, or the meaning a tool gives it, and it may name several kinds of file, such as a module's code and its tests.
 
 ### RL-19
 

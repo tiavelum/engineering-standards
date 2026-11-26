@@ -1,10 +1,10 @@
 ---
 id: documentation
 title: Documentation
-version: 19.0.0
+version: 20.0.0
 status: active
 applies_to: [all]
-summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, comments in source, release notes and upkeep."
+summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, how a directory's content is built, comments in source, release notes and upkeep."
 ---
 
 # Documentation
@@ -57,7 +57,7 @@ A document that states a constraint decided in an issue, and not made obvious by
 
 Whoever changes the work meets the constraint and its reason where they work, and the alternatives keep one home: the issue, which stays as answered when a later issue changes the decision.
 
-> Correct: `Labels are created before the issues, since an issue replayed before its label loses it ([octocat/tool#62](https://github.com/octocat/tool/issues/62)).` in `replay/README.md`
+> Correct: `Labels are created before the issues, since an issue replayed before its label loses it ([octocat/tool#62](https://github.com/octocat/tool/issues/62)).` in `docs/replay.md`
 >
 > Incorrect: `Labels are created before the issues, since an issue replayed before its label loses it.` with no link to the issue, or the reason only in `docs/decisions/0002-create-labels-first.md`
 
@@ -89,19 +89,11 @@ Written down with the change, the step reaches whoever sets the repository up or
 >
 > Incorrect: the same pull request fixes only the script the run stopped in, and turning off Actions stays in the run's issue
 
-## Directory READMEs
+## Directories
 
 ### DOC-45
 
 A rule for how the content of a directory is built MUST be documented where that content does not make it obvious.
-
-### DOC-53
-
-A description of files that all lie in one directory below the root MUST stand in the README of the deepest directory that holds them all, or in a document that this README links and that is not a README, except what a rule requires of another document.
-
-> Correct: `sync/README.md` describes how `sync/photo-sync.sh` matches photos, or links `docs/photo-matching.md`, which does; the root README says in one sentence what `sync/` does and links there
->
-> Incorrect: the same description in the root README, or in `docs/photo-matching.md` with no link to it from `sync/README.md`
 
 ## Comments in source
 

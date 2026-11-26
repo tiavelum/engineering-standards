@@ -48,7 +48,7 @@ standards:
   - id: repo-layout
     path: standards/repo-layout.md
     title: Repository layout
-    version: 9.0.1
+    version: 9.0.2
     status: active
     summary: Required top-level files, directory roles, where each file is placed, and what must not live in a repository.
     applies_to: [all]
@@ -87,9 +87,9 @@ standards:
   - id: readme-contract
     path: standards/readme-contract.md
     title: README contract
-    version: 10.0.1
+    version: 11.0.0
     status: active
-    summary: What the README at the root of any repository must answer, in which order the reader meets it, and when it is done.
+    summary: What every README of a repository must answer, in which order the reader meets it, and what it leaves to other documents.
     applies_to: [all]
     tags: [documentation, readme]
     requires: [documentation]
@@ -97,9 +97,9 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 19.0.0
+    version: 20.0.0
     status: active
-    summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, comments in source, release notes and upkeep."
+    summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, how a directory's content is built, comments in source, release notes and upkeep."
     applies_to: [all]
     tags: [documentation]
     requires: [writing]
