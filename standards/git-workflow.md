@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 14.0.0
+version: 13.1.0
 status: active
 applies_to: [all]
 summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
@@ -25,12 +25,6 @@ A repository without commits has no default branch; its first commit creates it.
 
 The head branch of a merged pull request MUST be deleted.
 
-### GW-46
-
-A branch other than the default branch or a release branch MUST have an open or merged pull request once it holds a pushed commit that the default branch does not.
-
-A pushed commit without a pull request is easily forgotten.
-
 ### GW-48
 
 A commit MUST NOT be pushed to the head branch of a merged pull request.
@@ -44,16 +38,6 @@ WR-10 sets how a pull request's description opens: with what the pull request me
 ### GW-29
 
 A pull request MUST be made for one or more issues of its own repository, which its description names.
-
-### GW-47
-
-A pull request MUST be a draft if and only if its branch lacks a change that its description says it makes.
-
-Whoever reviews or merges can then tell from the draft state alone whether the pull request waits on its author.
-
-> Correct: a draft whose description adds GW-46 and GW-47 while its branch holds only GW-46
->
-> Incorrect: the same pull request marked ready, or kept a draft once its branch holds both
 
 ### GW-41
 
@@ -89,13 +73,7 @@ The `<summary>` of a pull request's title MUST begin with a lowercase verb in th
 
 ### GW-38
 
-A pull request's description MUST carry a closing keyword for each issue whose work the pull request completes, and its description and commit messages MUST NOT carry one for another issue, where a closing keyword is one GitHub lists, followed by an issue reference.
-
-GitHub closes every issue so named when the pull request merges into the default branch, wherever the keyword stands in a sentence.
-
-> Correct: `Closes #12 (Rename setup.sh to install.sh)`; `#57 (Build the releases) stays open for a later pull request.`
->
-> Incorrect: `A later pull request closes #57.`
+A pull request's description MUST carry a closing keyword, such as `Closes #12 (Rename setup.sh to install.sh)`, for each issue whose work the pull request completes.
 
 ### GW-39
 
