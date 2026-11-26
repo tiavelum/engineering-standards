@@ -21,10 +21,6 @@ A commit MUST reach the default branch or a release branch through a pull reques
 
 A repository without commits has no default branch; its first commit creates it.
 
-### GW-4
-
-The head branch of a merged pull request MUST be deleted.
-
 ### GW-46
 
 A branch on the forge other than the default branch, a release branch and a branch a tool publishes from, such as `gh-pages`, MUST be the head branch of an open pull request.
@@ -33,7 +29,7 @@ A pushed branch without an open pull request is easily forgotten.
 
 > Correct: `fix/142-broken-links` pushed and its pull request opened at once
 >
-> Incorrect: `feat/88-index-schema` left on the forge after its pull request was closed unmerged
+> Incorrect: `feat/88-index-schema` left on the forge after its pull request was merged or closed
 
 ### GW-48
 
@@ -51,13 +47,7 @@ A pull request MUST be made for one or more issues of its own repository, which 
 
 ### GW-41
 
-A pull request MUST NOT carry work for an issue other than those it closes under GW-38 and a tracking issue of ISS-10 that its description names.
-
-Work for an issue then reaches it in one pull request, which the issue's state follows.
-
-> Correct: a pull request that closes #12 and names #10, the tracking issue that holds #12
->
-> Incorrect: a pull request that carries out two of three points of #12 and leaves #12 open for the third
+A pull request MUST NOT carry work for an issue its description does not name.
 
 ### GW-47
 
