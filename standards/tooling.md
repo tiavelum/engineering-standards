@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 14.3.0
+version: 14.4.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -9,7 +9,7 @@ summary: The boundary between what a tool enforces and what a written standard c
 
 # Tooling and enforcement
 
-This file governs what a tool enforces instead of a written standard, and the tool configuration, checks, dependencies and secrets every repository keeps.
+This file governs what a tool enforces instead of a written standard, and the tool configuration, checks, tests, dependencies and secrets every repository keeps.
 
 Prefix: `TL`
 
@@ -130,6 +130,40 @@ A script the README runs is what the repository offers its users; a linter shows
 ### TL-21
 
 Publication to a package or image registry MUST happen only from a build of a tag whose commit is reachable from the default branch or from a release branch.
+
+## Tests
+
+A runner can run a single test where one command selects exactly that test, by its name or its place in the suite, as pytest does by node id.
+
+### TL-38
+
+A test SHOULD be written in the programming or scripting language of the code it tests.
+
+A test in another language becomes the template of the next one, and its runner often cannot run a single test, so every change runs the whole suite.
+
+> Correct: Python scripts tested by a pytest suite that runs them as processes against a fake `gh`.
+>
+> Incorrect: Python scripts tested by a shell script that holds Python in heredocs and runs each check as a quoted condition through `eval`.
+
+### TL-39
+
+A test of a suite whose runner can run a single test MUST give the same result run on its own as run within the whole suite.
+
+A test that relies on what an earlier test left passes in the suite and fails alone, or the reverse; fixtures, not the order of the tests, set up what a test needs.
+
+> Correct: each test asks for a fixture of session scope that builds the source repository once.
+>
+> Incorrect: a test reads a file that only the test before it in the same file writes.
+
+### TL-40
+
+A README that gives the command running a suite whose runner can run a single test MUST give, beside it in the same code block or sentence, a command that runs a single test of that suite.
+
+Whoever changes one test, or code that only some tests cover, can then run those tests alone, while CI runs the whole suite as TL-36 requires.
+
+> Correct: "Getting started" runs `pytest tests` and, beside it, `pytest tests/test_plan.py::test_leave_behind` for one test.
+>
+> Incorrect: "Getting started" runs only `pytest tests`.
 
 ## Dependencies
 
