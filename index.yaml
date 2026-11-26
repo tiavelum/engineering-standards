@@ -97,7 +97,7 @@ standards:
   - id: documentation
     path: standards/documentation.md
     title: Documentation
-    version: 18.0.0
+    version: 19.0.0
     status: active
     summary: "Rules for every document of a repository, the README included: where it lives, what it states, manual steps, directory READMEs, comments in source, release notes and upkeep."
     applies_to: [all]
