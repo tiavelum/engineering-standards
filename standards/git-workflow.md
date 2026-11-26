@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 11.0.0
+version: 12.0.0
 status: active
 applies_to: [all]
 summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
@@ -109,7 +109,13 @@ A pull request that waits on a step only one person can take MUST carry the labe
 
 ### GW-40
 
-A squash or merge commit that merging a pull request creates MUST have the pull request's title as its first line, apart from a number the forge appends, and as its body a short summary of the description and the pull request's URL.
+A squash or merge commit that merging a pull request creates MUST have the pull request's title as its first line, apart from a number the forge appends, and as its body, apart from trailers, either nothing or a summary of the description without HTML or the pull request's URL.
+
+The appended number leads to the pull request and its description; tags such as `<details>` show as noise in `git log`, and WR-5 limits the body's length.
+
+> Correct: `gh pr merge 415 --squash --body "Gives each section of a README a fixed heading."`
+>
+> Incorrect: `gh pr merge 415 --squash --body "$(gh pr view 415 --json body -q .body)"`, which pastes the description, `<details>` sections included
 
 ### GW-33
 

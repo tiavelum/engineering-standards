@@ -1,10 +1,10 @@
 ---
 id: writing
 title: Writing
-version: 8.0.0
+version: 9.0.0
 status: active
 applies_to: [all]
-summary: "How the texts of a repository are written, from its documents to its issues, pull requests, comments and commit messages: their language, how a description opens, how they name people, how long their titles are, and how they reference issues, pull requests and sources."
+summary: "How the texts of a repository are written, from its documents to its issues, pull requests, comments and commit messages: their language, how a description opens, how they name people, how long their titles and commit messages are, and how they reference issues, pull requests and sources."
 ---
 
 # Writing
@@ -45,15 +45,25 @@ A person's name, whether a real name or an account handle, MUST take the form th
 >
 > Incorrect: `Copyright (c) 2026 octocat` in a LICENSE, `Reported by Hubot Jones.` in a pull request, where hubot has an account, `Maintained by @octocat.` in a README
 
-## Titles
+## Lengths
 
 ### WR-5
 
-The title of an issue, the title of a pull request and the first line of a commit message MUST each be at most 100 characters, not counting a pull request number that a forge appends to that line on merge.
+Each text the following table names MUST be at most the number of characters it gives, where every character counts as one, a letter such as `ä` included.
 
-> Correct: `feat: add a writing standard with the rules on every text, from the README to its issues and commits (#145)`, 100 characters before the appended number
+| Text | At most | What counts |
+|---|---|---|
+| The title of an issue | 92 | The whole title |
+| The title of a pull request | 60 | The whole title, without the number a forge shows beside it |
+| The first line of a commit message | 68 | The whole line, with a ` (#1234)` that a forge appends on merge |
+| A line of a commit message's body | 68 | The line without its line break, unless it holds only one URL or one trailer |
+| The body of a commit message | 200 | From the message's third line to its trailers, such as `Co-Authored-By:`, line breaks and URLs included |
+
+Git does not wrap a commit message, and `git log` indents its body; a title of 60 leaves room for a four-digit number that its squash commit appends. A URL or trailer broken over two lines stops working, and trailers are fixed lines the author does not write.
+
+> Correct: `feat: limit a README to fixed sections for a first result`, 57 characters, as a pull request title, which becomes a first line of 64 with ` (#415)`
 >
-> Incorrect: `fix: stop the import at the first corrupt file instead of skipping it and calling the import complete`, 101 characters
+> Incorrect: `fix: stop the import at the first corrupt file instead of skipping it`, 69 characters, as the first line of a commit
 
 ## References to issues and pull requests
 
