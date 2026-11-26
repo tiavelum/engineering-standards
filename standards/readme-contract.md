@@ -21,7 +21,13 @@ The rules of `standards/documentation.md` apply to a README as to every other do
 
 This standard MUST be applied to every README of a repository: the README at its root and the README of each directory below it.
 
-A rule that names the root README applies to that README alone.
+### RM-50
+
+In the README of a directory below the root, "the repository" in a rule of this standard MUST be read as that directory, unless the rule names the root README.
+
+> Correct: `replay/README.md` lists the prerequisites of what `replay/` runs, as RM-6 asks
+>
+> Incorrect: `replay/README.md` lists every prerequisite of the whole repository
 
 ## What a README answers
 
@@ -33,9 +39,10 @@ The root README MUST answer every question the following table marks as required
 |---|---|---|---|
 | Summary | MUST | What is this? | The title and the first paragraph |
 | What it is for | Optional | When do I use it, and when not? | What it is for, Scope |
-| Getting started | MUST | How do I get a first result? | Getting started, Setup, Usage |
+| Getting started | MUST | How do I get from nothing to the first run or reading that shows it working? | Getting started, Setup, Usage |
 | Example | Optional | What does using it look like? | Example |
-| Content and structure | Optional | What is in it, and where? | Files, Contents, Content and structure |
+| Content and structure | Optional | What is in it, and how is it structured? | Files, Contents, Layers |
+| Known limits | Optional | What does it not do, or not do well? | Known limits |
 | Documentation | Optional | Where do I read on? | Documentation |
 | License | MUST (public) | What may I do with it? | License |
 
@@ -43,7 +50,7 @@ The root README MUST answer every question the following table marks as required
 
 A README MUST NOT hold a section that answers a question the table of RM-1 does not name.
 
-What a reader needs beyond a first result stands in a document of `docs/` (DOC-2), one topic per file (DOC-37), which a README links (RM-43).
+A reader who has a first result finds the rest in the documents of `docs/` (DOC-2), through the links of RM-43.
 
 > Correct: `replay/README.md` ends "Getting started" with the first replay, and `docs/replay/stopping-and-resuming.md` explains how a stopped replay resumes
 >
@@ -119,7 +126,7 @@ Where a repository has something to install or run, "Getting started" MUST give 
 
 ### RM-45
 
-A step of "Getting started" MUST state its result in a sentence and MUST NOT show what a command prints, other than text the reader uses in a later step, such as a URL.
+A command in "Getting started" MUST be followed by a sentence that states its result instead of what it prints, other than text the reader copies into a later step, such as a URL.
 
 The sentence stays true when ordinary work changes the output, such as the number of tests.
 
@@ -137,7 +144,7 @@ Where a repository has nothing to install or run, "Getting started" MUST name wh
 
 ### RM-10
 
-"Example" MUST show at least one real usage with concrete values and its actual output, not a bare signature or an all-placeholder command.
+"Example" MUST show at least one real usage with concrete values and what it produces, not a bare signature or an all-placeholder command.
 
 ### RM-35
 
@@ -147,21 +154,23 @@ Where a repository has nothing to install or run, "Getting started" MUST name wh
 
 ### RM-46
 
-A command block in a README MUST run at most one script or tool of the repository, beside the commands that prepare it; a sequence with its own logic, such as variables, conditions or loops, MUST be a script of the repository that the block runs.
+A command block in a README MUST NOT set a variable, substitute a command's output or branch on a command's result; a sequence that needs one of these MUST be a script of the repository that the block runs.
 
-> Correct: `scripts/review-pr.sh 40` in a fenced block; `git switch main && git pull --ff-only` followed by `./setup-mac.sh`
+Commands joined by `&&` only stop at the first failure and do not branch.
+
+> Correct: `scripts/review-pr.sh 40` in a fenced block; `git switch main && git pull --ff-only && ./setup-mac.sh`
 >
-> Incorrect: a block that sets `pr=40`, looks up a run with `gh run list` and downloads it inside an `if`
+> Incorrect: `pr=40` followed by `scripts/review-pr.sh $pr`; `id=$(gh api repos/octocat/tool/issues/3 --jq .id)`; `test -d tool || mkdir tool`
 
 ### RM-47
 
-A README MUST NOT explain how a tool from outside the repository works.
+A README MUST NOT state how a tool from outside the repository works, other than the action a step takes with it, the result the reader then sees and why the step is needed.
 
-That explanation has its home in the tool's own documentation, which a step links where the reader needs more than the command.
+The tool's own documentation explains the rest and is kept current by those who make the tool.
 
-> Correct: `gh auth login` in a fenced block, with a link to the GitHub CLI manual for its options
+> Correct: `In the Claude app, open Settings > Capabilities and upload skill.zip. The skill then shows in the list.`; `caffeinate -i keeps the Mac awake while the replay runs.`
 >
-> Incorrect: a paragraph on how forks, branches and pull requests work on GitHub
+> Incorrect: `A fork is your own copy of a repository on GitHub, and a pull request asks the owner of the original to merge from it.`
 
 ### RM-9
 
@@ -187,9 +196,13 @@ A tool fixes a directory's role where it gives that directory its meaning, such 
 
 A README that names a file or directory below its own directory MUST link the README of the deepest directory below its own that is or holds it and has a README.
 
+> Correct: the root README names `replay/replay.py` and links `replay/README.md`
+>
+> Incorrect: the root README names `replay/replay.py` and links nothing, or links only `replay/replay.py`
+
 ### RM-49
 
-A description of files that all lie in one directory below the root MUST stand in the README of the deepest directory that holds them all, or in a document that this README links and that is not a README, except what a rule requires of another document.
+A description of files that all lie in one directory below the root MUST stand in the README of the deepest directory holding them all that has a README, or in a non-README document it links, except what a rule requires of another document.
 
 > Correct: `sync/README.md` describes how `sync/photo-sync.sh` matches photos, or links `docs/photo-matching.md`, which does; the root README says in one sentence what `sync/` does and links there
 >
@@ -197,11 +210,11 @@ A description of files that all lie in one directory below the root MUST stand i
 
 ### RM-43
 
-Each document in `docs/` MUST be linked from a README, in a sentence, list item or table row that says when a reader needs it.
+Each document in `docs/` MUST be linked from a README, in a sentence, list item or table row that names the task or question it serves.
 
 > Correct: `To resume a stopped replay, follow [stopping and resuming](../docs/replay/stopping-and-resuming.md).` in `replay/README.md`
 >
-> Incorrect: a file in `docs/` that no README links, or a list of the files in `docs/` that says nothing of when to read them
+> Incorrect: `docs/replay/file-formats.md` linked from no README; `See also: [file-formats.md](../docs/replay/file-formats.md)`
 
 ## Examples
 
