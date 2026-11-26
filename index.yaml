@@ -58,7 +58,7 @@ standards:
   - id: git-workflow
     path: standards/git-workflow.md
     title: Git workflow
-    version: 13.1.0
+    version: 14.0.0
     status: active
     summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
     applies_to: [all]
