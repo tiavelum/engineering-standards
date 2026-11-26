@@ -57,9 +57,9 @@ Each text the following table names MUST be at most the number of characters it 
 | The title of a pull request | 60 | The whole title, without the number a forge shows beside it |
 | The first line of a commit message | 68 | The whole line, with a ` (#1234)` that a forge appends on merge |
 | A line of a commit message's body | 68 | The line without its line break, unless it holds only one URL or one trailer |
-| The body of a commit message | 200 | From the message's third line to its trailers, such as `Co-Authored-By:`, line breaks included |
+| The body of a commit message | 200 | From the message's third line to its trailers, such as `Co-Authored-By:`, line breaks and URLs included |
 
-Git does not wrap a commit message, and `git log` indents its body; a pull request title of 60 leaves room for the number its squash commit appends. A URL or trailer broken over two lines stops working, and trailers are fixed lines the author does not write.
+Git does not wrap a commit message, and `git log` indents its body; a title of 60 leaves room for a four-digit number that its squash commit appends. A URL or trailer broken over two lines stops working, and trailers are fixed lines the author does not write.
 
 > Correct: `feat: limit a README to fixed sections for a first result`, 57 characters, as a pull request title, which becomes a first line of 64 with ` (#415)`
 >
