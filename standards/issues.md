@@ -41,9 +41,9 @@ Work that spans several issues SHOULD be held by one tracking issue that lists e
 
 ### ISS-20
 
-An issue other than a tracking issue of ISS-10 MUST be completed by at most one pull request.
+An issue other than a tracking issue of ISS-10 MUST NOT be carried out by more than one merged pull request.
 
-Work that needs more pull requests is split into issues first, so that each issue closes with the change that completes it.
+Each issue then closes with the one change that does its work, and work too large for one pull request becomes several issues.
 
 ### ISS-19
 
@@ -81,9 +81,13 @@ The condition lets anyone see whether the issue is done without asking its autho
 
 ### ISS-21
 
-An issue whose done condition names more than one piece of work MUST list them in its description as a task list, each item ticked once its change is merged or its decision carried out, and MUST NOT report that progress in a comment instead.
+An issue whose done condition lists its parts as items MUST make those items a task list in its description, each ticked once its change is merged or its decision carried out, and MUST NOT report that progress in a comment.
 
 Whoever opens the issue sees what is left without reading its comments.
+
+> Correct: `- [x] Rename the script` and `- [ ] Update the README` under the done condition
+>
+> Incorrect: the same items as a numbered list, with `Renamed the script.` as a comment
 
 ### ISS-7
 
