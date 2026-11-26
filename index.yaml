@@ -117,7 +117,7 @@ standards:
   - id: issues
     path: standards/issues.md
     title: Issues
-    version: 6.1.0
+    version: 7.0.0
     status: active
     summary: When work becomes an issue, what an issue states, how it is labelled while it waits on a person, and how it is closed.
     applies_to: [all]

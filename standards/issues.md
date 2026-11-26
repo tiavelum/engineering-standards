@@ -1,7 +1,7 @@
 ---
 id: issues
 title: Issues
-version: 6.1.0
+version: 7.0.0
 status: active
 applies_to: [all]
 summary: When work becomes an issue, what an issue states, how it is labelled while it waits on a person, and how it is closed.
@@ -33,7 +33,11 @@ An issue MUST NOT duplicate an open issue of the same repository.
 
 ### ISS-10
 
-Work that spans several issues SHOULD be held by one tracking issue that links each of them.
+Work that spans several issues SHOULD be held by one tracking issue that lists each of them as an item of a task list in its description, ticked once that issue closes.
+
+> Correct: `- [x] #407` and `- [ ] #410` in the description of the tracking issue
+>
+> Incorrect: the issues linked in running text, with their state reported in comments
 
 ### ISS-19
 
@@ -61,7 +65,7 @@ An issue's title MUST state the work as an imperative phrase.
 
 > Correct: `Split the rules that hold two independent requirements`, `Decide whether source files may sit at the root`
 >
-> Incorrect: `Rule splitting`, `Source files at the root?`, `Two rules disagree on .editorconfig`
+> Incorrect: `Rule splitting`, `Source files at the root?`, `Two rules disagree on .editorconfig`, `Refactor: split the rules on branch names`
 
 ### ISS-6
 
