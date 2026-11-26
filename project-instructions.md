@@ -11,5 +11,3 @@ Open decisions: Write into a rule only what a decision on an issue already cover
 Testing a rule: Before pushing a new or changed rule, try it on a real example, reading it as someone who did not write it. If it can be read two ways, rewrite it once. If it still can, leave it out and open an issue for it.
 
 Facts from the files: Look up rule numbers, versions and counts in the files of your branch, not in memory or an older copy, since they change with every merge.
-
-Done: A pull request is ready when the checks under "As a contributor" in the README pass. If you cannot run them yourself, wait for the automated run on GitHub after your last commit and report its result.
