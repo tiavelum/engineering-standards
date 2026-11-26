@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 13.0.0
+version: 13.1.0
 status: active
 applies_to: [all]
 summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
@@ -24,6 +24,12 @@ A repository without commits has no default branch; its first commit creates it.
 ### GW-4
 
 The head branch of a merged pull request MUST be deleted.
+
+### GW-48
+
+A commit MUST NOT be pushed to the head branch of a merged pull request.
+
+Nobody reviews or merges it there; further work goes to a new branch and a new pull request.
 
 ## Pull requests
 
