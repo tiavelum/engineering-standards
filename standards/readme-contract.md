@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 12.1.0
+version: 12.2.0
 status: active
 applies_to: [all]
 summary: What every README of a repository must answer, under which headings and in which order the reader meets it, and what it leaves to other documents.
@@ -149,9 +149,29 @@ A statement of the result stays true when ordinary work changes the output, such
 >
 > Incorrect: `All 412 tests pass in 3.2 seconds.`; a block holding `412 passed in 3.21s`
 
+### RM-55
+
+Each command block in "Getting started" MUST be followed, before the next command block or heading, by a sentence that states what the reader can see once its last command has finished.
+
+The sentence tells the reader whether the step worked without the output that RM-51 keeps out.
+
+> Correct: a block holding `pytest`, followed by `All tests pass.`
+>
+> Incorrect: the same block followed directly by `### Replaying a test repository`, or by `Then run replay.py:` and the next block
+
 ### RM-7
 
 Where a repository has something to install or run, "Getting started" MUST end with the step that shows the first result, with what the reader then sees (RM-34 gives the form).
+
+### RM-56
+
+A clause of a README MUST NOT state what a tool or service from outside the repository does, other than in "Known limits" and in a sentence that states a step's result under RM-34 or RM-55.
+
+How such a tool works is its own documentation's subject, and a README that explains it grows past what a first result needs.
+
+> Correct: `gh auth login opens a browser, where you confirm the code.` as a step's result; the same-owner limit of sub-issues in "Known limits"
+>
+> Incorrect: `A mailmap maps one identity per line.`; `Claude Code reads the file from its clone.` beside a step done in the Claude app
 
 ### RM-26
 
