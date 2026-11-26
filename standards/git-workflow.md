@@ -27,9 +27,9 @@ The head branch of a merged pull request MUST be deleted.
 
 ### GW-46
 
-A branch on the forge other than the default branch or a release branch MUST be the head branch of an open pull request.
+A branch on the forge other than the default branch, a release branch and a branch a tool publishes from, such as `gh-pages`, MUST be the head branch of an open pull request.
 
-A pushed branch without one is easily forgotten, so a branch goes once its pull request is merged (GW-4) or closed.
+A pushed branch without an open pull request is easily forgotten.
 
 > Correct: `fix/142-broken-links` pushed and its pull request opened at once
 >
@@ -53,7 +53,7 @@ A pull request MUST be made for one or more issues of its own repository, which 
 
 A pull request MUST NOT carry work for an issue other than those it closes under GW-38 and a tracking issue of ISS-10 that its description names.
 
-Work for an issue then reaches it in one pull request, and work too large for one is split into issues first.
+Work for an issue then reaches it in one pull request, which the issue's state follows.
 
 > Correct: a pull request that closes #12 and names #10, the tracking issue that holds #12
 >
@@ -61,13 +61,13 @@ Work for an issue then reaches it in one pull request, and work too large for on
 
 ### GW-47
 
-A pull request MUST be a draft if and only if merging its branch as it stands would leave unmet the done condition (ISS-6) of an issue its description links for closing.
+A pull request MUST be a draft while its description holds an unticked item of a task list, and MUST NOT be one once it holds none.
 
-Whoever reviews or merges can then tell from the draft state whether the branch already does what its issues ask.
+The task list shows what the branch still lacks, so the draft state tells whoever reviews or merges whether the pull request waits on its author.
 
-> Correct: a draft that closes an issue done once GW-46 and GW-47 hold, while its branch holds only GW-46
+> Correct: a draft with `- [ ] Add GW-47` in its description, marked ready once the item is ticked
 >
-> Incorrect: the same pull request marked ready, or still a draft once its branch holds both
+> Incorrect: a draft whose description holds no unticked item, or a ready one that still holds `- [ ] Add GW-47`
 
 ### GW-6
 
@@ -99,13 +99,13 @@ The `<summary>` of a pull request's title MUST begin with a lowercase verb in th
 
 ### GW-38
 
-When a pull request merges, the issues the forge closes with it MUST be exactly those whose done condition (ISS-6) the merge meets.
+A pull request's description MUST carry a line `Closes #<n> (<title>)` for each issue whose work the pull request completes, and the issues the forge lists as closed by its merge MUST be only those.
 
-The forge closes each issue that a closing keyword directly before its number links, such as `Closes #12`, also inside a sentence or a quote, but not inside a code span.
+A closing keyword directly before an issue number links that issue wherever it stands, even in a sentence, and the forge closes every linked issue on the merge.
 
-> Correct: `Closes #12 (Rename setup.sh to install.sh)`; `#57 (Build the releases) stays open for a later pull request.`
+> Correct: `Closes #12 (Rename setup.sh to install.sh)` on a line of its own; `#57 (Build the releases) stays open for a later pull request.`
 >
-> Incorrect: `A later pull request closes #57.`, which links #57 for closing; `Closes the rename tracked in #12`, which links nothing
+> Incorrect: `A later pull request closes #57.`, which the forge then lists as closed by the merge
 
 ### GW-39
 
