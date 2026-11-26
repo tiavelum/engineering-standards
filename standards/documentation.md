@@ -57,7 +57,7 @@ A document that states a constraint decided in an issue, and not made obvious by
 
 Whoever changes the work meets the constraint and its reason where they work, and the alternatives keep one home: the issue, which stays as answered when a later issue changes the decision.
 
-> Correct: `Labels are created before the issues, since an issue replayed before its label loses it ([octocat/tool#62](https://github.com/octocat/tool/issues/62)).` in `docs/replay.md`
+> Correct: `Labels are created before the issues, since an issue replayed before its label loses it ([octocat/tool#62](https://github.com/octocat/tool/issues/62)).` in `replay/README.md`
 >
 > Incorrect: `Labels are created before the issues, since an issue replayed before its label loses it.` with no link to the issue, or the reason only in `docs/decisions/0002-create-labels-first.md`
 

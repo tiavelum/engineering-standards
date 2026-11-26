@@ -39,23 +39,17 @@ The root README MUST answer every question the following table marks as required
 |---|---|---|---|
 | Summary | MUST | What is this? | The title and the first paragraph |
 | What it is for | Optional | When do I use it, and when not? | What it is for, Scope |
-| Getting started | MUST | How do I get from nothing to a first use of what the summary says it does? | Getting started, Setup, Usage |
+| Getting started | MUST | How do I get a first result? | Getting started, Setup, Usage |
 | Example | Optional | What does using it look like? | Example |
-| Content and structure | Optional | What is in it, and how is it structured? | Files, Contents, Layers |
+| Tasks | Optional | How do I do a particular thing with it? | Named for the task, such as After changing a file |
+| Content and structure | Optional | What is in it, and where? | Files, Contents, Content and structure |
+| How it works | Optional | How do the parts work together? | How it works, Design |
+| Configuration | Optional | What can I change? | Configuration |
+| Troubleshooting | Optional | What goes wrong, and what do I do? | Troubleshooting |
 | Known limits | Optional | What does it not do, or not do well? | Known limits |
-| Contributing | Optional | How do I check a change before I propose it? | Contributing |
+| Contributing and support | Optional | How do I report or change something? | Contributing |
 | Documentation | Optional | Where do I read on? | Documentation |
 | License | MUST (public) | What may I do with it? | License |
-
-### RM-42
-
-A README MUST NOT hold a section that answers a question the table of RM-1 does not name.
-
-A reader who has a first result finds the rest in the documents of `docs/` (DOC-2), through the links of RM-43.
-
-> Correct: "Getting started" of `replay/README.md` ends with the replay that creates the new repository; renaming it to the source's name stands in a document of `docs/replay/`
->
-> Incorrect: a section "Taking over the source's name", "Stopping and resuming", "Troubleshooting" or "How it works" in `replay/README.md`
 
 ### RM-38
 
@@ -78,6 +72,10 @@ The summary and, where present, "What it is for" MUST precede every other sectio
 ### RM-28
 
 "Getting started" SHOULD be the first section after them.
+
+### RM-29
+
+"How it works" SHOULD follow "Getting started", "Example" and every task section.
 
 ### RM-25
 
@@ -125,14 +123,6 @@ Where a repository has something to install or run, "Getting started" MUST give 
 >
 > Incorrect: `Install ShellCheck with Homebrew.`; `Sign in to photo-sync.`, which says neither where nor what shows that it worked
 
-### RM-45
-
-Each command block in "Getting started" MUST be followed by a sentence that states the result of its commands.
-
-> Correct: a block holding `pip install -r requirements.txt` and `pytest`, followed by `All tests pass.`
->
-> Incorrect: two command blocks with no sentence between them
-
 ### RM-51
 
 "Getting started" MUST NOT show what a command prints, in a block or in a sentence, other than a value the reader copies or compares with their own, such as a URL.
@@ -145,7 +135,7 @@ A statement of the result stays true when ordinary work changes the output, such
 
 ### RM-7
 
-Where a repository has something to install or run, "Getting started" MUST end with the step that shows the first result.
+Where a repository has something to install or run, "Getting started" MUST end with the step that shows the first result, with what the reader then sees (RM-34 gives the form).
 
 ### RM-26
 
@@ -155,9 +145,29 @@ Where a repository has nothing to install or run, "Getting started" MUST name wh
 
 "Example" MUST show at least one real usage with concrete values and what it produces, not a bare signature or an all-placeholder command.
 
+### RM-31
+
+A task section MUST open with the command or the first step of the task.
+
 ### RM-35
 
 "Content and structure" MUST name the entry point files a reader opens first.
+
+### RM-32
+
+"How it works" MUST describe how parts named in "Content and structure" depend on each other.
+
+### RM-12
+
+"Configuration" MUST list only options a normal user changes.
+
+### RM-36
+
+Each option in "Configuration" MUST carry its default and its effect.
+
+### RM-13
+
+"Troubleshooting" MUST list only failure modes actually observed, symptom first, fix second.
 
 ## Commands
 
@@ -170,16 +180,6 @@ Commands joined by `&&` only stop at the first failure and do not branch.
 > Correct: `scripts/review-pr.sh 40` in a fenced block; `git switch main && git pull --ff-only && ./setup-mac.sh`
 >
 > Incorrect: `pr=40` followed by `scripts/review-pr.sh $pr`; `id=$(gh api repos/octocat/tool/issues/3 --jq .id)`; `test -d tool || mkdir tool`
-
-### RM-47
-
-A README MUST NOT state how a tool or service from outside the repository works, other than in a step that uses it, as its action, its result and why the step is needed, or in "Known limits", as a limit it causes.
-
-The tool's own documentation explains the rest and is kept current by those who make the tool.
-
-> Correct: `caffeinate -i keeps the Mac awake while the replay runs.` in a step; `GitHub links sub-issues only within one owner, so a sub-issue of another owner is not replayed.` in "Known limits"
->
-> Incorrect: `A fork is your own copy of a repository on GitHub, and a pull request asks its owner to merge from it.` in the summary, as the reason a replay uses forks
 
 ### RM-9
 
