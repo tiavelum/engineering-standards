@@ -129,7 +129,7 @@ Where a repository has something to install or run, the first step of "Getting s
 
 > Correct: `git clone https://github.com/octocat/photo-sync.git` and `cd photo-sync` as the first block; a first step in `sync/README.md` that links "Getting started" of the root README
 >
-> Incorrect: `./install.sh` as the first block, which assumes a clone and a shell inside it
+> Incorrect: `./install.sh` as the first block, which assumes a clone and a shell inside it; `git clone git@github.com:octocat/photo-sync.git` where the prerequisites name no SSH key
 
 ### RM-34
 
