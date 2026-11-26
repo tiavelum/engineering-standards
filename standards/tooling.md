@@ -9,7 +9,7 @@ summary: The boundary between what a tool enforces and what a written standard c
 
 # Tooling and enforcement
 
-This file governs what a tool enforces instead of a written standard, and the tool configuration, checks, dependencies and secrets every repository keeps.
+This file governs what a tool enforces instead of a written standard, and the tool configuration, checks, tests, dependencies and secrets every repository keeps.
 
 Prefix: `TL`
 
@@ -133,7 +133,7 @@ Publication to a package or image registry MUST happen only from a build of a ta
 
 ## Tests
 
-A runner can run a single test where it selects one by name or path, as pytest does by node id.
+A runner can run a single test where one command selects exactly that test, by its name or its place in the suite, as pytest does by node id.
 
 ### TL-38
 
@@ -157,7 +157,7 @@ A test that relies on what an earlier test left passes in the suite and fails al
 
 ### TL-40
 
-A README that gives the command running a suite whose runner can run a single test MUST give, beside it, a command that runs a single test of that suite.
+A README that gives the command running a suite whose runner can run a single test MUST give, beside it in the same code block or sentence, a command that runs a single test of that suite.
 
 Whoever changes one test, or code that only some tests cover, can then run those tests alone, while CI runs the whole suite as TL-36 requires.
 
