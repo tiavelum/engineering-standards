@@ -39,10 +39,11 @@ The root README MUST answer every question the following table marks as required
 |---|---|---|---|
 | Summary | MUST | What is this? | The title and the first paragraph |
 | What it is for | Optional | When do I use it, and when not? | What it is for, Scope |
-| Getting started | MUST | How do I get from nothing to the first run or reading that shows it working? | Getting started, Setup, Usage |
+| Getting started | MUST | How do I get from nothing to a first use of what the summary says it does? | Getting started, Setup, Usage |
 | Example | Optional | What does using it look like? | Example |
 | Content and structure | Optional | What is in it, and how is it structured? | Files, Contents, Layers |
 | Known limits | Optional | What does it not do, or not do well? | Known limits |
+| Contributing | Optional | How do I check a change before I propose it? | Contributing |
 | Documentation | Optional | Where do I read on? | Documentation |
 | License | MUST (public) | What may I do with it? | License |
 
@@ -52,9 +53,9 @@ A README MUST NOT hold a section that answers a question the table of RM-1 does 
 
 A reader who has a first result finds the rest in the documents of `docs/` (DOC-2), through the links of RM-43.
 
-> Correct: `replay/README.md` ends "Getting started" with the first replay, and `docs/replay/stopping-and-resuming.md` explains how a stopped replay resumes
+> Correct: "Getting started" of `replay/README.md` ends with the replay that creates the new repository; renaming it to the source's name stands in a document of `docs/replay/`
 >
-> Incorrect: a section "Stopping and resuming", "Troubleshooting" or "How it works" in `replay/README.md`
+> Incorrect: a section "Taking over the source's name", "Stopping and resuming", "Troubleshooting" or "How it works" in `replay/README.md`
 
 ### RM-38
 
@@ -126,13 +127,21 @@ Where a repository has something to install or run, "Getting started" MUST give 
 
 ### RM-45
 
-A command in "Getting started" MUST be followed by a sentence that states its result instead of what it prints, other than text the reader copies into a later step, such as a URL.
+Each command block in "Getting started" MUST be followed by a sentence that states the result of its commands.
 
-The sentence stays true when ordinary work changes the output, such as the number of tests.
-
-> Correct: `pytest` in a fenced block, followed by `All tests pass.`
+> Correct: a block holding `pip install -r requirements.txt` and `pytest`, followed by `All tests pass.`
 >
-> Incorrect: the same block followed by a block holding `412 passed in 3.21s`
+> Incorrect: two command blocks with no sentence between them
+
+### RM-51
+
+"Getting started" MUST NOT show what a command prints, in a block or in a sentence, other than a value the reader copies or compares with their own, such as a URL.
+
+A statement of the result stays true when ordinary work changes the output, such as the number of tests.
+
+> Correct: `All tests pass.`; `It prints ssh; if it prints https, run the next block.` after `gh config get git_protocol`
+>
+> Incorrect: `All 412 tests pass in 3.2 seconds.`; a block holding `412 passed in 3.21s`
 
 ### RM-7
 
@@ -164,13 +173,13 @@ Commands joined by `&&` only stop at the first failure and do not branch.
 
 ### RM-47
 
-A README MUST NOT state how a tool from outside the repository works, other than the action a step takes with it, the result the reader then sees and why the step is needed.
+A README MUST NOT state how a tool or service from outside the repository works, other than in a step that uses it, as its action, its result and why the step is needed, or in "Known limits", as a limit it causes.
 
 The tool's own documentation explains the rest and is kept current by those who make the tool.
 
-> Correct: `In the Claude app, open Settings > Capabilities and upload skill.zip. The skill then shows in the list.`; `caffeinate -i keeps the Mac awake while the replay runs.`
+> Correct: `caffeinate -i keeps the Mac awake while the replay runs.` in a step; `GitHub links sub-issues only within one owner, so a sub-issue of another owner is not replayed.` in "Known limits"
 >
-> Incorrect: `A fork is your own copy of a repository on GitHub, and a pull request asks the owner of the original to merge from it.`
+> Incorrect: `A fork is your own copy of a repository on GitHub, and a pull request asks its owner to merge from it.` in the summary, as the reason a replay uses forks
 
 ### RM-9
 
