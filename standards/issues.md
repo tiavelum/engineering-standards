@@ -39,12 +39,6 @@ Work that spans several issues SHOULD be held by one tracking issue that lists e
 >
 > Incorrect: the issues linked in running text, with their state reported in comments
 
-### ISS-20
-
-An issue other than a tracking issue of ISS-10 MUST NOT be carried out by more than one merged pull request.
-
-Each issue then closes with the one change that does its work, and work too large for one pull request becomes several issues.
-
 ### ISS-19
 
 Each run of a procedure that a repository's documentation describes for running more than once, such as a migration, a machine setup or the replay of a repository, SHOULD be recorded in an issue of its own that holds the run's inputs, its state and what it hit.
@@ -78,16 +72,6 @@ An issue's title MUST state the work as an imperative phrase.
 An issue MUST state the condition under which it is done.
 
 The condition lets anyone see whether the issue is done without asking its author.
-
-### ISS-21
-
-An issue whose done condition lists its parts as items MUST make those items a task list in its description, each ticked once its change is merged or its decision carried out, and MUST NOT report that progress in a comment.
-
-Whoever opens the issue sees what is left without reading its comments.
-
-> Correct: `- [x] Rename the script` and `- [ ] Update the README` under the done condition
->
-> Incorrect: the same items as a numbered list, with `Renamed the script.` as a comment
 
 ### ISS-7
 
