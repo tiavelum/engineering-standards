@@ -39,37 +39,13 @@ A pull request MUST NOT carry work for an issue its description does not name.
 
 ### GW-6
 
-A pull request's title MUST take the form `<type>(<scope>)!: <summary>`, where `(<scope>)` and `!` may each be left out, `<type>` is a type of the table of GW-44 and `<scope>` is set by GW-45.
+A pull request's title MUST take the form `<type>(<scope>)!: <summary>`, where `(<scope>)` and `!` may each be left out, `<type>` is one of `feat`, `fix`, `perf`, `revert`, `docs`, `test`, `build`, `ci`, `style`, `refactor`, `chore` and `<scope>` is set by GW-45.
 
-The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), with the types limited to the table of GW-44.
+The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), with the types limited to the eleven of [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional).
 
 > Correct: `feat: add a rule on scopes`, `fix(replay): keep the labels of closed issues`, `feat!: drop the --legacy flag`
 >
 > Incorrect: `installer: add zsh`, `Feat: add a rule`, `feat(replay, rewrite): share the gh stub`
-
-### GW-44
-
-A pull request's `<type>` MUST be the type of the first row of the following table whose condition its change meets.
-
-| Type | Condition |
-|---|---|
-| `revert` | An earlier change is undone |
-| `docs` | Only documents about the repository change, such as its README |
-| `test` | Only tests change |
-| `ci` | Only the CI configuration changes |
-| `build` | Only how the repository is built or checked changes, such as its linters and their configuration |
-| `style` | Only the formatting of code changes |
-| `refactor` | Only the structure of the code changes, and nothing it does |
-| `perf` | Only the speed or the resources of what it does change |
-| `fix` | Something that did not work as intended now does |
-| `feat` | Whoever uses the repository gets something new or different, such as a new alias, a new rule or an app the Brewfile installs |
-| `chore` | Anything else, such as a license |
-
-The narrow types come first, so the type says what alone changed, and `feat` takes every other change that whoever uses the repository notices.
-
-> Correct: `feat: install spotify from the brewfile`, `fix: put an empty line before the files of every message`, `docs: fix the clone command in the README`
->
-> Incorrect: `chore: install spotify from the brewfile`, `feat: fix the clone command in the README`
 
 ### GW-45
 

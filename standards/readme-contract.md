@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 13.0.0
+version: 12.1.0
 status: active
 applies_to: [all]
 summary: What every README of a repository must answer, under which headings and in which order the reader meets it, and what it leaves to other documents.
