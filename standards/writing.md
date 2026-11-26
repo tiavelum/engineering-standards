@@ -1,7 +1,7 @@
 ---
 id: writing
 title: Writing
-version: 9.0.0
+version: 9.0.1
 status: active
 applies_to: [all]
 summary: "How the texts of a repository are written, from its documents to its issues, pull requests, comments and commit messages: their language, how a description opens, how they name people, how long their titles and commit messages are, and how they reference issues, pull requests and sources."
@@ -97,6 +97,6 @@ A link in a document of the repository to a page outside the repository MUST sta
 
 A link that backs no statement has nothing that shows when it can go, so a list of links grows without pruning.
 
-> Correct: `The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), without a scope.`
+> Correct: `The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), with the types limited to a table.`
 >
 > Incorrect: a section "Further reading" that lists links, `See also [Semantic Versioning](https://semver.org/).`

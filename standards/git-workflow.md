@@ -1,7 +1,7 @@
 ---
 id: git-workflow
 title: Git workflow
-version: 12.0.0
+version: 13.0.0
 status: active
 applies_to: [all]
 summary: How a change reaches a repository, from the issues it serves through a branch and a pull request to its merge, and the history it leaves.
@@ -39,9 +39,23 @@ A pull request MUST NOT carry work for an issue its description does not name.
 
 ### GW-6
 
-A pull request's title MUST take the form `<type>: <summary>`, where `<type>` is one of `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `build`, `ci`, `revert`.
+A pull request's title MUST take the form `<type>(<scope>)!: <summary>`, where `(<scope>)` and `!` may each be left out, `<type>` is one of `feat`, `fix`, `perf`, `revert`, `docs`, `test`, `build`, `ci`, `style`, `refactor`, `chore` and `<scope>` is set by GW-45.
 
-The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), without a scope and with the types limited to this list.
+The form is that of [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), with the types limited to the eleven of [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional).
+
+> Correct: `feat: add a rule on scopes`, `fix(replay): keep the labels of closed issues`, `feat!: drop the --legacy flag`
+>
+> Incorrect: `installer: add zsh`, `Feat: add a rule`, `feat(replay, rewrite): share the gh stub`
+
+### GW-45
+
+A pull request's title MUST NOT carry a scope other than one that "Contributing" of the root README (RM-1) lists, naming a part of the repository that holds every change the pull request makes.
+
+A listed name lets `git log --grep '(replay)'` find every change to that part.
+
+> Correct: `fix(replay): keep the labels of closed issues`, where "Contributing" lists the scope `replay` for `replay/` and `docs/replay/`
+>
+> Incorrect: the same title where "Contributing" lists no scopes, or where the change also touches `rewrite/`
 
 ### GW-7
 

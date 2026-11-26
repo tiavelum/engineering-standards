@@ -1,7 +1,7 @@
 ---
 id: readme-contract
 title: README contract
-version: 12.0.0
+version: 12.1.0
 status: active
 applies_to: [all]
 summary: What every README of a repository must answer, under which headings and in which order the reader meets it, and what it leaves to other documents.
@@ -51,7 +51,7 @@ The root README MUST answer every question the following table marks as required
 | Example | Optional | What does using it look like? | `## Example` |
 | Files | Optional | What is in it, and how is it structured? | `## Files` |
 | Known limits | Optional | What does it not do, or not do well? | `## Known limits` |
-| Contributing | Optional | How do I check a change? | `## Contributing` |
+| Contributing | Optional | How do I check a change, and which scope may its title name? | `## Contributing` |
 | Documentation | Optional | Where do I read on? | `## Documentation` |
 | License | MUST (public) | What may I do with it? | `## License` |
 
