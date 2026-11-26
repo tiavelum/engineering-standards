@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 15.0.0
+version: 15.1.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -118,6 +118,16 @@ A job that checks nothing still concludes `success`, which reads as a pass to wh
 > Correct: the pull request that adds a repository's first Python file adds its workflow, with a job that runs `ruff check .`.
 >
 > Incorrect: a placeholder job that only runs `actions/checkout`, so every pull request shows a green check that checked nothing.
+
+### TL-43
+
+The pull request that adds a repository's first check MUST also add the CI workflow that runs it on pull requests.
+
+CI then decides every change from that pull request on, as TL-32 has it; until a repository has a check, it has no workflow, and a review stands in for the check.
+
+> Correct: the pull request that adds a repository's first shell script adds `shellcheck` and a workflow that runs it.
+>
+> Incorrect: a first pull request that adds Python files and `ruff.toml`, leaving the workflow to a later pull request, so its own merge rests on local runs.
 
 ### TL-36
 
