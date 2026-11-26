@@ -1,7 +1,7 @@
 ---
 id: tooling
 title: Tooling and enforcement
-version: 14.4.0
+version: 15.0.0
 status: active
 applies_to: [all]
 summary: The boundary between what a tool enforces and what a written standard covers, plus the required baseline configuration.
@@ -89,6 +89,16 @@ Whether a change passes a check MUST be decided by the check's run in CI, whiche
 
 A local run may use another version than the one CI pins, and so find more or less.
 
+### TL-41
+
+A check that CI runs on a pull request's last commit MUST NOT be run locally only to confirm, before a push, the result that its run in CI decides under TL-32.
+
+Run it while it helps make the change pass, such as after fixing what it reported, and not again once nothing it covers has changed.
+
+> Correct: running `ruff check .` after editing a Python file, and again after fixing what it reported, then pushing.
+>
+> Incorrect: running every check again before pushing a commit that changes only the README, which CI checks on that commit anyway.
+
 ### TL-34
 
 A workflow that runs on pull requests MUST cancel its run for a pull request's commit once a newer commit of the same pull request starts a run of it.
@@ -111,7 +121,7 @@ A job that checks nothing still concludes `success`, which reads as a pass to wh
 
 ### TL-36
 
-CI MUST run every check that the README asks a contributor to run before opening a pull request.
+CI MUST run every check that the README names for a contributor.
 
 > Correct: the README lists `python3 scripts/validate-standards.py` for contributors, and the workflow runs it.
 >
@@ -164,6 +174,16 @@ Whoever changes one test, or code that only some tests cover, can then run those
 > Correct: "Getting started" runs `pytest tests` and, beside it, `pytest tests/test_plan.py::test_leave_behind` for one test.
 >
 > Incorrect: "Getting started" runs only `pytest tests`.
+
+### TL-42
+
+A local run of tests while a change is made to work SHOULD run only the tests of what the change touches: the changed test alone where the change touches only a test, and the tests that cover the changed code where it changes code.
+
+Another test may rely on the changed code, so the tests that cover it run too; CI runs the whole suite under TL-36.
+
+> Correct: after changing `replay/plan.py`, running `pytest replay/tests/test_plan.py`, which holds the tests that cover it.
+>
+> Incorrect: running the whole suite, about 100 seconds, after changing one assertion of one test.
 
 ## Dependencies
 
